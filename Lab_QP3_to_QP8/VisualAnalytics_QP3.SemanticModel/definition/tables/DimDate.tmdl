@@ -1,0 +1,134 @@
+table DimDate
+	lineageTag: 7656d9e9-c067-4f75-9e64-8b31eb67cacf
+	dataCategory: Time
+
+	column DateKey
+		dataType: int64
+		isHidden
+		lineageTag: ce5fc46d-b37d-4726-b549-982e93550b63
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: dd mmm yyyy
+		lineageTag: cfec26e2-4cca-4c0f-9aec-fcc42efb854f
+		summarizeBy: none
+		sourceColumn: Date
+
+	column Year
+		dataType: int64
+		lineageTag: d4bca2ed-7d42-41a2-a9c7-3b8afd57721a
+		summarizeBy: none
+		sourceColumn: Year
+
+	column QuarterNo
+		dataType: int64
+		isHidden
+		lineageTag: 9c7d9339-2e3e-4bea-82d0-0f3c1fdad16c
+		summarizeBy: none
+		sourceColumn: QuarterNo
+
+	column Quarter
+		dataType: string
+		lineageTag: cff90055-ea6d-43c4-9634-d99febd9ff61
+		summarizeBy: none
+		sourceColumn: Quarter
+		sortByColumn: QuarterNo
+
+	column MonthNo
+		dataType: int64
+		isHidden
+		lineageTag: 0dba89a0-ec0f-43c6-8d76-242f9dd04b99
+		summarizeBy: none
+		sourceColumn: MonthNo
+
+	column MonthName
+		dataType: string
+		lineageTag: e42c1723-46ac-49b2-98ee-3f41ea4b8e6f
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: MonthNo
+
+	column MonthShort
+		dataType: string
+		lineageTag: b82f04d8-18ff-4ddb-be85-29c61ec57455
+		summarizeBy: none
+		sourceColumn: MonthShort
+		sortByColumn: MonthNo
+
+	column YearMonth
+		dataType: string
+		lineageTag: 55ea07ff-0139-4328-9221-ebd6fb5871a0
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	column WeekOfYear
+		dataType: int64
+		lineageTag: 3b09501d-45c3-46ab-8d18-29b00701078c
+		summarizeBy: none
+		sourceColumn: WeekOfYear
+
+	column DayOfMonth
+		dataType: int64
+		lineageTag: 51790689-0c61-4d5b-90a5-4d357c3c8a13
+		summarizeBy: none
+		sourceColumn: DayOfMonth
+
+	column DayName
+		dataType: string
+		lineageTag: 1bf9823c-53df-4f9f-97e5-782bf7ef8ff8
+		summarizeBy: none
+		sourceColumn: DayName
+
+	column IsWeekend
+		dataType: boolean
+		lineageTag: 6beaf1c1-8982-4cae-acce-0d02de963e3b
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+	column 'Financial Year' =
+			"FY " & IF ( DimDate[MonthNo] >= 4, DimDate[Year],
+			                DimDate[Year] - 1 )
+			       & "-" & RIGHT ( IF ( DimDate[MonthNo] >= 4,
+			                DimDate[Year] + 1, DimDate[Year] ), 2 )
+		lineageTag: ba1fdab4-06a8-4860-b8b3-2b9f4eebe605
+		summarizeBy: none
+
+	hierarchy 'Date Hierarchy'
+		lineageTag: 248f8fab-6ff8-4118-804f-b1e0bfb9fba0
+
+		level Year
+			lineageTag: 020c92e8-c2f0-4fc8-9b40-fe90f3294a8e
+			column: Year
+
+		level Quarter
+			lineageTag: f4bf0769-9e7d-44ba-a5f3-c7d04e66a910
+			column: Quarter
+
+		level MonthName
+			lineageTag: 8faa3c9b-a212-4129-b569-64cdb6db2bd3
+			column: MonthName
+
+		level DayOfMonth
+			lineageTag: 8a02d31d-3ff4-41be-88d6-30c9c6b14fdf
+			column: DayOfMonth
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\ROG\Desktop\Mtech Classwork\Visual analytics\Lab_QP1_QP2\data\DimDate.csv"),
+				        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"DateKey", Int64.Type}, {"Date", type date}, {"Year", Int64.Type},
+				        {"QuarterNo", Int64.Type}, {"Quarter", type text},
+				        {"MonthNo", Int64.Type}, {"MonthName", type text},
+				        {"MonthShort", type text}, {"YearMonth", type text},
+				        {"WeekOfYear", Int64.Type}, {"DayOfMonth", Int64.Type},
+				        {"DayName", type text}, {"IsWeekend", type logical}})
+				in
+				    Typed
+

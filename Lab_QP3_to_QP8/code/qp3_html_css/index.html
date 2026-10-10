@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Visual Analytics Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-badge">VA</div>
+        <div>
+          <h2 class="brand-title">AnalyticsHub</h2>
+          <span class="badge-pill">v3.2 Live</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">CORE VIEWS</div>
+        <a href="#overview" class="nav-item active">
+          <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Executive Overview
+        </a>
+        <a href="#categories" class="nav-item">
+          <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+          Category Performance
+        </a>
+        <a href="#trends" class="nav-item">
+          <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+          Time-Series Trends
+        </a>
+        <a href="#territories" class="nav-item">
+          <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Territory Distribution
+        </a>
+
+        <div class="nav-section-label">DATA WORKFLOWS</div>
+        <a href="#drilldown" class="nav-item">
+          <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/></svg>
+          Interactive Drill-down
+        </a>
+        <a href="#export" class="nav-item">
+          <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
+          Export & Reports
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <div class="avatar">VN</div>
+          <div>
+            <div class="user-name">Vedant Nimkar</div>
+            <div class="user-role">26MML0045 &bull; Analyst</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Header Navigation -->
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title">Retail Visual Analytics Dashboard</h1>
+          <p class="page-subtitle">Real-time exploratory analytics across 5,013 verified transactions</p>
+        </div>
+        <div class="header-right">
+          <div class="filter-badge">
+            <span class="status-dot"></span>
+            Dataset: SalesData (Verified Star Schema)
+          </div>
+          <button class="btn btn-outline" id="refreshBtn">
+            <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+            Refresh
+          </button>
+          <button class="btn btn-primary" id="exportBtn">Export PDF</button>
+        </div>
+      </header>
+
+      <!-- Main Scrollable Dashboard Content -->
+      <main class="content-body">
+        <!-- Interactive Filter Toolbar -->
+        <section class="filter-bar">
+          <div class="filter-group">
+            <label for="categoryFilter">Category</label>
+            <select id="categoryFilter" class="form-select">
+              <option value="All">All Categories (4)</option>
+              <option value="Bikes">Bikes</option>
+              <option value="Components">Components</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="territoryFilter">Territory</label>
+            <select id="territoryFilter" class="form-select">
+              <option value="All">All Territories (5)</option>
+              <option value="North America">North America</option>
+              <option value="Europe">Europe</option>
+              <option value="Pacific">Pacific</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="yearFilter">Fiscal Year</label>
+            <select id="yearFilter" class="form-select">
+              <option value="All">All Years (2023 - 2025)</option>
+              <option value="2023">CY 2023</option>
+              <option value="2024">CY 2024</option>
+              <option value="2025">CY 2025</option>
+            </select>
+          </div>
+          <div class="filter-actions">
+            <button class="btn btn-secondary" id="resetFilters">Reset Filters</button>
+          </div>
+        </section>
+
+        <!-- KPI Summary Cards Grid -->
+        <section class="kpi-grid">
+          <div class="kpi-card card-glow-blue">
+            <div class="kpi-header">
+              <span class="kpi-label">TOTAL REVENUE</span>
+              <span class="trend-chip trend-up">+14.2% YoY</span>
+            </div>
+            <div class="kpi-value">$8,955,541</div>
+            <div class="kpi-subtext">5,008 Orders &bull; Avg $1,788/order</div>
+            <div class="kpi-bar"><div class="kpi-fill" style="width: 82%;"></div></div>
+          </div>
+
+          <div class="kpi-card card-glow-emerald">
+            <div class="kpi-header">
+              <span class="kpi-label">TOTAL PROFIT</span>
+              <span class="trend-chip trend-up">+18.7% YoY</span>
+            </div>
+            <div class="kpi-value">$4,831,999</div>
+            <div class="kpi-subtext">Gross margin 53.96%</div>
+            <div class="kpi-bar"><div class="kpi-fill bg-emerald" style="width: 74%;"></div></div>
+          </div>
+
+          <div class="kpi-card card-glow-purple">
+            <div class="kpi-header">
+              <span class="kpi-label">UNITS SOLD</span>
+              <span class="trend-chip trend-neutral">22,448 units</span>
+            </div>
+            <div class="kpi-value">22,448</div>
+            <div class="kpi-subtext">Avg $398.94 selling price</div>
+            <div class="kpi-bar"><div class="kpi-fill bg-purple" style="width: 65%;"></div></div>
+          </div>
+
+          <div class="kpi-card card-glow-amber">
+            <div class="kpi-header">
+              <span class="kpi-label">ACTIVE CUSTOMERS</span>
+              <span class="trend-chip trend-up">220 Accounts</span>
+            </div>
+            <div class="kpi-value">220</div>
+            <div class="kpi-subtext">100% Territory coverage</div>
+            <div class="kpi-bar"><div class="kpi-fill bg-amber" style="width: 90%;"></div></div>
+          </div>
+        </section>
+
+        <!-- Visual Analytics Main Grid -->
+        <section class="charts-grid">
+          <!-- Chart 1: Time Series Trend -->
+          <div class="chart-card span-2">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Monthly Revenue & Profit Growth</h3>
+                <p class="chart-subtitle">Aggregated multi-year sales performance (2023 - 2025)</p>
+              </div>
+              <div class="chart-actions">
+                <span class="legend-dot dot-blue"></span> Revenue
+                <span class="legend-dot dot-emerald"></span> Profit
+              </div>
+            </div>
+            <div class="chart-container" id="monthlyTrendChart">
+              <!-- Placeholder representation for pure HTML/CSS demo -->
+              <div class="mock-chart-container">
+                <div class="bar-col" style="height: 45%;"><span class="bar-tip">$520k</span></div>
+                <div class="bar-col" style="height: 52%;"><span class="bar-tip">$610k</span></div>
+                <div class="bar-col" style="height: 60%;"><span class="bar-tip">$720k</span></div>
+                <div class="bar-col" style="height: 58%;"><span class="bar-tip">$690k</span></div>
+                <div class="bar-col" style="height: 70%;"><span class="bar-tip">$840k</span></div>
+                <div class="bar-col" style="height: 78%;"><span class="bar-tip">$930k</span></div>
+                <div class="bar-col" style="height: 85%;"><span class="bar-tip">$1.02M</span></div>
+                <div class="bar-col" style="height: 92%;"><span class="bar-tip">$1.15M</span></div>
+                <div class="bar-col" style="height: 88%;"><span class="bar-tip">$1.08M</span></div>
+                <div class="bar-col" style="height: 95%;"><span class="bar-tip">$1.20M</span></div>
+                <div class="bar-col" style="height: 98%;"><span class="bar-tip">$1.26M</span></div>
+                <div class="bar-col active-bar" style="height: 100%;"><span class="bar-tip">$1.31M</span></div>
+              </div>
+              <div class="chart-xaxis">
+                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 2: Category Breakdown -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Revenue by Product Category</h3>
+                <p class="chart-subtitle">Sales contribution distribution</p>
+              </div>
+            </div>
+            <div class="chart-container" id="categoryChart">
+              <div class="category-breakdown-list">
+                <div class="cat-row">
+                  <div class="cat-meta"><span>Bikes</span><b>$6,420,110 (71.7%)</b></div>
+                  <div class="progress-track"><div class="progress-fill bg-blue" style="width: 71.7%;"></div></div>
+                </div>
+                <div class="cat-row">
+                  <div class="cat-meta"><span>Components</span><b>$1,380,450 (15.4%)</b></div>
+                  <div class="progress-track"><div class="progress-fill bg-purple" style="width: 15.4%;"></div></div>
+                </div>
+                <div class="cat-row">
+                  <div class="cat-meta"><span>Clothing</span><b>$710,230 (7.9%)</b></div>
+                  <div class="progress-track"><div class="progress-fill bg-emerald" style="width: 7.9%;"></div></div>
+                </div>
+                <div class="cat-row">
+                  <div class="cat-meta"><span>Accessories</span><b>$444,751 (5.0%)</b></div>
+                  <div class="progress-track"><div class="progress-fill bg-amber" style="width: 5.0%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 3: Territory Performance -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Territory Share</h3>
+                <p class="chart-subtitle">Regional sales proportion</p>
+              </div>
+            </div>
+            <div class="chart-container flex-center">
+              <div class="donut-visual">
+                <div class="donut-hole">
+                  <div class="donut-stat">$8.95M</div>
+                  <div class="donut-sub">Global Sales</div>
+                </div>
+              </div>
+              <div class="donut-legend">
+                <div class="legend-item"><span class="badge-dot bg-blue"></span> North America: 54%</div>
+                <div class="legend-item"><span class="badge-dot bg-purple"></span> Europe: 31%</div>
+                <div class="legend-item"><span class="badge-dot bg-emerald"></span> Pacific: 15%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table: Top Sold Products Drilldown -->
+          <div class="chart-card span-2">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Top Sold Products &ndash; Detail Drill-down</h3>
+                <p class="chart-subtitle">Direct row-level inspection from star schema model</p>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>SubCategory</th>
+                    <th>Units Sold</th>
+                    <th>Total Revenue</th>
+                    <th>Gross Margin %</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Mountain-200 Black, 38</strong></td>
+                    <td>Bikes</td>
+                    <td>Mountain Bikes</td>
+                    <td>1,420</td>
+                    <td>$1,245,600</td>
+                    <td><span class="badge badge-success">56.2%</span></td>
+                    <td><span class="status-pill status-high">Top Revenue</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Road-150 Red, 52</strong></td>
+                    <td>Bikes</td>
+                    <td>Road Bikes</td>
+                    <td>1,180</td>
+                    <td>$1,085,420</td>
+                    <td><span class="badge badge-success">54.8%</span></td>
+                    <td><span class="status-pill status-high">High Margin</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sport-100 Helmet, Red</strong></td>
+                    <td>Accessories</td>
+                    <td>Helmets</td>
+                    <td>3,840</td>
+                    <td>$134,400</td>
+                    <td><span class="badge badge-warning">48.1%</span></td>
+                    <td><span class="status-pill status-volume">Top Units</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>HL Mountain Frame - Silver</strong></td>
+                    <td>Components</td>
+                    <td>Mountain Frames</td>
+                    <td>640</td>
+                    <td>$582,300</td>
+                    <td><span class="badge badge-success">52.9%</span></td>
+                    <td><span class="status-pill status-stable">Stable</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Long-Sleeve Logo Jersey, L</strong></td>
+                    <td>Clothing</td>
+                    <td>Jerseys</td>
+                    <td>2,150</td>
+                    <td>$107,500</td>
+                    <td><span class="badge badge-success">51.0%</span></td>
+                    <td><span class="status-pill status-volume">High Vol</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div>Visual Analytics Lab (MACSE603) &bull; Assessment 3: HTML & CSS Visual Analytics Architecture</div>
+        <div class="student-tag">Vedant Nimkar | 26MML0045</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

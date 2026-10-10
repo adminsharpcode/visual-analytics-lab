@@ -1,0 +1,42 @@
+# =============================================================================
+# Visual Analytics Lab (MACSE603) - Assessment 8 (Experiment 14)
+# Student: Vedant Nimkar | Reg No: 26MML0045
+# Backend Microservice Containerization (Flask + Pandas Analytics)
+# =============================================================================
+
+FROM python:3.12-slim
+
+LABEL maintainer="Vedant Nimkar <26MML0045@vitstudent.ac.in>"
+LABEL course="MACSE603 - Visual Analytics Lab"
+LABEL description="Flask Pandas REST API backend for enterprise sales analytics"
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    sqlite3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install python packages
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy backend application code and dataset
+COPY app.py .
+COPY data/ ./data/
+
+# Environment Variables
+ENV PYTHONUNBUFFERED=1
+ENV FLASK_ENV=production
+ENV PORT=5000
+
+# Expose API Port
+EXPOSE 5000
+
+# Container Healthcheck
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:5000/api/health || exit 1
+
+# Start Flask Application
+CMD ["python", "app.py"]

@@ -1,0 +1,346 @@
+================================================================================
+QP2 STEP 5 - ADVANCED DAX: CALCULATE() FILTER CONTEXT + TIME INTELLIGENCE
+================================================================================
+PREREQUISITE: DimDate must be marked as a date table
+              (Table tools > Mark as date table > Date column)
+              Time Intelligence silently misbehaves without this.
+
+Verify every number against expected_results\EXPECTED_RESULTS.txt
+
+
+================================================================================
+PART A - MANIPULATING FILTER CONTEXT WITH CALCULATE()
+================================================================================
+
+------------------------------------------------- A1. ADD a filter
+-- CALCULATE applies a new filter on top of the current context.
+Electronics Sales =
+CALCULATE (
+    [Total Sales],
+    DimProduct[Category] = "Electronics"
+)
+
+Shipped Sales =
+CALCULATE (
+    [Total Sales],
+    FactSales[OrderStatus] = "Shipped"
+)
+
+Discounted Sales =
+CALCULATE (
+    [Total Sales],
+    FactSales[DiscountPct] > 0
+)
+
+Premium Product Sales =
+CALCULATE (
+    [Total Sales],
+    DimProduct[Price Tier] = "Premium"
+)
+
+
+------------------------------------------------- A2. REMOVE a filter (ALL)
+-- ALL strips filters, giving an unfiltered denominator.
+Sales All Products =
+CALCULATE (
+    [Total Sales],
+    ALL ( DimProduct )
+)
+
+-- Percent of grand total: the classic ALL use case.
+Pct of Total Sales =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALL ( DimProduct ), ALL ( DimTerritory ) )
+)
+
+
+------------------------------------------------- A3. KEEP one filter (ALLEXCEPT)
+-- Removes every filter on DimProduct EXCEPT the one on Category.
+-- Gives "this product's share within its own category".
+Pct of Category Sales =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALLEXCEPT ( DimProduct, DimProduct[Category] ) )
+)
+
+
+------------------------------------------------- A4. PRESERVE slicers (ALLSELECTED)
+-- Respects what the user picked in slicers but ignores the row's own filter.
+Pct of Selected Sales =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALLSELECTED ( DimProduct[Category] ) )
+)
+
+
+------------------------------------------------- A5. OVERRIDE vs INTERSECT
+-- A direct predicate REPLACES the existing filter on that column.
+Sales 2025 Override =
+CALCULATE (
+    [Total Sales],
+    DimDate[Year] = 2025
+)
+
+-- KEEPFILTERS INTERSECTS instead of replacing, so a Year slicer still applies.
+Sales 2025 KeepFilters =
+CALCULATE (
+    [Total Sales],
+    KEEPFILTERS ( DimDate[Year] = 2025 )
+)
+
+
+------------------------------------------------- A6. Multiple filter arguments
+-- Multiple arguments combine with AND.
+Electronics Shipped 2025 =
+CALCULATE (
+    [Total Sales],
+    DimProduct[Category] = "Electronics",
+    FactSales[OrderStatus] = "Shipped",
+    DimDate[Year] = 2025
+)
+
+-- OR condition needs a single table-valued filter.
+Laptops or Mobiles Sales =
+CALCULATE (
+    [Total Sales],
+    FILTER (
+        ALL ( DimProduct[Subcategory] ),
+        DimProduct[Subcategory] = "Laptops"
+            || DimProduct[Subcategory] = "Mobiles"
+    )
+)
+
+
+------------------------------------------------- A7. Activate the inactive relationship
+-- Relationship 5 from Step 3 was left inactive; USERELATIONSHIP switches it on
+-- for this measure only, letting you analyse by the CUSTOMER's territory
+-- instead of the ORDER's territory.
+Sales by Customer Territory =
+CALCULATE (
+    [Total Sales],
+    USERELATIONSHIP ( DimCustomer[TerritoryKey], DimTerritory[TerritoryKey] )
+)
+
+
+------------------------------------------------- A8. Total sales revenue per category
+-- The exact lab requirement, written three equivalent ways.
+
+-- (i) simple: drop Category into a visual with [Total Sales]
+-- (ii) explicit per-category measure
+Category Revenue =
+CALCULATE (
+    [Total Sales],
+    ALLEXCEPT ( DimProduct, DimProduct[Category] )
+)
+
+-- (iii) as a virtual table, independent of the visual
+Category Revenue Table =
+SUMMARIZE (
+    FactSales,
+    DimProduct[Category],
+    "Revenue", [Total Sales]
+)
+
+VERIFY:
+    Electronics   7,081,992.08
+    Furniture       861,784.14
+    Accessories     786,667.35
+    Software        225,097.68
+    -------------------------
+    Total         8,955,541.25
+
+
+================================================================================
+PART B - TIME INTELLIGENCE
+================================================================================
+
+------------------------------------------------- B1. Year to date / Quarter / Month
+Sales YTD  = TOTALYTD  ( [Total Sales], DimDate[Date] )
+Sales QTD  = TOTALQTD  ( [Total Sales], DimDate[Date] )
+Sales MTD  = TOTALMTD  ( [Total Sales], DimDate[Date] )
+
+-- Financial year to date, April start
+Sales FYTD = TOTALYTD ( [Total Sales], DimDate[Date], "31/03" )
+
+VERIFY  Sales YTD at Dec 2023 = 2,720,750.21   (equals the 2023 total)
+        Sales YTD at Mar 2024 =   817,662.41   (resets each January)
+
+
+------------------------------------------------- B2. Prior periods
+Sales PY =
+CALCULATE (
+    [Total Sales],
+    SAMEPERIODLASTYEAR ( DimDate[Date] )
+)
+
+-- DATEADD is the flexible equivalent
+Sales PY DateAdd =
+CALCULATE (
+    [Total Sales],
+    DATEADD ( DimDate[Date], -1, YEAR )
+)
+
+Sales PM =
+CALCULATE (
+    [Total Sales],
+    DATEADD ( DimDate[Date], -1, MONTH )
+)
+
+Sales PQ =
+CALCULATE (
+    [Total Sales],
+    DATEADD ( DimDate[Date], -1, QUARTER )
+)
+
+Sales PY YTD =
+CALCULATE (
+    [Sales YTD],
+    SAMEPERIODLASTYEAR ( DimDate[Date] )
+)
+
+
+------------------------------------------------- B3. YoY GROWTH  (lab requirement)
+YoY Growth =
+VAR Current = [Total Sales]
+VAR Previous = [Sales PY]
+RETURN
+    IF ( NOT ISBLANK ( Previous ), Current - Previous )
+
+YoY Growth % =
+VAR Current = [Total Sales]
+VAR Previous = [Sales PY]
+RETURN
+    DIVIDE ( Current - Previous, Previous )
+
+-- Label for a card / KPI
+YoY Trend =
+VAR G = [YoY Growth %]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( G ),  "No prior year",
+        G > 0.10,       "Strong growth",
+        G > 0,          "Growing",
+        G > -0.10,      "Slight decline",
+        "Sharp decline"
+    )
+
+-- Month over month
+MoM Growth % =
+DIVIDE ( [Total Sales] - [Sales PM], [Sales PM] )
+
+
+VERIFY  YoY Growth % by Category:
+
+    Category      2024 vs 2023    2025 vs 2024
+    Accessories       +23.13%         +16.74%
+    Electronics        +8.67%          +0.34%
+    Furniture         +32.43%         +26.74%
+    Software           -1.13%         +66.45%
+
+    Overall:  2024 +11.46%    2025 +5.59%
+
+    (Software declining then jumping is exactly the kind of pattern the
+     YoY measure is meant to expose.)
+
+
+------------------------------------------------- B4. Rolling and cumulative
+Sales Rolling 3M =
+CALCULATE (
+    [Total Sales],
+    DATESINPERIOD (
+        DimDate[Date],
+        MAX ( DimDate[Date] ),
+        -3,
+        MONTH
+    )
+)
+
+Sales Rolling 12M =
+CALCULATE (
+    [Total Sales],
+    DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ), -12, MONTH )
+)
+
+Sales Cumulative =
+CALCULATE (
+    [Total Sales],
+    FILTER (
+        ALLSELECTED ( DimDate[Date] ),
+        DimDate[Date] <= MAX ( DimDate[Date] )
+    )
+)
+
+-- 3-month moving average, smooths the seasonality
+Sales 3M Moving Avg =
+AVERAGEX (
+    DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ), -3, MONTH ),
+    CALCULATE ( [Total Sales] )
+)
+
+
+------------------------------------------------- B5. Period-over-period on a matrix
+-- Put DimProduct[Category] on rows and DimDate[Year] on columns, then add:
+--    [Total Sales], [Sales PY], [YoY Growth %]
+-- This single matrix satisfies both Step 5 lab questions at once.
+
+
+================================================================================
+PART C - COMBINING CALCULATE WITH TIME INTELLIGENCE
+================================================================================
+
+-- Category revenue for the previous year, ignoring any product filter
+-- other than Category. Demonstrates nesting the two techniques.
+Category Revenue PY =
+CALCULATE (
+    [Total Sales],
+    ALLEXCEPT ( DimProduct, DimProduct[Category] ),
+    SAMEPERIODLASTYEAR ( DimDate[Date] )
+)
+
+-- Electronics YoY specifically
+Electronics YoY % =
+VAR Cur = CALCULATE ( [Total Sales], DimProduct[Category] = "Electronics" )
+VAR Prev =
+    CALCULATE (
+        [Total Sales],
+        DimProduct[Category] = "Electronics",
+        SAMEPERIODLASTYEAR ( DimDate[Date] )
+    )
+RETURN
+    DIVIDE ( Cur - Prev, Prev )
+
+VERIFY  Electronics YoY %  ->  2024: +8.67%    2025: +0.34%
+
+-- Best month within the current filter context
+Best Month Sales =
+MAXX (
+    VALUES ( DimDate[YearMonth] ),
+    CALCULATE ( [Total Sales] )
+)
+
+Best Month Name =
+VAR T = TOPN ( 1, VALUES ( DimDate[YearMonth] ),
+               CALCULATE ( [Total Sales] ), DESC )
+RETURN
+    CONCATENATEX ( T, DimDate[YearMonth], ", " )
+
+
+================================================================================
+PART D - MEASURE FORMATTING
+================================================================================
+Select each measure > Measure tools, then set:
+
+    Total Sales, Total Cost, Total Profit,
+    Sales PY, YoY Growth, Category Revenue        -> Currency, 2 decimals
+    Profit Margin %, YoY Growth %, MoM Growth %,
+    Pct of Total Sales, Category Share %          -> Percentage, 2 decimals
+    Total Quantity, Order Count, Customer Count   -> Whole number, thousands
+                                                     separator on
+
+Organise measures into display folders:
+    Sales     -> Total Sales, Total Quantity, Average Order Value
+    Profit    -> Total Cost, Total Profit, Profit Margin %
+    Time      -> Sales YTD, Sales PY, YoY Growth, YoY Growth %
+    Ranking   -> Top Product by Units, Product Rank by Units

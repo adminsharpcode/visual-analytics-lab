@@ -1,0 +1,64 @@
+# =============================================================================
+# Visual Analytics Lab (MACSE603) - Assessment 7 (Experiment 15)
+# Relational SQL Database Deployment & Internal ClusterIP Service
+# Student: Vedant Nimkar | Reg No: 26MML0045
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sql-db-deployment
+  namespace: visual-analytics
+  labels:
+    app: sql-database
+    tier: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sql-database
+  template:
+    metadata:
+      labels:
+        app: sql-database
+        tier: data
+    spec:
+      containers:
+        - name: mssql-server
+          image: mcr.microsoft.com/mssql/server:2022-latest
+          ports:
+            - containerPort: 1433
+              name: mssql-port
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_PID
+              value: "Developer"
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: va-db-secret
+                  key: DB_PASSWORD
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sql-db-service
+  namespace: visual-analytics
+  labels:
+    app: sql-database
+spec:
+  type: ClusterIP
+  selector:
+    app: sql-database
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+      name: sql-port

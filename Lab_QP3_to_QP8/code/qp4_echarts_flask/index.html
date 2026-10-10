@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment 4: Apache ECharts & Flask Visual Analytics Suite</title>
+  <link rel="stylesheet" href="../qp3_html_css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Standalone Apache ECharts Library -->
+  <script src="echarts.min.js"></script>
+  <style>
+    .echart-box {
+      width: 100%;
+      height: 310px;
+      min-height: 310px;
+    }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-stat-card {
+      background: rgba(30, 41, 59, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .kpi-stat-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+    .kpi-stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+    }
+    .kpi-stat-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #f8fafc;
+      font-family: var(--font-sans);
+    }
+    .kpi-stat-sub {
+      font-size: 0.72rem;
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+    .filter-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      margin-bottom: 24px;
+    }
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .filter-pill {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: #94a3b8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-pill.active, .filter-pill:hover {
+      background: #3b82f6;
+      color: #ffffff;
+      border-color: #3b82f6;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+    }
+    .api-status-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+    .charts-grid-3x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .chart-card {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .chart-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 2px;
+    }
+    .chart-subtitle {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+    .chart-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .badge-line { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-bar { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .badge-donut { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+    .badge-scatter { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-radar { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-funnel { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <div class="main-wrapper" style="padding: 24px 36px; width: 100%;">
+      <!-- Top Header -->
+      <header class="top-header" style="padding: 0; background: transparent; border: none; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1 class="page-title" style="font-size: 1.6rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.02em;">Assessment 4: Apache ECharts Visual Analytics Suite</h1>
+          <p class="page-subtitle" style="font-size: 0.85rem; color: #94a3b8;">Experiment 10: Interactive Declarative Visualizations &bull; Experiment 11: Python Flask REST Microservice</p>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(59, 130, 246, 0.3); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-family: var(--font-mono); color: #93c5fd;">
+            WSGI API: <code>127.0.0.1:5000</code>
+          </div>
+          <div style="background: linear-gradient(135deg, #1e3a8a, #4338ca); border: 1px solid rgba(99, 102, 241, 0.4); padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; color: #ffffff;">
+            Vedant Nimkar | 26MML0045
+          </div>
+        </div>
+      </header>
+
+      <!-- KPI Executive Metric Cards -->
+      <div class="kpi-row">
+        <div class="kpi-stat-card">
+          <span class="kpi-stat-label">Total Net Revenue</span>
+          <span class="kpi-stat-val" id="kpi-revenue">$8,955,541</span>
+          <span class="kpi-stat-sub">&uarr; +14.2% YoY Growth</span>
+        </div>
+        <div class="kpi-stat-card">
+          <span class="kpi-stat-label">Gross Margin Profit</span>
+          <span class="kpi-stat-val" id="kpi-profit">$4,831,999</span>
+          <span class="kpi-stat-sub" style="color: #60a5fa;">53.96% Margin Rate</span>
+        </div>
+        <div class="kpi-stat-card">
+          <span class="kpi-stat-label">Total Units Shipped</span>
+          <span class="kpi-stat-val" id="kpi-units">22,448</span>
+          <span class="kpi-stat-sub">&uarr; 4,210 Bikes Sold</span>
+        </div>
+        <div class="kpi-stat-card">
+          <span class="kpi-stat-label">Verified Sales Orders</span>
+          <span class="kpi-stat-val" id="kpi-orders">5,008</span>
+          <span class="kpi-stat-sub" style="color: #a78bfa;">$1,788 Avg Ticket</span>
+        </div>
+        <div class="kpi-stat-card">
+          <span class="kpi-stat-label">Active Global Markets</span>
+          <span class="kpi-stat-val" id="kpi-markets">5</span>
+          <span class="kpi-stat-sub" style="color: #f59e0b;">US &bull; CA &bull; UK &bull; EU &bull; AU</span>
+        </div>
+      </div>
+
+      <!-- Filter Controls Strip -->
+      <div class="filter-strip">
+        <div class="filter-pills">
+          <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-right: 4px;">Category Filter:</span>
+          <button class="filter-pill active" onclick="applyCategoryFilter('All')">All Sectors</button>
+          <button class="filter-pill" onclick="applyCategoryFilter('Bikes')">Bikes (71.7%)</button>
+          <button class="filter-pill" onclick="applyCategoryFilter('Components')">Components (15.4%)</button>
+          <button class="filter-pill" onclick="applyCategoryFilter('Clothing')">Clothing (7.9%)</button>
+          <button class="filter-pill" onclick="applyCategoryFilter('Accessories')">Accessories (5.0%)</button>
+        </div>
+        <div class="api-status-tag">
+          <span class="pulse-dot"></span>
+          <span>REST API Status: <strong>HTTP 200 OK</strong> &bull; ZRender Canvas GPU</span>
+        </div>
+      </div>
+
+      <!-- 6-Chart Visual Analytics Grid -->
+      <div class="charts-grid-3x2">
+        <!-- Chart 1: Line Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">1. Time-Series Revenue & Profit Growth Trajectory</h3>
+              <p class="chart-subtitle">Smooth Bézier splines with dual area gradients & interactive DataZoom slider</p>
+            </div>
+            <span class="chart-badge badge-line">Area Spline</span>
+          </div>
+          <div id="echart-line" class="echart-box"></div>
+        </div>
+
+        <!-- Chart 2: Bar Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">2. Category Revenue & Profit Breakdown</h3>
+              <p class="chart-subtitle">Clustered vertical bars with linear gradient fills and rounded corner caps</p>
+            </div>
+            <span class="chart-badge badge-bar">Clustered Bar</span>
+          </div>
+          <div id="echart-bar" class="echart-box"></div>
+        </div>
+
+        <!-- Chart 3: Donut Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">3. Regional Territory Revenue Distribution</h3>
+              <p class="chart-subtitle">Proportional donut with dynamic hover sector expansion & percentage callouts</p>
+            </div>
+            <span class="chart-badge badge-donut">Donut Chart</span>
+          </div>
+          <div id="echart-donut" class="echart-box"></div>
+        </div>
+
+        <!-- Chart 4: Scatter Plot -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">4. Product Profitability & Volume Matrix</h3>
+              <p class="chart-subtitle">4D bubble plot: Units vs Margin % (Bubble radius = Revenue magnitude)</p>
+            </div>
+            <span class="chart-badge badge-scatter">4D Bubble Matrix</span>
+          </div>
+          <div id="echart-scatter" class="echart-box"></div>
+        </div>
+
+        <!-- Chart 5: Radar Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">5. Multi-Criteria Operational Performance Radar</h3>
+              <p class="chart-subtitle">Multi-axial scorecard evaluating Velocity, Margin, Logistics, CSAT & Retention</p>
+            </div>
+            <span class="chart-badge badge-radar">Radar Polygon</span>
+          </div>
+          <div id="echart-radar" class="echart-box"></div>
+        </div>
+
+        <!-- Chart 6: Funnel Chart -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">6. Commercial Sales Pipeline Conversion Funnel</h3>
+              <p class="chart-subtitle">Lead-to-order progression tracking drop-off attrition and stage yields</p>
+            </div>
+            <span class="chart-badge badge-funnel">Conversion Funnel</span>
+          </div>
+          <div id="echart-funnel" class="echart-box"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="charts.js"></script>
+</body>
+</html>

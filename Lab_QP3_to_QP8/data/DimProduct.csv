@@ -1,0 +1,23 @@
+ProductKey,Category,Subcategory,ProductName,StandardCost,ListPrice,SKU
+1,Electronics,Laptops,UltraBook 14 Pro,620,1099,ELE-LAP-001
+2,Electronics,Laptops,GamingBook X17,980,1699,ELE-LAP-002
+3,Electronics,Laptops,EduBook 13,310,549,ELE-LAP-003
+4,Electronics,Mobiles,Zenith S24,430,799,ELE-MOB-004
+5,Electronics,Mobiles,Zenith A12,145,279,ELE-MOB-005
+6,Electronics,Audio,AeroPods Pro,78,189,ELE-AUD-006
+7,Electronics,Audio,StudioCan 700,122,299,ELE-AUD-007
+8,Electronics,Monitors,ClearView 27 4K,210,429,ELE-MON-008
+9,Electronics,Monitors,ClearView 24 FHD,96,189,ELE-MON-009
+10,Accessories,Peripherals,TactKey Mechanical,34,89,ACC-PER-010
+11,Accessories,Peripherals,GlideMouse Wireless,12,39,ACC-PER-011
+12,Accessories,Peripherals,DockHub 11-in-1,41,99,ACC-PER-012
+13,Accessories,Storage,RapidSSD 1TB,58,139,ACC-STO-013
+14,Accessories,Storage,VaultHDD 4TB,66,149,ACC-STO-014
+15,Accessories,Power,VoltBank 20K,19,59,ACC-POW-015
+16,Furniture,Seating,ErgoChair Mesh,128,329,FUR-SEA-016
+17,Furniture,Seating,TaskStool Basic,44,119,FUR-SEA-017
+18,Furniture,Desks,RiseDesk Electric,265,599,FUR-DES-018
+19,Furniture,Desks,StudyDesk Compact,88,199,FUR-DES-019
+20,Software,Productivity,OfficeSuite Annual,30,119,SOF-PRO-020
+21,Software,Security,GuardAV Annual,14,59,SOF-SEC-021
+22,Software,Creative,PixelStudio Annual,96,239,SOF-CRE-022

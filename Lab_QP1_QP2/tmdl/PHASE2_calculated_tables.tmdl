@@ -1,0 +1,34 @@
+createOrReplace
+
+	table 'Product Category Summary'
+
+		partition 'Product Category Summary' = calculated
+			mode: import
+			source = ```
+					SUMMARIZE (
+					    FactSales,
+					    DimProduct[Category],
+					    "Total Sales",         [Total Sales],
+					    "Total Quantity",      [Total Quantity],
+					    "Order Count",         [Order Count],
+					    "Avg Sales per Order", [Avg Sales per Order]
+					)
+					```
+
+	table 'Top 5 Products'
+
+		partition 'Top 5 Products' = calculated
+			mode: import
+			source = ```
+					TOPN (
+					    5,
+					    SUMMARIZE (
+					        FactSales,
+					        DimProduct[ProductName],
+					        DimProduct[Category],
+					        "Units Sold", [Total Quantity],
+					        "Revenue",    [Total Sales]
+					    ),
+					    [Units Sold], DESC
+					)
+					```

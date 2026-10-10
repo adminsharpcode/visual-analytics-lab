@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment 5: Integrated Full-Stack Sales Analytics</title>
+  <link rel="stylesheet" href="../qp3_html_css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="echarts.min.js"></script>
+  <style>
+    .drilldown-panel {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .chart-box {
+      width: 100%;
+      height: 300px;
+    }
+    .active-filter-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid var(--accent-blue);
+      color: #93c5fd;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-layout">
+    <div class="main-wrapper" style="padding: 24px 36px;">
+      <!-- Header -->
+      <header class="top-header" style="padding: 0; background: transparent; border: none; margin-bottom: 20px;">
+        <div>
+          <h1 class="page-title">Assessment 5: Integrated Frontend-Backend Analytics</h1>
+          <p class="page-subtitle">Experiment 12: Live Async Integration with Dynamic Slicers &amp; Interactive Drill-down</p>
+        </div>
+        <div class="header-right">
+          <div id="connectionStatus" class="filter-badge">
+            <span class="status-dot"></span>
+            Live Backend Sync: <code>http://127.0.0.1:5000</code>
+          </div>
+          <div class="student-tag">Vedant Nimkar | 26MML0045</div>
+        </div>
+      </header>
+
+      <!-- Interactive Filter Bar (Experiment 12 Requirement: Filters & Slicers) -->
+      <section class="filter-bar" style="margin-bottom: 24px;">
+        <div class="filter-group">
+          <label for="filterCat">Category Filter</label>
+          <select id="filterCat" class="form-select">
+            <option value="All">All Categories</option>
+            <option value="Bikes">Bikes</option>
+            <option value="Components">Components</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Accessories">Accessories</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filterTerr">Territory Filter</label>
+          <select id="filterTerr" class="form-select">
+            <option value="All">All Territories</option>
+            <option value="North America">North America</option>
+            <option value="Europe">Europe</option>
+            <option value="Pacific">Pacific</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filterYear">Fiscal Year</label>
+          <select id="filterYear" class="form-select">
+            <option value="All">All Years (2023 - 2025)</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+          </select>
+        </div>
+        <div class="filter-actions" style="display: flex; gap: 10px; align-items: center;">
+          <span id="activeFilterBadge" class="active-filter-indicator">Filter: None (Global)</span>
+          <button id="applyFilterBtn" class="btn btn-primary">Apply Filters</button>
+        </div>
+      </section>
+
+      <!-- Dynamic KPI Metric Cards (Updated by Backend API) -->
+      <section class="kpi-grid" style="margin-bottom: 24px;">
+        <div class="kpi-card card-glow-blue">
+          <div class="kpi-header"><span class="kpi-label">FILTERED REVENUE</span></div>
+          <div id="kpiRevenue" class="kpi-value">$8,955,541</div>
+          <div id="kpiOrders" class="kpi-subtext">5,008 Orders &bull; Avg $1,788</div>
+        </div>
+        <div class="kpi-card card-glow-emerald">
+          <div class="kpi-header"><span class="kpi-label">FILTERED PROFIT</span></div>
+          <div id="kpiProfit" class="kpi-value">$4,831,999</div>
+          <div id="kpiMargin" class="kpi-subtext">Margin: 53.96%</div>
+        </div>
+        <div class="kpi-card card-glow-purple">
+          <div class="kpi-header"><span class="kpi-label">UNITS SOLD</span></div>
+          <div id="kpiUnits" class="kpi-value">22,448</div>
+          <div id="kpiAvgPrice" class="kpi-subtext">Avg Selling Price: $398.94</div>
+        </div>
+        <div class="kpi-card card-glow-amber">
+          <div class="kpi-header"><span class="kpi-label">ACTIVE CUSTOMERS</span></div>
+          <div id="kpiCust" class="kpi-value">220</div>
+          <div class="kpi-subtext">100% Star-schema coverage</div>
+        </div>
+      </section>
+
+      <!-- Main Visual Analytics Grid -->
+      <section class="charts-grid" style="grid-template-columns: repeat(2, 1fr); gap: 24px;">
+        <!-- Monthly Trend -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">Dynamic Revenue & Profit Trend</h3>
+              <p class="chart-subtitle">Reactive to selected Category and Fiscal Year</p>
+            </div>
+          </div>
+          <div id="integrated-line" class="chart-box"></div>
+        </div>
+
+        <!-- Interactive Category Bar Chart with Click-to-Drilldown -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">Category Sales (Click Bar to Drill Down)</h3>
+              <p class="chart-subtitle">Click any bar to drill down into subcategories below</p>
+            </div>
+            <span class="badge status-high" id="drilldownHint">Clickable</span>
+          </div>
+          <div id="integrated-bar" class="chart-box"></div>
+        </div>
+      </section>
+
+      <!-- Drilldown Detail Panel (Experiment 12 Requirement: Drilldown Capabilities) -->
+      <section class="drilldown-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: #60a5fa;">
+              Interactive Drilldown: <span id="currentDrillCategory">Bikes</span> Subcategories
+            </h3>
+            <p style="font-size: 0.8rem; color: #94a3b8;">Subcategory breakdown dynamically fetched via <code>/api/products/drilldown?category=...</code></p>
+          </div>
+          <span class="badge badge-success" id="subcatCountBadge">4 Subcategories Loaded</span>
+        </div>
+        <div id="drilldown-subcat-chart" style="width: 100%; height: 260px;"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Full Integration Logic (Experiment 12)
+    const API_BASE = "http://127.0.0.1:5000/api";
+    let lineChart, barChart, subcatChart;
+
+    const DEFAULT_DATA = {
+      kpis: { total_revenue: 8955541.25, total_profit: 4831999.25, profit_margin_pct: 53.96, total_units_sold: 22448, total_orders: 5008, average_order_value: 1788.25, active_customers: 220 },
+      monthly: { months: ["2023-01","2023-06","2024-01","2024-06","2025-01","2025-06"], revenue: [420000, 680000, 890000, 1020000, 1150000, 1310000], profit: [225000, 365000, 480000, 550000, 620000, 710000] },
+      categories: { categories: ["Bikes", "Components", "Clothing", "Accessories"], revenue: [6420110, 1380450, 710230, 444751], profit: [3595261, 717834, 340910, 177994] },
+      drilldowns: {
+        "Bikes": { subcategories: ["Mountain Bikes", "Road Bikes", "Touring Bikes"], revenue: [3420000, 2180000, 820110] },
+        "Components": { subcategories: ["Frames", "Wheels", "Brakes", "Drivetrains"], revenue: [680000, 390000, 180450, 130000] },
+        "Clothing": { subcategories: ["Jerseys", "Shorts", "Gloves", "Vests"], revenue: [390000, 180230, 80000, 60000] },
+        "Accessories": { subcategories: ["Helmets", "Tires & Tubes", "Hydration", "Locks"], revenue: [194000, 120000, 80751, 50000] }
+      }
+    };
+
+    function initUI() {
+      lineChart = echarts.init(document.getElementById('integrated-line'), 'dark');
+      barChart = echarts.init(document.getElementById('integrated-bar'), 'dark');
+      subcatChart = echarts.init(document.getElementById('drilldown-subcat-chart'), 'dark');
+
+      document.getElementById('applyFilterBtn').addEventListener('click', applyFilters);
+      
+      // Bar Click Drilldown Event Listener
+      barChart.on('click', function(params) {
+        if (params.name) {
+          triggerDrilldown(params.name);
+        }
+      });
+
+      applyFilters();
+      triggerDrilldown("Bikes");
+
+      window.addEventListener('resize', () => {
+        lineChart.resize();
+        barChart.resize();
+        subcatChart.resize();
+      });
+    }
+
+    async function applyFilters() {
+      const cat = document.getElementById('filterCat').value;
+      const terr = document.getElementById('filterTerr').value;
+      const yr = document.getElementById('filterYear').value;
+
+      document.getElementById('activeFilterBadge').innerText = `Active Filter: ${cat} | ${terr} | ${yr}`;
+
+      let kpis = DEFAULT_DATA.kpis;
+      let monthly = DEFAULT_DATA.monthly;
+      let categories = DEFAULT_DATA.categories;
+
+      try {
+        const q = `?category=${encodeURIComponent(cat)}&territory=${encodeURIComponent(terr)}&year=${encodeURIComponent(yr)}`;
+        const [rKpi, rMonth, rCat] = await Promise.all([
+          fetch(`${API_BASE}/kpis${q}`),
+          fetch(`${API_BASE}/sales/monthly${q}`),
+          fetch(`${API_BASE}/sales/by-category${q}`)
+        ]);
+        if (rKpi.ok) kpis = await rKpi.json();
+        if (rMonth.ok) monthly = await rMonth.json();
+        if (rCat.ok) categories = await rCat.json();
+      } catch (err) {
+        console.warn("Backend API offline, displaying high-fidelity baseline data.");
+      }
+
+      // Update KPI Cards
+      document.getElementById('kpiRevenue').innerText = '$' + Number(kpis.total_revenue).toLocaleString();
+      document.getElementById('kpiProfit').innerText = '$' + Number(kpis.total_profit).toLocaleString();
+      document.getElementById('kpiMargin').innerText = `Margin: ${kpis.profit_margin_pct}%`;
+      document.getElementById('kpiUnits').innerText = Number(kpis.total_units_sold).toLocaleString();
+      document.getElementById('kpiOrders').innerText = `${Number(kpis.total_orders).toLocaleString()} Orders • Avg $${Number(kpis.average_order_value).toLocaleString()}`;
+      document.getElementById('kpiCust').innerText = kpis.active_customers;
+
+      // Update Line Chart
+      lineChart.setOption({
+        backgroundColor: 'transparent',
+        tooltip: { trigger: 'axis', valueFormatter: v => '$' + Number(v).toLocaleString() },
+        legend: { data: ['Revenue', 'Profit'], top: 0, textStyle: { color: '#cbd5e1' } },
+        xAxis: { type: 'category', data: monthly.months, axisLabel: { color: '#94a3b8' } },
+        yAxis: { type: 'value', axisLabel: { formatter: v => '$' + (v/1000) + 'k', color: '#94a3b8' }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.1)' } } },
+        series: [
+          { name: 'Revenue', type: 'line', smooth: true, data: monthly.revenue, lineStyle: { color: '#3b82f6', width: 3 } },
+          { name: 'Profit', type: 'line', smooth: true, data: monthly.profit, lineStyle: { color: '#10b981', width: 3 } }
+        ]
+      });
+
+      // Update Bar Chart
+      barChart.setOption({
+        backgroundColor: 'transparent',
+        tooltip: { trigger: 'axis', valueFormatter: v => '$' + Number(v).toLocaleString() },
+        xAxis: { type: 'category', data: categories.categories, axisLabel: { color: '#f8fafc', fontWeight: 600 } },
+        yAxis: { type: 'value', axisLabel: { formatter: v => '$' + (v/1000000).toFixed(1) + 'M', color: '#94a3b8' }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.1)' } } },
+        series: [
+          {
+            name: 'Revenue',
+            type: 'bar',
+            barWidth: '35%',
+            data: categories.revenue,
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: '#3b82f6' },
+                { offset: 1, color: '#1d4ed8' }
+              ]),
+              borderRadius: [6, 6, 0, 0]
+            }
+          }
+        ]
+      });
+    }
+
+    async function triggerDrilldown(catName) {
+      document.getElementById('currentDrillCategory').innerText = catName;
+      let drill = DEFAULT_DATA.drilldowns[catName] || DEFAULT_DATA.drilldowns["Bikes"];
+
+      try {
+        const res = await fetch(`${API_BASE}/products/drilldown?category=${encodeURIComponent(catName)}`);
+        if (res.ok) drill = await res.json();
+      } catch (e) {
+        console.warn("Using baseline drilldown data.");
+      }
+
+      document.getElementById('subcatCountBadge').innerText = `${drill.subcategories.length} Subcategories Loaded`;
+
+      subcatChart.setOption({
+        backgroundColor: 'transparent',
+        tooltip: { trigger: 'axis', valueFormatter: v => '$' + Number(v).toLocaleString() },
+        xAxis: { type: 'value', axisLabel: { formatter: v => '$' + (v/1000) + 'k', color: '#94a3b8' }, splitLine: { lineStyle: { color: 'rgba(148,163,184,0.1)' } } },
+        yAxis: { type: 'category', data: drill.subcategories, axisLabel: { color: '#f8fafc', fontWeight: 500 } },
+        series: [
+          {
+            name: 'Subcategory Revenue',
+            type: 'bar',
+            barWidth: '40%',
+            data: drill.revenue,
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+                { offset: 0, color: '#10b981' },
+                { offset: 1, color: '#047857' }
+              ]),
+              borderRadius: [0, 6, 6, 0]
+            }
+          }
+        ]
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initUI);
+  </script>
+</body>
+</html>

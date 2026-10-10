@@ -1,0 +1,56 @@
+table DimTerritory
+	lineageTag: f0773212-00e9-45b3-962a-f03a8c3eb612
+
+	column TerritoryKey
+		dataType: int64
+		isHidden
+		lineageTag: 1ac74224-34ba-474c-9f4c-67c617fec7d7
+		summarizeBy: none
+		sourceColumn: TerritoryKey
+
+	column Region
+		dataType: string
+		lineageTag: 0df6d608-124c-49f4-b3b7-95727052805f
+		summarizeBy: none
+		sourceColumn: Region
+
+	column Country
+		dataType: string
+		lineageTag: c5547b53-5347-449d-8f53-2f05924ac8ca
+		summarizeBy: none
+		sourceColumn: Country
+
+	column Group
+		dataType: string
+		lineageTag: 760857b7-0a14-4a11-9708-0b9406584b45
+		summarizeBy: none
+		sourceColumn: Group
+
+	hierarchy 'Geography Hierarchy'
+		lineageTag: 0f90c188-66c4-4fb6-b391-01509ab49290
+
+		level Group
+			lineageTag: b381eac3-75e4-41e9-a231-61c723fad7b4
+			column: Group
+
+		level Country
+			lineageTag: 9f441cc0-9734-45a8-a556-45dc233669ec
+			column: Country
+
+		level Region
+			lineageTag: ceb7b57d-9284-4e5c-897e-c0cc3f77e163
+			column: Region
+
+	partition DimTerritory = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\ROG\Desktop\Mtech Classwork\Visual analytics\Lab_QP1_QP2\data\DimTerritory.csv"),
+				        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"TerritoryKey", Int64.Type}, {"Region", type text},
+				        {"Country", type text}, {"Group", type text}})
+				in
+				    Typed
+

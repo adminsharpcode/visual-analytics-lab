@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/github",
+      "destination": "https://github.com/adminsharpcode/visual-analytics-lab",
+      "permanent": false
+    },
+    {
+      "source": "/repo",
+      "destination": "https://github.com/adminsharpcode/visual-analytics-lab",
+      "permanent": false
+    }
+  ]
+}

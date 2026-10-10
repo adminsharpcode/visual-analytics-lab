@@ -1,0 +1,53 @@
+table DimCustomer
+	lineageTag: bc474c07-a9a3-48fd-b350-b76546f00280
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		lineageTag: 57ff24ec-6579-481c-9477-9b37d706c7ab
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column Segment
+		dataType: string
+		lineageTag: 6ceab69a-cd7a-46a1-b9b8-8a75dcc9cf1f
+		summarizeBy: none
+		sourceColumn: Segment
+
+	column TerritoryKey
+		dataType: int64
+		isHidden
+		lineageTag: 75055f78-4f13-45cd-b8e8-c9f4bbb37090
+		summarizeBy: none
+		sourceColumn: TerritoryKey
+
+	column CustomerName
+		dataType: string
+		lineageTag: 41064be9-4f60-4949-8fa0-28a0fe21dc7a
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+	hierarchy 'Customer Hierarchy'
+		lineageTag: e77eabe5-15b7-4b42-a8cc-06ee019eb793
+
+		level Segment
+			lineageTag: 2f896077-d5b4-444a-9bdb-935532f1d6f7
+			column: Segment
+
+		level CustomerName
+			lineageTag: a2ce83b6-86be-4464-8135-d7bf856a2112
+			column: CustomerName
+
+	partition DimCustomer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\ROG\Desktop\Mtech Classwork\Visual analytics\Lab_QP1_QP2\data\DimCustomer.csv"),
+				        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"CustomerKey", Int64.Type}, {"Segment", type text},
+				        {"TerritoryKey", Int64.Type}, {"CustomerName", type text}})
+				in
+				    Typed
+

@@ -1,0 +1,40 @@
+table 'Product Category Summary'
+	lineageTag: 239b78e3-2976-4cbc-84be-89b14e94839f
+
+	column Category
+		lineageTag: e1f6b691-6704-406b-9766-0701c621bed6
+		isNameInferred
+		sourceColumn: DimProduct[Category]
+
+	column 'Total Sales'
+		lineageTag: 1df644e1-e8df-47b0-b194-1c15c6212438
+		isNameInferred
+		sourceColumn: [Total Sales]
+
+	column 'Total Quantity'
+		lineageTag: 40befbdb-8780-444d-90dd-c93116c1e221
+		isNameInferred
+		sourceColumn: [Total Quantity]
+
+	column 'Order Count'
+		lineageTag: 0292d8fb-ead2-4c1f-90d4-6d85aebbffe3
+		isNameInferred
+		sourceColumn: [Order Count]
+
+	column 'Avg Sales per Order'
+		lineageTag: 75c5ce82-a94e-4259-a165-acce68024fc3
+		isNameInferred
+		sourceColumn: [Avg Sales per Order]
+
+	partition 'Product Category Summary' = calculated
+		mode: import
+		source =
+				SUMMARIZE (
+				    FactSales,
+				    DimProduct[Category],
+				    "Total Sales",         [Total Sales],
+				    "Total Quantity",      [Total Quantity],
+				    "Order Count",         [Order Count],
+				    "Avg Sales per Order", [Avg Sales per Order]
+				)
+

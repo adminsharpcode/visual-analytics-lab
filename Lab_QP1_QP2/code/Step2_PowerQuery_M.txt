@@ -1,0 +1,192 @@
+================================================================================
+QP1 STEP 2 - DATA CLEANSING AND TRANSFORMATION IN POWER BI
+Paste each block into: Home > Transform data > Advanced Editor
+================================================================================
+
+--------------------------------------------------------------------------------
+QUERY 1 : FactSales     (the main cleansing query)
+--------------------------------------------------------------------------------
+Replace <PATH> with your data folder, e.g.
+C:\Users\ROG\Desktop\Mtech Classwork\Visual analytics\Lab_QP1_QP2\data
+
+let
+    // 1. CONNECT ------------------------------------------------------------
+    Source = Csv.Document(
+        File.Contents("<PATH>\FactSales_RAW.csv"),
+        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+
+    // 2. REMOVE the always-blank column -------------------------------------
+    RemovedBlankCol = Table.RemoveColumns(Promoted, {"Notes"}),
+
+    // 3. REMOVE duplicate rows ----------------------------------------------
+    RemovedDuplicates = Table.Distinct(RemovedBlankCol),
+
+    // 4. PARSE the mixed-format text date into a real date -------------------
+    //    Source has yyyy-MM-dd, dd-MM-yyyy and dd/MM/yyyy mixed together.
+    AddedOrderDate = Table.AddColumn(RemovedDuplicates, "OrderDate",
+        each let t = Text.Replace([OrderDateText], "/", "-"),
+                 p = Text.Split(t, "-")
+             in  if Text.Length(p{0}) = 4
+                 then #date(Number.FromText(p{0}), Number.FromText(p{1}),
+                            Number.FromText(p{2}))
+                 else #date(Number.FromText(p{2}), Number.FromText(p{1}),
+                            Number.FromText(p{0})),
+        type date),
+
+    // 5. STRIP the currency text into a decimal ------------------------------
+    AddedUnitPrice = Table.AddColumn(AddedOrderDate, "UnitPrice",
+        each Number.FromText(
+            Text.Trim(Text.Replace(Text.Replace([UnitPriceText], "Rs.", ""),
+                                   ",", ""))),
+        type number),
+
+    // 6. CLEAN the messy status text (trim + consistent casing) --------------
+    CleanedStatus = Table.TransformColumns(AddedUnitPrice,
+        {{"OrderStatus", each Text.Proper(Text.Trim(_)), type text}}),
+
+    // 7. SET data types ------------------------------------------------------
+    Typed = Table.TransformColumnTypes(CleanedStatus, {
+        {"SalesOrderNumber", type text},
+        {"ProductKey", Int64.Type},
+        {"CustomerKey", Int64.Type},
+        {"TerritoryKey", Int64.Type},
+        {"OrderQuantity", Int64.Type},
+        {"DiscountPct", type number},
+        {"SalesAmount", type number},
+        {"TotalCost", type number}}),
+
+    // 8. REMOVE rows with a missing quantity ---------------------------------
+    RemovedNullQty = Table.SelectRows(Typed,
+        each [OrderQuantity] <> null),
+
+    // 9. REMOVE negative-quantity data-entry errors --------------------------
+    RemovedNegative = Table.SelectRows(RemovedNullQty,
+        each [OrderQuantity] > 0),
+
+    // 10. FILL the missing SalesAmount from price x qty x (1 - discount) -----
+    FixedSalesAmount = Table.ReplaceValue(RemovedNegative,
+        each [SalesAmount],
+        each if [SalesAmount] = null
+             then Number.Round([UnitPrice] * [OrderQuantity]
+                               * (1 - [DiscountPct]), 2)
+             else [SalesAmount],
+        Replacer.ReplaceValue, {"SalesAmount"}),
+
+    // 11. EXCLUDE cancelled orders from the sales analysis --------------------
+    RemovedCancelled = Table.SelectRows(FixedSalesAmount,
+        each [OrderStatus] <> "Cancelled"),
+
+    // 12. ADD a Profit column ------------------------------------------------
+    AddedProfit = Table.AddColumn(RemovedCancelled, "Profit",
+        each [SalesAmount] - [TotalCost], type number),
+
+    // 13. ADD the DateKey used to join DimDate -------------------------------
+    AddedDateKey = Table.AddColumn(AddedProfit, "DateKey",
+        each Date.Year([OrderDate]) * 10000
+           + Date.Month([OrderDate]) * 100
+           + Date.Day([OrderDate]), Int64.Type),
+
+    // 14. DROP the now-redundant raw text columns ----------------------------
+    RemovedRawText = Table.RemoveColumns(AddedDateKey,
+        {"OrderDateText", "UnitPriceText"}),
+
+    // 15. REORDER for readability --------------------------------------------
+    Reordered = Table.ReorderColumns(RemovedRawText, {
+        "SalesOrderNumber", "OrderDate", "DateKey", "ProductKey",
+        "CustomerKey", "TerritoryKey", "OrderQuantity", "UnitPrice",
+        "DiscountPct", "SalesAmount", "TotalCost", "Profit", "OrderStatus"})
+in
+    Reordered
+
+EXPECTED RESULT : 5,013 rows remain (from 6,012 raw).
+                  OrderStatus contains only "Pending" and "Shipped".
+
+
+--------------------------------------------------------------------------------
+QUERY 2 : DimProduct
+--------------------------------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents("<PATH>\DimProduct.csv"),
+        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"ProductKey", Int64.Type}, {"Category", type text},
+        {"Subcategory", type text}, {"ProductName", type text},
+        {"StandardCost", type number}, {"ListPrice", type number},
+        {"SKU", type text}}),
+    Trimmed = Table.TransformColumns(Typed, {
+        {"Category", Text.Trim, type text},
+        {"Subcategory", Text.Trim, type text},
+        {"ProductName", Text.Trim, type text}}),
+    AddedMargin = Table.AddColumn(Trimmed, "UnitMargin",
+        each [ListPrice] - [StandardCost], type number)
+in
+    AddedMargin
+
+
+--------------------------------------------------------------------------------
+QUERY 3 : DimCustomer
+--------------------------------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents("<PATH>\DimCustomer.csv"),
+        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"CustomerKey", Int64.Type}, {"Segment", type text},
+        {"TerritoryKey", Int64.Type}, {"CustomerName", type text}})
+in
+    Typed
+
+
+--------------------------------------------------------------------------------
+QUERY 4 : DimTerritory
+--------------------------------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents("<PATH>\DimTerritory.csv"),
+        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"TerritoryKey", Int64.Type}, {"Region", type text},
+        {"Country", type text}, {"Group", type text}})
+in
+    Typed
+
+
+--------------------------------------------------------------------------------
+QUERY 5 : DimDate
+--------------------------------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents("<PATH>\DimDate.csv"),
+        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+    Typed = Table.TransformColumnTypes(Promoted, {
+        {"DateKey", Int64.Type}, {"Date", type date}, {"Year", Int64.Type},
+        {"QuarterNo", Int64.Type}, {"Quarter", type text},
+        {"MonthNo", Int64.Type}, {"MonthName", type text},
+        {"MonthShort", type text}, {"YearMonth", type text},
+        {"WeekOfYear", Int64.Type}, {"DayOfMonth", Int64.Type},
+        {"DayName", type text}, {"IsWeekend", type logical}})
+in
+    Typed
+
+
+================================================================================
+ALTERNATIVE - CONNECTING TO SQL SERVER INSTEAD OF CSV  (QP1 Step 1)
+================================================================================
+Run sql\01_create_load.sql first, then use:
+
+let
+    Source = Sql.Database("localhost", "VisualAnalyticsLab"),
+    dbo_FactSales = Source{[Schema = "dbo", Item = "FactSales"]}[Data]
+in
+    dbo_FactSales
+
+GUI route:  Home > Get data > SQL Server
+            Server   : localhost      (or  .\SQLEXPRESS )
+            Database : VisualAnalyticsLab
+            Mode     : Import
+            Then select all five tables and click Transform Data.
+
+The cleansing steps 2-15 above apply identically to the SQL source; only the
+Source line changes.

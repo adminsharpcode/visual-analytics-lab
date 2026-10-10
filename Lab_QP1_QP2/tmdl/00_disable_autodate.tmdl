@@ -1,0 +1,4 @@
+createOrReplace
+
+	model Model
+		annotation __PBI_TimeIntelligenceEnabled = 0

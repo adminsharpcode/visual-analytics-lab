@@ -1,0 +1,550 @@
+table FactSales
+	lineageTag: 3124ffbc-e578-40a6-a17c-23c845a6fbc3
+
+	measure 'Total Sales' = SUM ( FactSales[SalesAmount] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 01 Sales
+		lineageTag: 3fc50a96-ab57-434e-8db9-9cf986b6024e
+
+	measure 'Total Quantity' = SUM ( FactSales[OrderQuantity] )
+		formatString: #,0
+		displayFolder: 01 Sales
+		lineageTag: cbd2387c-8800-405d-926b-43a4bece00a2
+
+	measure 'Total Cost' = SUM ( FactSales[TotalCost] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 02 Profit
+		lineageTag: f3041a36-634e-43e6-9230-8abd618b52e8
+
+	measure 'Total Profit' = [Total Sales] - [Total Cost]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 02 Profit
+		lineageTag: 019febcb-79cf-44cc-b5b9-ada2a153b809
+
+	measure 'Profit Margin %' = DIVIDE ( [Total Profit], [Total Sales] )
+		formatString: 0.00%
+		displayFolder: 02 Profit
+		lineageTag: 4898537d-3b12-4b23-b449-9ee40af35a08
+
+	measure 'Order Count' = DISTINCTCOUNT ( FactSales[SalesOrderNumber] )
+		formatString: #,0
+		displayFolder: 01 Sales
+		lineageTag: 65431b9b-9fb8-4438-ae2c-60ce2513c66e
+
+	measure 'Average Order Value' = DIVIDE ( [Total Sales], [Order Count] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 01 Sales
+		lineageTag: 91d056e1-2e7a-4890-89ec-c1be2c1d5609
+
+	measure 'Average Line Sales' = AVERAGE ( FactSales[SalesAmount] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 01 Sales
+		lineageTag: e4edb574-b5e8-4826-8603-a56d57491edf
+
+	measure 'Average Selling Price' = DIVIDE ( [Total Sales], [Total Quantity] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 01 Sales
+		lineageTag: 44fb77bb-e23a-4207-bb6d-96d0397f2b15
+
+	measure 'Customer Count' = DISTINCTCOUNT ( FactSales[CustomerKey] )
+		formatString: #,0
+		displayFolder: 01 Sales
+		lineageTag: 4de1f493-1ad8-46f4-99f8-088e7966823a
+
+	measure 'Product Count' = DISTINCTCOUNT ( FactSales[ProductKey] )
+		formatString: #,0
+		displayFolder: 01 Sales
+		lineageTag: d978d973-a6aa-4af9-a08c-2450dc1a6a05
+
+	measure 'Top Product by Units' =
+			VAR TopProduct =
+			    TOPN ( 1, ALL ( DimProduct[ProductName] ),
+			           CALCULATE ( [Total Quantity] ), DESC )
+			RETURN
+			    CONCATENATEX ( TopProduct, DimProduct[ProductName], ", " )
+		displayFolder: 03 Ranking
+		lineageTag: d2e050cb-eb89-40c3-b424-8077af66e7ea
+
+	measure 'Top Product Units' =
+			MAXX ( ALL ( DimProduct[ProductName] ),
+			       CALCULATE ( [Total Quantity] ) )
+		formatString: #,0
+		displayFolder: 03 Ranking
+		lineageTag: 39ab58f9-157d-4c59-b4fb-0313a3d796c7
+
+	measure 'Top Product by Revenue' =
+			VAR TopProduct =
+			    TOPN ( 1, ALL ( DimProduct[ProductName] ),
+			           CALCULATE ( [Total Sales] ), DESC )
+			RETURN
+			    CONCATENATEX ( TopProduct, DimProduct[ProductName], ", " )
+		displayFolder: 03 Ranking
+		lineageTag: e380d3a4-e08e-49d7-b63b-12cb3b769c1e
+
+	measure 'Product Rank by Units' =
+			RANKX ( ALL ( DimProduct[ProductName] ), [Total Quantity], ,
+			        DESC, DENSE )
+		formatString: #,0
+		displayFolder: 03 Ranking
+		lineageTag: 5b736a6a-1d4d-4a92-a62e-f28c78ca6e70
+
+	measure 'Avg Sales per Line' = AVERAGE ( FactSales[SalesAmount] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 04 Category
+		lineageTag: 9724c1ce-7635-4d8e-93a8-08e46cd5b185
+
+	measure 'Avg Sales per Order' =
+			DIVIDE ( [Total Sales],
+			         DISTINCTCOUNT ( FactSales[SalesOrderNumber] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 04 Category
+		lineageTag: c97c0033-8e53-4e52-a0a5-4c77516a82ee
+
+	measure 'Avg Sales per Category' = AVERAGEX ( VALUES ( DimProduct[Category] ), [Total Sales] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 04 Category
+		lineageTag: fb6a4f08-1b3e-4ac2-b767-14532292e09b
+
+	measure 'Category Share %' =
+			DIVIDE ( [Total Sales],
+			         CALCULATE ( [Total Sales], ALL ( DimProduct ) ) )
+		formatString: 0.00%
+		displayFolder: 04 Category
+		lineageTag: 6a24cab5-7c69-4ddc-917b-9a429d2320fb
+
+	measure 'Electronics Sales' = CALCULATE ( [Total Sales], DimProduct[Category] = "Electronics" )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: 767b1e9a-852d-41f2-a1f5-f7f9bb776326
+
+	measure 'Shipped Sales' = CALCULATE ( [Total Sales], FactSales[OrderStatus] = "Shipped" )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: 9eff83cb-3e42-4118-9c61-da3075e6ffab
+
+	measure 'Discounted Sales' = CALCULATE ( [Total Sales], FactSales[DiscountPct] > 0 )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: e9ba9d2d-d2a8-4b41-9ff7-796af34dd2c7
+
+	measure 'Sales All Products' = CALCULATE ( [Total Sales], ALL ( DimProduct ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: 3e648bd2-14e3-430b-b7c4-32403be73de7
+
+	measure 'Pct of Total Sales' =
+			DIVIDE ( [Total Sales],
+			         CALCULATE ( [Total Sales], ALL ( DimProduct ),
+			                                    ALL ( DimTerritory ) ) )
+		formatString: 0.00%
+		displayFolder: 05 CALCULATE
+		lineageTag: 3397958d-f5a2-4142-897d-02079ade9ed8
+
+	measure 'Category Revenue' =
+			CALCULATE ( [Total Sales],
+			            ALLEXCEPT ( DimProduct, DimProduct[Category] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: 88691be8-7b42-45fb-81bf-d2c46cfaecd0
+
+	measure 'Pct of Category Sales' =
+			DIVIDE ( [Total Sales],
+			         CALCULATE ( [Total Sales],
+			             ALLEXCEPT ( DimProduct, DimProduct[Category] ) ) )
+		formatString: 0.00%
+		displayFolder: 05 CALCULATE
+		lineageTag: aa5b5bed-f704-4544-aeaf-c3a321ea0862
+
+	measure 'Pct of Selected Sales' =
+			DIVIDE ( [Total Sales],
+			         CALCULATE ( [Total Sales],
+			             ALLSELECTED ( DimProduct[Category] ) ) )
+		formatString: 0.00%
+		displayFolder: 05 CALCULATE
+		lineageTag: 74376f2c-2104-40a0-885f-42b369f99d0a
+
+	measure 'Sales 2025 Override' = CALCULATE ( [Total Sales], DimDate[Year] = 2025 )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: e8998298-7979-45d6-bc1d-b01552ca7ca4
+
+	measure 'Sales 2025 KeepFilters' =
+			CALCULATE ( [Total Sales],
+			            KEEPFILTERS ( DimDate[Year] = 2025 ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: e25e074b-adc0-4b2d-980e-215d17801145
+
+	measure 'Laptops or Mobiles Sales' =
+			CALCULATE ( [Total Sales],
+			    FILTER ( ALL ( DimProduct[Subcategory] ),
+			             DimProduct[Subcategory] = "Laptops"
+			          || DimProduct[Subcategory] = "Mobiles" ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: 910ab770-ead8-4332-aef6-57533564fbfc
+
+	measure 'Sales by Customer Territory' =
+			CALCULATE ( [Total Sales],
+			    USERELATIONSHIP ( DimCustomer[TerritoryKey],
+			                      DimTerritory[TerritoryKey] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 05 CALCULATE
+		lineageTag: c0add032-7297-4f54-bcf9-35a13203ad3d
+
+	measure 'Sales YTD' = TOTALYTD ( [Total Sales], DimDate[Date] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: d7994174-d3a3-41d6-8286-cfbb63f6524d
+
+	measure 'Sales QTD' = TOTALQTD ( [Total Sales], DimDate[Date] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: e798deb9-ee0c-4f68-bf25-4f6879bb43a5
+
+	measure 'Sales MTD' = TOTALMTD ( [Total Sales], DimDate[Date] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 557b254a-1a28-453f-889a-8785ad6a85d2
+
+	measure 'Sales FYTD' = TOTALYTD ( [Total Sales], DimDate[Date], "31/03" )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 31344a33-c232-4f2e-b026-d265279dded6
+
+	measure 'Sales PY' =
+			CALCULATE ( [Total Sales],
+			            SAMEPERIODLASTYEAR ( DimDate[Date] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 1d18278f-24a5-434d-9a99-1adb3551dd57
+
+	measure 'Sales PM' =
+			CALCULATE ( [Total Sales],
+			            DATEADD ( DimDate[Date], -1, MONTH ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: e3d67ebd-c7d8-4bfa-a43b-e2a231461e49
+
+	measure 'Sales PQ' =
+			CALCULATE ( [Total Sales],
+			            DATEADD ( DimDate[Date], -1, QUARTER ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 621c3c43-a940-4c4f-b67f-1d3a3cb2186f
+
+	measure 'Sales PY YTD' =
+			CALCULATE ( [Sales YTD],
+			            SAMEPERIODLASTYEAR ( DimDate[Date] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 0e968b29-5691-41ef-b822-7f40000f4122
+
+	measure 'YoY Growth' =
+			VAR Cur = [Total Sales]
+			VAR Prev = [Sales PY]
+			RETURN
+			    IF ( NOT ISBLANK ( Prev ), Cur - Prev )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 20c5752c-0f3b-4b14-a52a-d674022f0029
+
+	measure 'YoY Growth %' = DIVIDE ( [Total Sales] - [Sales PY], [Sales PY] )
+		formatString: 0.00%
+		displayFolder: 06 Time
+		lineageTag: b935fce6-9761-47ee-83ed-387179e83bcb
+
+	measure 'MoM Growth %' = DIVIDE ( [Total Sales] - [Sales PM], [Sales PM] )
+		formatString: 0.00%
+		displayFolder: 06 Time
+		lineageTag: 260d09a1-4d96-450b-8048-717ba04d1c4c
+
+	measure 'YoY Trend' =
+			VAR G = [YoY Growth %]
+			RETURN
+			    SWITCH ( TRUE (),
+			        ISBLANK ( G ), "No prior year",
+			        G > 0.10,      "Strong growth",
+			        G > 0,         "Growing",
+			        G > -0.10,     "Slight decline",
+			        "Sharp decline" )
+		displayFolder: 06 Time
+		lineageTag: 82a2cb23-1e16-41c8-81b0-2325920f6fb8
+
+	measure 'Sales Rolling 3M' =
+			CALCULATE ( [Total Sales],
+			    DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ),
+			                    -3, MONTH ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: f25b3573-0997-466c-88d9-ff36132ceab9
+
+	measure 'Sales Rolling 12M' =
+			CALCULATE ( [Total Sales],
+			    DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ),
+			                    -12, MONTH ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 05a96320-159c-4fd3-858e-13defacb5f17
+
+	measure 'Sales Cumulative' =
+			CALCULATE ( [Total Sales],
+			    FILTER ( ALLSELECTED ( DimDate[Date] ),
+			             DimDate[Date] <= MAX ( DimDate[Date] ) ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 3df52e7f-9cab-4a4f-bcdf-ade4207fe035
+
+	measure 'Sales 3M Moving Avg' =
+			AVERAGEX (
+			    DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ),
+			                    -3, MONTH ),
+			    CALCULATE ( [Total Sales] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: 2e1b2872-eb8a-4a20-bf68-c25d5220cc97
+
+	measure 'Category Revenue PY' =
+			CALCULATE ( [Total Sales],
+			    ALLEXCEPT ( DimProduct, DimProduct[Category] ),
+			    SAMEPERIODLASTYEAR ( DimDate[Date] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: d72d146c-f947-46af-95aa-8f2c0ef17cf9
+
+	measure 'Electronics YoY %' =
+			VAR Cur =
+			    CALCULATE ( [Total Sales],
+			                DimProduct[Category] = "Electronics" )
+			VAR Prev =
+			    CALCULATE ( [Total Sales],
+			                DimProduct[Category] = "Electronics",
+			                SAMEPERIODLASTYEAR ( DimDate[Date] ) )
+			RETURN
+			    DIVIDE ( Cur - Prev, Prev )
+		formatString: 0.00%
+		displayFolder: 06 Time
+		lineageTag: f8773e9e-4af1-4a6d-b19f-018ecc8447e9
+
+	measure 'Best Month Sales' =
+			MAXX ( VALUES ( DimDate[YearMonth] ),
+			       CALCULATE ( [Total Sales] ) )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: 06 Time
+		lineageTag: ea7cb180-7bc9-4f97-8890-749dc5a536cf
+
+	measure 'Best Month Name' =
+			VAR T = TOPN ( 1, VALUES ( DimDate[YearMonth] ),
+			               CALCULATE ( [Total Sales] ), DESC )
+			RETURN
+			    CONCATENATEX ( T, DimDate[YearMonth], ", " )
+		displayFolder: 06 Time
+		lineageTag: 6985b029-d646-4b85-b872-ff6166710a5a
+
+	column SalesOrderNumber
+		dataType: string
+		lineageTag: 27206b4c-f789-4255-a92c-5bf1e955f340
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+	column OrderDate
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 690008e9-3658-4976-b255-db1676be129a
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+	column DateKey
+		dataType: int64
+		isHidden
+		lineageTag: aa3a0fc4-ea64-4de2-b59b-282afed20fc7
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		lineageTag: 5fa418c0-5e7d-480c-b043-f0792452c8fb
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		lineageTag: 81e35acc-6082-43f7-bb8a-21bc8abfb74c
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	column TerritoryKey
+		dataType: int64
+		isHidden
+		lineageTag: b91093eb-d99d-40c0-968b-5de67338b539
+		summarizeBy: none
+		sourceColumn: TerritoryKey
+
+	column OrderQuantity
+		dataType: int64
+		formatString: #,0
+		lineageTag: 39eb49a4-c281-4496-9036-fee5aada2574
+		summarizeBy: sum
+		sourceColumn: OrderQuantity
+
+	column UnitPrice
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 18efe5e2-1906-4cdb-bc88-a5f1d07ea72d
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+	column DiscountPct
+		dataType: double
+		formatString: 0.00%
+		lineageTag: f3c2b405-abb0-4ac0-952e-540394df8346
+		summarizeBy: average
+		sourceColumn: DiscountPct
+
+	column SalesAmount
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 3ff7b8ec-e2e5-4334-a18a-00690697a581
+		summarizeBy: sum
+		sourceColumn: SalesAmount
+
+	column TotalCost
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 26bac56b-4131-4bf4-adbd-97fdac9952f1
+		summarizeBy: sum
+		sourceColumn: TotalCost
+
+	column Profit
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a5372276-278d-46eb-9557-9cf53e49567a
+		summarizeBy: sum
+		sourceColumn: Profit
+
+	column OrderStatus
+		dataType: string
+		lineageTag: 7f1e98a2-b37d-4850-93df-d47852f3feb0
+		summarizeBy: none
+		sourceColumn: OrderStatus
+
+	column 'Net Unit Price' = DIVIDE ( FactSales[SalesAmount], FactSales[OrderQuantity] )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4120fa2d-bc94-4a25-9925-881e255e2b07
+		summarizeBy: none
+
+	column 'Line Margin %' =
+			DIVIDE ( FactSales[SalesAmount] - FactSales[TotalCost],
+			         FactSales[SalesAmount] )
+		formatString: 0.00%
+		lineageTag: bca183d6-f0b2-41cb-ac89-e58cff30eb0b
+		summarizeBy: none
+
+	column 'Order Size Band' =
+			SWITCH ( TRUE (),
+			    FactSales[OrderQuantity] <= 2, "1-2 units",
+			    FactSales[OrderQuantity] <= 4, "3-4 units",
+			    FactSales[OrderQuantity] <= 6, "5-6 units",
+			    "7+ units" )
+		lineageTag: ea4c52c3-e3c3-48c3-828b-9a76dfe51e26
+		summarizeBy: none
+
+	column 'Product Category' = RELATED ( DimProduct[Category] )
+		lineageTag: 8ecd5874-b792-4a27-9e59-2a84e60c5742
+		summarizeBy: none
+
+	partition FactSales = m
+		mode: import
+		source =
+				let
+				    // 1. CONNECT ------------------------------------------------------------
+				    Source = Csv.Document(
+				        File.Contents("C:\Users\ROG\Desktop\Mtech Classwork\Visual analytics\Lab_QP1_QP2\data\FactSales_RAW.csv"),
+				        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				
+				    // 2. REMOVE the always-blank column -------------------------------------
+				    RemovedBlankCol = Table.RemoveColumns(Promoted, {"Notes"}),
+				
+				    // 3. REMOVE duplicate rows ----------------------------------------------
+				    RemovedDuplicates = Table.Distinct(RemovedBlankCol),
+				
+				    // 4. PARSE the mixed-format text date into a real date -------------------
+				    //    Source has yyyy-MM-dd, dd-MM-yyyy and dd/MM/yyyy mixed together.
+				    AddedOrderDate = Table.AddColumn(RemovedDuplicates, "OrderDate",
+				        each let t = Text.Replace([OrderDateText], "/", "-"),
+				                 p = Text.Split(t, "-")
+				             in  if Text.Length(p{0}) = 4
+				                 then #date(Number.FromText(p{0}), Number.FromText(p{1}),
+				                            Number.FromText(p{2}))
+				                 else #date(Number.FromText(p{2}), Number.FromText(p{1}),
+				                            Number.FromText(p{0})),
+				        type date),
+				
+				    // 5. STRIP the currency text into a decimal ------------------------------
+				    AddedUnitPrice = Table.AddColumn(AddedOrderDate, "UnitPrice",
+				        each Number.FromText(
+				            Text.Trim(Text.Replace(Text.Replace([UnitPriceText], "Rs.", ""),
+				                                   ",", ""))),
+				        type number),
+				
+				    // 6. CLEAN the messy status text (trim + consistent casing) --------------
+				    CleanedStatus = Table.TransformColumns(AddedUnitPrice,
+				        {{"OrderStatus", each Text.Proper(Text.Trim(_)), type text}}),
+				
+				    // 7. SET data types ------------------------------------------------------
+				    Typed = Table.TransformColumnTypes(CleanedStatus, {
+				        {"SalesOrderNumber", type text},
+				        {"ProductKey", Int64.Type},
+				        {"CustomerKey", Int64.Type},
+				        {"TerritoryKey", Int64.Type},
+				        {"OrderQuantity", Int64.Type},
+				        {"DiscountPct", type number},
+				        {"SalesAmount", type number},
+				        {"TotalCost", type number}}),
+				
+				    // 8. REMOVE rows with a missing quantity ---------------------------------
+				    RemovedNullQty = Table.SelectRows(Typed,
+				        each [OrderQuantity] <> null),
+				
+				    // 9. REMOVE negative-quantity data-entry errors --------------------------
+				    RemovedNegative = Table.SelectRows(RemovedNullQty,
+				        each [OrderQuantity] > 0),
+				
+				    // 10. FILL the missing SalesAmount from price x qty x (1 - discount) -----
+				    FixedSalesAmount = Table.ReplaceValue(RemovedNegative,
+				        each [SalesAmount],
+				        each if [SalesAmount] = null
+				             then Number.Round([UnitPrice] * [OrderQuantity]
+				                               * (1 - [DiscountPct]), 2)
+				             else [SalesAmount],
+				        Replacer.ReplaceValue, {"SalesAmount"}),
+				
+				    // 11. EXCLUDE cancelled orders from the sales analysis --------------------
+				    RemovedCancelled = Table.SelectRows(FixedSalesAmount,
+				        each [OrderStatus] <> "Cancelled"),
+				
+				    // 12. ADD a Profit column ------------------------------------------------
+				    AddedProfit = Table.AddColumn(RemovedCancelled, "Profit",
+				        each [SalesAmount] - [TotalCost], type number),
+				
+				    // 13. ADD the DateKey used to join DimDate -------------------------------
+				    AddedDateKey = Table.AddColumn(AddedProfit, "DateKey",
+				        each Date.Year([OrderDate]) * 10000
+				           + Date.Month([OrderDate]) * 100
+				           + Date.Day([OrderDate]), Int64.Type),
+				
+				    // 14. DROP the now-redundant raw text columns ----------------------------
+				    RemovedRawText = Table.RemoveColumns(AddedDateKey,
+				        {"OrderDateText", "UnitPriceText"}),
+				
+				    // 15. REORDER for readability --------------------------------------------
+				    Reordered = Table.ReorderColumns(RemovedRawText, {
+				        "SalesOrderNumber", "OrderDate", "DateKey", "ProductKey",
+				        "CustomerKey", "TerritoryKey", "OrderQuantity", "UnitPrice",
+				        "DiscountPct", "SalesAmount", "TotalCost", "Profit", "OrderStatus"})
+				in
+				    Reordered
+

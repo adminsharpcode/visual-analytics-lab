@@ -1,0 +1,38 @@
+table 'Top 5 Products'
+	lineageTag: 8f96b9af-01c4-4bbe-92e5-a3e5b18d4abb
+
+	column ProductName
+		lineageTag: 61371405-1864-4521-91de-75ee282fac5f
+		isNameInferred
+		sourceColumn: DimProduct[ProductName]
+
+	column Category
+		lineageTag: 16b7c685-2825-481e-b493-eac79d14d155
+		isNameInferred
+		sourceColumn: DimProduct[Category]
+
+	column 'Units Sold'
+		lineageTag: 8c406b07-4c85-4342-a772-d1ac892e74f4
+		isNameInferred
+		sourceColumn: [Units Sold]
+
+	column Revenue
+		lineageTag: c91c140e-cecd-4e04-ae55-fcb93dd899fd
+		isNameInferred
+		sourceColumn: [Revenue]
+
+	partition 'Top 5 Products' = calculated
+		mode: import
+		source =
+				TOPN (
+				    5,
+				    SUMMARIZE (
+				        FactSales,
+				        DimProduct[ProductName],
+				        DimProduct[Category],
+				        "Units Sold", [Total Quantity],
+				        "Revenue",    [Total Sales]
+				    ),
+				    [Units Sold], DESC
+				)
+

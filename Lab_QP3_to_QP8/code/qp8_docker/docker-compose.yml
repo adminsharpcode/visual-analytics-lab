@@ -1,0 +1,82 @@
+# =============================================================================
+# Visual Analytics Lab (MACSE603) - Assessment 8 (Experiment 14)
+# Multi-Container Compose Orchestration
+# Student: Vedant Nimkar | Reg No: 26MML0045
+# =============================================================================
+version: '3.8'
+
+services:
+  # 1. Relational SQL Database Source
+  sql-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: va_sql_database
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=VisualAnalytics2026!
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - va_analytics_net
+    restart: unless-stopped
+
+  # 2. Flask REST Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    image: 26mml0045/visual-analytics-backend:1.0
+    container_name: va_backend_api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - DB_HOST=sql-db
+      - DB_PORT=1433
+      - DB_USER=sa
+      - DB_PASSWORD=VisualAnalytics2026!
+    depends_on:
+      - sql-db
+    networks:
+      - va_analytics_net
+    restart: unless-stopped
+
+  # 3. Nginx Web Frontend (ECharts & Integrated Dashboard)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    image: 26mml0045/visual-analytics-frontend:1.0
+    container_name: va_frontend_web
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - va_analytics_net
+    restart: unless-stopped
+
+  # 4. Streamlit Multipage Analytics Dashboard
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    image: 26mml0045/visual-analytics-streamlit:1.0
+    container_name: va_streamlit_dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    networks:
+      - va_analytics_net
+    restart: unless-stopped
+
+networks:
+  va_analytics_net:
+    driver: bridge
+
+volumes:
+  sql_data:
+    driver: local

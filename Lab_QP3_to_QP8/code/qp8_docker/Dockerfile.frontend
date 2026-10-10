@@ -1,0 +1,24 @@
+# =============================================================================
+# Visual Analytics Lab (MACSE603) - Assessment 8 (Experiment 14)
+# Student: Vedant Nimkar | Reg No: 26MML0045
+# Frontend Web Service Containerization (Nginx + ECharts + HTML5/CSS)
+# =============================================================================
+
+FROM nginx:alpine
+
+LABEL maintainer="Vedant Nimkar <26MML0045@vitstudent.ac.in>"
+LABEL course="MACSE603 - Visual Analytics Lab"
+
+# Copy custom Nginx configuration with reverse proxy routing
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy static frontend web assets
+COPY html/ /usr/share/nginx/html/
+
+# Expose HTTP Port
+EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -f http://localhost/ || exit 1
+
+CMD ["nginx", "-g", "daemon off;"]

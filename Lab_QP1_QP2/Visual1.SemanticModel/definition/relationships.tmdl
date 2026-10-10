@@ -1,0 +1,21 @@
+relationship rel_Date_Fact
+	fromColumn: FactSales.DateKey
+	toColumn: DimDate.DateKey
+
+relationship rel_Product_Fact
+	fromColumn: FactSales.ProductKey
+	toColumn: DimProduct.ProductKey
+
+relationship rel_Customer_Fact
+	fromColumn: FactSales.CustomerKey
+	toColumn: DimCustomer.CustomerKey
+
+relationship rel_Territory_Fact
+	fromColumn: FactSales.TerritoryKey
+	toColumn: DimTerritory.TerritoryKey
+
+relationship rel_Territory_Customer
+	isActive: false
+	fromColumn: DimCustomer.TerritoryKey
+	toColumn: DimTerritory.TerritoryKey
+

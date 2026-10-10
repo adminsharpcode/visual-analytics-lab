@@ -1,0 +1,254 @@
+================================================================================
+QP2 STEP 4 - CALCULATED TABLES, CALCULATED COLUMNS AND MEASURES
+================================================================================
+Calculated TABLE   -> ribbon Modeling > New table
+Calculated COLUMN  -> select table > Table tools > New column
+MEASURE            -> select table > Table tools > New measure
+
+Verify every number against expected_results\EXPECTED_RESULTS.txt
+
+
+================================================================================
+PART A - CALCULATED COLUMNS
+================================================================================
+
+-- A1. Revenue per unit actually realised (after discount), on FactSales
+Net Unit Price =
+DIVIDE (
+    FactSales[SalesAmount],
+    FactSales[OrderQuantity]
+)
+
+-- A2. Line-level profit margin %, on FactSales
+Line Margin % =
+DIVIDE (
+    FactSales[SalesAmount] - FactSales[TotalCost],
+    FactSales[SalesAmount]
+)
+
+-- A3. Order size band, on FactSales  (demonstrates SWITCH in a column)
+Order Size Band =
+SWITCH (
+    TRUE (),
+    FactSales[OrderQuantity] <= 2, "1-2 units",
+    FactSales[OrderQuantity] <= 4, "3-4 units",
+    FactSales[OrderQuantity] <= 6, "5-6 units",
+    "7+ units"
+)
+
+-- A4. Bring Category onto the fact table via the relationship, on FactSales
+Product Category = RELATED ( DimProduct[Category] )
+
+-- A5. Price tier, on DimProduct
+Price Tier =
+SWITCH (
+    TRUE (),
+    DimProduct[ListPrice] < 100,  "Budget",
+    DimProduct[ListPrice] < 500,  "Mid-range",
+    "Premium"
+)
+
+-- A6. Full financial-year label, on DimDate  (April-March Indian FY)
+Financial Year =
+"FY "
+    & IF ( DimDate[MonthNo] >= 4, DimDate[Year], DimDate[Year] - 1 )
+    & "-"
+    & RIGHT (
+        IF ( DimDate[MonthNo] >= 4, DimDate[Year] + 1, DimDate[Year] ), 2 )
+
+
+================================================================================
+PART B - CORE MEASURES
+================================================================================
+
+Total Sales = SUM ( FactSales[SalesAmount] )
+
+Total Quantity = SUM ( FactSales[OrderQuantity] )
+
+Total Cost = SUM ( FactSales[TotalCost] )
+
+Total Profit = [Total Sales] - [Total Cost]
+
+Profit Margin % = DIVIDE ( [Total Profit], [Total Sales] )
+
+Order Count = DISTINCTCOUNT ( FactSales[SalesOrderNumber] )
+
+Average Order Value = DIVIDE ( [Total Sales], [Order Count] )
+
+Average Line Sales = AVERAGE ( FactSales[SalesAmount] )
+
+Average Selling Price = DIVIDE ( [Total Sales], [Total Quantity] )
+
+Customer Count = DISTINCTCOUNT ( FactSales[CustomerKey] )
+
+Product Count = DISTINCTCOUNT ( FactSales[ProductKey] )
+
+
+VERIFY  (whole model, no filters):
+    Total Sales           = 8,955,541.25
+    Total Quantity        = 22,448
+    Total Cost            = 4,123,542.00
+    Total Profit          = 4,831,999.25
+    Profit Margin %       = 53.96%
+    Order Count           = 5,008
+    Average Order Value   = 1,788.25
+
+
+================================================================================
+PART C - ANSWERING "TOP SOLD PRODUCT"
+================================================================================
+
+-- C1. Name of the product with the highest units sold
+Top Product by Units =
+VAR TopProduct =
+    TOPN (
+        1,
+        ALL ( DimProduct[ProductName] ),
+        CALCULATE ( [Total Quantity] ),
+        DESC
+    )
+RETURN
+    CONCATENATEX ( TopProduct, DimProduct[ProductName], ", " )
+
+-- C2. Units sold by that top product
+Top Product Units =
+MAXX (
+    ALL ( DimProduct[ProductName] ),
+    CALCULATE ( [Total Quantity] )
+)
+
+-- C3. Name of the product with the highest revenue
+Top Product by Revenue =
+VAR TopProduct =
+    TOPN (
+        1,
+        ALL ( DimProduct[ProductName] ),
+        CALCULATE ( [Total Sales] ),
+        DESC
+    )
+RETURN
+    CONCATENATEX ( TopProduct, DimProduct[ProductName], ", " )
+
+-- C4. A rank column usable in a table visual
+Product Rank by Units =
+RANKX (
+    ALL ( DimProduct[ProductName] ),
+    [Total Quantity],
+    ,
+    DESC,
+    DENSE
+)
+
+
+VERIFY:
+    Top Product by Units   = GlideMouse Wireless   (3,204 units)
+    Top Product by Revenue = GamingBook X17        (2,534,432.17)
+
+
+================================================================================
+PART D - ANSWERING "AVERAGE SALES OF PRODUCT CATEGORY"
+================================================================================
+
+-- D1. Average line-level sale within the current category filter
+Avg Sales per Line = AVERAGE ( FactSales[SalesAmount] )
+
+-- D2. Average sales per ORDER within the current category
+Avg Sales per Order =
+DIVIDE (
+    [Total Sales],
+    DISTINCTCOUNT ( FactSales[SalesOrderNumber] )
+)
+
+-- D3. Average of the category totals - i.e. mean category size
+Avg Sales per Category =
+AVERAGEX (
+    VALUES ( DimProduct[Category] ),
+    [Total Sales]
+)
+
+-- D4. Each category's share of the grand total
+Category Share % =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALL ( DimProduct ) )
+)
+
+
+VERIFY  (Total Sales / Avg Sales per Order by Category):
+    Electronics   7,081,992.08   3,260.59
+    Furniture       861,784.14   1,660.47
+    Accessories     786,667.35     394.12
+    Software        225,097.68     701.24
+
+    Avg Sales per Category (all four) = 2,238,885.31
+
+
+================================================================================
+PART E - CALCULATED TABLES
+================================================================================
+
+-- E1. Product Category Summary
+--     Aggregated table answering both lab questions in one object.
+Product Category Summary =
+SUMMARIZE (
+    FactSales,
+    DimProduct[Category],
+    "Total Sales",        [Total Sales],
+    "Total Quantity",     [Total Quantity],
+    "Order Count",        [Order Count],
+    "Avg Sales per Order", [Avg Sales per Order],
+    "Total Profit",       [Total Profit],
+    "Profit Margin %",    [Profit Margin %]
+)
+
+-- E2. Top 5 Products
+Top 5 Products =
+TOPN (
+    5,
+    SUMMARIZE (
+        FactSales,
+        DimProduct[ProductName],
+        DimProduct[Category],
+        "Units Sold", [Total Quantity],
+        "Revenue",    [Total Sales]
+    ),
+    [Units Sold],
+    DESC
+)
+
+-- E3. A stand-alone date table built with DAX
+--     (alternative to the imported DimDate - shows CALENDAR / CALENDARAUTO)
+Date Table DAX =
+ADDCOLUMNS (
+    CALENDAR ( DATE ( 2023, 1, 1 ), DATE ( 2025, 12, 31 ) ),
+    "Year",       YEAR ( [Date] ),
+    "MonthNo",    MONTH ( [Date] ),
+    "MonthName",  FORMAT ( [Date], "MMMM" ),
+    "Quarter",    "Q" & QUARTER ( [Date] ),
+    "YearMonth",  FORMAT ( [Date], "YYYY-MM" ),
+    "DayName",    FORMAT ( [Date], "dddd" ),
+    "IsWeekend",  WEEKDAY ( [Date] ) IN { 1, 7 }
+)
+
+-- E4. Yearly category performance matrix
+Category Year Performance =
+SUMMARIZE (
+    FactSales,
+    DimProduct[Category],
+    DimDate[Year],
+    "Sales", [Total Sales]
+)
+
+-- E5. A disconnected parameter table for a what-if discount slider
+Discount Scenario =
+GENERATESERIES ( 0, 0.25, 0.05 )
+
+
+VERIFY  Product Category Summary should return exactly 4 rows matching the
+        Part D verification block above.
+        Top 5 Products should list, in order:
+            GlideMouse Wireless  3,204
+            TactKey Mechanical   2,501
+            GamingBook X17       1,344
+            Zenith A12           1,219
+            EduBook 13           1,210

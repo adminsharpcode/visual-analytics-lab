@@ -1,0 +1,31 @@
+# =============================================================================
+# Visual Analytics Lab (MACSE603) - Assessment 7 (Experiment 15)
+# Student: Vedant Nimkar | Reg No: 26MML0045
+# Kubernetes Namespace, ConfigMap, and Secret Manifests
+# =============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: visual-analytics
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: va-app-config
+  namespace: visual-analytics
+data:
+  DB_HOST: "sql-db-service"
+  DB_PORT: "1433"
+  DB_NAME: "VisualAnalyticsLab"
+  FLASK_ENV: "production"
+  ANALYTICS_VERSION: "3.2-enterprise"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: va-db-secret
+  namespace: visual-analytics
+type: Opaque
+stringData:
+  DB_USER: "sa"
+  DB_PASSWORD: "VisualAnalytics2026!"
