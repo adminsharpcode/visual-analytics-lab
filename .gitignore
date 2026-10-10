@@ -16,4 +16,7 @@ Thumbs.db
 # Temporary Playwright / Testing artifacts
 test_*.png
 temp_*.png
+*_preview*.png
 pbi_auth_state.json
+tools/
+

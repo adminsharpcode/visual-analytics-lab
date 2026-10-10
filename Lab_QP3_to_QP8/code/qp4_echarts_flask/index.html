@@ -2,225 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assessment 4: Apache ECharts & Flask Visual Analytics Suite</title>
-  <link rel="stylesheet" href="../qp3_html_css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Standalone Apache ECharts Library -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Assessment 4: Apache ECharts Visual Analytics Suite | Vedant Nimkar</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Standalone Apache ECharts Engine -->
   <script src="echarts.min.js"></script>
-  <style>
-    .echart-box {
-      width: 100%;
-      height: 310px;
-      min-height: 310px;
-    }
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .kpi-stat-card {
-      background: rgba(30, 41, 59, 0.65);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .kpi-stat-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(59, 130, 246, 0.4);
-    }
-    .kpi-stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #94a3b8;
-    }
-    .kpi-stat-val {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #f8fafc;
-      font-family: var(--font-sans);
-    }
-    .kpi-stat-sub {
-      font-size: 0.72rem;
-      color: #10b981;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-weight: 600;
-    }
-    .filter-strip {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      border-radius: var(--radius-md);
-      padding: 10px 18px;
-      margin-bottom: 24px;
-    }
-    .filter-pills {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .filter-pill {
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      color: #94a3b8;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .filter-pill.active, .filter-pill:hover {
-      background: #3b82f6;
-      color: #ffffff;
-      border-color: #3b82f6;
-      box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-    }
-    .api-status-tag {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: #cbd5e1;
-      font-family: var(--font-mono);
-    }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
-    }
-    .charts-grid-3x2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-    .chart-card {
-      background: rgba(30, 41, 59, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-    .chart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-    }
-    .chart-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 2px;
-    }
-    .chart-subtitle {
-      font-size: 0.75rem;
-      color: #94a3b8;
-    }
-    .chart-badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.04em;
-    }
-    .badge-line { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
-    .badge-bar { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3); }
-    .badge-donut { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
-    .badge-scatter { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
-    .badge-radar { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .badge-funnel { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.3); }
-  </style>
 </head>
 <body>
   <div class="app-layout">
-    <div class="main-wrapper" style="padding: 24px 36px; width: 100%;">
-      <!-- Top Header -->
-      <header class="top-header" style="padding: 0; background: transparent; border: none; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <h1 class="page-title" style="font-size: 1.6rem; font-weight: 800; color: #f8fafc; letter-spacing: -0.02em;">Assessment 4: Apache ECharts Visual Analytics Suite</h1>
-          <p class="page-subtitle" style="font-size: 0.85rem; color: #94a3b8;">Experiment 10: Interactive Declarative Visualizations &bull; Experiment 11: Python Flask REST Microservice</p>
+    <div class="main-wrapper">
+      <!-- Top Enterprise Navigation Header -->
+      <header class="top-header">
+        <div class="brand-section">
+          <h1 class="page-title">
+            Assessment 4: Apache ECharts Analytics Suite
+            <span class="title-pill">v5.5 Production</span>
+          </h1>
+          <p class="page-subtitle">
+            Experiment 10: Multi-Perspective Declarative Visualizations &bull; Experiment 11: Python Flask REST Backend
+          </p>
         </div>
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(59, 130, 246, 0.3); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-family: var(--font-mono); color: #93c5fd;">
-            WSGI API: <code>127.0.0.1:5000</code>
-          </div>
-          <div style="background: linear-gradient(135deg, #1e3a8a, #4338ca); border: 1px solid rgba(99, 102, 241, 0.4); padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; color: #ffffff;">
+
+        <div class="header-actions">
+          <a href="https://github.com/adminsharpcode/visual-analytics-lab" target="_blank" rel="noopener noreferrer" class="github-btn" title="View GitHub Repository">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span>GitHub Repository</span>
+          </a>
+          <a href="https://qp3htmlcss.vercel.app" target="_blank" rel="noopener noreferrer" class="header-badge" title="View Assessment 3">
+            <span>Assessment 3</span>
+          </a>
+          <a href="https://qp5integratedstreamlit.vercel.app" target="_blank" rel="noopener noreferrer" class="header-badge" title="View Assessment 5">
+            <span>Assessment 5</span>
+          </a>
+          <div class="student-tag">
             Vedant Nimkar | 26MML0045
           </div>
         </div>
       </header>
 
-      <!-- KPI Executive Metric Cards -->
-      <div class="kpi-row">
+      <!-- Executive KPI Metric Cards Row -->
+      <section class="kpi-row" aria-label="Executive KPIs">
         <div class="kpi-stat-card">
           <span class="kpi-stat-label">Total Net Revenue</span>
           <span class="kpi-stat-val" id="kpi-revenue">$8,955,541</span>
-          <span class="kpi-stat-sub">&uarr; +14.2% YoY Growth</span>
+          <span class="kpi-stat-sub" id="kpi-revenue-sub" style="color: #38bdf8;">&uarr; +14.2% YoY Growth</span>
         </div>
         <div class="kpi-stat-card">
           <span class="kpi-stat-label">Gross Margin Profit</span>
           <span class="kpi-stat-val" id="kpi-profit">$4,831,999</span>
-          <span class="kpi-stat-sub" style="color: #60a5fa;">53.96% Margin Rate</span>
+          <span class="kpi-stat-sub" id="kpi-profit-sub" style="color: #34d399;">53.96% Margin Rate</span>
         </div>
         <div class="kpi-stat-card">
           <span class="kpi-stat-label">Total Units Shipped</span>
           <span class="kpi-stat-val" id="kpi-units">22,448</span>
-          <span class="kpi-stat-sub">&uarr; 4,210 Bikes Sold</span>
+          <span class="kpi-stat-sub" id="kpi-units-sub" style="color: #c084fc;">4,210 Bikes Sold</span>
         </div>
         <div class="kpi-stat-card">
           <span class="kpi-stat-label">Verified Sales Orders</span>
           <span class="kpi-stat-val" id="kpi-orders">5,008</span>
-          <span class="kpi-stat-sub" style="color: #a78bfa;">$1,788 Avg Ticket</span>
+          <span class="kpi-stat-sub" id="kpi-orders-sub" style="color: #fbbf24;">$1,788 Avg Ticket</span>
         </div>
         <div class="kpi-stat-card">
           <span class="kpi-stat-label">Active Global Markets</span>
           <span class="kpi-stat-val" id="kpi-markets">5</span>
-          <span class="kpi-stat-sub" style="color: #f59e0b;">US &bull; CA &bull; UK &bull; EU &bull; AU</span>
+          <span class="kpi-stat-sub" id="kpi-markets-sub" style="color: #f472b6;">US &bull; CA &bull; UK &bull; EU &bull; AU</span>
         </div>
-      </div>
+      </section>
 
-      <!-- Filter Controls Strip -->
-      <div class="filter-strip">
-        <div class="filter-pills">
-          <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-right: 4px;">Category Filter:</span>
-          <button class="filter-pill active" onclick="applyCategoryFilter('All')">All Sectors</button>
-          <button class="filter-pill" onclick="applyCategoryFilter('Bikes')">Bikes (71.7%)</button>
-          <button class="filter-pill" onclick="applyCategoryFilter('Components')">Components (15.4%)</button>
-          <button class="filter-pill" onclick="applyCategoryFilter('Clothing')">Clothing (7.9%)</button>
-          <button class="filter-pill" onclick="applyCategoryFilter('Accessories')">Accessories (5.0%)</button>
+      <!-- Multi-Dimensional Interactive Filter Toolbar -->
+      <section class="filter-strip" aria-label="Interactive Dashboard Filters">
+        <div class="filter-group">
+          <span class="filter-label">Sector:</span>
+          <button class="filter-pill active" data-filter="category" data-val="All" onclick="setCategory(this, 'All')">All Sectors</button>
+          <button class="filter-pill" data-filter="category" data-val="Bikes" onclick="setCategory(this, 'Bikes')">Bikes (71.7%)</button>
+          <button class="filter-pill" data-filter="category" data-val="Components" onclick="setCategory(this, 'Components')">Components (15.4%)</button>
+          <button class="filter-pill" data-filter="category" data-val="Clothing" onclick="setCategory(this, 'Clothing')">Clothing (7.9%)</button>
+          <button class="filter-pill" data-filter="category" data-val="Accessories" onclick="setCategory(this, 'Accessories')">Accessories (5.0%)</button>
         </div>
+
+        <div class="filter-group" style="gap: 10px;">
+          <span class="filter-label">Year:</span>
+          <button class="filter-pill active" data-filter="year" data-val="All" onclick="setYear(this, 'All')">All</button>
+          <button class="filter-pill" data-filter="year" data-val="2023" onclick="setYear(this, '2023')">2023</button>
+          <button class="filter-pill" data-filter="year" data-val="2024" onclick="setYear(this, '2024')">2024</button>
+          <button class="filter-pill" data-filter="year" data-val="2025" onclick="setYear(this, '2025')">2025</button>
+
+          <span class="filter-label" style="margin-left: 6px;">Region:</span>
+          <select id="territory-select" class="filter-select" onchange="setTerritory(this.value)">
+            <option value="All">All Territories (Global)</option>
+            <option value="North America (United States)">North America (US)</option>
+            <option value="North America (Canada)">North America (Canada)</option>
+            <option value="Europe (United Kingdom)">Europe (United Kingdom)</option>
+            <option value="Europe (Germany / France)">Europe (Germany / France)</option>
+            <option value="Pacific (Australia)">Pacific (Australia)</option>
+          </select>
+
+          <input type="text" id="sku-search" class="search-input" placeholder="Search SKU or Product..." oninput="handleSearch(this.value)">
+
+          <button class="btn-reset" onclick="resetFilters()" title="Reset All Filters">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+            </svg>
+            <span>Reset</span>
+          </button>
+        </div>
+
         <div class="api-status-tag">
           <span class="pulse-dot"></span>
-          <span>REST API Status: <strong>HTTP 200 OK</strong> &bull; ZRender Canvas GPU</span>
+          <span id="runtime-status-text">Cloud Engine Active &bull; Canvas GPU</span>
         </div>
-      </div>
+      </section>
 
-      <!-- 6-Chart Visual Analytics Grid -->
-      <div class="charts-grid-3x2">
+      <!-- 6-Chart Visual Analytics Grid (Responsive 2x3 or 1x6) -->
+      <main class="charts-grid-3x2">
         <!-- Chart 1: Line Chart -->
         <div class="chart-card">
           <div class="chart-header">
-            <div>
-              <h3 class="chart-title">1. Time-Series Revenue & Profit Growth Trajectory</h3>
+            <div class="chart-title-area">
+              <h3 class="chart-title">1. Time-Series Revenue & Profit Trajectory</h3>
               <p class="chart-subtitle">Smooth Bézier splines with dual area gradients & interactive DataZoom slider</p>
             </div>
             <span class="chart-badge badge-line">Area Spline</span>
@@ -231,9 +136,9 @@
         <!-- Chart 2: Bar Chart -->
         <div class="chart-card">
           <div class="chart-header">
-            <div>
-              <h3 class="chart-title">2. Category Revenue & Profit Breakdown</h3>
-              <p class="chart-subtitle">Clustered vertical bars with linear gradient fills and rounded corner caps</p>
+            <div class="chart-title-area">
+              <h3 class="chart-title">2. Category & Subcategory Breakdown</h3>
+              <p class="chart-subtitle">Clustered vertical bars with gradient fills & click-to-filter drilldown</p>
             </div>
             <span class="chart-badge badge-bar">Clustered Bar</span>
           </div>
@@ -243,9 +148,9 @@
         <!-- Chart 3: Donut Chart -->
         <div class="chart-card">
           <div class="chart-header">
-            <div>
+            <div class="chart-title-area">
               <h3 class="chart-title">3. Regional Territory Revenue Distribution</h3>
-              <p class="chart-subtitle">Proportional donut with dynamic hover sector expansion & percentage callouts</p>
+              <p class="chart-subtitle">Proportional donut with hover expansion & interactive sector filtering</p>
             </div>
             <span class="chart-badge badge-donut">Donut Chart</span>
           </div>
@@ -255,7 +160,7 @@
         <!-- Chart 4: Scatter Plot -->
         <div class="chart-card">
           <div class="chart-header">
-            <div>
+            <div class="chart-title-area">
               <h3 class="chart-title">4. Product Profitability & Volume Matrix</h3>
               <p class="chart-subtitle">4D bubble plot: Units vs Margin % (Bubble radius = Revenue magnitude)</p>
             </div>
@@ -267,8 +172,8 @@
         <!-- Chart 5: Radar Chart -->
         <div class="chart-card">
           <div class="chart-header">
-            <div>
-              <h3 class="chart-title">5. Multi-Criteria Operational Performance Radar</h3>
+            <div class="chart-title-area">
+              <h3 class="chart-title">5. Operational Capability Radar Scorecard</h3>
               <p class="chart-subtitle">Multi-axial scorecard evaluating Velocity, Margin, Logistics, CSAT & Retention</p>
             </div>
             <span class="chart-badge badge-radar">Radar Polygon</span>
@@ -279,18 +184,63 @@
         <!-- Chart 6: Funnel Chart -->
         <div class="chart-card">
           <div class="chart-header">
-            <div>
-              <h3 class="chart-title">6. Commercial Sales Pipeline Conversion Funnel</h3>
+            <div class="chart-title-area">
+              <h3 class="chart-title">6. Commercial Sales Pipeline Funnel</h3>
               <p class="chart-subtitle">Lead-to-order progression tracking drop-off attrition and stage yields</p>
             </div>
             <span class="chart-badge badge-funnel">Conversion Funnel</span>
           </div>
           <div id="echart-funnel" class="echart-box"></div>
         </div>
-      </div>
+      </main>
+
+      <!-- Interactive SKU Ledger Data Table Card -->
+      <section class="data-table-card" aria-label="Product SKU Ledger">
+        <div class="table-header-row">
+          <div>
+            <h3 class="chart-title" style="font-size: 1.15rem;">Product Performance Ledger & SKU Explorer</h3>
+            <p class="chart-subtitle">Verified transactional star-schema dimension data with instant multi-column search</p>
+          </div>
+          <div id="sku-count-badge" class="badge-tag badge-blue" style="font-size: 0.78rem; padding: 6px 12px;">
+            Showing 10 of 10 SKUs
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="analytics-table">
+            <thead>
+              <tr>
+                <th>Product SKU / Model</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th style="text-align: right;">Units Sold</th>
+                <th style="text-align: right;">Gross Margin</th>
+                <th style="text-align: right;">Total Sales</th>
+                <th>Performance Status</th>
+              </tr>
+            </thead>
+            <tbody id="analytics-tbody">
+              <!-- Dynamically populated by charts.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="app-footer">
+        <div>
+          Visual Analytics Laboratory (MACSE603) &bull; Assessment 4: Apache ECharts & Python Flask Architecture
+        </div>
+        <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+          <span>Candidate: <strong>Vedant Nimkar</strong> (Reg No: <strong>26MML0045</strong>)</span>
+          <span style="color: var(--accent-blue);">&bull;</span>
+          <span>Dual Runtime: Vercel Global CDN + WSGI Localhost</span>
+        </div>
+      </footer>
     </div>
   </div>
 
+  <!-- Interactive Analytics Runtime Logic -->
   <script src="charts.js"></script>
 </body>
 </html>

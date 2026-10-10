@@ -91,10 +91,10 @@ CSS = """
       page-break-before: auto; }
   .cover .st { font-size: 13.5pt; color: #334155; font-weight: 500; margin: 0 0 10px;
       max-width: 160mm; }
-  .cover .who { font-size: 16pt; font-weight: 700; color: #10245c; margin-top: 32px; }
-  .cover .reg { font-size: 12.5pt; color: #555; margin-top: 5px; }
-  .cover .sub { font-size: 11pt; color: #666; margin-top: 22px; }
-  .cover .tools { margin-top: 22px; font-size: 9.5pt; color: #22336b; font-weight: 500; }
+  .cover .who { font-size: 15pt; font-weight: 700; color: #10245c; margin-top: 18px; }
+  .cover .reg { font-size: 12pt; color: #555; margin-top: 4px; }
+  .cover .sub { font-size: 10.5pt; color: #666; margin-top: 8px; }
+  .cover .tools { margin-top: 14px; font-size: 9pt; color: #22336b; font-weight: 500; }
   h1 { font-size: 16pt; color: #10245c; border-bottom: 3px solid #3366cc;
        padding-bottom: 5px; margin: 0 0 12px; page-break-before: always; }
   h2 { font-size: 12.5pt; color: #10245c; border-bottom: 1px solid #c8d4ee;
@@ -132,7 +132,30 @@ CSS = """
 """
 
 
-def cover(assessment, title, subtitle, tools_str):
+def cover(assessment, title, subtitle, tools_str, live_url=None, repo_url="https://github.com/adminsharpcode/visual-analytics-lab"):
+    if not live_url:
+        if "3" in str(assessment):
+            live_url = "https://qp3htmlcss.vercel.app"
+        elif "4" in str(assessment):
+            live_url = "https://visual-analytics-echarts.vercel.app"
+        elif "5" in str(assessment):
+            live_url = "https://qp5integratedstreamlit.vercel.app"
+
+    links_items = []
+    if live_url:
+        links_items.append(
+            f'<div style="margin-bottom: 5px;">🚀 <b>Live Interactive Cloud App:</b> <a href="{live_url}" style="color: #1a56db; text-decoration: underline; font-weight: 700; font-family: Consolas, monospace;">{live_url}</a></div>'
+        )
+    if repo_url:
+        links_items.append(
+            f'<div>💻 <b>Open-Source GitHub Repository:</b> <a href="{repo_url}" style="color: #1a56db; text-decoration: underline; font-weight: 700; font-family: Consolas, monospace;">{repo_url}</a></div>'
+        )
+    links_inner = "".join(links_items)
+    links_html = f"""
+  <div style="margin-top: 16px; background: #eaf0fb; border: 1.5px solid #3366cc; border-radius: 8px; padding: 10px 16px; text-align: left; max-width: 155mm; font-size: 9.2pt; box-shadow: 0 4px 10px rgba(51, 102, 204, 0.12);">
+    {links_inner}
+  </div>"""
+
     return f"""
 <div class="cover">
   <div class="bt"></div>
@@ -140,15 +163,17 @@ def cover(assessment, title, subtitle, tools_str):
   <div class="asmt">{assessment}</div>
   <h1>{SUBJECT}</h1>
   <div class="st">{title}</div>
-  <div style="width:90px;height:3px;background:#3366cc;margin:16px auto;"></div>
-  <div class="st" style="font-size:11pt;color:#666;">{subtitle}</div>
+  <div style="width:90px;height:3px;background:#3366cc;margin:12px auto;"></div>
+  <div class="st" style="font-size:11pt;color:#666;margin:0 0 4px;">{subtitle}</div>
   <div class="who">{AUTHOR}</div>
   <div class="reg">Registration No.: {REG}</div>
   <div class="sub">M.Tech &mdash; Computer Science and Engineering</div>
+  {links_html}
   <div class="tools">{tools_str}</div>
   <div class="bb"></div>
 </div>
 """
+
 
 
 def _embed(html):
