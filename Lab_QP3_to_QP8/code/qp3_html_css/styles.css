@@ -817,20 +817,24 @@ body {
   .sidebar-footer {
     display: none;
   }
-  .main-content {
+  .main-content, .content-body {
     padding: 16px 14px;
     width: 100%;
   }
-  .top-bar {
+  .top-header {
+    height: auto;
+    min-height: 72px;
+    position: relative;
+    padding: 16px 14px;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    padding-bottom: 16px;
   }
-  .top-actions {
+  .header-left, .header-right {
     width: 100%;
     justify-content: flex-start;
     flex-wrap: wrap;
+    gap: 8px;
   }
   .kpi-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -839,16 +843,20 @@ body {
 }
 
 @media (max-width: 480px) {
-  .main-content {
+  .main-content, .content-body {
     padding: 12px 10px;
   }
   .page-title {
     font-size: 1.25rem;
   }
+  .top-header {
+    padding: 14px 10px;
+  }
   .kpi-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+
   .app-footer {
     flex-direction: column;
     align-items: flex-start;
@@ -856,4 +864,58 @@ body {
     padding: 16px;
   }
 }
+
+/* View Panels for Multi-Page Navigation */
+.view-panel {
+  display: none;
+  animation: fadeInView 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.view-panel.active {
+  display: block;
+}
+
+@keyframes fadeInView {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Toast Alert Component */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #f8fafc;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 9999;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.toast-notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.spin-anim {
+  animation: spin 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 

@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Visual Analytics Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Assessment 3: Retail Visual Analytics Dashboard | Vedant Nimkar</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app-layout">
@@ -66,15 +66,21 @@
       <!-- Top Header Navigation -->
       <header class="top-header">
         <div class="header-left">
-          <h1 class="page-title">Retail Visual Analytics Dashboard</h1>
-          <p class="page-subtitle">Real-time exploratory analytics across 5,013 verified transactions</p>
+          <h1 class="page-title">Assessment 3: Retail Visual Analytics Dashboard</h1>
+          <p class="page-subtitle">HTML5 &amp; CSS Frontend Architecture &bull; 5,013 verified transactions in star-schema</p>
         </div>
-        <div class="header-right">
-          <div class="filter-badge">
-            <span class="status-dot"></span>
-            Dataset: SalesData (Verified Star Schema)
-          </div>
-          <button class="btn btn-outline" id="refreshBtn">
+        <div class="header-right" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <a href="https://github.com/adminsharpcode/visual-analytics-lab" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://visual-analytics-echarts.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="text-decoration: none;">
+            Assessment 4
+          </a>
+          <a href="https://qp5integratedstreamlit.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="text-decoration: none;">
+            Assessment 5
+          </a>
+          <button class="btn btn-outline" id="refreshBtn" title="Refresh Star Schema Dataset">
             <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
             Refresh
           </button>
@@ -126,9 +132,9 @@
               <span class="kpi-label">TOTAL REVENUE</span>
               <span class="trend-chip trend-up">+14.2% YoY</span>
             </div>
-            <div class="kpi-value">$8,955,541</div>
-            <div class="kpi-subtext">5,008 Orders &bull; Avg $1,788/order</div>
-            <div class="kpi-bar"><div class="kpi-fill" style="width: 82%;"></div></div>
+            <div class="kpi-value" id="valRevenue">$8,955,541</div>
+            <div class="kpi-subtext" id="valOrderSub">5,008 Orders &bull; Avg $1,788/order</div>
+            <div class="kpi-bar"><div class="kpi-fill" id="barRevenue" style="width: 82%;"></div></div>
           </div>
 
           <div class="kpi-card card-glow-emerald">
@@ -136,9 +142,9 @@
               <span class="kpi-label">TOTAL PROFIT</span>
               <span class="trend-chip trend-up">+18.7% YoY</span>
             </div>
-            <div class="kpi-value">$4,831,999</div>
-            <div class="kpi-subtext">Gross margin 53.96%</div>
-            <div class="kpi-bar"><div class="kpi-fill bg-emerald" style="width: 74%;"></div></div>
+            <div class="kpi-value" id="valProfit">$4,831,999</div>
+            <div class="kpi-subtext" id="valMarginSub">Gross margin 53.96%</div>
+            <div class="kpi-bar"><div class="kpi-fill bg-emerald" id="barProfit" style="width: 74%;"></div></div>
           </div>
 
           <div class="kpi-card card-glow-purple">
@@ -146,7 +152,7 @@
               <span class="kpi-label">UNITS SOLD</span>
               <span class="trend-chip trend-neutral">22,448 units</span>
             </div>
-            <div class="kpi-value">22,448</div>
+            <div class="kpi-value" id="valUnits">22,448</div>
             <div class="kpi-subtext">Avg $398.94 selling price</div>
             <div class="kpi-bar"><div class="kpi-fill bg-purple" style="width: 65%;"></div></div>
           </div>
@@ -156,171 +162,298 @@
               <span class="kpi-label">ACTIVE CUSTOMERS</span>
               <span class="trend-chip trend-up">220 Accounts</span>
             </div>
-            <div class="kpi-value">220</div>
+            <div class="kpi-value" id="valCust">220</div>
             <div class="kpi-subtext">100% Territory coverage</div>
             <div class="kpi-bar"><div class="kpi-fill bg-amber" style="width: 90%;"></div></div>
           </div>
         </section>
 
-        <!-- Visual Analytics Main Grid -->
-        <section class="charts-grid">
-          <!-- Chart 1: Time Series Trend -->
-          <div class="chart-card span-2">
-            <div class="chart-header">
-              <div>
-                <h3 class="chart-title">Monthly Revenue & Profit Growth</h3>
-                <p class="chart-subtitle">Aggregated multi-year sales performance (2023 - 2025)</p>
+        <!-- VIEW 1: EXECUTIVE OVERVIEW -->
+        <section id="view-overview" class="view-panel active">
+          <div class="charts-grid">
+            <!-- Chart 1: Time Series Trend -->
+            <div class="chart-card span-2">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Monthly Revenue & Profit Growth</h3>
+                  <p class="chart-subtitle">Aggregated multi-year sales performance (2023 - 2025)</p>
+                </div>
+                <div class="chart-actions">
+                  <span class="legend-dot dot-blue"></span> Revenue
+                  <span class="legend-dot dot-emerald"></span> Profit
+                </div>
               </div>
-              <div class="chart-actions">
-                <span class="legend-dot dot-blue"></span> Revenue
-                <span class="legend-dot dot-emerald"></span> Profit
+              <div class="chart-container" id="monthlyTrendChart">
+                <div class="mock-chart-container">
+                  <div class="bar-col" style="height: 45%;"><span class="bar-tip">$520k</span></div>
+                  <div class="bar-col" style="height: 52%;"><span class="bar-tip">$610k</span></div>
+                  <div class="bar-col" style="height: 60%;"><span class="bar-tip">$720k</span></div>
+                  <div class="bar-col" style="height: 58%;"><span class="bar-tip">$690k</span></div>
+                  <div class="bar-col" style="height: 70%;"><span class="bar-tip">$840k</span></div>
+                  <div class="bar-col" style="height: 78%;"><span class="bar-tip">$930k</span></div>
+                  <div class="bar-col" style="height: 85%;"><span class="bar-tip">$1.02M</span></div>
+                  <div class="bar-col" style="height: 92%;"><span class="bar-tip">$1.15M</span></div>
+                  <div class="bar-col" style="height: 88%;"><span class="bar-tip">$1.08M</span></div>
+                  <div class="bar-col" style="height: 95%;"><span class="bar-tip">$1.20M</span></div>
+                  <div class="bar-col" style="height: 98%;"><span class="bar-tip">$1.26M</span></div>
+                  <div class="bar-col active-bar" style="height: 100%;"><span class="bar-tip">$1.31M</span></div>
+                </div>
+                <div class="chart-xaxis">
+                  <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                  <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                </div>
               </div>
             </div>
-            <div class="chart-container" id="monthlyTrendChart">
-              <!-- Placeholder representation for pure HTML/CSS demo -->
-              <div class="mock-chart-container">
-                <div class="bar-col" style="height: 45%;"><span class="bar-tip">$520k</span></div>
-                <div class="bar-col" style="height: 52%;"><span class="bar-tip">$610k</span></div>
-                <div class="bar-col" style="height: 60%;"><span class="bar-tip">$720k</span></div>
-                <div class="bar-col" style="height: 58%;"><span class="bar-tip">$690k</span></div>
-                <div class="bar-col" style="height: 70%;"><span class="bar-tip">$840k</span></div>
-                <div class="bar-col" style="height: 78%;"><span class="bar-tip">$930k</span></div>
-                <div class="bar-col" style="height: 85%;"><span class="bar-tip">$1.02M</span></div>
-                <div class="bar-col" style="height: 92%;"><span class="bar-tip">$1.15M</span></div>
-                <div class="bar-col" style="height: 88%;"><span class="bar-tip">$1.08M</span></div>
-                <div class="bar-col" style="height: 95%;"><span class="bar-tip">$1.20M</span></div>
-                <div class="bar-col" style="height: 98%;"><span class="bar-tip">$1.26M</span></div>
-                <div class="bar-col active-bar" style="height: 100%;"><span class="bar-tip">$1.31M</span></div>
+
+            <!-- Chart 2: Category Breakdown -->
+            <div class="chart-card">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Revenue by Product Category</h3>
+                  <p class="chart-subtitle">Sales contribution distribution</p>
+                </div>
               </div>
-              <div class="chart-xaxis">
-                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
-                <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+              <div class="chart-container" id="categoryChart">
+                <div class="category-breakdown-list">
+                  <div class="cat-row">
+                    <div class="cat-meta"><span>Bikes</span><b>$6,420,110 (71.7%)</b></div>
+                    <div class="progress-track"><div class="progress-fill bg-blue" style="width: 71.7%;"></div></div>
+                  </div>
+                  <div class="cat-row">
+                    <div class="cat-meta"><span>Components</span><b>$1,380,450 (15.4%)</b></div>
+                    <div class="progress-track"><div class="progress-fill bg-purple" style="width: 15.4%;"></div></div>
+                  </div>
+                  <div class="cat-row">
+                    <div class="cat-meta"><span>Clothing</span><b>$710,230 (7.9%)</b></div>
+                    <div class="progress-track"><div class="progress-fill bg-emerald" style="width: 7.9%;"></div></div>
+                  </div>
+                  <div class="cat-row">
+                    <div class="cat-meta"><span>Accessories</span><b>$444,751 (5.0%)</b></div>
+                    <div class="progress-track"><div class="progress-fill bg-amber" style="width: 5.0%;"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart 3: Territory Performance -->
+            <div class="chart-card">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Territory Share</h3>
+                  <p class="chart-subtitle">Regional sales proportion</p>
+                </div>
+              </div>
+              <div class="chart-container flex-center">
+                <div class="donut-visual">
+                  <div class="donut-hole">
+                    <div class="donut-stat">$8.95M</div>
+                    <div class="donut-sub">Global Sales</div>
+                  </div>
+                </div>
+                <div class="donut-legend">
+                  <div class="legend-item"><span class="badge-dot bg-blue"></span> North America: 54%</div>
+                  <div class="legend-item"><span class="badge-dot bg-purple"></span> Europe: 31%</div>
+                  <div class="legend-item"><span class="badge-dot bg-emerald"></span> Pacific: 15%</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table: Top Sold Products Drilldown -->
+            <div class="chart-card span-2">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Top Sold Products &ndash; Detail Drill-down</h3>
+                  <p class="chart-subtitle">Reactive product ledger filtered by active controls</p>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th>SubCategory</th>
+                      <th>Units Sold</th>
+                      <th>Total Revenue</th>
+                      <th>Gross Margin %</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tableBody">
+                    <!-- Populated by app.js -->
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Chart 2: Category Breakdown -->
-          <div class="chart-card">
-            <div class="chart-header">
-              <div>
-                <h3 class="chart-title">Revenue by Product Category</h3>
-                <p class="chart-subtitle">Sales contribution distribution</p>
+        <!-- VIEW 2: CATEGORY PERFORMANCE -->
+        <section id="view-categories" class="view-panel">
+          <div class="charts-grid">
+            <div class="chart-card span-2">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Comprehensive Product Category Analysis</h3>
+                  <p class="chart-subtitle">Volume, margin yield, and growth across all 4 operational sectors</p>
+                </div>
               </div>
-            </div>
-            <div class="chart-container" id="categoryChart">
-              <div class="category-breakdown-list">
-                <div class="cat-row">
-                  <div class="cat-meta"><span>Bikes</span><b>$6,420,110 (71.7%)</b></div>
-                  <div class="progress-track"><div class="progress-fill bg-blue" style="width: 71.7%;"></div></div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 12px;">
+                <div style="background: rgba(15,23,42,0.6); padding: 18px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.3);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4 style="color: #60a5fa; font-size: 1.1rem; font-weight: 700;">Bikes Portfolio</h4>
+                    <span class="badge badge-success">71.7% Share</span>
+                  </div>
+                  <p style="font-size: 1.5rem; font-weight: 800; color: #fff; margin: 8px 0;">$6,420,110</p>
+                  <p style="font-size: 0.8rem; color: #94a3b8;">4,210 units &bull; 56.0% Gross Margin &bull; 2,840 Orders</p>
+                  <div style="margin-top: 10px; font-size: 0.78rem; color: #cbd5e1;">Top Models: Mountain-200, Road-150, Touring-1000</div>
                 </div>
-                <div class="cat-row">
-                  <div class="cat-meta"><span>Components</span><b>$1,380,450 (15.4%)</b></div>
-                  <div class="progress-track"><div class="progress-fill bg-purple" style="width: 15.4%;"></div></div>
+
+                <div style="background: rgba(15,23,42,0.6); padding: 18px; border-radius: 8px; border: 1px solid rgba(139,92,246,0.3);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4 style="color: #a78bfa; font-size: 1.1rem; font-weight: 700;">Components & Gear</h4>
+                    <span class="badge badge-success">15.4% Share</span>
+                  </div>
+                  <p style="font-size: 1.5rem; font-weight: 800; color: #fff; margin: 8px 0;">$1,380,450</p>
+                  <p style="font-size: 0.8rem; color: #94a3b8;">5,120 units &bull; 52.0% Gross Margin &bull; 1,120 Orders</p>
+                  <div style="margin-top: 10px; font-size: 0.78rem; color: #cbd5e1;">Key Lines: Mountain Frames, Road Frames, Wheels</div>
                 </div>
-                <div class="cat-row">
-                  <div class="cat-meta"><span>Clothing</span><b>$710,230 (7.9%)</b></div>
-                  <div class="progress-track"><div class="progress-fill bg-emerald" style="width: 7.9%;"></div></div>
+
+                <div style="background: rgba(15,23,42,0.6); padding: 18px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4 style="color: #34d399; font-size: 1.1rem; font-weight: 700;">Apparel & Clothing</h4>
+                    <span class="badge badge-success">7.9% Share</span>
+                  </div>
+                  <p style="font-size: 1.5rem; font-weight: 800; color: #fff; margin: 8px 0;">$710,230</p>
+                  <p style="font-size: 0.8rem; color: #94a3b8;">4,890 units &bull; 48.0% Gross Margin &bull; 650 Orders</p>
+                  <div style="margin-top: 10px; font-size: 0.78rem; color: #cbd5e1;">Key Lines: Performance Jerseys, Shorts, Gloves</div>
                 </div>
-                <div class="cat-row">
-                  <div class="cat-meta"><span>Accessories</span><b>$444,751 (5.0%)</b></div>
-                  <div class="progress-track"><div class="progress-fill bg-amber" style="width: 5.0%;"></div></div>
+
+                <div style="background: rgba(15,23,42,0.6); padding: 18px; border-radius: 8px; border: 1px solid rgba(245,158,11,0.3);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4 style="color: #fbbf24; font-size: 1.1rem; font-weight: 700;">Accessories & Spares</h4>
+                    <span class="badge badge-warning">5.0% Share</span>
+                  </div>
+                  <p style="font-size: 1.5rem; font-weight: 800; color: #fff; margin: 8px 0;">$444,751</p>
+                  <p style="font-size: 0.8rem; color: #94a3b8;">8,228 units &bull; 40.0% Gross Margin &bull; 398 Orders</p>
+                  <div style="margin-top: 10px; font-size: 0.78rem; color: #cbd5e1;">Top SKUs: Sport-100 Helmets, Water Bottles, Locks</div>
                 </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Chart 3: Territory Performance -->
-          <div class="chart-card">
-            <div class="chart-header">
-              <div>
-                <h3 class="chart-title">Territory Share</h3>
-                <p class="chart-subtitle">Regional sales proportion</p>
-              </div>
-            </div>
-            <div class="chart-container flex-center">
-              <div class="donut-visual">
-                <div class="donut-hole">
-                  <div class="donut-stat">$8.95M</div>
-                  <div class="donut-sub">Global Sales</div>
+        <!-- VIEW 3: TIME-SERIES TRENDS -->
+        <section id="view-trends" class="view-panel">
+          <div class="charts-grid">
+            <div class="chart-card span-2">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Fiscal Trajectory & Multi-Year Growth (2023 - 2025)</h3>
+                  <p class="chart-subtitle">Quarterly cadence, seasonal spikes, and revenue acceleration</p>
                 </div>
               </div>
-              <div class="donut-legend">
-                <div class="legend-item"><span class="badge-dot bg-blue"></span> North America: 54%</div>
-                <div class="legend-item"><span class="badge-dot bg-purple"></span> Europe: 31%</div>
-                <div class="legend-item"><span class="badge-dot bg-emerald"></span> Pacific: 15%</div>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 16px 0;">
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px;">
+                  <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 700;">FY 2023 TOTALS</span>
+                  <div style="font-size: 1.4rem; font-weight: 800; color: #60a5fa; margin: 4px 0;">$2,556,800</div>
+                  <span style="font-size: 0.75rem; color: #10b981;">Baseline foundation year</span>
+                </div>
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px;">
+                  <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 700;">FY 2024 TOTALS</span>
+                  <div style="font-size: 1.4rem; font-weight: 800; color: #34d399; margin: 4px 0;">$5,091,600</div>
+                  <span style="font-size: 0.75rem; color: #10b981;">+99.1% YoY expansion</span>
+                </div>
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px;">
+                  <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 700;">FY 2025 PROJECTED</span>
+                  <div style="font-size: 1.4rem; font-weight: 800; color: #a78bfa; margin: 4px 0;">$7,482,700</div>
+                  <span style="font-size: 0.75rem; color: #10b981;">+47.0% YoY sustained velocity</span>
+                </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Table: Top Sold Products Drilldown -->
-          <div class="chart-card span-2">
-            <div class="chart-header">
-              <div>
-                <h3 class="chart-title">Top Sold Products &ndash; Detail Drill-down</h3>
-                <p class="chart-subtitle">Direct row-level inspection from star schema model</p>
+        <!-- VIEW 4: TERRITORY DISTRIBUTION -->
+        <section id="view-territories" class="view-panel">
+          <div class="charts-grid">
+            <div class="chart-card span-2">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Global Territory & Market Penetration</h3>
+                  <p class="chart-subtitle">5 Global sales territories delivering $8.95M cumulative volume</p>
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 14px;">
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                  <h4 style="color: #60a5fa; font-weight: 700;">North America (United States)</h4>
+                  <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 4px 0;">$3,840,250</div>
+                  <p style="font-size: 0.78rem; color: #94a3b8;">42.9% Global Share &bull; 2,140 Orders</p>
+                </div>
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; border-left: 4px solid #06b6d4;">
+                  <h4 style="color: #22d3ee; font-weight: 700;">North America (Canada)</h4>
+                  <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 4px 0;">$1,020,140</div>
+                  <p style="font-size: 0.78rem; color: #94a3b8;">11.4% Global Share &bull; 575 Orders</p>
+                </div>
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; border-left: 4px solid #8b5cf6;">
+                  <h4 style="color: #a78bfa; font-weight: 700;">Europe (United Kingdom)</h4>
+                  <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 4px 0;">$1,650,320</div>
+                  <p style="font-size: 0.78rem; color: #94a3b8;">18.4% Global Share &bull; 920 Orders</p>
+                </div>
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; border-left: 4px solid #ec4899;">
+                  <h4 style="color: #f472b6; font-weight: 700;">Europe (Germany & France)</h4>
+                  <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 4px 0;">$1,124,500</div>
+                  <p style="font-size: 0.78rem; color: #94a3b8;">12.6% Global Share &bull; 632 Orders</p>
+                </div>
+                <div style="background: rgba(15,23,42,0.6); padding: 16px; border-radius: 8px; border-left: 4px solid #10b981;">
+                  <h4 style="color: #34d399; font-weight: 700;">Pacific (Australia)</h4>
+                  <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 4px 0;">$1,320,331</div>
+                  <p style="font-size: 0.78rem; color: #94a3b8;">14.7% Global Share &bull; 741 Orders</p>
+                </div>
               </div>
             </div>
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>SubCategory</th>
-                    <th>Units Sold</th>
-                    <th>Total Revenue</th>
-                    <th>Gross Margin %</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Mountain-200 Black, 38</strong></td>
-                    <td>Bikes</td>
-                    <td>Mountain Bikes</td>
-                    <td>1,420</td>
-                    <td>$1,245,600</td>
-                    <td><span class="badge badge-success">56.2%</span></td>
-                    <td><span class="status-pill status-high">Top Revenue</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Road-150 Red, 52</strong></td>
-                    <td>Bikes</td>
-                    <td>Road Bikes</td>
-                    <td>1,180</td>
-                    <td>$1,085,420</td>
-                    <td><span class="badge badge-success">54.8%</span></td>
-                    <td><span class="status-pill status-high">High Margin</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Sport-100 Helmet, Red</strong></td>
-                    <td>Accessories</td>
-                    <td>Helmets</td>
-                    <td>3,840</td>
-                    <td>$134,400</td>
-                    <td><span class="badge badge-warning">48.1%</span></td>
-                    <td><span class="status-pill status-volume">Top Units</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>HL Mountain Frame - Silver</strong></td>
-                    <td>Components</td>
-                    <td>Mountain Frames</td>
-                    <td>640</td>
-                    <td>$582,300</td>
-                    <td><span class="badge badge-success">52.9%</span></td>
-                    <td><span class="status-pill status-stable">Stable</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Long-Sleeve Logo Jersey, L</strong></td>
-                    <td>Clothing</td>
-                    <td>Jerseys</td>
-                    <td>2,150</td>
-                    <td>$107,500</td>
-                    <td><span class="badge badge-success">51.0%</span></td>
-                    <td><span class="status-pill status-volume">High Vol</span></td>
-                  </tr>
-                </tbody>
-              </table>
+          </div>
+        </section>
+
+        <!-- VIEW 5: INTERACTIVE DRILL-DOWN -->
+        <section id="view-drilldown" class="view-panel">
+          <div class="charts-grid">
+            <div class="chart-card span-2">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Hierarchical Slicer & Star-Schema Investigation</h3>
+                  <p class="chart-subtitle">Explore granular order dimensions, average unit tickets, and profit margins</p>
+                </div>
+              </div>
+              <div style="background: rgba(15,23,42,0.6); padding: 18px; border-radius: 8px; margin-top: 10px;">
+                <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;">
+                  The dimensional hierarchy links <code>FactInternetSales</code> transactions against <code>DimProduct</code>, <code>DimProductSubcategory</code>, and <code>DimProductCategory</code>.
+                  Selecting any category filter in the top toolbar immediately cascades through the star-schema relationships, isolating revenue streams and recalculating weighted average margins.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 6: EXPORT & REPORTS -->
+        <section id="view-export" class="view-panel">
+          <div class="charts-grid">
+            <div class="chart-card span-2">
+              <div class="chart-header">
+                <div>
+                  <h3 class="chart-title">Audit Ledger & Export Center</h3>
+                  <p class="chart-subtitle">Generate verified PDF compliance reports and audit certificates</p>
+                </div>
+              </div>
+              <div style="background: rgba(15,23,42,0.6); padding: 22px; border-radius: 8px; margin-top: 12px; border: 1px solid rgba(148,163,184,0.18);">
+                <h4 style="color: #f8fafc; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Executive Certification Record</h4>
+                <p style="font-size: 0.82rem; color: #94a3b8; margin-bottom: 16px;">
+                  Candidate: <strong>Vedant Nimkar</strong> (Reg No: <strong>26MML0045</strong>) &bull; Course: Visual Analytics Lab (MACSE603)
+                </p>
+                <button class="btn btn-primary" onclick="window.print()" style="padding: 10px 22px; font-size: 0.9rem;">
+                  🖨️ Print / Save Executive Report as PDF
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -328,10 +461,13 @@
 
       <!-- Footer -->
       <footer class="app-footer">
-        <div>Visual Analytics Lab (MACSE603) &bull; Assessment 3: HTML & CSS Visual Analytics Architecture</div>
+        <div>Visual Analytics Lab (MACSE603) &bull; Assessment 3: HTML5 &amp; CSS Analytics Architecture</div>
         <div class="student-tag">Vedant Nimkar | 26MML0045</div>
       </footer>
     </div>
   </div>
+
+  <!-- Interactive JavaScript Engine -->
+  <script src="app.js"></script>
 </body>
 </html>

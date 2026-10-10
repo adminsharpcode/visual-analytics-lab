@@ -39,11 +39,30 @@
           <a href="https://qp3htmlcss.vercel.app" target="_blank" rel="noopener noreferrer" class="header-badge" title="View Assessment 3">
             <span>Assessment 3 (HTML/CSS)</span>
           </a>
+          <button class="header-badge" id="refreshBtn" onclick="triggerRefresh()" title="Refresh Data Model">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            <span>Refresh</span>
+          </button>
+          <button class="header-badge" onclick="window.print()" title="Export PDF">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Export PDF</span>
+          </button>
           <div class="student-tag">
             Vedant Nimkar | 26MML0045
           </div>
         </div>
       </header>
+
+      <!-- Multi-Page View Navigation Tabs Strip -->
+      <nav class="view-tabs-strip" aria-label="Page View Switching">
+        <button class="view-tab active" onclick="switchViewTab('all', this)">All Views (Overview)</button>
+        <button class="view-tab" onclick="switchViewTab('kpis', this)">Executive KPIs & Trends</button>
+        <button class="view-tab" onclick="switchViewTab('drilldown', this)">Category Drilldown</button>
+        <button class="view-tab" onclick="switchViewTab('territory', this)">Territory Share & Matrix</button>
+        <button class="view-tab" onclick="switchViewTab('ledger', this)">Product Ledger</button>
+        <button class="view-tab" onclick="switchViewTab('architecture', this)">Streamlit Architecture</button>
+      </nav>
+
 
       <!-- Executive KPI Metric Cards Row -->
       <section class="kpi-row" aria-label="Executive KPIs">
@@ -217,10 +236,37 @@
             </tbody>
           </table>
         </div>
+      <!-- Streamlit Multi-Page Python Microservice Architecture Panel -->
+      <section id="sec-architecture" class="data-table-card" aria-label="Streamlit Architecture">
+        <div class="table-header-row">
+          <div>
+            <h3 class="chart-title" style="font-size: 1.15rem; color: #10b981;">Streamlit Multi-Tier Full-Stack Microservice Architecture</h3>
+            <p class="chart-subtitle">Seamless integration of Python WSGI REST Services, Streamlit Analytics, and ZRender Hardware Graphics</p>
+          </div>
+          <span class="badge-tag badge-emerald" style="padding: 6px 12px;">Active Enterprise Topology</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 14px;">
+          <div style="background: rgba(15,23,42,0.7); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; padding: 18px;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: #34d399; text-transform: uppercase;">Tier 1: Relational Persistence & Microservices</div>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 6px 0;">Python Flask & Pandas API</h4>
+            <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.5;">Vectorized aggregations, <code>/api/kpis</code>, <code>/api/sales/monthly</code>, and dynamic drilldowns persisted across SQLite star-schema tables.</p>
+          </div>
+          <div style="background: rgba(15,23,42,0.7); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; padding: 18px;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: #60a5fa; text-transform: uppercase;">Tier 2: Interactive Data Engineering</div>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 6px 0;">Streamlit Multipage App</h4>
+            <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.5;">Reactive execution pipeline in <code>Home.py</code>, <code>1_Executive_KPIs.py</code>, <code>2_Category_Drilldown.py</code>, and <code>3_Territory_Geomap.py</code> with sub-second recalculation.</p>
+          </div>
+          <div style="background: rgba(15,23,42,0.7); border: 1px solid rgba(139,92,246,0.3); border-radius: 8px; padding: 18px;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: #a78bfa; text-transform: uppercase;">Tier 3: Hardware Rasterization</div>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 6px 0;">Apache ECharts & Canvas GPU</h4>
+            <p style="font-size: 0.8rem; color: #94a3b8; line-height: 1.5;">60 FPS declarative marks, Bézier splines, responsive viewport scaling, and client-side instant cross-filtering.</p>
+          </div>
+        </div>
       </section>
 
       <!-- Footer Section -->
       <footer class="app-footer">
+
         <div>
           Visual Analytics Laboratory (MACSE603) &bull; Assessment 5: Integrated Frontend-Backend Analytics & Streamlit
         </div>
@@ -875,6 +921,72 @@
       });
 
       tbody.innerHTML = html;
+    }
+
+    // View Tabs Switching
+    function switchViewTab(tab, el) {
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+      if (el) el.classList.add('active');
+
+      const secKpi = document.querySelector('.kpi-row');
+      const secFilter = document.querySelector('.filter-strip');
+      const allGrids = document.querySelectorAll('.charts-grid');
+      const secCharts1 = allGrids[0];
+      const secCharts2 = allGrids[1];
+      const secDrill = document.querySelector('.drilldown-panel');
+      const secLedger = document.querySelector('.data-table-card');
+      const secArch = document.getElementById('sec-architecture');
+
+      const show = elem => { if (elem) elem.style.display = ''; };
+      const hide = elem => { if (elem) elem.style.display = 'none'; };
+
+      // Reset all to visible
+      [secKpi, secFilter, secCharts1, secDrill, secCharts2, secLedger, secArch].forEach(show);
+
+      if (tab === 'kpis') {
+        hide(secDrill); hide(secCharts2); hide(secLedger); hide(secArch);
+      } else if (tab === 'drilldown') {
+        hide(secCharts1); hide(secCharts2); hide(secLedger); hide(secArch);
+      } else if (tab === 'territory') {
+        hide(secCharts1); hide(secDrill); hide(secLedger); hide(secArch);
+      } else if (tab === 'ledger') {
+        hide(secCharts1); hide(secDrill); hide(secCharts2); hide(secArch);
+      } else if (tab === 'architecture') {
+        hide(secCharts1); hide(secDrill); hide(secCharts2); hide(secLedger);
+      }
+
+      setTimeout(() => {
+        [lineChart, barChart, subcatChart, donutChart, scatterChart].forEach(c => c && c.resize());
+      }, 100);
+    }
+
+    function triggerRefresh() {
+      const btn = document.getElementById('refreshBtn');
+      const icon = btn ? btn.querySelector('svg') : null;
+      if (icon) {
+        icon.classList.add('spin-anim');
+        setTimeout(() => icon.classList.remove('spin-anim'), 700);
+      }
+      updateDashboard();
+      showToast('Streamlit & SalesData model refreshed: 5,008 transactions synchronized!');
+    }
+
+    function showToast(message) {
+      let toast = document.getElementById('dashboardToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'dashboardToast';
+        toast.className = 'toast-notification';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+        <span>${message}</span>
+      `;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
     }
   </script>
 </body>

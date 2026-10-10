@@ -927,3 +927,33 @@ function updateSkuTable(products) {
 
   tbody.innerHTML = html;
 }
+
+// Refresh & Toast Notification Actions
+function triggerRefresh() {
+  const btn = document.getElementById('refreshBtn');
+  const icon = btn ? btn.querySelector('svg') : null;
+  if (icon) {
+    icon.classList.add('spin-anim');
+    setTimeout(() => icon.classList.remove('spin-anim'), 700);
+  }
+  updateCharts();
+  showToast('SalesData star-schema refreshed: 5,013 transactions synchronized!');
+}
+
+function showToast(message) {
+  let toast = document.getElementById('dashboardToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'dashboardToast';
+    toast.className = 'toast-notification';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    <span>${message}</span>
+  `;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2600);
+}
