@@ -43,6 +43,13 @@ Vellore Institute of Technology, Vellore – 632014, Tamil Nadu, India
 | **Jitesh Bobde** | **26MML0025** | M.Tech CSE / AI & ML | **Team Member** (Star Schema Dimensional Modeling & DAX Library) |
 | **Ayush Sharma** | **26MML0043** | M.Tech CSE / AI & ML | **Team Member** (IoT Telemetry Simulation & Literature Synthesis) |
 
+---
+
+### **PROJECT DEPLOYMENT & OPEN-SOURCE REPOSITORY LINKS:**
+* 🌐 **Live Cloud Web Dashboard (Vercel Edge):** [https://webdashboard-eta.vercel.app](https://webdashboard-eta.vercel.app)
+* 💻 **GitHub Source Code Repository:** [https://github.com/adminsharpcode/visual-analytics-lab](https://github.com/adminsharpcode/visual-analytics-lab)
+* 📊 **Microsoft Fabric Power BI Solution:** `Project_SmartEnergy_PowerBI/` (TMDL Semantic Model & PBIR Report)
+
 **Vellore Institute of Technology, Vellore – 632014, Tamil Nadu, India**  
 **October 2026**  
 

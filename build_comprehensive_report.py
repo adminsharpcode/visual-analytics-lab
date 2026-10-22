@@ -269,7 +269,7 @@ def build_pdf():
 
     # SUBMITTED TO Card
     story.append(Paragraph("SUBMITTED TO (FACULTY EVALUATOR & GUIDE)", cover_meta_label))
-    story.append(Paragraph("<strong>Dr. MANIKANDAN K</strong><br/>Professor Grade 2<br/>Department of Database Systems<br/>School of Computer Science and Engineering (SCOPE)<br/>Cabin: SJT 411 A29 &nbsp;|&nbsp; Email: kmanikandan@vit.ac.in<br/>Vellore Institute of Technology, Vellore - 632014, Tamil Nadu, India", cover_meta_body))
+    story.append(Paragraph("<strong>Dr. MANIKANDAN K</strong><br/>Professor Grade 2<br/>Department of Database Systems<br/>School of Computer Science and Engineering (SCOPE)<br/>Cabin: SJT 411 A29 &nbsp;|&nbsp; Email: <a href='mailto:kmanikandan@vit.ac.in' color='#1E40AF'><b>kmanikandan@vit.ac.in</b></a><br/>Vellore Institute of Technology, Vellore - 632014, Tamil Nadu, India", cover_meta_body))
 
     # SUBMITTED BY Table
     story.append(Paragraph("SUBMITTED BY: PROJECT TEAM 7", cover_meta_label))
@@ -285,8 +285,8 @@ def build_pdf():
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
         ("FONTSIZE", (0, 0), (-1, 0), 7.5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3.5),
-        ("TOPPADDING", (0, 0), (-1, -1), 3.5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+        ("TOPPADDING", (0, 0), (-1, -1), 3),
         ("ALIGN", (0, 0), (-1, -1), "LEFT"),
         ("FONTNAME", (0, 1), (-1, -1), "Helvetica"),
         ("FONTSIZE", (0, 1), (-1, -1), 7.5),
@@ -294,7 +294,28 @@ def build_pdf():
         ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, C_LIGHT])
     ]))
     story.append(t_team)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 6))
+
+    # PROJECT DEPLOYMENT & REPOSITORY LINKS Card
+    story.append(Paragraph("PROJECT DEPLOYMENT & REPOSITORY LINKS", cover_meta_label))
+    links_data = [
+        [
+            Paragraph("<strong>Live Cloud Web Dashboard (Vercel):</strong><br/><a href='https://webdashboard-eta.vercel.app' color='#1E40AF'><b>https://webdashboard-eta.vercel.app</b></a>", ParagraphStyle("L1", parent=body_style, fontSize=7.8, leading=11, alignment=1)),
+            Paragraph("<strong>GitHub Open-Source Repository:</strong><br/><a href='https://github.com/adminsharpcode/visual-analytics-lab' color='#1E40AF'><b>https://github.com/adminsharpcode/visual-analytics-lab</b></a>", ParagraphStyle("L2", parent=body_style, fontSize=7.8, leading=11, alignment=1))
+        ]
+    ]
+    t_links = Table(links_data, colWidths=[3.4*inch, 3.4*inch])
+    t_links.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), C_LIGHT),
+        ("BOX", (0, 0), (-1, -1), 0.8, C_SKY),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING", (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    story.append(t_links)
+    story.append(Spacer(1, 6))
 
     story.append(Paragraph("Vellore Institute of Technology, Vellore - 632014, Tamil Nadu, India", cover_inst_style))
     story.append(Paragraph("October 2026", cover_inst_bold))
