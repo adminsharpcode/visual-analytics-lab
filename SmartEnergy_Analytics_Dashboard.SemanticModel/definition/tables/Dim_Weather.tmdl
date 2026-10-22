@@ -1,59 +1,59 @@
 table Dim_Weather
-	lineageTag: 8b939dca-2c52-4a00-9e48-f846a9344006
+	lineageTag: 3cc40f17-ba45-4b1c-90aa-1b5a7d8d5c93
 
 	column Date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: 879b5078-9cd4-4ed0-87d1-1588d2c46cdc
+		lineageTag: 485af4da-f418-4563-a8b2-3c079cdce796
 
 	column Hour
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: Hour
-		lineageTag: b9ec045c-7e7a-41f2-9253-78ea6636092a
+		lineageTag: 2eef98d8-5488-405a-a7c1-d97c63754f11
 
 	column AmbientTemp_C
 		dataType: double
 		formatString: 0.0
 		summarizeBy: average
 		sourceColumn: AmbientTemp_C
-		lineageTag: 4ed71c53-3127-4f49-8496-3fb739e9c172
+		lineageTag: 8a070899-8c9b-4e5d-a695-30ce573d8681
 
 	column Humidity_Pct
 		dataType: double
 		formatString: 0.0%
 		summarizeBy: average
 		sourceColumn: Humidity_Pct
-		lineageTag: 87946518-e2eb-452d-babf-47ae00e11ae8
+		lineageTag: 5038457c-e8a9-489d-943d-5e0470e9ba86
 
 	column SolarIrradiance_W_m2
 		dataType: double
 		formatString: #,0
 		summarizeBy: average
 		sourceColumn: SolarIrradiance_W_m2
-		lineageTag: ad778c5f-2a28-44cf-a0df-aa7afef7d464
+		lineageTag: 08398ae4-185d-4393-987d-76dc05770944
 
 	column CoolingDegreeHours
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: CoolingDegreeHours
-		lineageTag: 330c139e-6e30-48de-bf6d-fe9c074903ed
+		lineageTag: 268d81be-5c4c-42e8-a262-20982c18a524
 
 	column HeatingDegreeHours
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: HeatingDegreeHours
-		lineageTag: f648ab76-fc3c-4e7f-9174-80d49edcbd7e
+		lineageTag: 7ad69e52-fb39-466c-9c98-fc3fdd296075
 
 	partition Dim_Weather = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Weather.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Weather.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"Date", type date}, {"Hour", Int64.Type}, {"AmbientTemp_C", type number}, {"Humidity_Pct", type number},

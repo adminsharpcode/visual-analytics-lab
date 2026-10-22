@@ -390,7 +390,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_EnergyConsumption.csv"), [Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_EnergyConsumption.csv"), [Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"Timestamp", type datetime}, {"Date", type date}, {"Hour", Int64.Type}, {"FacilityID", type text},',
@@ -486,7 +486,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Facility.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Facility.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"FacilityID", type text}, {"FacilityName", type text}, {"Category", type text},',
@@ -579,7 +579,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Date.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Date.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"Date", type date}, {"Year", Int64.Type}, {"Quarter", type text}, {"Month", Int64.Type},',
@@ -639,7 +639,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Time.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Time.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"Hour", Int64.Type}, {"HourFormatted", type text}, {"Hour12", type text},',
@@ -714,7 +714,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Tariff.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Tariff.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"TariffID", type text}, {"TariffName", type text}, {"Category", type text},',
@@ -784,7 +784,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Weather.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Weather.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"Date", type date}, {"Hour", Int64.Type}, {"AmbientTemp_C", type number}, {"Humidity_Pct", type number},',
@@ -831,7 +831,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Appliance.csv"), [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Dim_Appliance.csv"), [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"ApplianceID", type text}, {"SubmeterCategory", type text}, {"Description", type text}, {"AvgShare_Pct", type number}',
@@ -896,7 +896,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_DemandForecast.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_DemandForecast.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"Date", type date}, {"Type", type text}, {"Actual_kWh", type number}, {"Forecast_kWh", type number}, {"Lower95_kWh", type number}, {"Upper95_kWh", type number}',
@@ -990,7 +990,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_Anomalies_Detailed.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_Anomalies_Detailed.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"Timestamp", type datetime}, {"FacilityID", type text}, {"ActivePower_kWh", type number},',
@@ -1051,7 +1051,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_LoadClusters.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_LoadClusters.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"FacilityID", type text}, {"Date", type date}, {"ClusterID", Int64.Type}, {"ClusterName", type text}, {"tSNE_1", type number}, {"tSNE_2", type number}',
@@ -1103,7 +1103,7 @@ def build_solution():
             "\t\tmode: import",
             "\t\tsource =",
             "\t\t\tlet",
-            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_ApplianceSubmeter.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),',
+            f'\t\t\t    Source = Csv.Document(File.Contents("{DATA_DIR}/Fact_ApplianceSubmeter.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),',
             '\t\t\t    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),',
             '\t\t\t    Typed = Table.TransformColumnTypes(Promoted, {',
             '\t\t\t        {"Date", type date}, {"Hour", Int64.Type}, {"FacilityID", type text}, {"ApplianceID", type text}, {"Submeter_kWh", type number}',
@@ -1221,8 +1221,9 @@ def build_solution():
             })
         ]
         for v in p1_visuals:
-            v_file = os.path.join(p1_vis_dir, v["name"] + ".json")
-            with open(v_file, "w", encoding="utf-8") as f:
+            v_folder = os.path.join(p1_vis_dir, v["name"])
+            os.makedirs(v_folder, exist_ok=True)
+            with open(os.path.join(v_folder, "visual.json"), "w", encoding="utf-8") as f:
                 json.dump(v, f, indent=2)
 
         # --- Page 2: 24x7 Matrix & Submetering ---
@@ -1271,8 +1272,9 @@ def build_solution():
             })
         ]
         for v in p2_visuals:
-            v_file = os.path.join(p2_vis_dir, v["name"] + ".json")
-            with open(v_file, "w", encoding="utf-8") as f:
+            v_folder = os.path.join(p2_vis_dir, v["name"])
+            os.makedirs(v_folder, exist_ok=True)
+            with open(os.path.join(v_folder, "visual.json"), "w", encoding="utf-8") as f:
                 json.dump(v, f, indent=2)
 
         # --- Page 3: ML Forecasting & Anomalies ---
@@ -1327,8 +1329,9 @@ def build_solution():
             })
         ]
         for v in p3_visuals:
-            v_file = os.path.join(p3_vis_dir, v["name"] + ".json")
-            with open(v_file, "w", encoding="utf-8") as f:
+            v_folder = os.path.join(p3_vis_dir, v["name"])
+            os.makedirs(v_folder, exist_ok=True)
+            with open(os.path.join(v_folder, "visual.json"), "w", encoding="utf-8") as f:
                 json.dump(v, f, indent=2)
 
         print(f"Successfully generated Power BI Project (.pbip) in {base_folder}")

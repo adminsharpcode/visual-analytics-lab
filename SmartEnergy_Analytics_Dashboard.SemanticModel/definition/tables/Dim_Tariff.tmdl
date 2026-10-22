@@ -1,65 +1,65 @@
 table Dim_Tariff
-	lineageTag: 9c042b40-c780-4eb5-8c9f-9b9f54f16fad
+	lineageTag: 220fc95b-87de-45bf-b2ef-a02d9947728d
 
 	column TariffID
 		dataType: string
 		isKey
 		summarizeBy: none
 		sourceColumn: TariffID
-		lineageTag: b0c90c4b-215e-43d6-897c-848b6ce059a0
+		lineageTag: 5bc22693-bc42-4308-a19a-67563eddbf98
 
 	column TariffName
 		dataType: string
 		summarizeBy: none
 		sourceColumn: TariffName
-		lineageTag: 5cfcea18-f49e-4e8f-8cab-c021d89d6e66
+		lineageTag: c67117b9-f2ae-4224-880c-ce5ea993a929
 
 	column Category
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Category
-		lineageTag: e2c46f13-b8b9-4a7f-8428-9c5130bc8754
+		lineageTag: 956fa955-6352-4aaf-a522-94ba1d021bf9
 
 	column PeakRate_INR
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: average
 		sourceColumn: PeakRate_INR
-		lineageTag: f050c5cd-7311-4afe-8aa1-6e97064cfb14
+		lineageTag: 842d24a0-779a-4055-adb6-1cff1f705b10
 
 	column ShoulderRate_INR
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: average
 		sourceColumn: ShoulderRate_INR
-		lineageTag: 59e4d132-194b-4265-9cd1-e00789bf2b89
+		lineageTag: d7da0da5-b486-4301-85b6-5accb86dae04
 
 	column OffPeakRate_INR
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: average
 		sourceColumn: OffPeakRate_INR
-		lineageTag: 09a7e0f1-dde9-4733-a3fd-c19f3f3cc783
+		lineageTag: 6dbda6d3-c9d0-4c5e-9b95-4ca132286c58
 
 	column DemandCharge_INR_kW
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: average
 		sourceColumn: DemandCharge_INR_kW
-		lineageTag: 6c05f55a-2ae5-464e-b094-fe7382a03042
+		lineageTag: a820787b-2196-4bed-b442-370add37d42d
 
 	column CarbonFactor_kgCO2_kWh
 		dataType: double
 		formatString: 0.000
 		summarizeBy: average
 		sourceColumn: CarbonFactor_kgCO2_kWh
-		lineageTag: bf9ea781-2d3d-4368-8ace-e93871f5563c
+		lineageTag: 5fe466f1-9f8c-4d91-89f7-b38bdcd67d64
 
 	partition Dim_Tariff = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Tariff.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Tariff.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"TariffID", type text}, {"TariffName", type text}, {"Category", type text},

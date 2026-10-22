@@ -1,43 +1,43 @@
 table Fact_ApplianceSubmeter
-	lineageTag: e73f8e3e-fac4-498b-a4fb-411dc99f380c
+	lineageTag: 429c0cf7-25a1-46f5-96d3-5fea75220f78
 
 	column Date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: 7fc479fb-87d2-4735-aca1-540d288b611c
+		lineageTag: d67f6088-9c63-4a70-b030-d7e3e1d49dfe
 
 	column Hour
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: Hour
-		lineageTag: e749688b-0159-4342-950f-d462a6caaeb6
+		lineageTag: 443aff54-a5c9-410d-a606-4a214f685aad
 
 	column FacilityID
 		dataType: string
 		summarizeBy: none
 		sourceColumn: FacilityID
-		lineageTag: 7011cd25-5590-47ce-8156-3b4d3c170d9e
+		lineageTag: f56dfa4e-147d-4202-b9f4-5d0a69be04ab
 
 	column ApplianceID
 		dataType: string
 		summarizeBy: none
 		sourceColumn: ApplianceID
-		lineageTag: 66f6ec81-a58d-42f7-952c-bbf568ee18d8
+		lineageTag: a690dc4e-dab7-42df-b4d7-8159f5d18a80
 
 	column Submeter_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Submeter_kWh
-		lineageTag: a754c17a-9a0c-416c-ab8a-94ecc8e48f05
+		lineageTag: 97289250-6d28-4112-9866-1a98658b2a65
 
 	partition Fact_ApplianceSubmeter = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_ApplianceSubmeter.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_ApplianceSubmeter.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"Date", type date}, {"Hour", Int64.Type}, {"FacilityID", type text}, {"ApplianceID", type text}, {"Submeter_kWh", type number}

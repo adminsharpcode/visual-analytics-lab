@@ -21,3 +21,4 @@ pbi_auth_state.json
 tools/
 .vercel/
 *.log
+~$*

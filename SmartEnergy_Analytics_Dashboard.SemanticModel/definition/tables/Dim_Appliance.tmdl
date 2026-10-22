@@ -1,37 +1,37 @@
 table Dim_Appliance
-	lineageTag: aca0f5e0-967a-4599-9204-900f6edea324
+	lineageTag: 4c863b74-62f1-4b18-9e70-4a3e8980512c
 
 	column ApplianceID
 		dataType: string
 		isKey
 		summarizeBy: none
 		sourceColumn: ApplianceID
-		lineageTag: 3bea22b6-032c-435a-82b6-afc710adf5ce
+		lineageTag: 72c54b1d-f9b8-4580-ba84-b2f6f5137d19
 
 	column SubmeterCategory
 		dataType: string
 		summarizeBy: none
 		sourceColumn: SubmeterCategory
-		lineageTag: f3911467-2d22-4996-ba20-07458444d706
+		lineageTag: f3a772ee-c8dd-407c-968d-6ea2f2a14a27
 
 	column Description
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Description
-		lineageTag: 4f29ec7d-1104-402e-83e0-285f3627b8f8
+		lineageTag: 9f364da1-904b-4ae6-9b97-9d8121148b08
 
 	column AvgShare_Pct
 		dataType: double
 		formatString: 0.0%
 		summarizeBy: average
 		sourceColumn: AvgShare_Pct
-		lineageTag: 256510f2-82fa-4ed6-8517-80273b3ef3c7
+		lineageTag: 2b3cbbee-10d9-4771-93df-9453f0c6b3c9
 
 	partition Dim_Appliance = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Appliance.csv"), [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Appliance.csv"), [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"ApplianceID", type text}, {"SubmeterCategory", type text}, {"Description", type text}, {"AvgShare_Pct", type number}

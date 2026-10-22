@@ -1,81 +1,81 @@
 table Dim_Facility
-	lineageTag: 2d236c3f-127c-48f0-b118-5a02f8b3c3e0
+	lineageTag: 3ebdc4ec-8358-4ad3-b817-b2dc24538b82
 
 	measure 'Average Energy Star Rating' = AVERAGE(Dim_Facility[EnergyStarRating])
 		formatString: 0.0
-		lineageTag: dd9c9aba-0797-42f0-8516-9eb3b56ee721
+		lineageTag: 3e814cf5-a5cb-415f-9554-adeab00dd249
 
 	column FacilityID
 		dataType: string
 		isKey
 		summarizeBy: none
 		sourceColumn: FacilityID
-		lineageTag: 52787d4a-1406-41d6-9701-9b2477e91a7c
+		lineageTag: 4724eaf3-d243-4bed-add4-70ac2df5aa06
 
 	column FacilityName
 		dataType: string
 		summarizeBy: none
 		sourceColumn: FacilityName
-		lineageTag: 58a733ad-f5f5-4e4f-aaaa-6bbd8fcf56bf
+		lineageTag: 469909b1-6506-40ff-8e0d-07ea50ad35dd
 
 	column Category
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Category
-		lineageTag: c28b45d9-bfa3-4f9a-a116-fa8934cdcfe3
+		lineageTag: d064bdb5-3412-43dc-ae97-1a0c07d2e000
 
 	column Area_SqFt
 		dataType: int64
 		formatString: #,0
 		summarizeBy: sum
 		sourceColumn: Area_SqFt
-		lineageTag: 63f4d226-c915-4c5f-a410-a698bd04c9d2
+		lineageTag: b72bf862-fa93-4991-8935-b6939917e50f
 
 	column Occupancy_Capacity
 		dataType: int64
 		formatString: #,0
 		summarizeBy: sum
 		sourceColumn: Occupancy_Capacity
-		lineageTag: a0cf890f-025c-406c-86d1-1ff86cbb880c
+		lineageTag: db29dbda-1f81-473a-97a0-753ce0fe9b10
 
 	column Baseline_kW
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Baseline_kW
-		lineageTag: f07a6412-74ad-43a8-ade2-d2499ff5d407
+		lineageTag: 2dfc5146-c79b-4cb4-90b0-33efd859aba7
 
 	column PeakDesign_kW
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: PeakDesign_kW
-		lineageTag: e95adf3a-abfd-4919-a620-7f869b84ca0d
+		lineageTag: 50e062c1-9790-4e70-982a-daccdaa14bb9
 
 	column EnergyStarRating
 		dataType: int64
 		summarizeBy: average
 		sourceColumn: EnergyStarRating
-		lineageTag: eaaa42c0-4006-4429-8df4-fea1d464d2c3
+		lineageTag: ade75c07-575e-44dd-8d79-b9be53ec1ce2
 
 	column SubstationZone
 		dataType: string
 		summarizeBy: none
 		sourceColumn: SubstationZone
-		lineageTag: 9e47e913-d507-481d-9898-7e1b8a8778fd
+		lineageTag: cf6dc498-8038-4867-b416-f303e6299877
 
 	column Solar_kWp
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Solar_kWp
-		lineageTag: 5c95e90c-72ee-4b36-996e-321f5580c9c5
+		lineageTag: 18bce293-b9b1-4cad-886b-8d152d2d0e71
 
 	partition Dim_Facility = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Facility.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Facility.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"FacilityID", type text}, {"FacilityName", type text}, {"Category", type text},

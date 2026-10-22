@@ -1,50 +1,50 @@
 table Fact_LoadClusters
-	lineageTag: 7dbdb2d2-cb32-4904-a2d5-d73f5f030988
+	lineageTag: ea7d3f4e-a2ec-4d6a-9980-774a36b7c0e6
 
 	column FacilityID
 		dataType: string
 		summarizeBy: none
 		sourceColumn: FacilityID
-		lineageTag: 9df823d8-241a-489f-9009-c589fc92e8e9
+		lineageTag: 6b97f31e-31bd-45fc-9ad4-5f5a4e0f6bcb
 
 	column Date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: b9131734-0a8f-4b18-8f96-ba491a15b30c
+		lineageTag: 5f4f7e05-6ca7-41d1-bf84-22bc3eb7e07e
 
 	column ClusterID
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: ClusterID
-		lineageTag: 070ad746-6dcd-4a8f-9298-2d7e8482354c
+		lineageTag: bb22e45b-29c8-4a06-bf70-ce2cb0b189ed
 
 	column ClusterName
 		dataType: string
 		summarizeBy: none
 		sourceColumn: ClusterName
-		lineageTag: 0f48ecbb-07af-4f5b-b139-28d30626cc10
+		lineageTag: 4392d147-e154-46e1-85bf-babe8063efa4
 
 	column tSNE_1
 		dataType: double
 		formatString: 0.00
 		summarizeBy: sum
 		sourceColumn: tSNE_1
-		lineageTag: e9314d76-d99e-4e3d-85dc-7a5ba4bf0eaf
+		lineageTag: 4eaf59df-6671-41a1-bb9c-b9c575d440c2
 
 	column tSNE_2
 		dataType: double
 		formatString: 0.00
 		summarizeBy: sum
 		sourceColumn: tSNE_2
-		lineageTag: f0a3ac8f-025a-4602-95e4-7affab37b00a
+		lineageTag: 7e57755f-2118-4ec4-b598-84879151070a
 
 	partition Fact_LoadClusters = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_LoadClusters.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_LoadClusters.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"FacilityID", type text}, {"Date", type date}, {"ClusterID", Int64.Type}, {"ClusterName", type text}, {"tSNE_1", type number}, {"tSNE_2", type number}

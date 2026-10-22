@@ -1,56 +1,56 @@
 table Fact_DemandForecast
-	lineageTag: b342e2d9-1fde-4142-bc04-5d0922d644f6
+	lineageTag: 51a9ef9d-583c-44e8-8301-d3fb111ddfd0
 
 	measure 'Forecast Projected Demand (kWh)' = SUM(Fact_DemandForecast[Forecast_kWh])
 		formatString: #,0.0
-		lineageTag: 6b92f520-9f3e-4366-abe6-d55f3b3a361c
+		lineageTag: 18512107-9709-4aa1-b8fd-22c40a339fd2
 
 	column Date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: 02f8c975-6663-4545-8565-f516e7b659be
+		lineageTag: 7322c697-5c32-4013-89fc-8ffeb404db69
 
 	column Type
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Type
-		lineageTag: 62411e6b-57b0-442c-b5c2-8103050479d6
+		lineageTag: 6aa5b2f6-55e1-4bff-bc28-091cc71e3a88
 
 	column Actual_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Actual_kWh
-		lineageTag: 9db39af1-a6f1-4a47-8f99-fb85c9f9dd5d
+		lineageTag: f014a2f3-cc78-452d-a91e-df7866bac121
 
 	column Forecast_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Forecast_kWh
-		lineageTag: 258fd0e8-beda-4451-950f-7ca9e678a157
+		lineageTag: d9ac3b82-1b4a-4b42-910f-97668096636f
 
 	column Lower95_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Lower95_kWh
-		lineageTag: b11678d8-b5a8-4549-b368-33e9e35898c8
+		lineageTag: 9028d5b9-287f-45e4-aeb1-1fe78f1a543c
 
 	column Upper95_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Upper95_kWh
-		lineageTag: 3d0a9f00-6346-48b5-b9da-b30478eb2e2c
+		lineageTag: 3d69a90c-8716-45e2-9ce6-6769766ed658
 
 	partition Fact_DemandForecast = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_DemandForecast.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_DemandForecast.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"Date", type date}, {"Type", type text}, {"Actual_kWh", type number}, {"Forecast_kWh", type number}, {"Lower95_kWh", type number}, {"Upper95_kWh", type number}

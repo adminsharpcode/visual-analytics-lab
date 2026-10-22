@@ -1,49 +1,49 @@
 table Dim_Time
-	lineageTag: dbcf7b93-26ff-47cc-9e10-a018c84f9a18
+	lineageTag: 52a8dcfd-103d-4706-a721-a7caad88a74b
 
 	column Hour
 		dataType: int64
 		isKey
 		summarizeBy: none
 		sourceColumn: Hour
-		lineageTag: 3d5ae05a-1a2a-4a32-8b03-87c3c68ccd3e
+		lineageTag: 9542c7a9-b977-45bd-aace-db8ab78e8a7d
 
 	column HourFormatted
 		dataType: string
 		sortByColumn: Hour
 		summarizeBy: none
 		sourceColumn: HourFormatted
-		lineageTag: 1cb30347-9e83-44e1-8fdd-e4a169b1d2a2
+		lineageTag: b0f599a6-edd7-406c-b804-7db5b50caf60
 
 	column Hour12
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Hour12
-		lineageTag: 0449cdf9-3252-43dc-827c-4535e4c04e4c
+		lineageTag: 5823b953-e1ae-487e-8645-bf08d1ee01cc
 
 	column PeriodOfDay
 		dataType: string
 		summarizeBy: none
 		sourceColumn: PeriodOfDay
-		lineageTag: 2bb74a4b-7577-4a12-a1c3-b558305e1a66
+		lineageTag: a0d4c75c-9f3b-42d5-b238-6f990e175c9f
 
 	column TariffBand
 		dataType: string
 		summarizeBy: none
 		sourceColumn: TariffBand
-		lineageTag: a973fec0-de0a-4eff-bc4d-1ac551723195
+		lineageTag: 7a14c668-6f55-485c-86ac-a27abe63ef85
 
 	column PeakTariffFlag
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: PeakTariffFlag
-		lineageTag: 3f610bb2-703c-498e-b8a6-485db3e18abf
+		lineageTag: 1fea4d53-0c30-411d-ac32-a44491657c9a
 
 	partition Dim_Time = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Time.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Time.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"Hour", Int64.Type}, {"HourFormatted", type text}, {"Hour12", type text},

@@ -1,85 +1,85 @@
 table Fact_Anomalies_Detailed
-	lineageTag: 05ac56d7-498c-4dc6-ad7a-0152b0e3e5e2
+	lineageTag: beabf6a5-f395-4de0-b420-6f9472014cad
 
 	measure 'Wasted Anomaly Cost (INR)' = SUM(Fact_Anomalies_Detailed[WastedCost_INR])
 		formatString: \₹#,0.00;(\₹#,0.00);\₹#,0.00
-		lineageTag: 2772dcb9-457e-409d-a72d-38ec611e71df
+		lineageTag: 559ba974-cefa-4b93-961b-412e9d670745
 
 	measure 'Excess Unscheduled Load (kWh)' = SUM(Fact_Anomalies_Detailed[Excess_kWh])
 		formatString: #,0.0
-		lineageTag: a6ad4444-6504-4505-9b6d-a1d0645b635a
+		lineageTag: 2d26173d-2a8e-4192-875b-0fb8ada78dcf
 
 	column Timestamp
 		dataType: dateTime
 		summarizeBy: none
 		sourceColumn: Timestamp
-		lineageTag: 6986bbe7-3ec0-484f-9fe8-eed3376c24f0
+		lineageTag: 0e14e61c-ae51-4db4-a128-e77fc87b4a48
 
 	column FacilityID
 		dataType: string
 		summarizeBy: none
 		sourceColumn: FacilityID
-		lineageTag: 9f7fe83c-9b6d-4452-8707-c09f1fae0e95
+		lineageTag: 586904e6-3b7e-4564-87a1-21bd2e871a5b
 
 	column ActivePower_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: ActivePower_kWh
-		lineageTag: b23f25e3-92c2-40c4-97b1-af75fd6e7de2
+		lineageTag: f80dcd1e-12cd-4325-b183-3332ba66387f
 
 	column RollingMean_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: RollingMean_kWh
-		lineageTag: b35ade86-216c-4f96-84ad-b568ca034639
+		lineageTag: 55ff9690-0d68-45e6-a3a3-c7fceacc2fde
 
 	column RollingStd_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: RollingStd_kWh
-		lineageTag: 0727bf64-d3e0-4509-bf26-a74db2fbbcf0
+		lineageTag: 6b66a7e3-1d68-4c9a-a244-d5914ab3e7e2
 
 	column UpperLimit_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: UpperLimit_kWh
-		lineageTag: f8614411-517a-4eef-8205-9437864813d1
+		lineageTag: 8910166f-5801-43eb-a3c4-fad2f5bf1f96
 
 	column Excess_kWh
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Excess_kWh
-		lineageTag: 47f05ab6-c749-4a05-8e14-01bb2c2f343e
+		lineageTag: a26aeab4-70d1-493f-b00e-38f500ce560f
 
 	column WastedCost_INR
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: WastedCost_INR
-		lineageTag: a4cb6fbe-6033-47c7-9799-a6639a9b5f3d
+		lineageTag: 3fa5e1cf-a370-4580-afa3-86e1d2ef5a08
 
 	column AnomalyType
 		dataType: string
 		summarizeBy: none
 		sourceColumn: AnomalyType
-		lineageTag: b9c8fce9-b4a3-4903-b3e6-031297c9eb73
+		lineageTag: 5f2eefc1-f789-4af6-9a0a-d53f6d2cc477
 
 	column Severity
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Severity
-		lineageTag: eaa20352-5ede-4768-a82f-a3cdf1b41b7b
+		lineageTag: b44a5c78-71a8-47c7-a065-2590494323ca
 
 	partition Fact_Anomalies_Detailed = m
 		mode: import
 		source =
 			let
-			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_Anomalies_Detailed.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_Anomalies_Detailed.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
 			        {"Timestamp", type datetime}, {"FacilityID", type text}, {"ActivePower_kWh", type number},
