@@ -1,0 +1,1115 @@
+{
+  "name": "SmartEnergy_Analytics_Model",
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "tables": [
+      {
+        "name": "Fact_EnergyConsumption",
+        "columns": [
+          {
+            "name": "Timestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "Timestamp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Hour",
+            "dataType": "int64",
+            "sourceColumn": "Hour",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FacilityID",
+            "dataType": "string",
+            "sourceColumn": "FacilityID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TariffID",
+            "dataType": "string",
+            "sourceColumn": "TariffID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActivePower_kWh",
+            "dataType": "double",
+            "sourceColumn": "ActivePower_kWh",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "ReactivePower_kVARh",
+            "dataType": "double",
+            "sourceColumn": "ReactivePower_kVARh",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "PowerFactor",
+            "dataType": "double",
+            "sourceColumn": "PowerFactor",
+            "summarizeBy": "average",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Voltage_V",
+            "dataType": "double",
+            "sourceColumn": "Voltage_V",
+            "summarizeBy": "average",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "TariffBand",
+            "dataType": "string",
+            "sourceColumn": "TariffBand",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PeakPeriodFlag",
+            "dataType": "int64",
+            "sourceColumn": "PeakPeriodFlag",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SolarGeneration_kWh",
+            "dataType": "double",
+            "sourceColumn": "SolarGeneration_kWh",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "NetGridImport_kWh",
+            "dataType": "double",
+            "sourceColumn": "NetGridImport_kWh",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Cost_INR",
+            "dataType": "double",
+            "sourceColumn": "Cost_INR",
+            "summarizeBy": "sum",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00"
+          },
+          {
+            "name": "CarbonEmission_kgCO2",
+            "dataType": "double",
+            "sourceColumn": "CarbonEmission_kgCO2",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "AnomalyFlag",
+            "dataType": "int64",
+            "sourceColumn": "AnomalyFlag",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AnomalyType",
+            "dataType": "string",
+            "sourceColumn": "AnomalyType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Carbon_kgCO2",
+            "dataType": "double",
+            "sourceColumn": "Carbon_kgCO2",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "NetImport_kWh",
+            "dataType": "double",
+            "sourceColumn": "NetImport_kWh",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "SolarSelfConsumptionRatio",
+            "dataType": "double",
+            "sourceColumn": "SolarSelfConsumptionRatio",
+            "summarizeBy": "average",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_EnergyConsumption",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_EnergyConsumption.csv\"), [Delimiter=\",\", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"Timestamp\", type datetime}, {\"Date\", type date}, {\"Hour\", Int64.Type}, {\"FacilityID\", type text}, {\"TariffID\", type text}, {\"ActivePower_kWh\", type number}, {\"ReactivePower_kVARh\", type number}, {\"PowerFactor\", type number}, {\"Voltage_V\", type number}, {\"TariffBand\", type text}, {\"PeakPeriodFlag\", Int64.Type}, {\"SolarGeneration_kWh\", type number}, {\"NetGridImport_kWh\", type number}, {\"Cost_INR\", type number}, {\"CarbonEmission_kgCO2\", type number}, {\"AnomalyFlag\", Int64.Type}, {\"AnomalyType\", type text}, {\"Carbon_kgCO2\", type number}, {\"NetImport_kWh\", type number}, {\"SolarSelfConsumptionRatio\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Active Consumption (GWh)",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[ActivePower_kWh]), 1000000)",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Total electrical energy consumed across metered facilities in GWh"
+          },
+          {
+            "name": "Total Electricity Spend (Cr)",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[Cost_INR]), 10000000)",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Total expenditure incurred on electrical utilities in Crores INR"
+          },
+          {
+            "name": "Total Solar Generation (GWh)",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), 1000000)",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Clean solar electricity generated by on-campus rooftop PV in GWh"
+          },
+          {
+            "name": "Solar Penetration %",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), SUM(Fact_EnergyConsumption[ActivePower_kWh]), 0)",
+            "formatString": "0.0%",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Percentage of gross consumption self-supplied by solar PV"
+          },
+          {
+            "name": "Campus Peak Demand (kW)",
+            "expression": "MAXX(VALUES(Fact_EnergyConsumption[Timestamp]), CALCULATE(SUM(Fact_EnergyConsumption[ActivePower_kWh])))",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Highest coincident aggregate power demand observed in kW"
+          },
+          {
+            "name": "Carbon Footprint (tCO2e)",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[Carbon_kgCO2]), 1000)",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Scope 2 grid emissions computed via CEA grid emissions factor (0.82 kgCO2/kWh)"
+          },
+          {
+            "name": "Clean Energy Offset (tCO2e)",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]) * 0.82, 1000)",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Avoided carbon emissions due to on-site solar offset"
+          },
+          {
+            "name": "Total Ingested Meter Records",
+            "expression": "COUNTROWS(Fact_EnergyConsumption)",
+            "formatString": "#,0",
+            "displayFolder": "01 Executive KPIs",
+            "description": "Total hourly metered telemetry readings in warehouse"
+          },
+          {
+            "name": "Average Energy Star Rating",
+            "expression": "AVERAGE(Dim_Facility[EnergyStarRating])",
+            "formatString": "#,0.00",
+            "displayFolder": "02 Benchmarking",
+            "description": "Campus-wide average facility Energy Star performance score"
+          },
+          {
+            "name": "Energy Use Intensity (EUI)",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[ActivePower_kWh]), SUM(Dim_Facility[Area_SqFt]), 0)",
+            "formatString": "#,0.00",
+            "displayFolder": "02 Benchmarking",
+            "description": "Annual active power consumption normalized by floor area (kWh/sq.ft)"
+          },
+          {
+            "name": "Blended Cost per kWh",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[Cost_INR]), SUM(Fact_EnergyConsumption[ActivePower_kWh]), 0)",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00",
+            "displayFolder": "02 Benchmarking",
+            "description": "Effective blended utility tariff rate in INR per kWh"
+          },
+          {
+            "name": "Average Power Factor",
+            "expression": "AVERAGE(Fact_EnergyConsumption[PowerFactor])",
+            "formatString": "#,0.00",
+            "displayFolder": "02 Benchmarking",
+            "description": "Displacement and distortion power factor efficiency index"
+          },
+          {
+            "name": "Net Grid Utility Import (GWh)",
+            "expression": "DIVIDE(SUM(Fact_EnergyConsumption[NetImport_kWh]), 1000000)",
+            "formatString": "#,0.00",
+            "displayFolder": "02 Benchmarking",
+            "description": "Electricity drawn from external DISCOM grid after solar offset"
+          },
+          {
+            "name": "Anomaly Event Count",
+            "expression": "CALCULATE(COUNTROWS(Fact_EnergyConsumption), Fact_EnergyConsumption[AnomalyFlag] = 1)",
+            "formatString": "#,0",
+            "displayFolder": "03 Anomaly Analytics",
+            "description": "Count of statistical breaches beyond Shewhart 3-sigma limits"
+          },
+          {
+            "name": "Anomaly Breach Rate %",
+            "expression": "DIVIDE([AnomalyEventCount], [Total Ingested Meter Records], 0)",
+            "formatString": "0.0%",
+            "displayFolder": "03 Anomaly Analytics",
+            "description": "Operational anomaly incidence rate"
+          },
+          {
+            "name": "Wasted Anomaly Cost (INR)",
+            "expression": "SUM(Fact_Anomalies_Detailed[WastedCost_INR])",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00",
+            "displayFolder": "03 Anomaly Analytics",
+            "description": "Direct financial waste attributable to equipment faults and chiller overrides"
+          },
+          {
+            "name": "Excess Unscheduled Load (kWh)",
+            "expression": "SUM(Fact_Anomalies_Detailed[Excess_kWh])",
+            "formatString": "#,0.00",
+            "displayFolder": "03 Anomaly Analytics",
+            "description": "Total excess kWh consumed during equipment anomaly windows"
+          },
+          {
+            "name": "Peak Period Consumption (GWh)",
+            "expression": "CALCULATE([Total Active Consumption (GWh)], Dim_Time[PeakTariffFlag] = 1)",
+            "formatString": "#,0.00",
+            "displayFolder": "04 Tariff Analytics",
+            "description": "Consumption during peak utility tariff band (17:00-22:00)"
+          },
+          {
+            "name": "Off-Peak Consumption (GWh)",
+            "expression": "CALCULATE([Total Active Consumption (GWh)], Dim_Time[PeakTariffFlag] = 0)",
+            "formatString": "#,0.00",
+            "displayFolder": "04 Tariff Analytics",
+            "description": "Consumption during shoulder and off-peak tariff bands"
+          },
+          {
+            "name": "Peak Tariff Spend (Cr)",
+            "expression": "CALCULATE([Total Electricity Spend (Cr)], Dim_Time[PeakTariffFlag] = 1)",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00",
+            "displayFolder": "04 Tariff Analytics",
+            "description": "Expenditure during premium peak rate window"
+          },
+          {
+            "name": "Solar Peak Coincidence Ratio",
+            "expression": "DIVIDE(CALCULATE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), Dim_Time[Hour] >= 11 && Dim_Time[Hour] <= 15), CALCULATE(SUM(Fact_EnergyConsumption[ActivePower_kWh]), Dim_Time[Hour] >= 11 && Dim_Time[Hour] <= 15), 0)",
+            "formatString": "0.0%",
+            "displayFolder": "04 Tariff Analytics",
+            "description": "Midday solar offset coverage during cooling peak"
+          },
+          {
+            "name": "Consumption PY (GWh)",
+            "expression": "CALCULATE([Total Active Consumption (GWh)], SAMEPERIODLASTYEAR(Dim_Date[Date]))",
+            "formatString": "#,0.00",
+            "displayFolder": "05 Time Intelligence"
+          },
+          {
+            "name": "Consumption YoY Growth %",
+            "expression": "DIVIDE([Total Active Consumption (GWh)] - [Consumption PY (GWh)], [Consumption PY (GWh)], 0)",
+            "formatString": "0.0%",
+            "displayFolder": "05 Time Intelligence"
+          },
+          {
+            "name": "Consumption MTD (GWh)",
+            "expression": "TOTALMTD([Total Active Consumption (GWh)], Dim_Date[Date])",
+            "formatString": "#,0.00",
+            "displayFolder": "05 Time Intelligence"
+          },
+          {
+            "name": "Consumption QTD (GWh)",
+            "expression": "TOTALQTD([Total Active Consumption (GWh)], Dim_Date[Date])",
+            "formatString": "#,0.00",
+            "displayFolder": "05 Time Intelligence"
+          },
+          {
+            "name": "Forecast Projected Demand (kWh)",
+            "expression": "SUM(Fact_DemandForecast[Forecast_kWh])",
+            "formatString": "#,0.00",
+            "displayFolder": "05 Time Intelligence",
+            "description": "Prophet/Ridge machine learning 30-day projected trajectory"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Facility",
+        "columns": [
+          {
+            "name": "FacilityID",
+            "dataType": "string",
+            "sourceColumn": "FacilityID",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "FacilityName",
+            "dataType": "string",
+            "sourceColumn": "FacilityName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Area_SqFt",
+            "dataType": "int64",
+            "sourceColumn": "Area_SqFt",
+            "summarizeBy": "none",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Occupancy_Capacity",
+            "dataType": "int64",
+            "sourceColumn": "Occupancy_Capacity",
+            "summarizeBy": "none",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Baseline_kW",
+            "dataType": "double",
+            "sourceColumn": "Baseline_kW",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "PeakDesign_kW",
+            "dataType": "double",
+            "sourceColumn": "PeakDesign_kW",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "EnergyStarRating",
+            "dataType": "int64",
+            "sourceColumn": "EnergyStarRating",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SubstationZone",
+            "dataType": "string",
+            "sourceColumn": "SubstationZone",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Solar_kWp",
+            "dataType": "double",
+            "sourceColumn": "Solar_kWp",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Facility",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Facility.csv\"), [Delimiter=\",\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"FacilityID\", type text}, {\"FacilityName\", type text}, {\"Category\", type text}, {\"Area_SqFt\", Int64.Type}, {\"Occupancy_Capacity\", Int64.Type}, {\"Baseline_kW\", type number}, {\"PeakDesign_kW\", type number}, {\"EnergyStarRating\", Int64.Type}, {\"SubstationZone\", type text}, {\"Solar_kWp\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Date",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "summarizeBy": "none",
+            "sortByColumn": "Month"
+          },
+          {
+            "name": "WeekNum",
+            "dataType": "int64",
+            "sourceColumn": "WeekNum",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayOfMonth",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "DayOfWeek",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayName",
+            "dataType": "string",
+            "sourceColumn": "DayName",
+            "summarizeBy": "none",
+            "sortByColumn": "DayOfWeek"
+          },
+          {
+            "name": "IsWeekend",
+            "dataType": "boolean",
+            "sourceColumn": "IsWeekend",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Season",
+            "dataType": "string",
+            "sourceColumn": "Season",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Date.csv\"), [Delimiter=\",\", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"Date\", type date}, {\"Year\", Int64.Type}, {\"Quarter\", Int64.Type}, {\"Month\", Int64.Type}, {\"MonthName\", type text}, {\"WeekNum\", Int64.Type}, {\"DayOfMonth\", Int64.Type}, {\"DayOfWeek\", Int64.Type}, {\"DayName\", type text}, {\"IsWeekend\", type logical}, {\"Season\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Time",
+        "columns": [
+          {
+            "name": "Hour",
+            "dataType": "int64",
+            "sourceColumn": "Hour",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "HourFormatted",
+            "dataType": "string",
+            "sourceColumn": "HourFormatted",
+            "summarizeBy": "none",
+            "sortByColumn": "Hour"
+          },
+          {
+            "name": "Hour12",
+            "dataType": "string",
+            "sourceColumn": "Hour12",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PeriodOfDay",
+            "dataType": "string",
+            "sourceColumn": "PeriodOfDay",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TariffBand",
+            "dataType": "string",
+            "sourceColumn": "TariffBand",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PeakTariffFlag",
+            "dataType": "int64",
+            "sourceColumn": "PeakTariffFlag",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Time",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Time.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"Hour\", Int64.Type}, {\"HourFormatted\", type text}, {\"Hour12\", type text}, {\"PeriodOfDay\", type text}, {\"TariffBand\", type text}, {\"PeakTariffFlag\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Tariff",
+        "columns": [
+          {
+            "name": "TariffID",
+            "dataType": "string",
+            "sourceColumn": "TariffID",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "TariffName",
+            "dataType": "string",
+            "sourceColumn": "TariffName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PeakRate_INR",
+            "dataType": "double",
+            "sourceColumn": "PeakRate_INR",
+            "summarizeBy": "none",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00"
+          },
+          {
+            "name": "ShoulderRate_INR",
+            "dataType": "double",
+            "sourceColumn": "ShoulderRate_INR",
+            "summarizeBy": "none",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00"
+          },
+          {
+            "name": "OffPeakRate_INR",
+            "dataType": "double",
+            "sourceColumn": "OffPeakRate_INR",
+            "summarizeBy": "none",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00"
+          },
+          {
+            "name": "DemandCharge_INR_kW",
+            "dataType": "double",
+            "sourceColumn": "DemandCharge_INR_kW",
+            "summarizeBy": "none",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00"
+          },
+          {
+            "name": "CarbonFactor_kgCO2_kWh",
+            "dataType": "double",
+            "sourceColumn": "CarbonFactor_kgCO2_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Tariff",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Tariff.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"TariffID\", type text}, {\"TariffName\", type text}, {\"Category\", type text}, {\"PeakRate_INR\", type number}, {\"ShoulderRate_INR\", type number}, {\"OffPeakRate_INR\", type number}, {\"DemandCharge_INR_kW\", type number}, {\"CarbonFactor_kgCO2_kWh\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Weather",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Hour",
+            "dataType": "int64",
+            "sourceColumn": "Hour",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AmbientTemp_C",
+            "dataType": "double",
+            "sourceColumn": "AmbientTemp_C",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Humidity_Pct",
+            "dataType": "double",
+            "sourceColumn": "Humidity_Pct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "SolarIrradiance_W_m2",
+            "dataType": "double",
+            "sourceColumn": "SolarIrradiance_W_m2",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "CoolingDegreeHours",
+            "dataType": "double",
+            "sourceColumn": "CoolingDegreeHours",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "HeatingDegreeHours",
+            "dataType": "double",
+            "sourceColumn": "HeatingDegreeHours",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Weather",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Weather.csv\"), [Delimiter=\",\", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"Date\", type date}, {\"Hour\", Int64.Type}, {\"AmbientTemp_C\", type number}, {\"Humidity_Pct\", type number}, {\"SolarIrradiance_W_m2\", type number}, {\"CoolingDegreeHours\", type number}, {\"HeatingDegreeHours\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Appliance",
+        "columns": [
+          {
+            "name": "ApplianceID",
+            "dataType": "string",
+            "sourceColumn": "ApplianceID",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "SubmeterCategory",
+            "dataType": "string",
+            "sourceColumn": "SubmeterCategory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AvgShare_Pct",
+            "dataType": "double",
+            "sourceColumn": "AvgShare_Pct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Appliance",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Appliance.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"ApplianceID\", type text}, {\"SubmeterCategory\", type text}, {\"Description\", type text}, {\"AvgShare_Pct\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_DemandForecast",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Type",
+            "dataType": "string",
+            "sourceColumn": "Type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Actual_kWh",
+            "dataType": "double",
+            "sourceColumn": "Actual_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Forecast_kWh",
+            "dataType": "double",
+            "sourceColumn": "Forecast_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Lower95_kWh",
+            "dataType": "double",
+            "sourceColumn": "Lower95_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Upper95_kWh",
+            "dataType": "double",
+            "sourceColumn": "Upper95_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_DemandForecast",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_DemandForecast.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"Date\", type date}, {\"Type\", type text}, {\"Actual_kWh\", type number}, {\"Forecast_kWh\", type number}, {\"Lower95_kWh\", type number}, {\"Upper95_kWh\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_Anomalies_Detailed",
+        "columns": [
+          {
+            "name": "Timestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "Timestamp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FacilityID",
+            "dataType": "string",
+            "sourceColumn": "FacilityID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ActivePower_kWh",
+            "dataType": "double",
+            "sourceColumn": "ActivePower_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "RollingMean_kWh",
+            "dataType": "double",
+            "sourceColumn": "RollingMean_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "RollingStd_kWh",
+            "dataType": "double",
+            "sourceColumn": "RollingStd_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "UpperLimit_kWh",
+            "dataType": "double",
+            "sourceColumn": "UpperLimit_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Excess_kWh",
+            "dataType": "double",
+            "sourceColumn": "Excess_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "WastedCost_INR",
+            "dataType": "double",
+            "sourceColumn": "WastedCost_INR",
+            "summarizeBy": "none",
+            "formatString": "\\\u20b9#,0.00;(\\\u20b9#,0.00);\\\u20b9#,0.00"
+          },
+          {
+            "name": "AnomalyType",
+            "dataType": "string",
+            "sourceColumn": "AnomalyType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Anomalies_Detailed",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_Anomalies_Detailed.csv\"), [Delimiter=\",\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"Timestamp\", type datetime}, {\"FacilityID\", type text}, {\"ActivePower_kWh\", type number}, {\"RollingMean_kWh\", type number}, {\"RollingStd_kWh\", type number}, {\"UpperLimit_kWh\", type number}, {\"Excess_kWh\", type number}, {\"WastedCost_INR\", type number}, {\"AnomalyType\", type text}, {\"Severity\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_LoadClusters",
+        "columns": [
+          {
+            "name": "FacilityID",
+            "dataType": "string",
+            "sourceColumn": "FacilityID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ClusterID",
+            "dataType": "int64",
+            "sourceColumn": "ClusterID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ClusterName",
+            "dataType": "string",
+            "sourceColumn": "ClusterName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tSNE_1",
+            "dataType": "double",
+            "sourceColumn": "tSNE_1",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "tSNE_2",
+            "dataType": "double",
+            "sourceColumn": "tSNE_2",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_LoadClusters",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_LoadClusters.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"FacilityID\", type text}, {\"Date\", type date}, {\"ClusterID\", Int64.Type}, {\"ClusterName\", type text}, {\"tSNE_1\", type number}, {\"tSNE_2\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_ApplianceSubmeter",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Hour",
+            "dataType": "int64",
+            "sourceColumn": "Hour",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FacilityID",
+            "dataType": "string",
+            "sourceColumn": "FacilityID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ApplianceID",
+            "dataType": "string",
+            "sourceColumn": "ApplianceID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Submeter_kWh",
+            "dataType": "double",
+            "sourceColumn": "Submeter_kWh",
+            "summarizeBy": "none",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_ApplianceSubmeter",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_ApplianceSubmeter.csv\"), [Delimiter=\",\", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\", {{\"Date\", type date}, {\"Hour\", Int64.Type}, {\"FacilityID\", type text}, {\"ApplianceID\", type text}, {\"Submeter_kWh\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "rel_Facility_FactEnergy",
+        "fromTable": "Fact_EnergyConsumption",
+        "fromColumn": "FacilityID",
+        "toTable": "Dim_Facility",
+        "toColumn": "FacilityID"
+      },
+      {
+        "name": "rel_Date_FactEnergy",
+        "fromTable": "Fact_EnergyConsumption",
+        "fromColumn": "Date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "rel_Time_FactEnergy",
+        "fromTable": "Fact_EnergyConsumption",
+        "fromColumn": "Hour",
+        "toTable": "Dim_Time",
+        "toColumn": "Hour"
+      },
+      {
+        "name": "rel_Tariff_FactEnergy",
+        "fromTable": "Fact_EnergyConsumption",
+        "fromColumn": "TariffID",
+        "toTable": "Dim_Tariff",
+        "toColumn": "TariffID"
+      },
+      {
+        "name": "rel_Facility_Anomalies",
+        "fromTable": "Fact_Anomalies_Detailed",
+        "fromColumn": "FacilityID",
+        "toTable": "Dim_Facility",
+        "toColumn": "FacilityID"
+      },
+      {
+        "name": "rel_Facility_Clusters",
+        "fromTable": "Fact_LoadClusters",
+        "fromColumn": "FacilityID",
+        "toTable": "Dim_Facility",
+        "toColumn": "FacilityID"
+      },
+      {
+        "name": "rel_Facility_Submeter",
+        "fromTable": "Fact_ApplianceSubmeter",
+        "fromColumn": "FacilityID",
+        "toTable": "Dim_Facility",
+        "toColumn": "FacilityID"
+      },
+      {
+        "name": "rel_Appliance_Submeter",
+        "fromTable": "Fact_ApplianceSubmeter",
+        "fromColumn": "ApplianceID",
+        "toTable": "Dim_Appliance",
+        "toColumn": "ApplianceID"
+      },
+      {
+        "name": "rel_Date_Submeter",
+        "fromTable": "Fact_ApplianceSubmeter",
+        "fromColumn": "Date",
+        "toTable": "Dim_Date",
+        "toColumn": "Date"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Fact_EnergyConsumption\", \"Dim_Facility\", \"Dim_Date\", \"Dim_Time\", \"Dim_Tariff\", \"Dim_Weather\", \"Dim_Appliance\", \"Fact_DemandForecast\", \"Fact_Anomalies_Detailed\", \"Fact_LoadClusters\", \"Fact_ApplianceSubmeter\"]"
+      }
+    ]
+  }
+}

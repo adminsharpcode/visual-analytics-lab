@@ -156,7 +156,13 @@ python run_pipeline.py
 ```
 *Executes ingestion validation, ETL transformation, Ridge/Prophet forecasting, Shewhart anomaly detection, $t$-SNE clustering, exports dashboard data, and verifies all 11 warehouse tables in ~17.2 seconds.*
 
-### 4. Launch Local Web Dashboard
+### 4. Open in Microsoft Power BI Desktop
+You can open the complete Power BI dashboard using any of the following 3 formats:
+- **Option A (Preferred - Power BI Project)**: Double-click **`SmartEnergy_Analytics_Dashboard.pbip`**. Power BI Desktop loads the complete Star Schema model, all 11 tables, 50+ DAX measures, and pre-built multi-page layouts directly.
+- **Option B (Power BI Report Package)**: Open **`SmartEnergy_Analytics_Dashboard.pbix`** directly in Power BI Desktop.
+- **Option C (Power BI Template)**: Double-click **`SmartEnergy_Analytics_Dashboard.pbit`** to import the model schema and reload fresh telemetry data.
+
+### 5. Launch Local Web Dashboard (Alternative Offline ECharts HUD)
 ```bash
 python Project_SmartEnergy_PowerBI/web_dashboard/serve_dashboard.py 8085
 ```
@@ -169,6 +175,11 @@ Open **[http://localhost:8085/index.html](http://localhost:8085/index.html)** in
 ```
 visual-analytics-lab/
 ├── README.md                                    # Master project documentation
+├── SmartEnergy_Analytics_Dashboard.pbip         # Official Power BI Project (Preferred)
+├── SmartEnergy_Analytics_Dashboard.pbit         # Power BI Template file
+├── SmartEnergy_Analytics_Dashboard.pbix         # Standalone Power BI Report
+├── SmartEnergy_Analytics_Dashboard.SemanticModel/ # Tabular BIM & Star Schema Model
+├── SmartEnergy_Analytics_Dashboard.Report/      # Multi-Page Power BI Report Layout
 ├── index.html                                   # Root redirect to web dashboard
 ├── vercel.json                                  # Cloud deployment configuration
 ├── run_pipeline.py                              # Master 1-click execution script
