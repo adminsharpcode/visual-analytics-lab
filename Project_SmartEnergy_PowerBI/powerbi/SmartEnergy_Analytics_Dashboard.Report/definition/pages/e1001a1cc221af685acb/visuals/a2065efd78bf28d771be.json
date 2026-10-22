@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a2065efd78bf28d771be",
+  "position": {
+    "x": 970,
+    "y": 20,
+    "z": 0,
+    "width": 290,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Campus Peak Demand (kW)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Campus Peak Demand (kW)",
+              "nativeQueryRef": "Campus Peak Demand (kW)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,40 @@
+table Dim_Appliance
+	lineageTag: 73721902-8032-468d-9164-9d9bbcf0d463
+
+	column ApplianceID
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: ApplianceID
+		lineageTag: cb6e32fa-e903-43ea-a842-9a59a2812e19
+
+	column SubmeterCategory
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SubmeterCategory
+		lineageTag: ed2c811c-8e01-4083-b413-e62b3c2cab83
+
+	column Description
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Description
+		lineageTag: 98e1b514-05e4-4f36-9b04-8c65f1dc354a
+
+	column AvgShare_Pct
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: average
+		sourceColumn: AvgShare_Pct
+		lineageTag: ace8a80a-d4e2-4438-b2b1-f2bbf924c560
+
+	partition Dim_Appliance = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Appliance.csv"), [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"ApplianceID", type text}, {"SubmeterCategory", type text}, {"Description", type text}, {"AvgShare_Pct", type number}
+			    })
+			in
+			    Typed

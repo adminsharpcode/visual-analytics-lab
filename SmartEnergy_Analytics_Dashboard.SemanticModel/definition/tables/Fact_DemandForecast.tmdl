@@ -1,0 +1,59 @@
+table Fact_DemandForecast
+	lineageTag: 1c019790-b2a7-419a-b9a8-aba11348915a
+
+	measure 'Forecast Projected Demand (kWh)' = SUM(Fact_DemandForecast[Forecast_kWh])
+		formatString: #,0.0
+		lineageTag: b3dc3f9d-da7e-4d62-8943-d52e463ca307
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: Date
+		lineageTag: b7352c00-bdd5-4e1b-b4a5-872e255faeed
+
+	column Type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Type
+		lineageTag: abef5459-41e0-49d1-85cc-719b4767404d
+
+	column Actual_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: Actual_kWh
+		lineageTag: 7792389a-8da8-4c9d-8f1b-79036245252d
+
+	column Forecast_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: Forecast_kWh
+		lineageTag: c2f4e488-179c-4beb-9916-0a083282eade
+
+	column Lower95_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: Lower95_kWh
+		lineageTag: 0ce29ea8-d6f7-4cc4-af5e-48547e188c9b
+
+	column Upper95_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: Upper95_kWh
+		lineageTag: 4968a425-4739-45b6-8d58-379817e8b839
+
+	partition Fact_DemandForecast = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_DemandForecast.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"Date", type date}, {"Type", type text}, {"Actual_kWh", type number}, {"Forecast_kWh", type number}, {"Lower95_kWh", type number}, {"Upper95_kWh", type number}
+			    })
+			in
+			    Typed

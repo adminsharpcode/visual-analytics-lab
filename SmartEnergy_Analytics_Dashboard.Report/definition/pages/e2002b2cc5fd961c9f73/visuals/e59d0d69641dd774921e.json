@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e59d0d69641dd774921e",
+  "position": {
+    "x": 1240,
+    "y": 140,
+    "z": 0,
+    "width": 640,
+    "height": 520,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Appliance"
+                    }
+                  },
+                  "Property": "SubmeterCategory"
+                }
+              },
+              "queryRef": "Dim_Appliance.SubmeterCategory",
+              "nativeQueryRef": "SubmeterCategory"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ApplianceSubmeter"
+                        }
+                      },
+                      "Property": "Submeter_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_ApplianceSubmeter.Submeter_kWh)",
+              "nativeQueryRef": "Sum of Submeter_kWh"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

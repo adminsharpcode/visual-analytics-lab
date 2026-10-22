@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3f875ca94061e26a6472",
+  "position": {
+    "x": 40,
+    "y": 20,
+    "z": 0,
+    "width": 580,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandForecast"
+                    }
+                  },
+                  "Property": "Forecast Projected Demand (kWh)"
+                }
+              },
+              "queryRef": "Fact_DemandForecast.Forecast Projected Demand (kWh)",
+              "nativeQueryRef": "Forecast Projected Demand (kWh)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

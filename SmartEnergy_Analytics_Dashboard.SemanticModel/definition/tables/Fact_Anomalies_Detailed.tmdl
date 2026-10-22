@@ -1,0 +1,90 @@
+table Fact_Anomalies_Detailed
+	lineageTag: d519a5db-39a6-4c68-9802-2474095b9bc7
+
+	measure 'Wasted Anomaly Cost (INR)' = SUM(Fact_Anomalies_Detailed[WastedCost_INR])
+		formatString: \₹#,0.00;(\₹#,0.00);\₹#,0.00
+		lineageTag: 26f3afd5-c11e-488c-8780-f77f44016441
+
+	measure 'Excess Unscheduled Load (kWh)' = SUM(Fact_Anomalies_Detailed[Excess_kWh])
+		formatString: #,0.0
+		lineageTag: 98824fb4-34a5-4509-b58d-527bd3437544
+
+	column Timestamp
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: Timestamp
+		lineageTag: 066c79c0-0a3f-41cf-8bc4-df64896e7919
+
+	column FacilityID
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FacilityID
+		lineageTag: 1c461234-84aa-477f-9187-a426efddc9e0
+
+	column ActivePower_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: ActivePower_kWh
+		lineageTag: 4c21c45d-07db-4f3d-bac8-2835ff684afb
+
+	column RollingMean_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: RollingMean_kWh
+		lineageTag: f0e9d647-60ba-4de2-bc5c-d35c1b3ae366
+
+	column RollingStd_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: RollingStd_kWh
+		lineageTag: ddd9dc7e-c12c-40e5-a304-6ff0c1a9ece1
+
+	column UpperLimit_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: UpperLimit_kWh
+		lineageTag: 0a5539d3-508b-450d-8b33-d7f50b99f966
+
+	column Excess_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: Excess_kWh
+		lineageTag: 894c45e9-1309-4901-a91f-586ac5a254d4
+
+	column WastedCost_INR
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: WastedCost_INR
+		lineageTag: 77150fe2-90b6-4164-aca5-280476459896
+
+	column AnomalyType
+		dataType: string
+		summarizeBy: none
+		sourceColumn: AnomalyType
+		lineageTag: 2df471d9-0b22-4472-b68d-af7849e4a63a
+
+	column Severity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Severity
+		lineageTag: 17544c46-14a5-44ea-a6b9-fe283bdb26e6
+
+	partition Fact_Anomalies_Detailed = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_Anomalies_Detailed.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"Timestamp", type datetime}, {"FacilityID", type text}, {"ActivePower_kWh", type number},
+			        {"RollingMean_kWh", type number}, {"RollingStd_kWh", type number}, {"UpperLimit_kWh", type number},
+			        {"Excess_kWh", type number}, {"WastedCost_INR", type number}, {"AnomalyType", type text}, {"Severity", type text}
+			    })
+			in
+			    Typed

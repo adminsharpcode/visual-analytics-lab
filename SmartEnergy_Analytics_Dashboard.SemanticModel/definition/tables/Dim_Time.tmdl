@@ -1,0 +1,53 @@
+table Dim_Time
+	lineageTag: 7403a66d-d82d-4c63-a24a-6d5b6c124a57
+
+	column Hour
+		dataType: int64
+		isKey
+		summarizeBy: none
+		sourceColumn: Hour
+		lineageTag: adabb09d-639d-41e4-9453-163fedcd93d5
+
+	column HourFormatted
+		dataType: string
+		sortByColumn: Hour
+		summarizeBy: none
+		sourceColumn: HourFormatted
+		lineageTag: f80a6cd6-2297-4cf4-a3b8-aa1935ba8cfe
+
+	column Hour12
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Hour12
+		lineageTag: aa207cb0-2cd0-4a7a-89c4-866b084ae4d4
+
+	column PeriodOfDay
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PeriodOfDay
+		lineageTag: 3c8db7f6-43aa-4786-b745-e064b5321d5f
+
+	column TariffBand
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TariffBand
+		lineageTag: 61a758cf-ac66-49cd-9d1f-3d7cc819fe40
+
+	column PeakTariffFlag
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: PeakTariffFlag
+		lineageTag: 24d3c9ef-2c07-4f55-8835-b9588fd9cff6
+
+	partition Dim_Time = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Time.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"Hour", Int64.Type}, {"HourFormatted", type text}, {"Hour12", type text},
+			        {"PeriodOfDay", type text}, {"TariffBand", type text}, {"PeakTariffFlag", Int64.Type}
+			    })
+			in
+			    Typed

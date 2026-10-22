@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3e6874ec5f7e44f6d4c5",
+  "position": {
+    "x": 920,
+    "y": 135,
+    "z": 0,
+    "width": 420,
+    "height": 80,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Time"
+                    }
+                  },
+                  "Property": "PeriodOfDay"
+                }
+              },
+              "queryRef": "Dim_Time.PeriodOfDay",
+              "nativeQueryRef": "PeriodOfDay"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -29,8 +29,9 @@ NUM_DEC = "#,0.00"
 PCT_FMT = "0.0%"
 
 def u16(text):
-    """PBIT text parts require UTF-16 LE with BOM."""
-    return b"\xff\xfe" + text.encode("utf-16-le")
+    """Power BI package text files require UTF-16 LE without BOM."""
+    return text.encode("utf-16le")
+
 
 def jdump(obj):
     return json.dumps(obj, indent=2, ensure_ascii=False)
@@ -544,26 +545,17 @@ for base_target in [POWERBI_DIR, ROOT_DIR]:
         json.dump(report_layout, f, indent=2)
 
 print(f"Generated Power BI Project (.pbip): {PROJ_NAME}.pbip with full SemanticModel & Report")
-
 # =========================================================================
-# 8. Build .PBIX (Direct Power BI Report File)
+# 8. Clean up any obsolete .pbix binaries (Power BI saves native .pbix on open)
 # =========================================================================
-# Clone base package envelope from Visual1.pbix while injecting new model & report layout
-seed_pbix = os.path.join(ROOT_DIR, "Lab_QP1_QP2", "Visual1.pbix")
 pbix_path_local = os.path.join(POWERBI_DIR, f"{PROJ_NAME}.pbix")
 pbix_path_root = os.path.join(ROOT_DIR, f"{PROJ_NAME}.pbix")
 
-if os.path.exists(seed_pbix):
-    for pbix_out in [pbix_path_local, pbix_path_root]:
-        with zipfile.ZipFile(seed_pbix, "r") as z_in:
-            with zipfile.ZipFile(pbix_out, "w", zipfile.ZIP_DEFLATED) as z_out:
-                for item in z_in.infolist():
-                    data = z_in.read(item.filename)
-                    if item.filename == "Metadata":
-                        data = u16(jdump(pbit_metadata))
-                    elif item.filename == "Settings":
-                        data = u16(jdump(pbit_settings))
-                    elif item.filename == "DiagramLayout":
-                        data = u16(jdump(diagram_layout))
-                    z_out.writestr(item, data)
-        print(f"Generated Power BI Report (.pbix): {pbix_out} ({os.path.getsize(pbix_out)/1024:.1f} KB)")
+for pbix_out in [pbix_path_local, pbix_path_root]:
+    if os.path.exists(pbix_out):
+        try:
+            os.remove(pbix_out)
+            print(f"Cleaned up legacy/corrupt binary package: {pbix_out}")
+        except Exception as e:
+            print(f"Warning: could not remove {pbix_out}: {e}")
+

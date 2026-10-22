@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2685557c14bf9d8bb8fa",
+  "position": {
+    "x": 660,
+    "y": 20,
+    "z": 0,
+    "width": 580,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "Wasted Anomaly Cost (INR)"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.Wasted Anomaly Cost (INR)",
+              "nativeQueryRef": "Wasted Anomaly Cost (INR)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

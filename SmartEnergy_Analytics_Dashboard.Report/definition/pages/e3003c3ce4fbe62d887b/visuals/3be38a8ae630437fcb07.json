@@ -1,0 +1,150 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3be38a8ae630437fcb07",
+  "position": {
+    "x": 40,
+    "y": 640,
+    "z": 0,
+    "width": 1840,
+    "height": 400,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "Timestamp"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.Timestamp",
+              "nativeQueryRef": "Timestamp"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "FacilityID"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.FacilityID",
+              "nativeQueryRef": "FacilityID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "ActivePower_kWh"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.ActivePower_kWh",
+              "nativeQueryRef": "ActivePower_kWh"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "RollingMean_kWh"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.RollingMean_kWh",
+              "nativeQueryRef": "RollingMean_kWh"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "UpperLimit_kWh"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.UpperLimit_kWh",
+              "nativeQueryRef": "UpperLimit_kWh"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "Excess_kWh"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.Excess_kWh",
+              "nativeQueryRef": "Excess_kWh"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "WastedCost_INR"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.WastedCost_INR",
+              "nativeQueryRef": "WastedCost_INR"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "AnomalyType"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.AnomalyType",
+              "nativeQueryRef": "AnomalyType"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "Severity"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.Severity",
+              "nativeQueryRef": "Severity"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

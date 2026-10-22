@@ -1,0 +1,118 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5bff5d3aee91b5e181f1",
+  "position": {
+    "x": 40,
+    "y": 140,
+    "z": 0,
+    "width": 1140,
+    "height": 480,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_DemandForecast"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "Fact_DemandForecast.Date",
+              "nativeQueryRef": "Date"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_DemandForecast"
+                        }
+                      },
+                      "Property": "Actual_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_DemandForecast.Actual_kWh)",
+              "nativeQueryRef": "Sum of Actual_kWh"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_DemandForecast"
+                        }
+                      },
+                      "Property": "Forecast_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_DemandForecast.Forecast_kWh)",
+              "nativeQueryRef": "Sum of Forecast_kWh"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_DemandForecast"
+                        }
+                      },
+                      "Property": "Upper95_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_DemandForecast.Upper95_kWh)",
+              "nativeQueryRef": "Sum of Upper95_kWh"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_DemandForecast"
+                        }
+                      },
+                      "Property": "Lower95_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_DemandForecast.Lower95_kWh)",
+              "nativeQueryRef": "Sum of Lower95_kWh"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

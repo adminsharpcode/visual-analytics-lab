@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "e2002b2cc84a1c6b6de3",
+  "displayName": "2 24x7 Matrix & Submetering",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920
+}

@@ -1,0 +1,53 @@
+table Fact_LoadClusters
+	lineageTag: 278d81e5-f0eb-461a-b9f4-964fa26a74b4
+
+	column FacilityID
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FacilityID
+		lineageTag: 8d0f5e06-9736-4dd2-a051-c82807055914
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: Date
+		lineageTag: 79854a95-3514-448d-b8e1-60dab6e5184e
+
+	column ClusterID
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: ClusterID
+		lineageTag: 74cd9beb-1948-4bc0-8ea5-a6380a7bef28
+
+	column ClusterName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ClusterName
+		lineageTag: 64858e2d-49fb-44fc-ad46-077a5658f020
+
+	column tSNE_1
+		dataType: double
+		formatString: 0.00
+		summarizeBy: sum
+		sourceColumn: tSNE_1
+		lineageTag: 1459d875-0d91-4821-b9f5-1301f392e37a
+
+	column tSNE_2
+		dataType: double
+		formatString: 0.00
+		summarizeBy: sum
+		sourceColumn: tSNE_2
+		lineageTag: d448f1e4-5ce6-41c7-b436-af0b6958c7bc
+
+	partition Fact_LoadClusters = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_LoadClusters.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"FacilityID", type text}, {"Date", type date}, {"ClusterID", Int64.Type}, {"ClusterName", type text}, {"tSNE_1", type number}, {"tSNE_2", type number}
+			    })
+			in
+			    Typed

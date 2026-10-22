@@ -1,0 +1,35 @@
+relationship rel_Facility_FactEnergy
+	fromColumn: Fact_EnergyConsumption.FacilityID
+	toColumn: Dim_Facility.FacilityID
+
+relationship rel_Date_FactEnergy
+	fromColumn: Fact_EnergyConsumption.Date
+	toColumn: Dim_Date.Date
+
+relationship rel_Time_FactEnergy
+	fromColumn: Fact_EnergyConsumption.Hour
+	toColumn: Dim_Time.Hour
+
+relationship rel_Tariff_FactEnergy
+	fromColumn: Fact_EnergyConsumption.TariffID
+	toColumn: Dim_Tariff.TariffID
+
+relationship rel_Facility_Anomalies
+	fromColumn: Fact_Anomalies_Detailed.FacilityID
+	toColumn: Dim_Facility.FacilityID
+
+relationship rel_Facility_Clusters
+	fromColumn: Fact_LoadClusters.FacilityID
+	toColumn: Dim_Facility.FacilityID
+
+relationship rel_Facility_Submeter
+	fromColumn: Fact_ApplianceSubmeter.FacilityID
+	toColumn: Dim_Facility.FacilityID
+
+relationship rel_Appliance_Submeter
+	fromColumn: Fact_ApplianceSubmeter.ApplianceID
+	toColumn: Dim_Appliance.ApplianceID
+
+relationship rel_Date_Submeter
+	fromColumn: Fact_ApplianceSubmeter.Date
+	toColumn: Dim_Date.Date

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "87d893787b3b6ca4bd8a",
+  "position": {
+    "x": 960,
+    "y": 20,
+    "z": 0,
+    "width": 430,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Average Power Factor"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Average Power Factor",
+              "nativeQueryRef": "Average Power Factor"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6856b1540c017196cca6",
+  "position": {
+    "x": 1420,
+    "y": 20,
+    "z": 0,
+    "width": 460,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Net Grid Import (GWh)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Net Grid Import (GWh)",
+              "nativeQueryRef": "Net Grid Import (GWh)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

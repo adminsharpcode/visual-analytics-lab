@@ -1,0 +1,87 @@
+table Dim_Date
+	dataCategory: Time
+	lineageTag: 16985058-abfd-4b98-8e8e-62a14bcd30e7
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: Date
+		lineageTag: 457fdf89-91bf-437d-ac3f-d39b4929f687
+
+	column Year
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Year
+		lineageTag: 1f360c85-9ac3-4c6e-b51a-5d2ccf232724
+
+	column Quarter
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Quarter
+		lineageTag: 71ba3cca-ef1c-4624-bd0a-a8124306d98d
+
+	column Month
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Month
+		lineageTag: 4c70cf1a-902e-42d5-bf00-14fc19a6161e
+
+	column MonthName
+		dataType: string
+		sortByColumn: Month
+		summarizeBy: none
+		sourceColumn: MonthName
+		lineageTag: 0f368fff-f622-41df-a318-df007901a01d
+
+	column WeekNum
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: WeekNum
+		lineageTag: 27cc2735-45a8-4900-aa3e-af8412e7dafe
+
+	column DayOfMonth
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: DayOfMonth
+		lineageTag: 34c66dd4-4b0b-4c7c-a59a-6513565e3ad4
+
+	column DayOfWeek
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+		lineageTag: 7e15733b-baf0-4373-bf0a-8f4a2e807801
+
+	column DayName
+		dataType: string
+		sortByColumn: DayOfWeek
+		summarizeBy: none
+		sourceColumn: DayName
+		lineageTag: 73671ae5-fd56-4d77-9199-dc9f27ac74e4
+
+	column IsWeekend
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: IsWeekend
+		lineageTag: cd2c74dd-3fad-40fd-ae6f-ae278c378534
+
+	column Season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Season
+		lineageTag: 1469935b-6243-46b4-b04e-73b46bc12a67
+
+	partition Dim_Date = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Date.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"Date", type date}, {"Year", Int64.Type}, {"Quarter", Int64.Type}, {"Month", Int64.Type},
+			        {"MonthName", type text}, {"WeekNum", Int64.Type}, {"DayOfMonth", Int64.Type}, {"DayOfWeek", Int64.Type},
+			        {"DayName", type text}, {"IsWeekend", type logical}, {"Season", type text}
+			    })
+			in
+			    Typed

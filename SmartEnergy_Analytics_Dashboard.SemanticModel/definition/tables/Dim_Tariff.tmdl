@@ -1,0 +1,70 @@
+table Dim_Tariff
+	lineageTag: 1b6ac6ae-b98c-4b6d-9d23-d5831e96d9b7
+
+	column TariffID
+		dataType: string
+		isKey
+		summarizeBy: none
+		sourceColumn: TariffID
+		lineageTag: 59e7088f-b19f-4915-89a5-0f597244893f
+
+	column TariffName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TariffName
+		lineageTag: 341e6db4-d61e-4986-aace-40e59aad7fce
+
+	column Category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Category
+		lineageTag: ea4179d1-1804-434d-97e0-fa473f62eed1
+
+	column PeakRate_INR
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: average
+		sourceColumn: PeakRate_INR
+		lineageTag: 3b6b39a1-307f-4e28-9a34-c9a7b8a1ce12
+
+	column ShoulderRate_INR
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: average
+		sourceColumn: ShoulderRate_INR
+		lineageTag: a678e294-9616-4184-ad99-b633d1d76129
+
+	column OffPeakRate_INR
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: average
+		sourceColumn: OffPeakRate_INR
+		lineageTag: 2af3bfa4-7fc4-4132-bb38-cb2b9770ab81
+
+	column DemandCharge_INR_kW
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: average
+		sourceColumn: DemandCharge_INR_kW
+		lineageTag: 1be5d07b-c02d-41f0-962f-600b2d15200f
+
+	column CarbonFactor_kgCO2_kWh
+		dataType: double
+		formatString: 0.000
+		summarizeBy: average
+		sourceColumn: CarbonFactor_kgCO2_kWh
+		lineageTag: 3070e183-078e-487e-8b09-9891f7a1aae7
+
+	partition Dim_Tariff = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Tariff.csv"), [Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"TariffID", type text}, {"TariffName", type text}, {"Category", type text},
+			        {"PeakRate_INR", type number}, {"ShoulderRate_INR", type number}, {"OffPeakRate_INR", type number},
+			        {"DemandCharge_INR_kW", type number}, {"CarbonFactor_kgCO2_kWh", type number}
+			    })
+			in
+			    Typed

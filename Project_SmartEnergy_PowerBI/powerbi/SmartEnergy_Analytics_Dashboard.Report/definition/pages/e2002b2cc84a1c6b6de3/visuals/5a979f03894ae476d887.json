@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5a979f03894ae476d887",
+  "position": {
+    "x": 40,
+    "y": 680,
+    "z": 0,
+    "width": 940,
+    "height": 360,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Tariff"
+                    }
+                  },
+                  "Property": "TariffName"
+                }
+              },
+              "queryRef": "Dim_Tariff.TariffName",
+              "nativeQueryRef": "TariffName"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_EnergyConsumption"
+                        }
+                      },
+                      "Property": "Cost_INR"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_EnergyConsumption.Cost_INR)",
+              "nativeQueryRef": "Sum of Cost_INR"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

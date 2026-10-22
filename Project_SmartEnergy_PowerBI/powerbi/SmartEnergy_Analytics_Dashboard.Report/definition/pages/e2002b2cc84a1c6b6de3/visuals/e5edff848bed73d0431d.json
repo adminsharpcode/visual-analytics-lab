@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e5edff848bed73d0431d",
+  "position": {
+    "x": 40,
+    "y": 20,
+    "z": 0,
+    "width": 430,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Peak Period Consumption (GWh)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Peak Period Consumption (GWh)",
+              "nativeQueryRef": "Peak Period Consumption (GWh)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

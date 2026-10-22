@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "SmartEnergy_Analytics_Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8547d861-4b30-441d-88af-c4f1aa236d80"
+  }
+}

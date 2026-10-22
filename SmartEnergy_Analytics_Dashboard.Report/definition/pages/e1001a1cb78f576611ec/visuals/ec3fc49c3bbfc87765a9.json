@@ -1,0 +1,150 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ec3fc49c3bbfc87765a9",
+  "position": {
+    "x": 40,
+    "y": 730,
+    "z": 0,
+    "width": 1840,
+    "height": 310,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Facility"
+                    }
+                  },
+                  "Property": "FacilityID"
+                }
+              },
+              "queryRef": "Dim_Facility.FacilityID",
+              "nativeQueryRef": "FacilityID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Facility"
+                    }
+                  },
+                  "Property": "FacilityName"
+                }
+              },
+              "queryRef": "Dim_Facility.FacilityName",
+              "nativeQueryRef": "FacilityName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Facility"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "Dim_Facility.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Facility"
+                    }
+                  },
+                  "Property": "Area_SqFt"
+                }
+              },
+              "queryRef": "Dim_Facility.Area_SqFt",
+              "nativeQueryRef": "Area_SqFt"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Facility"
+                    }
+                  },
+                  "Property": "EnergyStarRating"
+                }
+              },
+              "queryRef": "Dim_Facility.EnergyStarRating",
+              "nativeQueryRef": "EnergyStarRating"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Total Active Consumption (GWh)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Total Active Consumption (GWh)",
+              "nativeQueryRef": "Total Active Consumption (GWh)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Total Electricity Spend (Cr)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Total Electricity Spend (Cr)",
+              "nativeQueryRef": "Total Electricity Spend (Cr)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Total Solar Generation (GWh)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Total Solar Generation (GWh)",
+              "nativeQueryRef": "Total Solar Generation (GWh)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Solar Penetration %"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Solar Penetration %",
+              "nativeQueryRef": "Solar Penetration %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

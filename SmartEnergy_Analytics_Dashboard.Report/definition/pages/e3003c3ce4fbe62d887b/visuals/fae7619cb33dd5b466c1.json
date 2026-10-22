@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "fae7619cb33dd5b466c1",
+  "position": {
+    "x": 1200,
+    "y": 140,
+    "z": 0,
+    "width": 680,
+    "height": 480,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "Timestamp"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.Timestamp",
+              "nativeQueryRef": "Timestamp"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_Anomalies_Detailed"
+                        }
+                      },
+                      "Property": "ActivePower_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_Anomalies_Detailed.ActivePower_kWh)",
+              "nativeQueryRef": "Sum of ActivePower_kWh"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_Anomalies_Detailed"
+                        }
+                      },
+                      "Property": "UpperLimit_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_Anomalies_Detailed.UpperLimit_kWh)",
+              "nativeQueryRef": "Sum of UpperLimit_kWh"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_Anomalies_Detailed"
+                        }
+                      },
+                      "Property": "RollingMean_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_Anomalies_Detailed.RollingMean_kWh)",
+              "nativeQueryRef": "Sum of RollingMean_kWh"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

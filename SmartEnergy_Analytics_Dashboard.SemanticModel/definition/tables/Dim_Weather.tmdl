@@ -1,0 +1,63 @@
+table Dim_Weather
+	lineageTag: 50b4bbfe-802b-47b9-818a-0b57214103ec
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: Date
+		lineageTag: eee81f90-7170-4d78-a96a-5345210c03d5
+
+	column Hour
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Hour
+		lineageTag: fe15a0a3-746e-4e5c-b222-6c7598fbd410
+
+	column AmbientTemp_C
+		dataType: double
+		formatString: 0.0
+		summarizeBy: average
+		sourceColumn: AmbientTemp_C
+		lineageTag: 01faaf96-2d9d-44e0-bb74-69a1158ca717
+
+	column Humidity_Pct
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: average
+		sourceColumn: Humidity_Pct
+		lineageTag: 8f8907a2-43f1-43c5-a364-8c47c7cc12f3
+
+	column SolarIrradiance_W_m2
+		dataType: double
+		formatString: #,0
+		summarizeBy: average
+		sourceColumn: SolarIrradiance_W_m2
+		lineageTag: 91e8f669-1370-480d-b7ec-547208c2783f
+
+	column CoolingDegreeHours
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: CoolingDegreeHours
+		lineageTag: 9465699d-c722-4c9e-8089-8447a5f1787e
+
+	column HeatingDegreeHours
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: HeatingDegreeHours
+		lineageTag: 6c8bfc86-f1b8-4ad5-943b-3373203ccd8d
+
+	partition Dim_Weather = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Weather.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"Date", type date}, {"Hour", Int64.Type}, {"AmbientTemp_C", type number}, {"Humidity_Pct", type number},
+			        {"SolarIrradiance_W_m2", type number}, {"CoolingDegreeHours", type number}, {"HeatingDegreeHours", type number}
+			    })
+			in
+			    Typed

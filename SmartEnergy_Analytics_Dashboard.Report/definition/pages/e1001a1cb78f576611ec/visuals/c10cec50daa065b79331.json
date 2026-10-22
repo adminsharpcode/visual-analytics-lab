@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c10cec50daa065b79331",
+  "position": {
+    "x": 1280,
+    "y": 20,
+    "z": 0,
+    "width": 290,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Carbon Footprint (tCO2e)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Carbon Footprint (tCO2e)",
+              "nativeQueryRef": "Carbon Footprint (tCO2e)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

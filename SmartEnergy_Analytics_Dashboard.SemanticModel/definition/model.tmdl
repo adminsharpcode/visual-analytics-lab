@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
+annotation PBI_QueryOrder = ["Fact_EnergyConsumption", "Dim_Facility", "Dim_Date", "Dim_Time", "Dim_Tariff", "Dim_Weather", "Dim_Appliance", "Fact_DemandForecast", "Fact_Anomalies_Detailed", "Fact_LoadClusters", "Fact_ApplianceSubmeter"]
+
+ref table Fact_EnergyConsumption
+ref table Dim_Facility
+ref table Dim_Date
+ref table Dim_Time
+ref table Dim_Tariff
+ref table Dim_Weather
+ref table Dim_Appliance
+ref table Fact_DemandForecast
+ref table Fact_Anomalies_Detailed
+ref table Fact_LoadClusters
+ref table Fact_ApplianceSubmeter
+
+ref cultureInfo en-US

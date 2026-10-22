@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0bc34fe9117ae2ac0e89",
+  "position": {
+    "x": 1000,
+    "y": 680,
+    "z": 0,
+    "width": 880,
+    "height": 360,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Appliance"
+                    }
+                  },
+                  "Property": "ApplianceID"
+                }
+              },
+              "queryRef": "Dim_Appliance.ApplianceID",
+              "nativeQueryRef": "ApplianceID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Appliance"
+                    }
+                  },
+                  "Property": "SubmeterCategory"
+                }
+              },
+              "queryRef": "Dim_Appliance.SubmeterCategory",
+              "nativeQueryRef": "SubmeterCategory"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Appliance"
+                    }
+                  },
+                  "Property": "Description"
+                }
+              },
+              "queryRef": "Dim_Appliance.Description",
+              "nativeQueryRef": "Description"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_ApplianceSubmeter"
+                        }
+                      },
+                      "Property": "Submeter_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_ApplianceSubmeter.Submeter_kWh)",
+              "nativeQueryRef": "Sum of Submeter_kWh"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "785a0cd720c27840814b",
+  "position": {
+    "x": 40,
+    "y": 20,
+    "z": 0,
+    "width": 290,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_EnergyConsumption"
+                    }
+                  },
+                  "Property": "Total Active Consumption (GWh)"
+                }
+              },
+              "queryRef": "Fact_EnergyConsumption.Total Active Consumption (GWh)",
+              "nativeQueryRef": "Total Active Consumption (GWh)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

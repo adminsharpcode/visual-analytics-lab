@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "021795102b606b416745",
+  "position": {
+    "x": 1280,
+    "y": 20,
+    "z": 0,
+    "width": 600,
+    "height": 100,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Anomalies_Detailed"
+                    }
+                  },
+                  "Property": "Excess Unscheduled Load (kWh)"
+                }
+              },
+              "queryRef": "Fact_Anomalies_Detailed.Excess Unscheduled Load (kWh)",
+              "nativeQueryRef": "Excess Unscheduled Load (kWh)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

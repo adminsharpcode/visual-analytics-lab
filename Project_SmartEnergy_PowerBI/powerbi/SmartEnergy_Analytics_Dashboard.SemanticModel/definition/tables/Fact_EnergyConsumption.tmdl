@@ -1,0 +1,200 @@
+table Fact_EnergyConsumption
+	lineageTag: 3a9b2ec8-8736-49f6-ad11-39ae778a84b4
+
+	measure 'Total Active Consumption (GWh)' = DIVIDE(SUM(Fact_EnergyConsumption[ActivePower_kWh]), 1000000)
+		formatString: #,0.00
+		lineageTag: 76e0507f-6ad2-4891-8079-2808f99bd329
+
+	measure 'Total Electricity Spend (Cr)' = DIVIDE(SUM(Fact_EnergyConsumption[Cost_INR]), 10000000)
+		formatString: \₹#,0.00;(\₹#,0.00);\₹#,0.00
+		lineageTag: 6859c73f-5fa6-4133-aaad-2ff9a0bcc935
+
+	measure 'Total Solar Generation (GWh)' = DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), 1000000)
+		formatString: #,0.00
+		lineageTag: 24aaa4f8-0b9b-4944-bdd9-1c24ca4fcd74
+
+	measure 'Solar Penetration %' = DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), SUM(Fact_EnergyConsumption[ActivePower_kWh]), 0)
+		formatString: 0.0%
+		lineageTag: 9d020d9b-ad2a-4669-b008-33e67c1bdbf2
+
+	measure 'Campus Peak Demand (kW)' = MAXX(VALUES(Fact_EnergyConsumption[Timestamp]), CALCULATE(SUM(Fact_EnergyConsumption[ActivePower_kWh])))
+		formatString: #,0.0
+		lineageTag: aaea0402-21c6-4a00-9bbd-d272772fbe88
+
+	measure 'Carbon Footprint (tCO2e)' = DIVIDE(SUM(Fact_EnergyConsumption[Carbon_kgCO2]), 1000)
+		formatString: #,0.0
+		lineageTag: 4a0ad654-c2ec-4528-9388-6ee84f371aa1
+
+	measure 'Clean Energy Offset (tCO2e)' = DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]) * 0.82, 1000)
+		formatString: #,0.0
+		lineageTag: e9332f5b-8d1c-4ff1-b172-fd011b2c90dd
+
+	measure 'Operational Anomaly Count' = CALCULATE(COUNTROWS(Fact_EnergyConsumption), Fact_EnergyConsumption[AnomalyFlag] = 1)
+		formatString: #,0
+		lineageTag: d4531e2d-163e-42c2-94ca-6c6e72060e5b
+
+	measure 'Net Grid Import (GWh)' = DIVIDE(SUM(Fact_EnergyConsumption[NetImport_kWh]), 1000000)
+		formatString: #,0.00
+		lineageTag: 79b40cc4-6d7c-4005-8bb2-f2cd2fea38bb
+
+	measure 'Average Power Factor' = AVERAGE(Fact_EnergyConsumption[PowerFactor])
+		formatString: 0.000
+		lineageTag: 7e190332-30bd-4017-951e-b8067a5c411d
+
+	measure 'Peak Period Consumption (GWh)' = CALCULATE([Total Active Consumption (GWh)], Dim_Time[PeakTariffFlag] = 1)
+		formatString: #,0.00
+		lineageTag: 863a8bef-9424-4e0c-bcb4-303d6f7866d2
+
+	measure 'Off-Peak Consumption (GWh)' = CALCULATE([Total Active Consumption (GWh)], Dim_Time[PeakTariffFlag] = 0)
+		formatString: #,0.00
+		lineageTag: 5848b3f2-4751-477c-b52b-cbbef7df34a7
+
+	column Timestamp
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: Timestamp
+		lineageTag: c36e5c48-9965-46ba-b3ea-1bd7753b3362
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: Date
+		lineageTag: 686f1c69-566c-4d25-a659-b494464327f2
+
+	column Hour
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Hour
+		lineageTag: efd0418e-7331-476e-aab2-92fef1774221
+
+	column FacilityID
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FacilityID
+		lineageTag: ce5876a9-b1eb-46fc-9ede-c20a23fe7c22
+
+	column TariffID
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TariffID
+		lineageTag: 211918fd-aa43-4ead-b4a8-2057f5857c8e
+
+	column ActivePower_kWh
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: ActivePower_kWh
+		lineageTag: 013b5281-828c-4d00-9fc2-ecf1f2e80d36
+
+	column ReactivePower_kVARh
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: ReactivePower_kVARh
+		lineageTag: ac9ff7b4-01cd-4a4d-890d-18e939679923
+
+	column PowerFactor
+		dataType: double
+		formatString: 0.000
+		summarizeBy: average
+		sourceColumn: PowerFactor
+		lineageTag: 963b78f4-5b0b-47ab-b03f-ffb45f32285a
+
+	column Voltage_V
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: average
+		sourceColumn: Voltage_V
+		lineageTag: bf8a88eb-0089-407c-801f-aefc8586c65f
+
+	column TariffBand
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TariffBand
+		lineageTag: 8737ee97-0cc6-4b17-9f34-d4f32fba0893
+
+	column PeakPeriodFlag
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: PeakPeriodFlag
+		lineageTag: 08bb213c-aa5b-4ed4-837f-47070b4518cc
+
+	column SolarGeneration_kWh
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: SolarGeneration_kWh
+		lineageTag: 18b7a763-1380-4f27-8fec-1affca414d2b
+
+	column NetGridImport_kWh
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: NetGridImport_kWh
+		lineageTag: 282b9b9b-a93b-484e-b2f1-c1e3812848f5
+
+	column Cost_INR
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: Cost_INR
+		lineageTag: cb4b8ac1-5957-4b4a-b9e0-b72f11604399
+
+	column CarbonEmission_kgCO2
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: CarbonEmission_kgCO2
+		lineageTag: bae62e44-03a5-4597-83a1-5344852dd7f8
+
+	column AnomalyFlag
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: AnomalyFlag
+		lineageTag: 5e451564-c646-4894-a182-be7c9b398f86
+
+	column AnomalyType
+		dataType: string
+		summarizeBy: none
+		sourceColumn: AnomalyType
+		lineageTag: a4aea729-cd44-4dcc-a683-1c944e7c92d1
+
+	column Carbon_kgCO2
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: Carbon_kgCO2
+		lineageTag: 6119f0af-536e-486b-a126-6e1512b29d90
+
+	column NetImport_kWh
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: sum
+		sourceColumn: NetImport_kWh
+		lineageTag: 16e611a3-14bf-47c1-a30a-01eb77f3f800
+
+	column SolarSelfConsumptionRatio
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: average
+		sourceColumn: SolarSelfConsumptionRatio
+		lineageTag: b3593b8e-e7b2-4720-a0da-6e031e785637
+
+	partition Fact_EnergyConsumption = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_EnergyConsumption.csv"), [Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"Timestamp", type datetime}, {"Date", type date}, {"Hour", Int64.Type}, {"FacilityID", type text},
+			        {"TariffID", type text}, {"ActivePower_kWh", type number}, {"ReactivePower_kVARh", type number},
+			        {"PowerFactor", type number}, {"Voltage_V", type number}, {"TariffBand", type text},
+			        {"PeakPeriodFlag", Int64.Type}, {"SolarGeneration_kWh", type number}, {"NetGridImport_kWh", type number},
+			        {"Cost_INR", type number}, {"CarbonEmission_kgCO2", type number}, {"AnomalyFlag", Int64.Type},
+			        {"AnomalyType", type text}, {"Carbon_kgCO2", type number}, {"NetImport_kWh", type number},
+			        {"SolarSelfConsumptionRatio", type number}
+			    })
+			in
+			    Typed

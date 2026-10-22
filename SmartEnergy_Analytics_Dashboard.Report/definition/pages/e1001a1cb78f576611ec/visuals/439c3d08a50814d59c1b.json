@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "439c3d08a50814d59c1b",
+  "position": {
+    "x": 40,
+    "y": 230,
+    "z": 0,
+    "width": 1140,
+    "height": 480,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Time"
+                    }
+                  },
+                  "Property": "HourFormatted"
+                }
+              },
+              "queryRef": "Dim_Time.HourFormatted",
+              "nativeQueryRef": "HourFormatted"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_EnergyConsumption"
+                        }
+                      },
+                      "Property": "ActivePower_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_EnergyConsumption.ActivePower_kWh)",
+              "nativeQueryRef": "Sum of ActivePower_kWh"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_EnergyConsumption"
+                        }
+                      },
+                      "Property": "SolarGeneration_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_EnergyConsumption.SolarGeneration_kWh)",
+              "nativeQueryRef": "Sum of SolarGeneration_kWh"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_EnergyConsumption"
+                        }
+                      },
+                      "Property": "NetGridImport_kWh"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fact_EnergyConsumption.NetGridImport_kWh)",
+              "nativeQueryRef": "Sum of NetGridImport_kWh"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,46 @@
+table Fact_ApplianceSubmeter
+	lineageTag: d13f2ee3-41e7-43ba-b553-9e1008144cdb
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: Date
+		lineageTag: 24cd1b48-1ab4-4ec0-ad1d-8cbd4211f498
+
+	column Hour
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: Hour
+		lineageTag: 6d3593ec-6b93-487e-a950-8e4262599574
+
+	column FacilityID
+		dataType: string
+		summarizeBy: none
+		sourceColumn: FacilityID
+		lineageTag: 77d98dcc-8bee-435c-be93-570165f14cd1
+
+	column ApplianceID
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ApplianceID
+		lineageTag: a47eb406-1ce5-45ad-86dd-a1ae0238006b
+
+	column Submeter_kWh
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: sum
+		sourceColumn: Submeter_kWh
+		lineageTag: ba2fb5d5-8d2f-4346-bd33-c6d07af52f0e
+
+	partition Fact_ApplianceSubmeter = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Fact_ApplianceSubmeter.csv"), [Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Promoted, {
+			        {"Date", type date}, {"Hour", Int64.Type}, {"FacilityID", type text}, {"ApplianceID", type text}, {"Submeter_kWh", type number}
+			    })
+			in
+			    Typed
