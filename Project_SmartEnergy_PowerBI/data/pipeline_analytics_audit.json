@@ -1,0 +1,8 @@
+{
+  "forecasting_r2": 0.9813296225519822,
+  "forecasting_mae_kwh": 696.7059457434135,
+  "anomalies_detected": 257,
+  "tsne_days_clustered": 2190,
+  "figures_generated": 8,
+  "status": "COMPLETED"
+}

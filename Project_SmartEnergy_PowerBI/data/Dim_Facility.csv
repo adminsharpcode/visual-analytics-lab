@@ -1,0 +1,7 @@
+FacilityID,FacilityName,Category,Area_SqFt,Occupancy_Capacity,Baseline_kW,PeakDesign_kW,EnergyStarRating,SubstationZone,Solar_kWp
+FAC001,Main Tech Tower (Tower A),Commercial,185000,1200,120.0,750.0,84,Zone 1 - North Campus,250.0
+FAC002,Computing & Data Center (Wing C),DataCenter,45000,80,360.0,520.0,91,Zone 2 - Central Grid,0.0
+FAC003,Advanced Engineering Labs & Workshop,Industrial,95000,450,85.0,620.0,76,Zone 3 - West Grid,80.0
+FAC004,Student Hostel Cluster (Block B & C),Residential,220000,1600,95.0,580.0,79,Zone 1 - North Campus,120.0
+FAC005,Academic & Administrative Complex,Educational,130000,900,70.0,460.0,88,Zone 2 - Central Grid,100.0
+FAC006,Healthcare & Medical Center,Healthcare,65000,250,110.0,380.0,82,Zone 3 - West Grid,40.0

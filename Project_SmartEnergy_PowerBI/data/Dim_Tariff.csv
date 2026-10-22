@@ -1,0 +1,4 @@
+TariffID,TariffName,Category,PeakRate_INR,ShoulderRate_INR,OffPeakRate_INR,DemandCharge_INR_kW,CarbonFactor_kgCO2_kWh
+TAR_TOU_HT,High Tension Time-of-Use (HT-ToU),Commercial/Industrial,11.5,7.8,4.5,350.0,0.82
+TAR_TOU_LT,Low Tension Commercial/Inst (LT-ToU),Institutional,10.2,7.1,4.2,280.0,0.82
+TAR_RES_SLAB,Residential Telescopic ToU,Residential,8.8,6.2,3.8,150.0,0.82

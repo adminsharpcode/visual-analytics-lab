@@ -1,0 +1,25 @@
+Hour,HourFormatted,Hour12,PeriodOfDay,TariffBand,PeakTariffFlag
+0,00:00,12 AM,Night Baseload,Off-Peak,0
+1,01:00,1 AM,Night Baseload,Off-Peak,0
+2,02:00,2 AM,Night Baseload,Off-Peak,0
+3,03:00,3 AM,Night Baseload,Off-Peak,0
+4,04:00,4 AM,Night Baseload,Off-Peak,0
+5,05:00,5 AM,Night Baseload,Off-Peak,0
+6,06:00,6 AM,Morning Rush,Shoulder,0
+7,07:00,7 AM,Morning Rush,Shoulder,0
+8,08:00,8 AM,Morning Rush,Shoulder,0
+9,09:00,9 AM,Working Day,Shoulder,0
+10,10:00,10 AM,Working Day,Shoulder,0
+11,11:00,11 AM,Working Day,Shoulder,0
+12,12:00,12 PM,Working Day,Shoulder,0
+13,13:00,1 PM,Working Day,Shoulder,0
+14,14:00,2 PM,Working Day,Shoulder,0
+15,15:00,3 PM,Working Day,Shoulder,0
+16,16:00,4 PM,Working Day,Shoulder,0
+17,17:00,5 PM,Evening Peak,Peak,1
+18,18:00,6 PM,Evening Peak,Peak,1
+19,19:00,7 PM,Evening Peak,Peak,1
+20,20:00,8 PM,Evening Peak,Peak,1
+21,21:00,9 PM,Evening Peak,Peak,1
+22,22:00,10 PM,Night Baseload,Off-Peak,0
+23,23:00,11 PM,Night Baseload,Off-Peak,0

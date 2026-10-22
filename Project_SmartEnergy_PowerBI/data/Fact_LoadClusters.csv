@@ -1,0 +1,2191 @@
+FacilityID,Date,ClusterID,ClusterName,tSNE_1,tSNE_2
+FAC001,2025-01-01,1,Continuous Baseload (DataCenter),-14.779,0.222
+FAC001,2025-01-02,1,Continuous Baseload (DataCenter),-14.302,1.849
+FAC001,2025-01-03,1,Continuous Baseload (DataCenter),-14.484,0.404
+FAC001,2025-01-04,3,Low-Intensity Weekend / Idle,36.772,16.2
+FAC001,2025-01-05,3,Low-Intensity Weekend / Idle,41.374,4.258
+FAC001,2025-01-06,1,Continuous Baseload (DataCenter),-14.307,1.194
+FAC001,2025-01-07,1,Continuous Baseload (DataCenter),-15.25,-0.226
+FAC001,2025-01-08,1,Continuous Baseload (DataCenter),-15.527,0.464
+FAC001,2025-01-09,1,Continuous Baseload (DataCenter),-15.733,1.398
+FAC001,2025-01-10,1,Continuous Baseload (DataCenter),-14.553,2.109
+FAC001,2025-01-11,3,Low-Intensity Weekend / Idle,40.725,1.639
+FAC001,2025-01-12,3,Low-Intensity Weekend / Idle,39.225,6.137
+FAC001,2025-01-13,1,Continuous Baseload (DataCenter),-15.033,0.128
+FAC001,2025-01-14,1,Continuous Baseload (DataCenter),-16.208,0.521
+FAC001,2025-01-15,1,Continuous Baseload (DataCenter),-13.751,3.464
+FAC001,2025-01-16,1,Continuous Baseload (DataCenter),-14.336,3.072
+FAC001,2025-01-17,1,Continuous Baseload (DataCenter),-14.093,3.276
+FAC001,2025-01-18,3,Low-Intensity Weekend / Idle,40.063,4.383
+FAC001,2025-01-19,3,Low-Intensity Weekend / Idle,32.599,21.642
+FAC001,2025-01-20,1,Continuous Baseload (DataCenter),-14.311,-0.026
+FAC001,2025-01-21,1,Continuous Baseload (DataCenter),-14.742,1.406
+FAC001,2025-01-22,1,Continuous Baseload (DataCenter),-13.78,0.946
+FAC001,2025-01-23,1,Continuous Baseload (DataCenter),-13.306,2.074
+FAC001,2025-01-24,1,Continuous Baseload (DataCenter),-16.075,0.052
+FAC001,2025-01-25,3,Low-Intensity Weekend / Idle,31.635,14.557
+FAC001,2025-01-26,3,Low-Intensity Weekend / Idle,41.331,4.118
+FAC001,2025-01-27,1,Continuous Baseload (DataCenter),-16.946,-0.533
+FAC001,2025-01-28,1,Continuous Baseload (DataCenter),-13.204,2.555
+FAC001,2025-01-29,1,Continuous Baseload (DataCenter),-13.857,2.329
+FAC001,2025-01-30,1,Continuous Baseload (DataCenter),-17.068,-0.882
+FAC001,2025-01-31,1,Continuous Baseload (DataCenter),-17.487,0.089
+FAC001,2025-02-01,3,Low-Intensity Weekend / Idle,31.826,14.748
+FAC001,2025-02-02,3,Low-Intensity Weekend / Idle,41.83,0.717
+FAC001,2025-02-03,1,Continuous Baseload (DataCenter),-14.075,2.894
+FAC001,2025-02-04,1,Continuous Baseload (DataCenter),-14.474,0.365
+FAC001,2025-02-05,1,Continuous Baseload (DataCenter),-13.482,3.106
+FAC001,2025-02-06,1,Continuous Baseload (DataCenter),-14.529,2.078
+FAC001,2025-02-07,1,Continuous Baseload (DataCenter),-16.856,-1.079
+FAC001,2025-02-08,3,Low-Intensity Weekend / Idle,30.632,15.779
+FAC001,2025-02-09,3,Low-Intensity Weekend / Idle,39.378,1.684
+FAC001,2025-02-10,1,Continuous Baseload (DataCenter),-15.854,1.442
+FAC001,2025-02-11,1,Continuous Baseload (DataCenter),-16.92,0.136
+FAC001,2025-02-12,1,Continuous Baseload (DataCenter),-17.502,-0.866
+FAC001,2025-02-13,1,Continuous Baseload (DataCenter),-13.787,3.031
+FAC001,2025-02-14,1,Continuous Baseload (DataCenter),-16.698,-0.633
+FAC001,2025-02-15,3,Low-Intensity Weekend / Idle,30.385,11.675
+FAC001,2025-02-16,3,Low-Intensity Weekend / Idle,32.261,10.293
+FAC001,2025-02-17,1,Continuous Baseload (DataCenter),-16.727,-1.101
+FAC001,2025-02-18,1,Continuous Baseload (DataCenter),-13.38,3.263
+FAC001,2025-02-19,1,Continuous Baseload (DataCenter),-16.317,-1.027
+FAC001,2025-02-20,1,Continuous Baseload (DataCenter),-15.077,0.783
+FAC001,2025-02-21,1,Continuous Baseload (DataCenter),-16.797,0.786
+FAC001,2025-02-22,3,Low-Intensity Weekend / Idle,40.411,-1.765
+FAC001,2025-02-23,3,Low-Intensity Weekend / Idle,33.51,14.684
+FAC001,2025-02-24,1,Continuous Baseload (DataCenter),-17.175,0.486
+FAC001,2025-02-25,1,Continuous Baseload (DataCenter),-16.318,-0.871
+FAC001,2025-02-26,1,Continuous Baseload (DataCenter),-15.546,0.598
+FAC001,2025-02-27,1,Continuous Baseload (DataCenter),-14.877,1.279
+FAC001,2025-02-28,1,Continuous Baseload (DataCenter),-16.205,-0.288
+FAC001,2025-03-01,0,Day-Shift Commercial Heavy,22.455,-21.262
+FAC001,2025-03-02,0,Day-Shift Commercial Heavy,23.235,-21.341
+FAC001,2025-03-03,1,Continuous Baseload (DataCenter),5.604,-0.236
+FAC001,2025-03-04,1,Continuous Baseload (DataCenter),4.252,0.067
+FAC001,2025-03-05,1,Continuous Baseload (DataCenter),4.054,-1.175
+FAC001,2025-03-06,1,Continuous Baseload (DataCenter),5.946,0.396
+FAC001,2025-03-07,1,Continuous Baseload (DataCenter),1.855,-1.31
+FAC001,2025-03-08,0,Day-Shift Commercial Heavy,20.598,-20.139
+FAC001,2025-03-09,0,Day-Shift Commercial Heavy,24.024,-20.557
+FAC001,2025-03-10,1,Continuous Baseload (DataCenter),3.137,-1.46
+FAC001,2025-03-11,1,Continuous Baseload (DataCenter),0.983,-2.311
+FAC001,2025-03-12,1,Continuous Baseload (DataCenter),4.379,-0.755
+FAC001,2025-03-13,1,Continuous Baseload (DataCenter),2.367,-1.218
+FAC001,2025-03-14,1,Continuous Baseload (DataCenter),1.369,-2.263
+FAC001,2025-03-15,0,Day-Shift Commercial Heavy,18.763,-19.828
+FAC001,2025-03-16,0,Day-Shift Commercial Heavy,26.723,-20.987
+FAC001,2025-03-17,1,Continuous Baseload (DataCenter),1.299,-1.642
+FAC001,2025-03-18,1,Continuous Baseload (DataCenter),2.094,-0.683
+FAC001,2025-03-19,1,Continuous Baseload (DataCenter),3.743,-1.54
+FAC001,2025-03-20,1,Continuous Baseload (DataCenter),5.398,0.671
+FAC001,2025-03-21,1,Continuous Baseload (DataCenter),2.796,1.064
+FAC001,2025-03-22,0,Day-Shift Commercial Heavy,19.994,-20.225
+FAC001,2025-03-23,0,Day-Shift Commercial Heavy,27.639,-21.094
+FAC001,2025-03-24,1,Continuous Baseload (DataCenter),0.903,-2.41
+FAC001,2025-03-25,1,Continuous Baseload (DataCenter),4.547,-0.731
+FAC001,2025-03-26,1,Continuous Baseload (DataCenter),2.948,-2.032
+FAC001,2025-03-27,1,Continuous Baseload (DataCenter),4.353,-0.645
+FAC001,2025-03-28,1,Continuous Baseload (DataCenter),2.884,-0.511
+FAC001,2025-03-29,0,Day-Shift Commercial Heavy,20.755,-20.695
+FAC001,2025-03-30,0,Day-Shift Commercial Heavy,28.392,-21.467
+FAC001,2025-03-31,1,Continuous Baseload (DataCenter),2.095,-2.203
+FAC001,2025-04-01,1,Continuous Baseload (DataCenter),3.684,0.709
+FAC001,2025-04-02,1,Continuous Baseload (DataCenter),2.032,-1.109
+FAC001,2025-04-03,1,Continuous Baseload (DataCenter),1.687,-1.262
+FAC001,2025-04-04,1,Continuous Baseload (DataCenter),3.794,0.178
+FAC001,2025-04-05,0,Day-Shift Commercial Heavy,21.39,-20.278
+FAC001,2025-04-06,0,Day-Shift Commercial Heavy,27.85,-21.106
+FAC001,2025-04-07,1,Continuous Baseload (DataCenter),5.148,1.041
+FAC001,2025-04-08,1,Continuous Baseload (DataCenter),4.501,-1.02
+FAC001,2025-04-09,1,Continuous Baseload (DataCenter),5.502,0.866
+FAC001,2025-04-10,1,Continuous Baseload (DataCenter),4.759,-0.973
+FAC001,2025-04-11,1,Continuous Baseload (DataCenter),3.36,-0.151
+FAC001,2025-04-12,0,Day-Shift Commercial Heavy,25.976,-20.299
+FAC001,2025-04-13,0,Day-Shift Commercial Heavy,20.009,-20.749
+FAC001,2025-04-14,1,Continuous Baseload (DataCenter),4.565,0.231
+FAC001,2025-04-15,1,Continuous Baseload (DataCenter),5.436,0.227
+FAC001,2025-04-16,1,Continuous Baseload (DataCenter),1.814,-2.464
+FAC001,2025-04-17,1,Continuous Baseload (DataCenter),5.477,0.335
+FAC001,2025-04-18,1,Continuous Baseload (DataCenter),2.49,0.878
+FAC001,2025-04-19,0,Day-Shift Commercial Heavy,19.87,-21.035
+FAC001,2025-04-20,0,Day-Shift Commercial Heavy,17.771,-19.894
+FAC001,2025-04-21,1,Continuous Baseload (DataCenter),1.8,-1.219
+FAC001,2025-04-22,1,Continuous Baseload (DataCenter),5.566,-0.152
+FAC001,2025-04-23,1,Continuous Baseload (DataCenter),5.539,-0.305
+FAC001,2025-04-24,1,Continuous Baseload (DataCenter),4.038,-1.03
+FAC001,2025-04-25,1,Continuous Baseload (DataCenter),2.544,-1.375
+FAC001,2025-04-26,0,Day-Shift Commercial Heavy,21.096,-20.554
+FAC001,2025-04-27,0,Day-Shift Commercial Heavy,22.632,-19.893
+FAC001,2025-04-28,1,Continuous Baseload (DataCenter),2.698,0.106
+FAC001,2025-04-29,1,Continuous Baseload (DataCenter),1.936,-2.184
+FAC001,2025-04-30,1,Continuous Baseload (DataCenter),0.782,-2.487
+FAC001,2025-05-01,1,Continuous Baseload (DataCenter),5.143,-0.721
+FAC001,2025-05-02,1,Continuous Baseload (DataCenter),2.196,-1.411
+FAC001,2025-05-03,0,Day-Shift Commercial Heavy,21.48,-20.871
+FAC001,2025-05-04,0,Day-Shift Commercial Heavy,22.834,-21.19
+FAC001,2025-05-05,1,Continuous Baseload (DataCenter),3.309,0.074
+FAC001,2025-05-06,1,Continuous Baseload (DataCenter),4.044,1.355
+FAC001,2025-05-07,1,Continuous Baseload (DataCenter),3.846,-0.192
+FAC001,2025-05-08,1,Continuous Baseload (DataCenter),0.983,-1.808
+FAC001,2025-05-09,1,Continuous Baseload (DataCenter),3.67,-0.842
+FAC001,2025-05-10,0,Day-Shift Commercial Heavy,17.992,-20.708
+FAC001,2025-05-11,0,Day-Shift Commercial Heavy,25.792,-20.507
+FAC001,2025-05-12,1,Continuous Baseload (DataCenter),3.207,-1.003
+FAC001,2025-05-13,1,Continuous Baseload (DataCenter),4.35,0.243
+FAC001,2025-05-14,1,Continuous Baseload (DataCenter),0.546,-1.673
+FAC001,2025-05-15,1,Continuous Baseload (DataCenter),0.756,-2.628
+FAC001,2025-05-16,1,Continuous Baseload (DataCenter),4.696,-1.554
+FAC001,2025-05-17,0,Day-Shift Commercial Heavy,8.037,-13.961
+FAC001,2025-05-18,0,Day-Shift Commercial Heavy,8.022,-13.949
+FAC001,2025-05-19,1,Continuous Baseload (DataCenter),4.819,-0.031
+FAC001,2025-05-20,1,Continuous Baseload (DataCenter),5.145,-1.505
+FAC001,2025-05-21,1,Continuous Baseload (DataCenter),1.477,-1.576
+FAC001,2025-05-22,1,Continuous Baseload (DataCenter),1.74,-2.068
+FAC001,2025-05-23,1,Continuous Baseload (DataCenter),3.224,-0.357
+FAC001,2025-05-24,0,Day-Shift Commercial Heavy,24.442,-19.813
+FAC001,2025-05-25,0,Day-Shift Commercial Heavy,25.812,-20.75
+FAC001,2025-05-26,1,Continuous Baseload (DataCenter),2.714,-1.655
+FAC001,2025-05-27,1,Continuous Baseload (DataCenter),3.629,-1.3
+FAC001,2025-05-28,1,Continuous Baseload (DataCenter),1.904,-0.026
+FAC001,2025-05-29,1,Continuous Baseload (DataCenter),4.186,-1.085
+FAC001,2025-05-30,1,Continuous Baseload (DataCenter),2.589,-1.735
+FAC001,2025-05-31,0,Day-Shift Commercial Heavy,27.153,-20.471
+FAC001,2025-06-01,0,Day-Shift Commercial Heavy,11.387,-16.277
+FAC001,2025-06-02,1,Continuous Baseload (DataCenter),-16.033,-18.684
+FAC001,2025-06-03,1,Continuous Baseload (DataCenter),-18.637,-18.791
+FAC001,2025-06-04,1,Continuous Baseload (DataCenter),-16.176,-16.011
+FAC001,2025-06-05,1,Continuous Baseload (DataCenter),-17.188,-15.302
+FAC001,2025-06-06,1,Continuous Baseload (DataCenter),-14.362,-16.088
+FAC001,2025-06-07,0,Day-Shift Commercial Heavy,12.428,-17.282
+FAC001,2025-06-08,0,Day-Shift Commercial Heavy,17.087,-21.91
+FAC001,2025-06-09,1,Continuous Baseload (DataCenter),-18.014,-16.793
+FAC001,2025-06-10,1,Continuous Baseload (DataCenter),-13.07,-14.249
+FAC001,2025-06-11,1,Continuous Baseload (DataCenter),-17.548,-19.02
+FAC001,2025-06-12,1,Continuous Baseload (DataCenter),-18.144,-17.102
+FAC001,2025-06-13,1,Continuous Baseload (DataCenter),-19.408,-17.011
+FAC001,2025-06-14,0,Day-Shift Commercial Heavy,12.408,-17.801
+FAC001,2025-06-15,0,Day-Shift Commercial Heavy,15.364,-18.289
+FAC001,2025-06-16,1,Continuous Baseload (DataCenter),-14.71,-14.193
+FAC001,2025-06-17,1,Continuous Baseload (DataCenter),-14.28,-14.438
+FAC001,2025-06-18,1,Continuous Baseload (DataCenter),-19.612,-18.262
+FAC001,2025-06-19,1,Continuous Baseload (DataCenter),-17.795,-18.151
+FAC001,2025-06-20,1,Continuous Baseload (DataCenter),-13.988,-15.049
+FAC001,2025-06-21,0,Day-Shift Commercial Heavy,18.011,-18.979
+FAC001,2025-06-22,0,Day-Shift Commercial Heavy,14.694,-19.278
+FAC001,2025-06-23,1,Continuous Baseload (DataCenter),-16.777,-16.862
+FAC001,2025-06-24,1,Continuous Baseload (DataCenter),-17.819,-16.299
+FAC001,2025-06-25,1,Continuous Baseload (DataCenter),-19.506,-16.675
+FAC001,2025-06-26,1,Continuous Baseload (DataCenter),-18.462,-16.717
+FAC001,2025-06-27,1,Continuous Baseload (DataCenter),-13.893,-16.251
+FAC001,2025-06-28,0,Day-Shift Commercial Heavy,12.498,-16.76
+FAC001,2025-06-29,0,Day-Shift Commercial Heavy,10.921,-15.355
+FAC001,2025-06-30,1,Continuous Baseload (DataCenter),-17.248,-14.728
+FAC001,2025-07-01,1,Continuous Baseload (DataCenter),-14.065,-14.337
+FAC001,2025-07-02,1,Continuous Baseload (DataCenter),-17.355,-16.734
+FAC001,2025-07-03,1,Continuous Baseload (DataCenter),-14.385,-14.685
+FAC001,2025-07-04,1,Continuous Baseload (DataCenter),-16.467,-16.523
+FAC001,2025-07-05,0,Day-Shift Commercial Heavy,10.6,-15.195
+FAC001,2025-07-06,0,Day-Shift Commercial Heavy,11.662,-16.367
+FAC001,2025-07-07,1,Continuous Baseload (DataCenter),-20.235,-17.956
+FAC001,2025-07-08,1,Continuous Baseload (DataCenter),-15.998,-14.595
+FAC001,2025-07-09,1,Continuous Baseload (DataCenter),-19.794,-18.419
+FAC001,2025-07-10,1,Continuous Baseload (DataCenter),-18.482,-17.514
+FAC001,2025-07-11,1,Continuous Baseload (DataCenter),-15.077,-15.357
+FAC001,2025-07-12,0,Day-Shift Commercial Heavy,16.01,-18.614
+FAC001,2025-07-13,0,Day-Shift Commercial Heavy,22.088,-23.537
+FAC001,2025-07-14,1,Continuous Baseload (DataCenter),-18.545,-17.011
+FAC001,2025-07-15,1,Continuous Baseload (DataCenter),-16.104,-16.636
+FAC001,2025-07-16,1,Continuous Baseload (DataCenter),-16.14,-15.902
+FAC001,2025-07-17,1,Continuous Baseload (DataCenter),-17.576,-14.755
+FAC001,2025-07-18,1,Continuous Baseload (DataCenter),-18.903,-18.1
+FAC001,2025-07-19,0,Day-Shift Commercial Heavy,15.313,-20.201
+FAC001,2025-07-20,0,Day-Shift Commercial Heavy,20.201,-18.901
+FAC001,2025-07-21,1,Continuous Baseload (DataCenter),-18.752,-16.821
+FAC001,2025-07-22,1,Continuous Baseload (DataCenter),-18.758,-18.245
+FAC001,2025-07-23,1,Continuous Baseload (DataCenter),-16.75,-18.236
+FAC001,2025-07-24,1,Continuous Baseload (DataCenter),-19.931,-18.627
+FAC001,2025-07-25,1,Continuous Baseload (DataCenter),-15.936,-17.467
+FAC001,2025-07-26,0,Day-Shift Commercial Heavy,15.267,-20.328
+FAC001,2025-07-27,0,Day-Shift Commercial Heavy,11.007,-14.825
+FAC001,2025-07-28,1,Continuous Baseload (DataCenter),-14.479,-14.917
+FAC001,2025-07-29,1,Continuous Baseload (DataCenter),-15.628,-17.403
+FAC001,2025-07-30,1,Continuous Baseload (DataCenter),-18.12,-17.022
+FAC001,2025-07-31,1,Continuous Baseload (DataCenter),-15.16,-15.355
+FAC001,2025-08-01,1,Continuous Baseload (DataCenter),-16.48,-14.144
+FAC001,2025-08-02,0,Day-Shift Commercial Heavy,22.453,-18.633
+FAC001,2025-08-03,0,Day-Shift Commercial Heavy,11.212,-16.376
+FAC001,2025-08-04,1,Continuous Baseload (DataCenter),-17.097,-15.839
+FAC001,2025-08-05,1,Continuous Baseload (DataCenter),-16.15,-15.859
+FAC001,2025-08-06,1,Continuous Baseload (DataCenter),-15.675,-15.226
+FAC001,2025-08-07,1,Continuous Baseload (DataCenter),-13.836,-14.963
+FAC001,2025-08-08,1,Continuous Baseload (DataCenter),-16.952,-14.975
+FAC001,2025-08-09,0,Day-Shift Commercial Heavy,11.368,-15.083
+FAC001,2025-08-10,0,Day-Shift Commercial Heavy,10.081,-14.61
+FAC001,2025-08-11,1,Continuous Baseload (DataCenter),-14.06,-15.755
+FAC001,2025-08-12,1,Continuous Baseload (DataCenter),-16.217,-17.4
+FAC001,2025-08-13,1,Continuous Baseload (DataCenter),-17.477,-17.295
+FAC001,2025-08-14,1,Continuous Baseload (DataCenter),-15.089,-15.526
+FAC001,2025-08-15,1,Continuous Baseload (DataCenter),-17.054,-16.684
+FAC001,2025-08-16,0,Day-Shift Commercial Heavy,22.427,-17.914
+FAC001,2025-08-17,0,Day-Shift Commercial Heavy,13.26,-19.596
+FAC001,2025-08-18,1,Continuous Baseload (DataCenter),-18.888,-15.8
+FAC001,2025-08-19,1,Continuous Baseload (DataCenter),-17.03,-17.913
+FAC001,2025-08-20,1,Continuous Baseload (DataCenter),-13.645,-14.638
+FAC001,2025-08-21,1,Continuous Baseload (DataCenter),-16.386,-17.944
+FAC001,2025-08-22,1,Continuous Baseload (DataCenter),-18.353,-15.723
+FAC001,2025-08-23,0,Day-Shift Commercial Heavy,19.173,-17.876
+FAC001,2025-08-24,0,Day-Shift Commercial Heavy,16.149,-17.481
+FAC001,2025-08-25,1,Continuous Baseload (DataCenter),-17.193,-16.491
+FAC001,2025-08-26,1,Continuous Baseload (DataCenter),-19.784,-18.593
+FAC001,2025-08-27,1,Continuous Baseload (DataCenter),-18.594,-18.741
+FAC001,2025-08-28,1,Continuous Baseload (DataCenter),-18.184,-15.058
+FAC001,2025-08-29,1,Continuous Baseload (DataCenter),-20.394,-18.343
+FAC001,2025-08-30,0,Day-Shift Commercial Heavy,21.943,-21.602
+FAC001,2025-08-31,0,Day-Shift Commercial Heavy,21.673,-22.002
+FAC001,2025-09-01,1,Continuous Baseload (DataCenter),-20.117,-18.508
+FAC001,2025-09-02,1,Continuous Baseload (DataCenter),-20.276,-18.506
+FAC001,2025-09-03,1,Continuous Baseload (DataCenter),-18.109,-16.331
+FAC001,2025-09-04,1,Continuous Baseload (DataCenter),-14.458,-13.833
+FAC001,2025-09-05,1,Continuous Baseload (DataCenter),-16.956,-16.857
+FAC001,2025-09-06,0,Day-Shift Commercial Heavy,12.118,-16.539
+FAC001,2025-09-07,0,Day-Shift Commercial Heavy,19.516,-21.613
+FAC001,2025-09-08,1,Continuous Baseload (DataCenter),-16.063,-14.913
+FAC001,2025-09-09,1,Continuous Baseload (DataCenter),-17.874,-16.927
+FAC001,2025-09-10,1,Continuous Baseload (DataCenter),-14.679,-16.522
+FAC001,2025-09-11,1,Continuous Baseload (DataCenter),-15.948,-18.221
+FAC001,2025-09-12,1,Continuous Baseload (DataCenter),-20.147,-18.576
+FAC001,2025-09-13,0,Day-Shift Commercial Heavy,27.095,-21.516
+FAC001,2025-09-14,0,Day-Shift Commercial Heavy,27.593,-19.953
+FAC001,2025-09-15,1,Continuous Baseload (DataCenter),-15.719,-17.446
+FAC001,2025-09-16,1,Continuous Baseload (DataCenter),-15.0,-16.478
+FAC001,2025-09-17,1,Continuous Baseload (DataCenter),-18.393,-18.12
+FAC001,2025-09-18,1,Continuous Baseload (DataCenter),-16.567,-17.296
+FAC001,2025-09-19,1,Continuous Baseload (DataCenter),-17.945,-18.17
+FAC001,2025-09-20,0,Day-Shift Commercial Heavy,13.489,-17.484
+FAC001,2025-09-21,0,Day-Shift Commercial Heavy,14.24,-20.275
+FAC001,2025-09-22,1,Continuous Baseload (DataCenter),-18.138,-16.012
+FAC001,2025-09-23,1,Continuous Baseload (DataCenter),-14.294,-16.373
+FAC001,2025-09-24,1,Continuous Baseload (DataCenter),-13.714,-14.573
+FAC001,2025-09-25,1,Continuous Baseload (DataCenter),-15.332,-16.889
+FAC001,2025-09-26,1,Continuous Baseload (DataCenter),-17.158,-16.048
+FAC001,2025-09-27,0,Day-Shift Commercial Heavy,13.812,-19.574
+FAC001,2025-09-28,0,Day-Shift Commercial Heavy,19.1,-21.976
+FAC001,2025-09-29,1,Continuous Baseload (DataCenter),-15.701,-14.835
+FAC001,2025-09-30,1,Continuous Baseload (DataCenter),-15.034,-17.513
+FAC001,2025-10-01,1,Continuous Baseload (DataCenter),-7.153,-14.107
+FAC001,2025-10-02,1,Continuous Baseload (DataCenter),-6.101,-12.799
+FAC001,2025-10-03,1,Continuous Baseload (DataCenter),-6.611,-12.999
+FAC001,2025-10-04,0,Day-Shift Commercial Heavy,16.611,-13.366
+FAC001,2025-10-05,0,Day-Shift Commercial Heavy,16.926,-13.285
+FAC001,2025-10-06,1,Continuous Baseload (DataCenter),-6.204,-12.417
+FAC001,2025-10-07,1,Continuous Baseload (DataCenter),-5.826,-11.638
+FAC001,2025-10-08,1,Continuous Baseload (DataCenter),-6.518,-12.174
+FAC001,2025-10-09,1,Continuous Baseload (DataCenter),-7.533,-11.325
+FAC001,2025-10-10,1,Continuous Baseload (DataCenter),-6.484,-12.466
+FAC001,2025-10-11,0,Day-Shift Commercial Heavy,23.804,-15.995
+FAC001,2025-10-12,0,Day-Shift Commercial Heavy,17.491,-13.144
+FAC001,2025-10-13,1,Continuous Baseload (DataCenter),-6.46,-10.571
+FAC001,2025-10-14,1,Continuous Baseload (DataCenter),-6.655,-11.381
+FAC001,2025-10-15,1,Continuous Baseload (DataCenter),-6.378,-13.446
+FAC001,2025-10-16,1,Continuous Baseload (DataCenter),-5.602,-13.842
+FAC001,2025-10-17,1,Continuous Baseload (DataCenter),-5.968,-13.174
+FAC001,2025-10-18,0,Day-Shift Commercial Heavy,17.617,-13.504
+FAC001,2025-10-19,0,Day-Shift Commercial Heavy,21.255,-15.396
+FAC001,2025-10-20,1,Continuous Baseload (DataCenter),-5.714,-11.457
+FAC001,2025-10-21,1,Continuous Baseload (DataCenter),-6.926,-12.836
+FAC001,2025-10-22,1,Continuous Baseload (DataCenter),-6.295,-11.785
+FAC001,2025-10-23,1,Continuous Baseload (DataCenter),-6.913,-12.779
+FAC001,2025-10-24,1,Continuous Baseload (DataCenter),-7.153,-11.266
+FAC001,2025-10-25,0,Day-Shift Commercial Heavy,19.345,-14.352
+FAC001,2025-10-26,0,Day-Shift Commercial Heavy,21.516,-16.479
+FAC001,2025-10-27,1,Continuous Baseload (DataCenter),-7.232,-12.348
+FAC001,2025-10-28,1,Continuous Baseload (DataCenter),-7.021,-12.475
+FAC001,2025-10-29,1,Continuous Baseload (DataCenter),-6.221,-13.593
+FAC001,2025-10-30,1,Continuous Baseload (DataCenter),-7.349,-14.151
+FAC001,2025-10-31,1,Continuous Baseload (DataCenter),-7.11,-12.221
+FAC001,2025-11-01,0,Day-Shift Commercial Heavy,22.904,-16.472
+FAC001,2025-11-02,0,Day-Shift Commercial Heavy,20.881,-14.316
+FAC001,2025-11-03,1,Continuous Baseload (DataCenter),-6.001,-13.948
+FAC001,2025-11-04,1,Continuous Baseload (DataCenter),-7.054,-13.743
+FAC001,2025-11-05,1,Continuous Baseload (DataCenter),-6.194,-11.432
+FAC001,2025-11-06,1,Continuous Baseload (DataCenter),-5.98,-11.983
+FAC001,2025-11-07,1,Continuous Baseload (DataCenter),-6.22,-13.617
+FAC001,2025-11-08,0,Day-Shift Commercial Heavy,21.061,-14.834
+FAC001,2025-11-09,0,Day-Shift Commercial Heavy,20.407,-15.578
+FAC001,2025-11-10,1,Continuous Baseload (DataCenter),-7.357,-14.097
+FAC001,2025-11-11,1,Continuous Baseload (DataCenter),-6.535,-10.694
+FAC001,2025-11-12,1,Continuous Baseload (DataCenter),-6.041,-12.508
+FAC001,2025-11-13,1,Continuous Baseload (DataCenter),-6.138,-13.859
+FAC001,2025-11-14,1,Continuous Baseload (DataCenter),-6.916,-11.928
+FAC001,2025-11-15,0,Day-Shift Commercial Heavy,16.363,-12.992
+FAC001,2025-11-16,0,Day-Shift Commercial Heavy,24.346,-17.325
+FAC001,2025-11-17,1,Continuous Baseload (DataCenter),-6.731,-10.683
+FAC001,2025-11-18,1,Continuous Baseload (DataCenter),-5.244,-12.702
+FAC001,2025-11-19,1,Continuous Baseload (DataCenter),-6.718,-13.702
+FAC001,2025-11-20,1,Continuous Baseload (DataCenter),-7.285,-12.901
+FAC001,2025-11-21,1,Continuous Baseload (DataCenter),-6.56,-13.813
+FAC001,2025-11-22,0,Day-Shift Commercial Heavy,17.874,-13.659
+FAC001,2025-11-23,0,Day-Shift Commercial Heavy,16.802,-13.366
+FAC001,2025-11-24,1,Continuous Baseload (DataCenter),-6.305,-11.842
+FAC001,2025-11-25,1,Continuous Baseload (DataCenter),-6.369,-12.599
+FAC001,2025-11-26,1,Continuous Baseload (DataCenter),-5.58,-13.387
+FAC001,2025-11-27,1,Continuous Baseload (DataCenter),-6.247,-11.341
+FAC001,2025-11-28,1,Continuous Baseload (DataCenter),-6.267,-13.011
+FAC001,2025-11-29,0,Day-Shift Commercial Heavy,17.587,-13.601
+FAC001,2025-11-30,0,Day-Shift Commercial Heavy,18.164,-13.819
+FAC001,2025-12-01,1,Continuous Baseload (DataCenter),-13.662,2.721
+FAC001,2025-12-02,1,Continuous Baseload (DataCenter),-14.586,1.532
+FAC001,2025-12-03,1,Continuous Baseload (DataCenter),-16.04,1.575
+FAC001,2025-12-04,1,Continuous Baseload (DataCenter),-17.355,-0.092
+FAC001,2025-12-05,1,Continuous Baseload (DataCenter),-14.402,1.302
+FAC001,2025-12-06,3,Low-Intensity Weekend / Idle,41.135,-0.723
+FAC001,2025-12-07,3,Low-Intensity Weekend / Idle,39.94,6.858
+FAC001,2025-12-08,1,Continuous Baseload (DataCenter),-13.974,1.696
+FAC001,2025-12-09,1,Continuous Baseload (DataCenter),-14.968,1.362
+FAC001,2025-12-10,1,Continuous Baseload (DataCenter),-16.795,-0.989
+FAC001,2025-12-11,1,Continuous Baseload (DataCenter),-16.112,-1.26
+FAC001,2025-12-12,1,Continuous Baseload (DataCenter),-16.337,0.984
+FAC001,2025-12-13,3,Low-Intensity Weekend / Idle,39.233,5.53
+FAC001,2025-12-14,3,Low-Intensity Weekend / Idle,36.869,9.306
+FAC001,2025-12-15,1,Continuous Baseload (DataCenter),-14.059,3.291
+FAC001,2025-12-16,1,Continuous Baseload (DataCenter),-17.214,-0.114
+FAC001,2025-12-17,1,Continuous Baseload (DataCenter),-14.764,3.085
+FAC001,2025-12-18,1,Continuous Baseload (DataCenter),-16.972,1.498
+FAC001,2025-12-19,1,Continuous Baseload (DataCenter),-13.593,1.239
+FAC001,2025-12-20,3,Low-Intensity Weekend / Idle,37.531,7.058
+FAC001,2025-12-21,3,Low-Intensity Weekend / Idle,29.633,16.267
+FAC001,2025-12-22,1,Continuous Baseload (DataCenter),-16.111,-0.465
+FAC001,2025-12-23,1,Continuous Baseload (DataCenter),-13.33,2.707
+FAC001,2025-12-24,1,Continuous Baseload (DataCenter),-14.812,2.122
+FAC001,2025-12-25,1,Continuous Baseload (DataCenter),-13.598,2.348
+FAC001,2025-12-26,1,Continuous Baseload (DataCenter),-15.008,2.043
+FAC001,2025-12-27,3,Low-Intensity Weekend / Idle,40.861,4.128
+FAC001,2025-12-28,3,Low-Intensity Weekend / Idle,39.053,4.199
+FAC001,2025-12-29,1,Continuous Baseload (DataCenter),-15.648,0.406
+FAC001,2025-12-30,1,Continuous Baseload (DataCenter),-12.951,2.607
+FAC001,2025-12-31,1,Continuous Baseload (DataCenter),-13.278,1.355
+FAC002,2025-01-01,3,Low-Intensity Weekend / Idle,35.032,18.574
+FAC002,2025-01-02,3,Low-Intensity Weekend / Idle,31.551,19.707
+FAC002,2025-01-03,3,Low-Intensity Weekend / Idle,33.656,19.736
+FAC002,2025-01-04,3,Low-Intensity Weekend / Idle,33.518,19.825
+FAC002,2025-01-05,3,Low-Intensity Weekend / Idle,34.391,17.871
+FAC002,2025-01-06,3,Low-Intensity Weekend / Idle,34.82,20.948
+FAC002,2025-01-07,3,Low-Intensity Weekend / Idle,34.631,20.444
+FAC002,2025-01-08,3,Low-Intensity Weekend / Idle,32.962,16.752
+FAC002,2025-01-09,3,Low-Intensity Weekend / Idle,30.899,18.274
+FAC002,2025-01-10,3,Low-Intensity Weekend / Idle,31.857,21.309
+FAC002,2025-01-11,3,Low-Intensity Weekend / Idle,41.818,7.433
+FAC002,2025-01-12,3,Low-Intensity Weekend / Idle,28.656,17.168
+FAC002,2025-01-13,3,Low-Intensity Weekend / Idle,34.738,16.04
+FAC002,2025-01-14,3,Low-Intensity Weekend / Idle,31.724,17.297
+FAC002,2025-01-15,3,Low-Intensity Weekend / Idle,33.584,21.392
+FAC002,2025-01-16,3,Low-Intensity Weekend / Idle,38.563,18.328
+FAC002,2025-01-17,3,Low-Intensity Weekend / Idle,32.37,20.301
+FAC002,2025-01-18,3,Low-Intensity Weekend / Idle,37.125,17.213
+FAC002,2025-01-19,3,Low-Intensity Weekend / Idle,38.543,16.139
+FAC002,2025-01-20,3,Low-Intensity Weekend / Idle,31.496,19.913
+FAC002,2025-01-21,3,Low-Intensity Weekend / Idle,34.099,16.328
+FAC002,2025-01-22,3,Low-Intensity Weekend / Idle,33.016,13.738
+FAC002,2025-01-23,3,Low-Intensity Weekend / Idle,34.625,21.338
+FAC002,2025-01-24,3,Low-Intensity Weekend / Idle,34.402,20.386
+FAC002,2025-01-25,3,Low-Intensity Weekend / Idle,34.217,19.889
+FAC002,2025-01-26,3,Low-Intensity Weekend / Idle,32.087,13.23
+FAC002,2025-01-27,3,Low-Intensity Weekend / Idle,36.007,21.516
+FAC002,2025-01-28,3,Low-Intensity Weekend / Idle,39.276,15.162
+FAC002,2025-01-29,3,Low-Intensity Weekend / Idle,35.597,19.76
+FAC002,2025-01-30,3,Low-Intensity Weekend / Idle,35.288,14.131
+FAC002,2025-01-31,3,Low-Intensity Weekend / Idle,35.503,16.735
+FAC002,2025-02-01,3,Low-Intensity Weekend / Idle,36.602,17.061
+FAC002,2025-02-02,3,Low-Intensity Weekend / Idle,41.84,7.381
+FAC002,2025-02-03,3,Low-Intensity Weekend / Idle,33.895,19.885
+FAC002,2025-02-04,3,Low-Intensity Weekend / Idle,37.341,13.65
+FAC002,2025-02-05,3,Low-Intensity Weekend / Idle,38.456,16.127
+FAC002,2025-02-06,3,Low-Intensity Weekend / Idle,34.328,19.861
+FAC002,2025-02-07,3,Low-Intensity Weekend / Idle,39.674,13.048
+FAC002,2025-02-08,3,Low-Intensity Weekend / Idle,39.899,16.085
+FAC002,2025-02-09,3,Low-Intensity Weekend / Idle,34.227,17.422
+FAC002,2025-02-10,3,Low-Intensity Weekend / Idle,35.659,20.087
+FAC002,2025-02-11,3,Low-Intensity Weekend / Idle,35.806,18.613
+FAC002,2025-02-12,3,Low-Intensity Weekend / Idle,36.844,18.512
+FAC002,2025-02-13,3,Low-Intensity Weekend / Idle,36.505,20.248
+FAC002,2025-02-14,3,Low-Intensity Weekend / Idle,36.52,17.337
+FAC002,2025-02-15,3,Low-Intensity Weekend / Idle,34.786,19.52
+FAC002,2025-02-16,3,Low-Intensity Weekend / Idle,36.415,16.679
+FAC002,2025-02-17,3,Low-Intensity Weekend / Idle,37.187,18.791
+FAC002,2025-02-18,3,Low-Intensity Weekend / Idle,36.362,21.383
+FAC002,2025-02-19,3,Low-Intensity Weekend / Idle,30.174,19.32
+FAC002,2025-02-20,3,Low-Intensity Weekend / Idle,33.515,17.429
+FAC002,2025-02-21,3,Low-Intensity Weekend / Idle,32.033,18.447
+FAC002,2025-02-22,3,Low-Intensity Weekend / Idle,35.913,18.408
+FAC002,2025-02-23,3,Low-Intensity Weekend / Idle,35.432,17.148
+FAC002,2025-02-24,3,Low-Intensity Weekend / Idle,35.6,19.98
+FAC002,2025-02-25,3,Low-Intensity Weekend / Idle,33.013,18.685
+FAC002,2025-02-26,3,Low-Intensity Weekend / Idle,39.753,17.419
+FAC002,2025-02-27,3,Low-Intensity Weekend / Idle,38.302,14.237
+FAC002,2025-02-28,3,Low-Intensity Weekend / Idle,32.388,17.459
+FAC002,2025-03-01,3,Low-Intensity Weekend / Idle,34.34,3.351
+FAC002,2025-03-02,3,Low-Intensity Weekend / Idle,32.044,5.162
+FAC002,2025-03-03,3,Low-Intensity Weekend / Idle,34.087,3.646
+FAC002,2025-03-04,3,Low-Intensity Weekend / Idle,30.988,8.292
+FAC002,2025-03-05,3,Low-Intensity Weekend / Idle,32.898,6.511
+FAC002,2025-03-06,3,Low-Intensity Weekend / Idle,31.182,2.378
+FAC002,2025-03-07,3,Low-Intensity Weekend / Idle,29.969,6.672
+FAC002,2025-03-08,3,Low-Intensity Weekend / Idle,27.536,13.549
+FAC002,2025-03-09,3,Low-Intensity Weekend / Idle,33.288,1.106
+FAC002,2025-03-10,3,Low-Intensity Weekend / Idle,35.072,2.733
+FAC002,2025-03-11,3,Low-Intensity Weekend / Idle,27.349,15.039
+FAC002,2025-03-12,3,Low-Intensity Weekend / Idle,33.96,2.091
+FAC002,2025-03-13,3,Low-Intensity Weekend / Idle,34.951,1.209
+FAC002,2025-03-14,3,Low-Intensity Weekend / Idle,30.243,10.474
+FAC002,2025-03-15,3,Low-Intensity Weekend / Idle,36.71,2.849
+FAC002,2025-03-16,3,Low-Intensity Weekend / Idle,31.51,7.47
+FAC002,2025-03-17,3,Low-Intensity Weekend / Idle,34.339,6.992
+FAC002,2025-03-18,3,Low-Intensity Weekend / Idle,32.657,7.053
+FAC002,2025-03-19,3,Low-Intensity Weekend / Idle,32.92,9.186
+FAC002,2025-03-20,3,Low-Intensity Weekend / Idle,27.59,12.461
+FAC002,2025-03-21,3,Low-Intensity Weekend / Idle,34.061,8.916
+FAC002,2025-03-22,3,Low-Intensity Weekend / Idle,29.195,11.567
+FAC002,2025-03-23,3,Low-Intensity Weekend / Idle,32.824,16.286
+FAC002,2025-03-24,3,Low-Intensity Weekend / Idle,31.949,13.122
+FAC002,2025-03-25,3,Low-Intensity Weekend / Idle,33.054,1.246
+FAC002,2025-03-26,3,Low-Intensity Weekend / Idle,31.889,5.987
+FAC002,2025-03-27,3,Low-Intensity Weekend / Idle,31.979,2.895
+FAC002,2025-03-28,3,Low-Intensity Weekend / Idle,29.038,4.661
+FAC002,2025-03-29,3,Low-Intensity Weekend / Idle,36.643,3.423
+FAC002,2025-03-30,3,Low-Intensity Weekend / Idle,31.501,4.262
+FAC002,2025-03-31,3,Low-Intensity Weekend / Idle,28.651,10.58
+FAC002,2025-04-01,3,Low-Intensity Weekend / Idle,30.567,11.223
+FAC002,2025-04-02,3,Low-Intensity Weekend / Idle,30.086,13.355
+FAC002,2025-04-03,3,Low-Intensity Weekend / Idle,32.618,3.448
+FAC002,2025-04-04,3,Low-Intensity Weekend / Idle,30.146,8.204
+FAC002,2025-04-05,3,Low-Intensity Weekend / Idle,38.208,-1.131
+FAC002,2025-04-06,3,Low-Intensity Weekend / Idle,29.436,10.882
+FAC002,2025-04-07,3,Low-Intensity Weekend / Idle,33.111,3.466
+FAC002,2025-04-08,3,Low-Intensity Weekend / Idle,30.399,5.942
+FAC002,2025-04-09,3,Low-Intensity Weekend / Idle,34.895,5.438
+FAC002,2025-04-10,3,Low-Intensity Weekend / Idle,35.002,0.725
+FAC002,2025-04-11,3,Low-Intensity Weekend / Idle,31.7,3.601
+FAC002,2025-04-12,3,Low-Intensity Weekend / Idle,37.041,13.175
+FAC002,2025-04-13,3,Low-Intensity Weekend / Idle,34.475,3.003
+FAC002,2025-04-14,3,Low-Intensity Weekend / Idle,37.395,4.693
+FAC002,2025-04-15,3,Low-Intensity Weekend / Idle,30.736,6.31
+FAC002,2025-04-16,3,Low-Intensity Weekend / Idle,27.617,13.282
+FAC002,2025-04-17,3,Low-Intensity Weekend / Idle,34.822,0.901
+FAC002,2025-04-18,3,Low-Intensity Weekend / Idle,33.009,5.007
+FAC002,2025-04-19,3,Low-Intensity Weekend / Idle,31.862,6.034
+FAC002,2025-04-20,3,Low-Intensity Weekend / Idle,27.729,11.316
+FAC002,2025-04-21,3,Low-Intensity Weekend / Idle,30.997,15.554
+FAC002,2025-04-22,3,Low-Intensity Weekend / Idle,31.713,1.117
+FAC002,2025-04-23,3,Low-Intensity Weekend / Idle,31.648,3.94
+FAC002,2025-04-24,3,Low-Intensity Weekend / Idle,28.293,9.67
+FAC002,2025-04-25,3,Low-Intensity Weekend / Idle,29.975,14.39
+FAC002,2025-04-26,3,Low-Intensity Weekend / Idle,28.908,8.0
+FAC002,2025-04-27,3,Low-Intensity Weekend / Idle,32.858,6.957
+FAC002,2025-04-28,3,Low-Intensity Weekend / Idle,34.295,3.862
+FAC002,2025-04-29,3,Low-Intensity Weekend / Idle,28.517,8.175
+FAC002,2025-04-30,3,Low-Intensity Weekend / Idle,36.254,11.598
+FAC002,2025-05-01,3,Low-Intensity Weekend / Idle,31.576,6.776
+FAC002,2025-05-02,3,Low-Intensity Weekend / Idle,27.343,11.725
+FAC002,2025-05-03,3,Low-Intensity Weekend / Idle,34.633,2.722
+FAC002,2025-05-04,3,Low-Intensity Weekend / Idle,32.794,0.249
+FAC002,2025-05-05,3,Low-Intensity Weekend / Idle,27.852,12.626
+FAC002,2025-05-06,3,Low-Intensity Weekend / Idle,31.001,8.817
+FAC002,2025-05-07,3,Low-Intensity Weekend / Idle,34.042,8.337
+FAC002,2025-05-08,3,Low-Intensity Weekend / Idle,36.146,11.654
+FAC002,2025-05-09,3,Low-Intensity Weekend / Idle,32.556,4.654
+FAC002,2025-05-10,3,Low-Intensity Weekend / Idle,32.804,10.063
+FAC002,2025-05-11,3,Low-Intensity Weekend / Idle,32.276,10.929
+FAC002,2025-05-12,3,Low-Intensity Weekend / Idle,33.021,0.935
+FAC002,2025-05-13,3,Low-Intensity Weekend / Idle,30.935,10.444
+FAC002,2025-05-14,3,Low-Intensity Weekend / Idle,38.577,0.136
+FAC002,2025-05-15,3,Low-Intensity Weekend / Idle,31.376,8.767
+FAC002,2025-05-16,3,Low-Intensity Weekend / Idle,28.648,15.891
+FAC002,2025-05-17,3,Low-Intensity Weekend / Idle,27.888,15.756
+FAC002,2025-05-18,3,Low-Intensity Weekend / Idle,29.003,6.051
+FAC002,2025-05-19,3,Low-Intensity Weekend / Idle,31.447,4.974
+FAC002,2025-05-20,3,Low-Intensity Weekend / Idle,29.421,8.696
+FAC002,2025-05-21,3,Low-Intensity Weekend / Idle,31.594,11.45
+FAC002,2025-05-22,3,Low-Intensity Weekend / Idle,30.118,4.099
+FAC002,2025-05-23,3,Low-Intensity Weekend / Idle,28.2,15.872
+FAC002,2025-05-24,3,Low-Intensity Weekend / Idle,29.196,9.407
+FAC002,2025-05-25,3,Low-Intensity Weekend / Idle,30.597,6.601
+FAC002,2025-05-26,3,Low-Intensity Weekend / Idle,36.26,7.97
+FAC002,2025-05-27,3,Low-Intensity Weekend / Idle,27.864,9.803
+FAC002,2025-05-28,3,Low-Intensity Weekend / Idle,31.41,8.356
+FAC002,2025-05-29,3,Low-Intensity Weekend / Idle,30.183,6.143
+FAC002,2025-05-30,3,Low-Intensity Weekend / Idle,34.996,4.231
+FAC002,2025-05-31,3,Low-Intensity Weekend / Idle,31.328,12.717
+FAC002,2025-06-01,3,Low-Intensity Weekend / Idle,34.67,5.146
+FAC002,2025-06-02,3,Low-Intensity Weekend / Idle,35.019,5.226
+FAC002,2025-06-03,3,Low-Intensity Weekend / Idle,26.757,7.609
+FAC002,2025-06-04,3,Low-Intensity Weekend / Idle,26.785,10.706
+FAC002,2025-06-05,3,Low-Intensity Weekend / Idle,28.695,12.484
+FAC002,2025-06-06,3,Low-Intensity Weekend / Idle,27.908,3.658
+FAC002,2025-06-07,3,Low-Intensity Weekend / Idle,30.35,3.126
+FAC002,2025-06-08,3,Low-Intensity Weekend / Idle,31.701,9.116
+FAC002,2025-06-09,3,Low-Intensity Weekend / Idle,35.487,4.509
+FAC002,2025-06-10,3,Low-Intensity Weekend / Idle,32.526,1.767
+FAC002,2025-06-11,3,Low-Intensity Weekend / Idle,29.777,10.499
+FAC002,2025-06-12,3,Low-Intensity Weekend / Idle,34.801,2.207
+FAC002,2025-06-13,3,Low-Intensity Weekend / Idle,26.119,11.068
+FAC002,2025-06-14,3,Low-Intensity Weekend / Idle,31.445,7.889
+FAC002,2025-06-15,3,Low-Intensity Weekend / Idle,31.912,5.742
+FAC002,2025-06-16,3,Low-Intensity Weekend / Idle,33.674,4.874
+FAC002,2025-06-17,3,Low-Intensity Weekend / Idle,32.909,4.063
+FAC002,2025-06-18,3,Low-Intensity Weekend / Idle,35.844,10.987
+FAC002,2025-06-19,3,Low-Intensity Weekend / Idle,39.694,-0.052
+FAC002,2025-06-20,3,Low-Intensity Weekend / Idle,29.938,9.722
+FAC002,2025-06-21,3,Low-Intensity Weekend / Idle,34.598,10.095
+FAC002,2025-06-22,3,Low-Intensity Weekend / Idle,33.099,2.021
+FAC002,2025-06-23,3,Low-Intensity Weekend / Idle,36.384,1.424
+FAC002,2025-06-24,3,Low-Intensity Weekend / Idle,35.969,5.963
+FAC002,2025-06-25,3,Low-Intensity Weekend / Idle,25.431,11.377
+FAC002,2025-06-26,3,Low-Intensity Weekend / Idle,40.273,3.533
+FAC002,2025-06-27,3,Low-Intensity Weekend / Idle,30.591,9.016
+FAC002,2025-06-28,3,Low-Intensity Weekend / Idle,29.806,12.418
+FAC002,2025-06-29,3,Low-Intensity Weekend / Idle,32.123,2.878
+FAC002,2025-06-30,3,Low-Intensity Weekend / Idle,32.209,9.345
+FAC002,2025-07-01,3,Low-Intensity Weekend / Idle,33.807,7.014
+FAC002,2025-07-02,3,Low-Intensity Weekend / Idle,28.763,6.54
+FAC002,2025-07-03,3,Low-Intensity Weekend / Idle,33.349,2.618
+FAC002,2025-07-04,3,Low-Intensity Weekend / Idle,29.715,6.962
+FAC002,2025-07-05,3,Low-Intensity Weekend / Idle,36.766,3.449
+FAC002,2025-07-06,3,Low-Intensity Weekend / Idle,37.737,1.4
+FAC002,2025-07-07,3,Low-Intensity Weekend / Idle,34.129,7.038
+FAC002,2025-07-08,3,Low-Intensity Weekend / Idle,28.948,11.076
+FAC002,2025-07-09,3,Low-Intensity Weekend / Idle,34.865,12.813
+FAC002,2025-07-10,3,Low-Intensity Weekend / Idle,30.406,10.299
+FAC002,2025-07-11,3,Low-Intensity Weekend / Idle,30.919,2.121
+FAC002,2025-07-12,3,Low-Intensity Weekend / Idle,26.047,9.329
+FAC002,2025-07-13,3,Low-Intensity Weekend / Idle,27.46,14.793
+FAC002,2025-07-14,3,Low-Intensity Weekend / Idle,36.743,6.745
+FAC002,2025-07-15,3,Low-Intensity Weekend / Idle,27.455,7.477
+FAC002,2025-07-16,3,Low-Intensity Weekend / Idle,28.313,7.291
+FAC002,2025-07-17,3,Low-Intensity Weekend / Idle,37.67,6.615
+FAC002,2025-07-18,3,Low-Intensity Weekend / Idle,30.941,9.125
+FAC002,2025-07-19,3,Low-Intensity Weekend / Idle,30.566,15.296
+FAC002,2025-07-20,3,Low-Intensity Weekend / Idle,37.584,4.732
+FAC002,2025-07-21,3,Low-Intensity Weekend / Idle,26.01,11.045
+FAC002,2025-07-22,3,Low-Intensity Weekend / Idle,27.851,14.065
+FAC002,2025-07-23,3,Low-Intensity Weekend / Idle,30.553,7.525
+FAC002,2025-07-24,3,Low-Intensity Weekend / Idle,29.767,14.184
+FAC002,2025-07-25,3,Low-Intensity Weekend / Idle,33.201,4.258
+FAC002,2025-07-26,3,Low-Intensity Weekend / Idle,36.999,9.1
+FAC002,2025-07-27,3,Low-Intensity Weekend / Idle,29.569,8.537
+FAC002,2025-07-28,3,Low-Intensity Weekend / Idle,39.407,0.895
+FAC002,2025-07-29,3,Low-Intensity Weekend / Idle,36.615,2.394
+FAC002,2025-07-30,3,Low-Intensity Weekend / Idle,34.428,3.824
+FAC002,2025-07-31,3,Low-Intensity Weekend / Idle,27.891,11.666
+FAC002,2025-08-01,3,Low-Intensity Weekend / Idle,30.772,5.153
+FAC002,2025-08-02,3,Low-Intensity Weekend / Idle,28.96,12.421
+FAC002,2025-08-03,3,Low-Intensity Weekend / Idle,35.319,2.471
+FAC002,2025-08-04,3,Low-Intensity Weekend / Idle,34.459,2.666
+FAC002,2025-08-05,3,Low-Intensity Weekend / Idle,37.211,-0.374
+FAC002,2025-08-06,3,Low-Intensity Weekend / Idle,33.572,8.014
+FAC002,2025-08-07,3,Low-Intensity Weekend / Idle,32.688,6.453
+FAC002,2025-08-08,3,Low-Intensity Weekend / Idle,29.91,11.695
+FAC002,2025-08-09,3,Low-Intensity Weekend / Idle,37.883,9.06
+FAC002,2025-08-10,3,Low-Intensity Weekend / Idle,36.884,-1.459
+FAC002,2025-08-11,3,Low-Intensity Weekend / Idle,34.198,4.99
+FAC002,2025-08-12,3,Low-Intensity Weekend / Idle,37.238,-1.05
+FAC002,2025-08-13,3,Low-Intensity Weekend / Idle,38.653,7.375
+FAC002,2025-08-14,3,Low-Intensity Weekend / Idle,36.676,-1.34
+FAC002,2025-08-15,3,Low-Intensity Weekend / Idle,38.631,-0.581
+FAC002,2025-08-16,3,Low-Intensity Weekend / Idle,38.248,5.621
+FAC002,2025-08-17,3,Low-Intensity Weekend / Idle,30.901,6.863
+FAC002,2025-08-18,3,Low-Intensity Weekend / Idle,29.551,3.21
+FAC002,2025-08-19,3,Low-Intensity Weekend / Idle,37.612,-0.505
+FAC002,2025-08-20,3,Low-Intensity Weekend / Idle,33.006,3.075
+FAC002,2025-08-21,3,Low-Intensity Weekend / Idle,33.745,6.091
+FAC002,2025-08-22,3,Low-Intensity Weekend / Idle,27.321,11.729
+FAC002,2025-08-23,3,Low-Intensity Weekend / Idle,35.23,10.192
+FAC002,2025-08-24,3,Low-Intensity Weekend / Idle,36.724,1.405
+FAC002,2025-08-25,3,Low-Intensity Weekend / Idle,27.217,12.158
+FAC002,2025-08-26,3,Low-Intensity Weekend / Idle,35.093,11.378
+FAC002,2025-08-27,3,Low-Intensity Weekend / Idle,28.316,10.413
+FAC002,2025-08-28,3,Low-Intensity Weekend / Idle,36.826,1.385
+FAC002,2025-08-29,3,Low-Intensity Weekend / Idle,32.777,12.086
+FAC002,2025-08-30,3,Low-Intensity Weekend / Idle,28.853,14.678
+FAC002,2025-08-31,3,Low-Intensity Weekend / Idle,38.694,8.995
+FAC002,2025-09-01,3,Low-Intensity Weekend / Idle,26.996,9.266
+FAC002,2025-09-02,3,Low-Intensity Weekend / Idle,33.995,10.689
+FAC002,2025-09-03,3,Low-Intensity Weekend / Idle,32.768,8.358
+FAC002,2025-09-04,3,Low-Intensity Weekend / Idle,36.461,0.054
+FAC002,2025-09-05,3,Low-Intensity Weekend / Idle,34.005,5.813
+FAC002,2025-09-06,3,Low-Intensity Weekend / Idle,31.981,7.41
+FAC002,2025-09-07,3,Low-Intensity Weekend / Idle,33.734,10.941
+FAC002,2025-09-08,3,Low-Intensity Weekend / Idle,32.102,5.16
+FAC002,2025-09-09,3,Low-Intensity Weekend / Idle,28.168,10.433
+FAC002,2025-09-10,3,Low-Intensity Weekend / Idle,30.014,4.152
+FAC002,2025-09-11,3,Low-Intensity Weekend / Idle,37.582,2.131
+FAC002,2025-09-12,3,Low-Intensity Weekend / Idle,29.485,4.144
+FAC002,2025-09-13,3,Low-Intensity Weekend / Idle,36.122,6.39
+FAC002,2025-09-14,3,Low-Intensity Weekend / Idle,33.607,12.702
+FAC002,2025-09-15,3,Low-Intensity Weekend / Idle,33.761,4.642
+FAC002,2025-09-16,3,Low-Intensity Weekend / Idle,34.744,7.238
+FAC002,2025-09-17,3,Low-Intensity Weekend / Idle,32.213,8.01
+FAC002,2025-09-18,3,Low-Intensity Weekend / Idle,36.396,11.466
+FAC002,2025-09-19,3,Low-Intensity Weekend / Idle,29.817,5.51
+FAC002,2025-09-20,3,Low-Intensity Weekend / Idle,36.782,6.823
+FAC002,2025-09-21,3,Low-Intensity Weekend / Idle,27.508,5.425
+FAC002,2025-09-22,3,Low-Intensity Weekend / Idle,29.209,9.541
+FAC002,2025-09-23,3,Low-Intensity Weekend / Idle,29.759,9.258
+FAC002,2025-09-24,3,Low-Intensity Weekend / Idle,33.947,0.851
+FAC002,2025-09-25,3,Low-Intensity Weekend / Idle,29.418,8.32
+FAC002,2025-09-26,3,Low-Intensity Weekend / Idle,39.872,10.359
+FAC002,2025-09-27,3,Low-Intensity Weekend / Idle,35.098,4.334
+FAC002,2025-09-28,3,Low-Intensity Weekend / Idle,32.159,9.396
+FAC002,2025-09-29,3,Low-Intensity Weekend / Idle,28.204,11.479
+FAC002,2025-09-30,3,Low-Intensity Weekend / Idle,27.619,14.239
+FAC002,2025-10-01,3,Low-Intensity Weekend / Idle,28.699,6.729
+FAC002,2025-10-02,3,Low-Intensity Weekend / Idle,26.118,9.288
+FAC002,2025-10-03,3,Low-Intensity Weekend / Idle,31.177,10.676
+FAC002,2025-10-04,3,Low-Intensity Weekend / Idle,31.506,15.29
+FAC002,2025-10-05,3,Low-Intensity Weekend / Idle,33.583,12.769
+FAC002,2025-10-06,3,Low-Intensity Weekend / Idle,37.338,11.293
+FAC002,2025-10-07,3,Low-Intensity Weekend / Idle,29.906,7.746
+FAC002,2025-10-08,3,Low-Intensity Weekend / Idle,36.201,6.45
+FAC002,2025-10-09,3,Low-Intensity Weekend / Idle,37.77,4.194
+FAC002,2025-10-10,3,Low-Intensity Weekend / Idle,40.557,5.606
+FAC002,2025-10-11,3,Low-Intensity Weekend / Idle,35.94,12.539
+FAC002,2025-10-12,3,Low-Intensity Weekend / Idle,32.815,15.816
+FAC002,2025-10-13,3,Low-Intensity Weekend / Idle,34.616,13.693
+FAC002,2025-10-14,3,Low-Intensity Weekend / Idle,35.324,8.948
+FAC002,2025-10-15,3,Low-Intensity Weekend / Idle,33.703,8.11
+FAC002,2025-10-16,3,Low-Intensity Weekend / Idle,26.708,14.283
+FAC002,2025-10-17,3,Low-Intensity Weekend / Idle,28.903,16.084
+FAC002,2025-10-18,3,Low-Intensity Weekend / Idle,36.841,-0.209
+FAC002,2025-10-19,3,Low-Intensity Weekend / Idle,37.579,0.581
+FAC002,2025-10-20,3,Low-Intensity Weekend / Idle,38.469,4.957
+FAC002,2025-10-21,3,Low-Intensity Weekend / Idle,26.743,13.37
+FAC002,2025-10-22,3,Low-Intensity Weekend / Idle,32.249,15.139
+FAC002,2025-10-23,3,Low-Intensity Weekend / Idle,29.958,19.232
+FAC002,2025-10-24,3,Low-Intensity Weekend / Idle,35.136,7.391
+FAC002,2025-10-25,3,Low-Intensity Weekend / Idle,40.123,8.955
+FAC002,2025-10-26,3,Low-Intensity Weekend / Idle,39.166,9.403
+FAC002,2025-10-27,3,Low-Intensity Weekend / Idle,32.057,13.082
+FAC002,2025-10-28,3,Low-Intensity Weekend / Idle,30.332,15.504
+FAC002,2025-10-29,3,Low-Intensity Weekend / Idle,32.692,16.667
+FAC002,2025-10-30,3,Low-Intensity Weekend / Idle,39.944,9.315
+FAC002,2025-10-31,3,Low-Intensity Weekend / Idle,37.417,11.126
+FAC002,2025-11-01,3,Low-Intensity Weekend / Idle,34.382,12.196
+FAC002,2025-11-02,3,Low-Intensity Weekend / Idle,34.893,13.638
+FAC002,2025-11-03,3,Low-Intensity Weekend / Idle,38.498,1.209
+FAC002,2025-11-04,3,Low-Intensity Weekend / Idle,27.409,5.326
+FAC002,2025-11-05,3,Low-Intensity Weekend / Idle,25.64,10.366
+FAC002,2025-11-06,3,Low-Intensity Weekend / Idle,35.618,4.078
+FAC002,2025-11-07,3,Low-Intensity Weekend / Idle,30.214,0.917
+FAC002,2025-11-08,3,Low-Intensity Weekend / Idle,34.127,15.14
+FAC002,2025-11-09,3,Low-Intensity Weekend / Idle,35.411,7.924
+FAC002,2025-11-10,3,Low-Intensity Weekend / Idle,38.58,13.771
+FAC002,2025-11-11,3,Low-Intensity Weekend / Idle,29.073,12.585
+FAC002,2025-11-12,3,Low-Intensity Weekend / Idle,39.974,5.775
+FAC002,2025-11-13,3,Low-Intensity Weekend / Idle,30.528,16.969
+FAC002,2025-11-14,3,Low-Intensity Weekend / Idle,39.515,1.892
+FAC002,2025-11-15,3,Low-Intensity Weekend / Idle,37.877,4.799
+FAC002,2025-11-16,3,Low-Intensity Weekend / Idle,29.701,13.95
+FAC002,2025-11-17,3,Low-Intensity Weekend / Idle,36.79,12.456
+FAC002,2025-11-18,3,Low-Intensity Weekend / Idle,34.779,0.574
+FAC002,2025-11-19,3,Low-Intensity Weekend / Idle,37.531,7.808
+FAC002,2025-11-20,3,Low-Intensity Weekend / Idle,36.963,9.056
+FAC002,2025-11-21,3,Low-Intensity Weekend / Idle,30.572,13.103
+FAC002,2025-11-22,3,Low-Intensity Weekend / Idle,31.769,14.19
+FAC002,2025-11-23,3,Low-Intensity Weekend / Idle,38.598,1.483
+FAC002,2025-11-24,3,Low-Intensity Weekend / Idle,37.669,2.275
+FAC002,2025-11-25,3,Low-Intensity Weekend / Idle,30.051,13.108
+FAC002,2025-11-26,3,Low-Intensity Weekend / Idle,36.201,9.932
+FAC002,2025-11-27,3,Low-Intensity Weekend / Idle,28.965,13.911
+FAC002,2025-11-28,3,Low-Intensity Weekend / Idle,29.375,13.071
+FAC002,2025-11-29,3,Low-Intensity Weekend / Idle,37.267,3.462
+FAC002,2025-11-30,3,Low-Intensity Weekend / Idle,31.485,12.199
+FAC002,2025-12-01,3,Low-Intensity Weekend / Idle,32.895,19.459
+FAC002,2025-12-02,3,Low-Intensity Weekend / Idle,30.03,17.87
+FAC002,2025-12-03,3,Low-Intensity Weekend / Idle,35.475,18.046
+FAC002,2025-12-04,3,Low-Intensity Weekend / Idle,32.807,16.441
+FAC002,2025-12-05,3,Low-Intensity Weekend / Idle,34.004,21.631
+FAC002,2025-12-06,3,Low-Intensity Weekend / Idle,33.454,15.488
+FAC002,2025-12-07,3,Low-Intensity Weekend / Idle,37.223,20.051
+FAC002,2025-12-08,3,Low-Intensity Weekend / Idle,35.187,19.671
+FAC002,2025-12-09,3,Low-Intensity Weekend / Idle,35.166,15.133
+FAC002,2025-12-10,3,Low-Intensity Weekend / Idle,34.513,19.627
+FAC002,2025-12-11,3,Low-Intensity Weekend / Idle,32.074,19.766
+FAC002,2025-12-12,3,Low-Intensity Weekend / Idle,39.66,17.11
+FAC002,2025-12-13,3,Low-Intensity Weekend / Idle,35.976,17.695
+FAC002,2025-12-14,3,Low-Intensity Weekend / Idle,38.443,13.171
+FAC002,2025-12-15,3,Low-Intensity Weekend / Idle,34.33,17.361
+FAC002,2025-12-16,3,Low-Intensity Weekend / Idle,32.934,19.742
+FAC002,2025-12-17,3,Low-Intensity Weekend / Idle,36.132,21.41
+FAC002,2025-12-18,3,Low-Intensity Weekend / Idle,34.805,16.196
+FAC002,2025-12-19,3,Low-Intensity Weekend / Idle,31.883,21.653
+FAC002,2025-12-20,3,Low-Intensity Weekend / Idle,33.065,19.197
+FAC002,2025-12-21,3,Low-Intensity Weekend / Idle,33.668,18.573
+FAC002,2025-12-22,3,Low-Intensity Weekend / Idle,34.241,21.998
+FAC002,2025-12-23,3,Low-Intensity Weekend / Idle,34.507,18.794
+FAC002,2025-12-24,3,Low-Intensity Weekend / Idle,36.275,18.857
+FAC002,2025-12-25,3,Low-Intensity Weekend / Idle,39.439,16.459
+FAC002,2025-12-26,3,Low-Intensity Weekend / Idle,36.242,14.545
+FAC002,2025-12-27,3,Low-Intensity Weekend / Idle,38.144,18.475
+FAC002,2025-12-28,3,Low-Intensity Weekend / Idle,30.351,18.258
+FAC002,2025-12-29,3,Low-Intensity Weekend / Idle,32.261,19.116
+FAC002,2025-12-30,3,Low-Intensity Weekend / Idle,29.965,19.06
+FAC002,2025-12-31,3,Low-Intensity Weekend / Idle,34.794,19.881
+FAC003,2025-01-01,1,Continuous Baseload (DataCenter),-32.562,0.016
+FAC003,2025-01-02,1,Continuous Baseload (DataCenter),-34.72,-1.116
+FAC003,2025-01-03,1,Continuous Baseload (DataCenter),-34.072,-2.997
+FAC003,2025-01-04,3,Low-Intensity Weekend / Idle,40.327,12.423
+FAC003,2025-01-05,3,Low-Intensity Weekend / Idle,39.486,4.896
+FAC003,2025-01-06,1,Continuous Baseload (DataCenter),-33.268,-2.185
+FAC003,2025-01-07,1,Continuous Baseload (DataCenter),-33.94,-2.23
+FAC003,2025-01-08,1,Continuous Baseload (DataCenter),-34.364,-1.425
+FAC003,2025-01-09,1,Continuous Baseload (DataCenter),-33.95,-1.022
+FAC003,2025-01-10,1,Continuous Baseload (DataCenter),-33.241,-1.929
+FAC003,2025-01-11,3,Low-Intensity Weekend / Idle,40.624,1.243
+FAC003,2025-01-12,3,Low-Intensity Weekend / Idle,41.825,0.48
+FAC003,2025-01-13,1,Continuous Baseload (DataCenter),-34.105,-1.225
+FAC003,2025-01-14,1,Continuous Baseload (DataCenter),-32.695,-0.053
+FAC003,2025-01-15,1,Continuous Baseload (DataCenter),-32.736,-0.597
+FAC003,2025-01-16,1,Continuous Baseload (DataCenter),-32.599,0.226
+FAC003,2025-01-17,1,Continuous Baseload (DataCenter),-32.298,-0.285
+FAC003,2025-01-18,3,Low-Intensity Weekend / Idle,40.383,4.383
+FAC003,2025-01-19,3,Low-Intensity Weekend / Idle,30.8,14.365
+FAC003,2025-01-20,1,Continuous Baseload (DataCenter),-34.432,-5.097
+FAC003,2025-01-21,1,Continuous Baseload (DataCenter),-34.221,-1.177
+FAC003,2025-01-22,1,Continuous Baseload (DataCenter),-32.695,0.332
+FAC003,2025-01-23,1,Continuous Baseload (DataCenter),-31.814,-1.397
+FAC003,2025-01-24,1,Continuous Baseload (DataCenter),-32.784,-1.7
+FAC003,2025-01-25,3,Low-Intensity Weekend / Idle,32.268,16.704
+FAC003,2025-01-26,3,Low-Intensity Weekend / Idle,41.507,3.51
+FAC003,2025-01-27,1,Continuous Baseload (DataCenter),-33.307,-0.567
+FAC003,2025-01-28,1,Continuous Baseload (DataCenter),-32.911,-1.787
+FAC003,2025-01-29,1,Continuous Baseload (DataCenter),-31.979,0.034
+FAC003,2025-01-30,1,Continuous Baseload (DataCenter),-34.221,-3.867
+FAC003,2025-01-31,1,Continuous Baseload (DataCenter),-34.512,-2.916
+FAC003,2025-02-01,3,Low-Intensity Weekend / Idle,32.017,11.539
+FAC003,2025-02-02,3,Low-Intensity Weekend / Idle,41.869,0.656
+FAC003,2025-02-03,1,Continuous Baseload (DataCenter),-32.446,-0.384
+FAC003,2025-02-04,1,Continuous Baseload (DataCenter),-33.476,-3.142
+FAC003,2025-02-05,1,Continuous Baseload (DataCenter),-33.913,-0.13
+FAC003,2025-02-06,1,Continuous Baseload (DataCenter),-32.291,-3.055
+FAC003,2025-02-07,1,Continuous Baseload (DataCenter),-33.911,-4.896
+FAC003,2025-02-08,3,Low-Intensity Weekend / Idle,40.855,3.013
+FAC003,2025-02-09,3,Low-Intensity Weekend / Idle,38.806,1.309
+FAC003,2025-02-10,1,Continuous Baseload (DataCenter),-34.766,-3.704
+FAC003,2025-02-11,1,Continuous Baseload (DataCenter),-35.154,-3.191
+FAC003,2025-02-12,1,Continuous Baseload (DataCenter),-34.365,-5.149
+FAC003,2025-02-13,1,Continuous Baseload (DataCenter),-32.211,-0.541
+FAC003,2025-02-14,1,Continuous Baseload (DataCenter),-32.169,-2.383
+FAC003,2025-02-15,3,Low-Intensity Weekend / Idle,39.827,10.663
+FAC003,2025-02-16,3,Low-Intensity Weekend / Idle,31.973,18.148
+FAC003,2025-02-17,1,Continuous Baseload (DataCenter),-34.233,-2.225
+FAC003,2025-02-18,1,Continuous Baseload (DataCenter),-32.312,-2.078
+FAC003,2025-02-19,1,Continuous Baseload (DataCenter),-34.105,-3.763
+FAC003,2025-02-20,1,Continuous Baseload (DataCenter),-33.118,0.326
+FAC003,2025-02-21,1,Continuous Baseload (DataCenter),-32.735,-0.565
+FAC003,2025-02-22,3,Low-Intensity Weekend / Idle,39.023,2.547
+FAC003,2025-02-23,3,Low-Intensity Weekend / Idle,34.343,17.584
+FAC003,2025-02-24,1,Continuous Baseload (DataCenter),-34.827,-4.361
+FAC003,2025-02-25,1,Continuous Baseload (DataCenter),-33.973,-2.402
+FAC003,2025-02-26,1,Continuous Baseload (DataCenter),-33.059,-4.086
+FAC003,2025-02-27,1,Continuous Baseload (DataCenter),-33.444,-3.85
+FAC003,2025-02-28,1,Continuous Baseload (DataCenter),-33.914,-3.745
+FAC003,2025-03-01,0,Day-Shift Commercial Heavy,25.618,-20.798
+FAC003,2025-03-02,0,Day-Shift Commercial Heavy,25.763,-21.089
+FAC003,2025-03-03,1,Continuous Baseload (DataCenter),-24.049,19.154
+FAC003,2025-03-04,1,Continuous Baseload (DataCenter),-23.413,16.788
+FAC003,2025-03-05,1,Continuous Baseload (DataCenter),-24.165,17.562
+FAC003,2025-03-06,1,Continuous Baseload (DataCenter),-24.27,18.746
+FAC003,2025-03-07,1,Continuous Baseload (DataCenter),-22.795,16.275
+FAC003,2025-03-08,0,Day-Shift Commercial Heavy,24.092,-20.268
+FAC003,2025-03-09,0,Day-Shift Commercial Heavy,24.93,-20.582
+FAC003,2025-03-10,1,Continuous Baseload (DataCenter),-22.623,18.24
+FAC003,2025-03-11,1,Continuous Baseload (DataCenter),-22.883,13.937
+FAC003,2025-03-12,1,Continuous Baseload (DataCenter),-25.374,17.501
+FAC003,2025-03-13,1,Continuous Baseload (DataCenter),-23.757,15.781
+FAC003,2025-03-14,1,Continuous Baseload (DataCenter),-23.304,13.927
+FAC003,2025-03-15,0,Day-Shift Commercial Heavy,24.64,-21.249
+FAC003,2025-03-16,0,Day-Shift Commercial Heavy,28.007,-21.17
+FAC003,2025-03-17,1,Continuous Baseload (DataCenter),-24.308,13.436
+FAC003,2025-03-18,1,Continuous Baseload (DataCenter),-22.398,16.224
+FAC003,2025-03-19,1,Continuous Baseload (DataCenter),-24.267,18.242
+FAC003,2025-03-20,1,Continuous Baseload (DataCenter),-24.629,19.071
+FAC003,2025-03-21,1,Continuous Baseload (DataCenter),-23.11,14.281
+FAC003,2025-03-22,0,Day-Shift Commercial Heavy,25.302,-21.831
+FAC003,2025-03-23,0,Day-Shift Commercial Heavy,28.324,-21.226
+FAC003,2025-03-24,1,Continuous Baseload (DataCenter),-23.435,13.577
+FAC003,2025-03-25,1,Continuous Baseload (DataCenter),-24.292,17.158
+FAC003,2025-03-26,1,Continuous Baseload (DataCenter),-24.408,16.419
+FAC003,2025-03-27,1,Continuous Baseload (DataCenter),-23.996,18.045
+FAC003,2025-03-28,1,Continuous Baseload (DataCenter),-23.183,16.081
+FAC003,2025-03-29,0,Day-Shift Commercial Heavy,20.249,-19.4
+FAC003,2025-03-30,0,Day-Shift Commercial Heavy,28.487,-21.455
+FAC003,2025-03-31,1,Continuous Baseload (DataCenter),-23.647,14.291
+FAC003,2025-04-01,1,Continuous Baseload (DataCenter),-23.383,13.883
+FAC003,2025-04-02,1,Continuous Baseload (DataCenter),-24.699,15.937
+FAC003,2025-04-03,1,Continuous Baseload (DataCenter),-23.825,14.866
+FAC003,2025-04-04,1,Continuous Baseload (DataCenter),-23.462,14.761
+FAC003,2025-04-05,0,Day-Shift Commercial Heavy,26.07,-20.875
+FAC003,2025-04-06,0,Day-Shift Commercial Heavy,27.879,-20.853
+FAC003,2025-04-07,1,Continuous Baseload (DataCenter),-23.628,16.61
+FAC003,2025-04-08,1,Continuous Baseload (DataCenter),-24.427,17.065
+FAC003,2025-04-09,1,Continuous Baseload (DataCenter),-24.56,18.294
+FAC003,2025-04-10,1,Continuous Baseload (DataCenter),-24.543,17.151
+FAC003,2025-04-11,1,Continuous Baseload (DataCenter),-24.515,16.362
+FAC003,2025-04-12,0,Day-Shift Commercial Heavy,27.261,-20.895
+FAC003,2025-04-13,0,Day-Shift Commercial Heavy,23.056,-20.489
+FAC003,2025-04-14,1,Continuous Baseload (DataCenter),-24.028,16.622
+FAC003,2025-04-15,1,Continuous Baseload (DataCenter),-24.966,17.997
+FAC003,2025-04-16,1,Continuous Baseload (DataCenter),-23.901,14.071
+FAC003,2025-04-17,1,Continuous Baseload (DataCenter),-24.154,18.826
+FAC003,2025-04-18,1,Continuous Baseload (DataCenter),-22.885,14.861
+FAC003,2025-04-19,0,Day-Shift Commercial Heavy,19.408,-20.843
+FAC003,2025-04-20,0,Day-Shift Commercial Heavy,21.681,-20.684
+FAC003,2025-04-21,1,Continuous Baseload (DataCenter),-22.864,15.099
+FAC003,2025-04-22,1,Continuous Baseload (DataCenter),-24.004,18.467
+FAC003,2025-04-23,1,Continuous Baseload (DataCenter),-24.881,17.94
+FAC003,2025-04-24,1,Continuous Baseload (DataCenter),-24.26,17.975
+FAC003,2025-04-25,1,Continuous Baseload (DataCenter),-23.726,16.256
+FAC003,2025-04-26,0,Day-Shift Commercial Heavy,20.945,-19.827
+FAC003,2025-04-27,0,Day-Shift Commercial Heavy,23.444,-19.552
+FAC003,2025-04-28,1,Continuous Baseload (DataCenter),-24.216,16.071
+FAC003,2025-04-29,1,Continuous Baseload (DataCenter),-23.442,14.355
+FAC003,2025-04-30,1,Continuous Baseload (DataCenter),-23.068,14.162
+FAC003,2025-05-01,1,Continuous Baseload (DataCenter),-24.235,19.225
+FAC003,2025-05-02,1,Continuous Baseload (DataCenter),-24.29,15.383
+FAC003,2025-05-03,0,Day-Shift Commercial Heavy,24.942,-21.068
+FAC003,2025-05-04,0,Day-Shift Commercial Heavy,22.737,-20.322
+FAC003,2025-05-05,1,Continuous Baseload (DataCenter),-22.809,14.298
+FAC003,2025-05-06,1,Continuous Baseload (DataCenter),-23.169,18.216
+FAC003,2025-05-07,1,Continuous Baseload (DataCenter),-22.987,17.293
+FAC003,2025-05-08,1,Continuous Baseload (DataCenter),-23.149,13.199
+FAC003,2025-05-09,1,Continuous Baseload (DataCenter),-23.448,16.49
+FAC003,2025-05-10,0,Day-Shift Commercial Heavy,22.903,-19.652
+FAC003,2025-05-11,0,Day-Shift Commercial Heavy,28.095,-21.289
+FAC003,2025-05-12,1,Continuous Baseload (DataCenter),-25.166,15.706
+FAC003,2025-05-13,1,Continuous Baseload (DataCenter),-24.424,15.216
+FAC003,2025-05-14,1,Continuous Baseload (DataCenter),-22.797,14.166
+FAC003,2025-05-15,1,Continuous Baseload (DataCenter),-23.634,13.534
+FAC003,2025-05-16,1,Continuous Baseload (DataCenter),-24.539,17.859
+FAC003,2025-05-17,0,Day-Shift Commercial Heavy,27.099,-20.857
+FAC003,2025-05-18,0,Day-Shift Commercial Heavy,21.698,-19.745
+FAC003,2025-05-19,1,Continuous Baseload (DataCenter),-22.967,17.08
+FAC003,2025-05-20,1,Continuous Baseload (DataCenter),-23.835,17.245
+FAC003,2025-05-21,1,Continuous Baseload (DataCenter),-23.895,15.158
+FAC003,2025-05-22,1,Continuous Baseload (DataCenter),-24.439,14.671
+FAC003,2025-05-23,1,Continuous Baseload (DataCenter),-24.037,16.179
+FAC003,2025-05-24,0,Day-Shift Commercial Heavy,26.466,-20.715
+FAC003,2025-05-25,0,Day-Shift Commercial Heavy,26.17,-20.417
+FAC003,2025-05-26,1,Continuous Baseload (DataCenter),-23.388,16.9
+FAC003,2025-05-27,1,Continuous Baseload (DataCenter),-23.976,17.037
+FAC003,2025-05-28,1,Continuous Baseload (DataCenter),-23.284,14.816
+FAC003,2025-05-29,1,Continuous Baseload (DataCenter),-24.145,18.619
+FAC003,2025-05-30,1,Continuous Baseload (DataCenter),-24.479,14.816
+FAC003,2025-05-31,0,Day-Shift Commercial Heavy,27.426,-20.291
+FAC003,2025-06-01,0,Day-Shift Commercial Heavy,18.231,-21.563
+FAC003,2025-06-02,1,Continuous Baseload (DataCenter),-34.419,-25.264
+FAC003,2025-06-03,1,Continuous Baseload (DataCenter),-35.548,-26.646
+FAC003,2025-06-04,1,Continuous Baseload (DataCenter),-35.608,-22.854
+FAC003,2025-06-05,1,Continuous Baseload (DataCenter),-35.804,-25.348
+FAC003,2025-06-06,1,Continuous Baseload (DataCenter),-34.24,-21.639
+FAC003,2025-06-07,0,Day-Shift Commercial Heavy,17.788,-20.298
+FAC003,2025-06-08,0,Day-Shift Commercial Heavy,23.466,-22.152
+FAC003,2025-06-09,1,Continuous Baseload (DataCenter),-36.858,-23.475
+FAC003,2025-06-10,1,Continuous Baseload (DataCenter),-34.739,-20.03
+FAC003,2025-06-11,1,Continuous Baseload (DataCenter),-34.971,-23.219
+FAC003,2025-06-12,1,Continuous Baseload (DataCenter),-36.932,-24.256
+FAC003,2025-06-13,1,Continuous Baseload (DataCenter),-36.564,-25.954
+FAC003,2025-06-14,0,Day-Shift Commercial Heavy,13.229,-17.638
+FAC003,2025-06-15,0,Day-Shift Commercial Heavy,20.267,-21.365
+FAC003,2025-06-16,1,Continuous Baseload (DataCenter),-36.939,-21.212
+FAC003,2025-06-17,1,Continuous Baseload (DataCenter),-35.111,-21.52
+FAC003,2025-06-18,1,Continuous Baseload (DataCenter),-35.859,-27.18
+FAC003,2025-06-19,1,Continuous Baseload (DataCenter),-35.248,-24.389
+FAC003,2025-06-20,1,Continuous Baseload (DataCenter),-34.927,-20.682
+FAC003,2025-06-21,0,Day-Shift Commercial Heavy,19.592,-19.089
+FAC003,2025-06-22,0,Day-Shift Commercial Heavy,15.139,-19.678
+FAC003,2025-06-23,1,Continuous Baseload (DataCenter),-34.79,-26.081
+FAC003,2025-06-24,1,Continuous Baseload (DataCenter),-34.692,-26.063
+FAC003,2025-06-25,1,Continuous Baseload (DataCenter),-35.439,-24.859
+FAC003,2025-06-26,1,Continuous Baseload (DataCenter),-37.043,-22.193
+FAC003,2025-06-27,1,Continuous Baseload (DataCenter),-34.012,-21.05
+FAC003,2025-06-28,0,Day-Shift Commercial Heavy,15.936,-18.924
+FAC003,2025-06-29,0,Day-Shift Commercial Heavy,14.213,-18.13
+FAC003,2025-06-30,1,Continuous Baseload (DataCenter),-35.644,-21.746
+FAC003,2025-07-01,1,Continuous Baseload (DataCenter),-35.198,-21.114
+FAC003,2025-07-02,1,Continuous Baseload (DataCenter),-36.382,-23.537
+FAC003,2025-07-03,1,Continuous Baseload (DataCenter),-35.46,-20.728
+FAC003,2025-07-04,1,Continuous Baseload (DataCenter),-34.628,-25.763
+FAC003,2025-07-05,0,Day-Shift Commercial Heavy,12.707,-16.81
+FAC003,2025-07-06,0,Day-Shift Commercial Heavy,15.937,-20.718
+FAC003,2025-07-07,1,Continuous Baseload (DataCenter),-36.456,-26.926
+FAC003,2025-07-08,1,Continuous Baseload (DataCenter),-35.736,-22.175
+FAC003,2025-07-09,1,Continuous Baseload (DataCenter),-37.806,-24.152
+FAC003,2025-07-10,1,Continuous Baseload (DataCenter),-35.628,-24.79
+FAC003,2025-07-11,1,Continuous Baseload (DataCenter),-35.15,-20.329
+FAC003,2025-07-12,0,Day-Shift Commercial Heavy,16.322,-18.543
+FAC003,2025-07-13,0,Day-Shift Commercial Heavy,28.434,-20.888
+FAC003,2025-07-14,1,Continuous Baseload (DataCenter),-36.32,-23.957
+FAC003,2025-07-15,1,Continuous Baseload (DataCenter),-35.479,-25.256
+FAC003,2025-07-16,1,Continuous Baseload (DataCenter),-34.303,-22.812
+FAC003,2025-07-17,1,Continuous Baseload (DataCenter),-36.929,-23.324
+FAC003,2025-07-18,1,Continuous Baseload (DataCenter),-37.056,-22.6
+FAC003,2025-07-19,0,Day-Shift Commercial Heavy,22.341,-21.85
+FAC003,2025-07-20,0,Day-Shift Commercial Heavy,23.867,-19.143
+FAC003,2025-07-21,1,Continuous Baseload (DataCenter),-37.135,-23.398
+FAC003,2025-07-22,1,Continuous Baseload (DataCenter),-37.285,-25.071
+FAC003,2025-07-23,1,Continuous Baseload (DataCenter),-35.247,-25.734
+FAC003,2025-07-24,1,Continuous Baseload (DataCenter),-36.223,-27.04
+FAC003,2025-07-25,1,Continuous Baseload (DataCenter),-34.741,-25.893
+FAC003,2025-07-26,0,Day-Shift Commercial Heavy,15.333,-20.49
+FAC003,2025-07-27,0,Day-Shift Commercial Heavy,12.824,-17.447
+FAC003,2025-07-28,1,Continuous Baseload (DataCenter),-34.753,-21.444
+FAC003,2025-07-29,1,Continuous Baseload (DataCenter),-34.097,-24.317
+FAC003,2025-07-30,1,Continuous Baseload (DataCenter),-36.507,-21.73
+FAC003,2025-07-31,1,Continuous Baseload (DataCenter),-36.522,-21.061
+FAC003,2025-08-01,1,Continuous Baseload (DataCenter),-36.286,-21.789
+FAC003,2025-08-02,0,Day-Shift Commercial Heavy,22.434,-18.477
+FAC003,2025-08-03,0,Day-Shift Commercial Heavy,16.234,-19.84
+FAC003,2025-08-04,1,Continuous Baseload (DataCenter),-35.679,-24.938
+FAC003,2025-08-05,1,Continuous Baseload (DataCenter),-34.841,-22.349
+FAC003,2025-08-06,1,Continuous Baseload (DataCenter),-35.208,-23.051
+FAC003,2025-08-07,1,Continuous Baseload (DataCenter),-34.689,-19.92
+FAC003,2025-08-08,1,Continuous Baseload (DataCenter),-35.812,-21.459
+FAC003,2025-08-09,0,Day-Shift Commercial Heavy,12.163,-15.439
+FAC003,2025-08-10,0,Day-Shift Commercial Heavy,10.792,-14.446
+FAC003,2025-08-11,1,Continuous Baseload (DataCenter),-27.069,13.861
+FAC003,2025-08-12,1,Continuous Baseload (DataCenter),-27.067,13.862
+FAC003,2025-08-13,1,Continuous Baseload (DataCenter),-27.07,13.86
+FAC003,2025-08-14,1,Continuous Baseload (DataCenter),-27.067,13.862
+FAC003,2025-08-15,1,Continuous Baseload (DataCenter),-34.246,-22.953
+FAC003,2025-08-16,0,Day-Shift Commercial Heavy,22.663,-17.407
+FAC003,2025-08-17,0,Day-Shift Commercial Heavy,19.866,-22.398
+FAC003,2025-08-18,1,Continuous Baseload (DataCenter),-34.048,-23.092
+FAC003,2025-08-19,1,Continuous Baseload (DataCenter),-36.02,-25.827
+FAC003,2025-08-20,1,Continuous Baseload (DataCenter),-34.213,-21.376
+FAC003,2025-08-21,1,Continuous Baseload (DataCenter),-34.711,-24.908
+FAC003,2025-08-22,1,Continuous Baseload (DataCenter),-35.02,-24.075
+FAC003,2025-08-23,0,Day-Shift Commercial Heavy,19.488,-17.877
+FAC003,2025-08-24,0,Day-Shift Commercial Heavy,24.328,-21.298
+FAC003,2025-08-25,1,Continuous Baseload (DataCenter),-34.085,-24.101
+FAC003,2025-08-26,1,Continuous Baseload (DataCenter),-35.953,-27.121
+FAC003,2025-08-27,1,Continuous Baseload (DataCenter),-35.869,-25.228
+FAC003,2025-08-28,1,Continuous Baseload (DataCenter),-35.873,-22.527
+FAC003,2025-08-29,1,Continuous Baseload (DataCenter),-35.761,-27.397
+FAC003,2025-08-30,0,Day-Shift Commercial Heavy,21.119,-18.983
+FAC003,2025-08-31,0,Day-Shift Commercial Heavy,21.222,-21.96
+FAC003,2025-09-01,1,Continuous Baseload (DataCenter),-36.412,-27.112
+FAC003,2025-09-02,1,Continuous Baseload (DataCenter),-35.98,-27.161
+FAC003,2025-09-03,1,Continuous Baseload (DataCenter),-35.678,-25.122
+FAC003,2025-09-04,1,Continuous Baseload (DataCenter),-36.32,-21.136
+FAC003,2025-09-05,1,Continuous Baseload (DataCenter),-34.573,-25.034
+FAC003,2025-09-06,0,Day-Shift Commercial Heavy,13.322,-17.89
+FAC003,2025-09-07,0,Day-Shift Commercial Heavy,22.808,-21.075
+FAC003,2025-09-08,1,Continuous Baseload (DataCenter),-35.846,-22.932
+FAC003,2025-09-09,1,Continuous Baseload (DataCenter),-34.934,-24.814
+FAC003,2025-09-10,1,Continuous Baseload (DataCenter),-34.8,-21.697
+FAC003,2025-09-11,1,Continuous Baseload (DataCenter),-34.555,-24.106
+FAC003,2025-09-12,1,Continuous Baseload (DataCenter),-36.226,-27.499
+FAC003,2025-09-13,0,Day-Shift Commercial Heavy,27.382,-21.201
+FAC003,2025-09-14,0,Day-Shift Commercial Heavy,27.685,-20.056
+FAC003,2025-09-15,1,Continuous Baseload (DataCenter),-35.011,-20.672
+FAC003,2025-09-16,1,Continuous Baseload (DataCenter),-34.21,-21.332
+FAC003,2025-09-17,1,Continuous Baseload (DataCenter),-35.662,-27.17
+FAC003,2025-09-18,1,Continuous Baseload (DataCenter),-36.129,-23.194
+FAC003,2025-09-19,1,Continuous Baseload (DataCenter),-35.1,-26.683
+FAC003,2025-09-20,0,Day-Shift Commercial Heavy,14.732,-17.084
+FAC003,2025-09-21,0,Day-Shift Commercial Heavy,21.037,-21.018
+FAC003,2025-09-22,1,Continuous Baseload (DataCenter),-36.483,-23.838
+FAC003,2025-09-23,1,Continuous Baseload (DataCenter),-34.078,-21.568
+FAC003,2025-09-24,1,Continuous Baseload (DataCenter),-35.033,-21.196
+FAC003,2025-09-25,1,Continuous Baseload (DataCenter),-34.743,-22.653
+FAC003,2025-09-26,1,Continuous Baseload (DataCenter),-36.028,-23.542
+FAC003,2025-09-27,0,Day-Shift Commercial Heavy,13.922,-19.653
+FAC003,2025-09-28,0,Day-Shift Commercial Heavy,23.119,-20.207
+FAC003,2025-09-29,1,Continuous Baseload (DataCenter),-35.952,-21.264
+FAC003,2025-09-30,1,Continuous Baseload (DataCenter),-36.453,-24.913
+FAC003,2025-10-01,1,Continuous Baseload (DataCenter),-47.535,-11.198
+FAC003,2025-10-02,1,Continuous Baseload (DataCenter),-48.269,-12.568
+FAC003,2025-10-03,1,Continuous Baseload (DataCenter),-46.388,-12.664
+FAC003,2025-10-04,0,Day-Shift Commercial Heavy,19.684,-15.055
+FAC003,2025-10-05,0,Day-Shift Commercial Heavy,20.307,-14.973
+FAC003,2025-10-06,1,Continuous Baseload (DataCenter),-48.656,-12.879
+FAC003,2025-10-07,1,Continuous Baseload (DataCenter),-48.341,-12.609
+FAC003,2025-10-08,1,Continuous Baseload (DataCenter),-47.811,-12.826
+FAC003,2025-10-09,1,Continuous Baseload (DataCenter),-48.284,-13.813
+FAC003,2025-10-10,1,Continuous Baseload (DataCenter),-46.958,-12.626
+FAC003,2025-10-11,0,Day-Shift Commercial Heavy,24.1,-15.927
+FAC003,2025-10-12,0,Day-Shift Commercial Heavy,21.622,-14.926
+FAC003,2025-10-13,1,Continuous Baseload (DataCenter),-47.897,-13.158
+FAC003,2025-10-14,1,Continuous Baseload (DataCenter),-46.601,-12.551
+FAC003,2025-10-15,1,Continuous Baseload (DataCenter),-47.154,-13.12
+FAC003,2025-10-16,1,Continuous Baseload (DataCenter),-46.715,-13.344
+FAC003,2025-10-17,1,Continuous Baseload (DataCenter),-46.336,-12.709
+FAC003,2025-10-18,0,Day-Shift Commercial Heavy,23.883,-16.827
+FAC003,2025-10-19,0,Day-Shift Commercial Heavy,23.242,-16.192
+FAC003,2025-10-20,1,Continuous Baseload (DataCenter),-46.007,-12.543
+FAC003,2025-10-21,1,Continuous Baseload (DataCenter),-47.261,-13.769
+FAC003,2025-10-22,1,Continuous Baseload (DataCenter),-47.395,-13.171
+FAC003,2025-10-23,1,Continuous Baseload (DataCenter),-46.938,-12.512
+FAC003,2025-10-24,1,Continuous Baseload (DataCenter),-47.941,-13.17
+FAC003,2025-10-25,0,Day-Shift Commercial Heavy,22.063,-15.67
+FAC003,2025-10-26,0,Day-Shift Commercial Heavy,21.748,-16.47
+FAC003,2025-10-27,1,Continuous Baseload (DataCenter),-47.202,-11.604
+FAC003,2025-10-28,1,Continuous Baseload (DataCenter),-48.3,-12.086
+FAC003,2025-10-29,1,Continuous Baseload (DataCenter),-45.7,-12.742
+FAC003,2025-10-30,1,Continuous Baseload (DataCenter),-46.531,-11.496
+FAC003,2025-10-31,1,Continuous Baseload (DataCenter),-47.232,-11.853
+FAC003,2025-11-01,0,Day-Shift Commercial Heavy,22.83,-16.172
+FAC003,2025-11-02,0,Day-Shift Commercial Heavy,21.766,-15.092
+FAC003,2025-11-03,1,Continuous Baseload (DataCenter),-45.491,-12.571
+FAC003,2025-11-04,1,Continuous Baseload (DataCenter),-46.375,-12.081
+FAC003,2025-11-05,1,Continuous Baseload (DataCenter),-47.61,-12.473
+FAC003,2025-11-06,1,Continuous Baseload (DataCenter),-48.034,-12.986
+FAC003,2025-11-07,1,Continuous Baseload (DataCenter),-47.358,-12.911
+FAC003,2025-11-08,0,Day-Shift Commercial Heavy,22.676,-15.071
+FAC003,2025-11-09,0,Day-Shift Commercial Heavy,23.826,-17.056
+FAC003,2025-11-10,1,Continuous Baseload (DataCenter),-45.679,-12.428
+FAC003,2025-11-11,1,Continuous Baseload (DataCenter),-45.97,-12.219
+FAC003,2025-11-12,1,Continuous Baseload (DataCenter),-46.456,-13.301
+FAC003,2025-11-13,1,Continuous Baseload (DataCenter),-45.219,-12.845
+FAC003,2025-11-14,1,Continuous Baseload (DataCenter),-46.077,-12.863
+FAC003,2025-11-15,0,Day-Shift Commercial Heavy,20.014,-14.03
+FAC003,2025-11-16,0,Day-Shift Commercial Heavy,23.899,-16.952
+FAC003,2025-11-17,1,Continuous Baseload (DataCenter),-47.504,-12.595
+FAC003,2025-11-18,1,Continuous Baseload (DataCenter),-46.924,-13.938
+FAC003,2025-11-19,1,Continuous Baseload (DataCenter),-46.733,-12.863
+FAC003,2025-11-20,1,Continuous Baseload (DataCenter),-47.437,-12.321
+FAC003,2025-11-21,1,Continuous Baseload (DataCenter),-46.593,-13.252
+FAC003,2025-11-22,0,Day-Shift Commercial Heavy,20.514,-14.928
+FAC003,2025-11-23,0,Day-Shift Commercial Heavy,17.554,-13.393
+FAC003,2025-11-24,1,Continuous Baseload (DataCenter),-47.08,-13.256
+FAC003,2025-11-25,1,Continuous Baseload (DataCenter),-45.536,-13.413
+FAC003,2025-11-26,1,Continuous Baseload (DataCenter),-46.162,-11.708
+FAC003,2025-11-27,1,Continuous Baseload (DataCenter),-46.012,-13.121
+FAC003,2025-11-28,1,Continuous Baseload (DataCenter),-46.825,-12.285
+FAC003,2025-11-29,0,Day-Shift Commercial Heavy,21.079,-15.625
+FAC003,2025-11-30,0,Day-Shift Commercial Heavy,21.005,-15.1
+FAC003,2025-12-01,1,Continuous Baseload (DataCenter),-33.114,-4.212
+FAC003,2025-12-02,1,Continuous Baseload (DataCenter),-34.419,-2.198
+FAC003,2025-12-03,1,Continuous Baseload (DataCenter),-33.058,-2.309
+FAC003,2025-12-04,1,Continuous Baseload (DataCenter),-34.316,-4.93
+FAC003,2025-12-05,1,Continuous Baseload (DataCenter),-34.745,-2.368
+FAC003,2025-12-06,3,Low-Intensity Weekend / Idle,41.115,-0.652
+FAC003,2025-12-07,3,Low-Intensity Weekend / Idle,33.114,13.689
+FAC003,2025-12-08,1,Continuous Baseload (DataCenter),-31.693,-0.472
+FAC003,2025-12-09,1,Continuous Baseload (DataCenter),-33.521,-3.96
+FAC003,2025-12-10,1,Continuous Baseload (DataCenter),-34.893,-3.46
+FAC003,2025-12-11,1,Continuous Baseload (DataCenter),-34.79,-2.563
+FAC003,2025-12-12,1,Continuous Baseload (DataCenter),-33.585,-1.7
+FAC003,2025-12-13,3,Low-Intensity Weekend / Idle,39.873,0.486
+FAC003,2025-12-14,3,Low-Intensity Weekend / Idle,33.606,10.855
+FAC003,2025-12-15,1,Continuous Baseload (DataCenter),-33.157,-0.928
+FAC003,2025-12-16,1,Continuous Baseload (DataCenter),-35.087,-4.192
+FAC003,2025-12-17,1,Continuous Baseload (DataCenter),-33.142,-3.95
+FAC003,2025-12-18,1,Continuous Baseload (DataCenter),-33.809,-0.227
+FAC003,2025-12-19,1,Continuous Baseload (DataCenter),-32.745,0.282
+FAC003,2025-12-20,3,Low-Intensity Weekend / Idle,31.846,15.153
+FAC003,2025-12-21,3,Low-Intensity Weekend / Idle,32.319,14.02
+FAC003,2025-12-22,1,Continuous Baseload (DataCenter),-33.601,-3.79
+FAC003,2025-12-23,1,Continuous Baseload (DataCenter),-32.309,-0.571
+FAC003,2025-12-24,1,Continuous Baseload (DataCenter),-33.339,-0.641
+FAC003,2025-12-25,1,Continuous Baseload (DataCenter),-32.394,-0.808
+FAC003,2025-12-26,1,Continuous Baseload (DataCenter),-32.164,-1.117
+FAC003,2025-12-27,3,Low-Intensity Weekend / Idle,40.734,3.565
+FAC003,2025-12-28,3,Low-Intensity Weekend / Idle,39.553,4.647
+FAC003,2025-12-29,1,Continuous Baseload (DataCenter),-33.603,-3.898
+FAC003,2025-12-30,1,Continuous Baseload (DataCenter),-33.554,-2.275
+FAC003,2025-12-31,1,Continuous Baseload (DataCenter),-32.809,-0.332
+FAC004,2025-01-01,2,Evening Residential (Hostels),-0.332,-29.469
+FAC004,2025-01-02,2,Evening Residential (Hostels),-0.084,-29.679
+FAC004,2025-01-03,2,Evening Residential (Hostels),-1.412,-30.176
+FAC004,2025-01-04,2,Evening Residential (Hostels),35.484,-39.888
+FAC004,2025-01-05,2,Evening Residential (Hostels),35.203,-40.603
+FAC004,2025-01-06,2,Evening Residential (Hostels),0.004,-30.185
+FAC004,2025-01-07,2,Evening Residential (Hostels),-1.818,-27.586
+FAC004,2025-01-08,2,Evening Residential (Hostels),-1.389,-27.851
+FAC004,2025-01-09,2,Evening Residential (Hostels),1.065,-30.244
+FAC004,2025-01-10,2,Evening Residential (Hostels),0.184,-30.771
+FAC004,2025-01-11,2,Evening Residential (Hostels),35.267,-40.179
+FAC004,2025-01-12,2,Evening Residential (Hostels),34.938,-40.734
+FAC004,2025-01-13,2,Evening Residential (Hostels),0.879,-28.142
+FAC004,2025-01-14,2,Evening Residential (Hostels),1.185,-29.498
+FAC004,2025-01-15,2,Evening Residential (Hostels),1.963,-31.24
+FAC004,2025-01-16,2,Evening Residential (Hostels),0.757,-30.168
+FAC004,2025-01-17,2,Evening Residential (Hostels),0.51,-31.433
+FAC004,2025-01-18,2,Evening Residential (Hostels),34.95,-40.452
+FAC004,2025-01-19,2,Evening Residential (Hostels),35.427,-40.088
+FAC004,2025-01-20,2,Evening Residential (Hostels),0.111,-28.044
+FAC004,2025-01-21,2,Evening Residential (Hostels),-1.473,-28.013
+FAC004,2025-01-22,2,Evening Residential (Hostels),-1.117,-28.04
+FAC004,2025-01-23,2,Evening Residential (Hostels),0.463,-31.313
+FAC004,2025-01-24,2,Evening Residential (Hostels),-0.318,-29.403
+FAC004,2025-01-25,2,Evening Residential (Hostels),34.914,-39.574
+FAC004,2025-01-26,2,Evening Residential (Hostels),34.773,-40.371
+FAC004,2025-01-27,2,Evening Residential (Hostels),-0.241,-31.109
+FAC004,2025-01-28,2,Evening Residential (Hostels),1.524,-31.584
+FAC004,2025-01-29,2,Evening Residential (Hostels),1.054,-31.862
+FAC004,2025-01-30,2,Evening Residential (Hostels),-1.428,-28.247
+FAC004,2025-01-31,2,Evening Residential (Hostels),-0.156,-28.137
+FAC004,2025-02-01,2,Evening Residential (Hostels),35.205,-40.553
+FAC004,2025-02-02,2,Evening Residential (Hostels),34.98,-39.781
+FAC004,2025-02-03,2,Evening Residential (Hostels),1.613,-31.831
+FAC004,2025-02-04,2,Evening Residential (Hostels),1.19,-28.486
+FAC004,2025-02-05,2,Evening Residential (Hostels),0.937,-30.905
+FAC004,2025-02-06,2,Evening Residential (Hostels),0.596,-31.04
+FAC004,2025-02-07,2,Evening Residential (Hostels),-1.298,-27.694
+FAC004,2025-02-08,2,Evening Residential (Hostels),34.854,-39.997
+FAC004,2025-02-09,2,Evening Residential (Hostels),35.162,-40.386
+FAC004,2025-02-10,2,Evening Residential (Hostels),0.898,-28.831
+FAC004,2025-02-11,2,Evening Residential (Hostels),-0.448,-27.684
+FAC004,2025-02-12,2,Evening Residential (Hostels),-0.756,-27.634
+FAC004,2025-02-13,2,Evening Residential (Hostels),1.297,-30.279
+FAC004,2025-02-14,2,Evening Residential (Hostels),-0.107,-30.367
+FAC004,2025-02-15,2,Evening Residential (Hostels),35.434,-39.765
+FAC004,2025-02-16,2,Evening Residential (Hostels),35.252,-39.767
+FAC004,2025-02-17,2,Evening Residential (Hostels),-0.773,-28.698
+FAC004,2025-02-18,2,Evening Residential (Hostels),2.207,-30.137
+FAC004,2025-02-19,2,Evening Residential (Hostels),-1.163,-29.059
+FAC004,2025-02-20,2,Evening Residential (Hostels),0.071,-30.376
+FAC004,2025-02-21,2,Evening Residential (Hostels),0.604,-31.372
+FAC004,2025-02-22,2,Evening Residential (Hostels),35.233,-39.951
+FAC004,2025-02-23,2,Evening Residential (Hostels),35.02,-40.101
+FAC004,2025-02-24,2,Evening Residential (Hostels),0.91,-29.051
+FAC004,2025-02-25,2,Evening Residential (Hostels),-0.782,-28.925
+FAC004,2025-02-26,2,Evening Residential (Hostels),-0.327,-28.921
+FAC004,2025-02-27,2,Evening Residential (Hostels),-1.899,-29.176
+FAC004,2025-02-28,2,Evening Residential (Hostels),0.339,-29.94
+FAC004,2025-03-01,2,Evening Residential (Hostels),27.817,-48.049
+FAC004,2025-03-02,2,Evening Residential (Hostels),27.869,-47.935
+FAC004,2025-03-03,2,Evening Residential (Hostels),6.669,-51.992
+FAC004,2025-03-04,2,Evening Residential (Hostels),6.191,-55.721
+FAC004,2025-03-05,2,Evening Residential (Hostels),6.141,-52.29
+FAC004,2025-03-06,2,Evening Residential (Hostels),6.966,-52.195
+FAC004,2025-03-07,2,Evening Residential (Hostels),4.357,-55.109
+FAC004,2025-03-08,2,Evening Residential (Hostels),27.818,-47.831
+FAC004,2025-03-09,2,Evening Residential (Hostels),27.678,-48.347
+FAC004,2025-03-10,2,Evening Residential (Hostels),6.28,-56.118
+FAC004,2025-03-11,2,Evening Residential (Hostels),4.574,-54.497
+FAC004,2025-03-12,2,Evening Residential (Hostels),6.7,-53.367
+FAC004,2025-03-13,2,Evening Residential (Hostels),6.0,-53.158
+FAC004,2025-03-14,2,Evening Residential (Hostels),4.872,-56.246
+FAC004,2025-03-15,2,Evening Residential (Hostels),27.884,-47.55
+FAC004,2025-03-16,2,Evening Residential (Hostels),28.316,-48.078
+FAC004,2025-03-17,2,Evening Residential (Hostels),4.51,-53.899
+FAC004,2025-03-18,2,Evening Residential (Hostels),5.371,-53.139
+FAC004,2025-03-19,2,Evening Residential (Hostels),6.348,-53.048
+FAC004,2025-03-20,2,Evening Residential (Hostels),6.185,-51.62
+FAC004,2025-03-21,2,Evening Residential (Hostels),5.309,-55.9
+FAC004,2025-03-22,2,Evening Residential (Hostels),27.809,-48.098
+FAC004,2025-03-23,2,Evening Residential (Hostels),28.066,-49.047
+FAC004,2025-03-24,2,Evening Residential (Hostels),4.386,-56.538
+FAC004,2025-03-25,2,Evening Residential (Hostels),6.749,-55.8
+FAC004,2025-03-26,2,Evening Residential (Hostels),5.95,-51.719
+FAC004,2025-03-27,2,Evening Residential (Hostels),6.912,-54.15
+FAC004,2025-03-28,2,Evening Residential (Hostels),5.458,-56.413
+FAC004,2025-03-29,2,Evening Residential (Hostels),27.354,-48.621
+FAC004,2025-03-30,2,Evening Residential (Hostels),28.55,-48.394
+FAC004,2025-03-31,2,Evening Residential (Hostels),4.954,-55.77
+FAC004,2025-04-01,2,Evening Residential (Hostels),5.062,-55.574
+FAC004,2025-04-02,2,Evening Residential (Hostels),5.041,-52.541
+FAC004,2025-04-03,2,Evening Residential (Hostels),5.634,-52.541
+FAC004,2025-04-04,2,Evening Residential (Hostels),5.554,-55.791
+FAC004,2025-04-05,2,Evening Residential (Hostels),27.803,-48.115
+FAC004,2025-04-06,2,Evening Residential (Hostels),27.949,-49.037
+FAC004,2025-04-07,2,Evening Residential (Hostels),6.386,-56.031
+FAC004,2025-04-08,2,Evening Residential (Hostels),5.99,-51.931
+FAC004,2025-04-09,2,Evening Residential (Hostels),6.746,-55.135
+FAC004,2025-04-10,2,Evening Residential (Hostels),6.427,-52.447
+FAC004,2025-04-11,2,Evening Residential (Hostels),5.319,-56.949
+FAC004,2025-04-12,2,Evening Residential (Hostels),27.921,-48.644
+FAC004,2025-04-13,2,Evening Residential (Hostels),27.704,-47.858
+FAC004,2025-04-14,2,Evening Residential (Hostels),5.745,-54.291
+FAC004,2025-04-15,2,Evening Residential (Hostels),7.254,-52.43
+FAC004,2025-04-16,2,Evening Residential (Hostels),4.513,-53.912
+FAC004,2025-04-17,2,Evening Residential (Hostels),7.087,-52.259
+FAC004,2025-04-18,2,Evening Residential (Hostels),4.54,-55.734
+FAC004,2025-04-19,2,Evening Residential (Hostels),27.854,-47.313
+FAC004,2025-04-20,2,Evening Residential (Hostels),28.087,-47.363
+FAC004,2025-04-21,2,Evening Residential (Hostels),5.004,-54.798
+FAC004,2025-04-22,2,Evening Residential (Hostels),7.162,-54.11
+FAC004,2025-04-23,2,Evening Residential (Hostels),7.458,-53.648
+FAC004,2025-04-24,2,Evening Residential (Hostels),6.157,-53.997
+FAC004,2025-04-25,2,Evening Residential (Hostels),5.66,-54.84
+FAC004,2025-04-26,2,Evening Residential (Hostels),27.343,-48.637
+FAC004,2025-04-27,2,Evening Residential (Hostels),27.65,-48.825
+FAC004,2025-04-28,2,Evening Residential (Hostels),5.107,-54.376
+FAC004,2025-04-29,2,Evening Residential (Hostels),5.245,-55.913
+FAC004,2025-04-30,2,Evening Residential (Hostels),5.009,-56.152
+FAC004,2025-05-01,2,Evening Residential (Hostels),7.454,-54.135
+FAC004,2025-05-02,2,Evening Residential (Hostels),5.627,-52.397
+FAC004,2025-05-03,2,Evening Residential (Hostels),28.025,-47.598
+FAC004,2025-05-04,2,Evening Residential (Hostels),27.857,-47.713
+FAC004,2025-05-05,2,Evening Residential (Hostels),5.844,-53.611
+FAC004,2025-05-06,2,Evening Residential (Hostels),5.187,-56.946
+FAC004,2025-05-07,2,Evening Residential (Hostels),6.432,-52.962
+FAC004,2025-05-08,2,Evening Residential (Hostels),4.055,-56.52
+FAC004,2025-05-09,2,Evening Residential (Hostels),5.725,-52.941
+FAC004,2025-05-10,2,Evening Residential (Hostels),27.544,-47.779
+FAC004,2025-05-11,2,Evening Residential (Hostels),28.244,-48.544
+FAC004,2025-05-12,2,Evening Residential (Hostels),5.703,-53.914
+FAC004,2025-05-13,2,Evening Residential (Hostels),6.142,-52.251
+FAC004,2025-05-14,2,Evening Residential (Hostels),4.327,-53.746
+FAC004,2025-05-15,2,Evening Residential (Hostels),4.095,-55.434
+FAC004,2025-05-16,2,Evening Residential (Hostels),7.11,-53.654
+FAC004,2025-05-17,2,Evening Residential (Hostels),27.848,-48.53
+FAC004,2025-05-18,2,Evening Residential (Hostels),27.524,-49.017
+FAC004,2025-05-19,2,Evening Residential (Hostels),6.211,-54.4
+FAC004,2025-05-20,2,Evening Residential (Hostels),6.386,-53.659
+FAC004,2025-05-21,2,Evening Residential (Hostels),5.279,-56.893
+FAC004,2025-05-22,2,Evening Residential (Hostels),4.52,-53.759
+FAC004,2025-05-23,2,Evening Residential (Hostels),5.489,-56.5
+FAC004,2025-05-24,2,Evening Residential (Hostels),28.263,-47.687
+FAC004,2025-05-25,2,Evening Residential (Hostels),27.942,-48.514
+FAC004,2025-05-26,2,Evening Residential (Hostels),5.834,-54.449
+FAC004,2025-05-27,2,Evening Residential (Hostels),6.534,-55.765
+FAC004,2025-05-28,2,Evening Residential (Hostels),4.732,-56.231
+FAC004,2025-05-29,2,Evening Residential (Hostels),6.979,-54.993
+FAC004,2025-05-30,2,Evening Residential (Hostels),4.987,-55.751
+FAC004,2025-05-31,2,Evening Residential (Hostels),27.927,-49.049
+FAC004,2025-06-01,2,Evening Residential (Hostels),26.124,-41.103
+FAC004,2025-06-02,2,Evening Residential (Hostels),-14.966,-39.139
+FAC004,2025-06-03,2,Evening Residential (Hostels),-14.257,-40.692
+FAC004,2025-06-04,2,Evening Residential (Hostels),-16.882,-38.439
+FAC004,2025-06-05,2,Evening Residential (Hostels),-14.401,-37.659
+FAC004,2025-06-06,2,Evening Residential (Hostels),-18.038,-38.275
+FAC004,2025-06-07,2,Evening Residential (Hostels),26.146,-40.286
+FAC004,2025-06-08,2,Evening Residential (Hostels),27.806,-41.322
+FAC004,2025-06-09,2,Evening Residential (Hostels),-14.284,-39.542
+FAC004,2025-06-10,2,Evening Residential (Hostels),-18.447,-37.462
+FAC004,2025-06-11,2,Evening Residential (Hostels),-15.532,-39.493
+FAC004,2025-06-12,2,Evening Residential (Hostels),-12.624,-39.433
+FAC004,2025-06-13,2,Evening Residential (Hostels),-14.014,-40.63
+FAC004,2025-06-14,2,Evening Residential (Hostels),25.849,-39.623
+FAC004,2025-06-15,2,Evening Residential (Hostels),27.243,-41.335
+FAC004,2025-06-16,2,Evening Residential (Hostels),-13.499,-38.694
+FAC004,2025-06-17,2,Evening Residential (Hostels),-18.599,-38.874
+FAC004,2025-06-18,2,Evening Residential (Hostels),-14.896,-42.485
+FAC004,2025-06-19,2,Evening Residential (Hostels),-16.138,-40.101
+FAC004,2025-06-20,2,Evening Residential (Hostels),-19.144,-38.511
+FAC004,2025-06-21,2,Evening Residential (Hostels),28.078,-41.082
+FAC004,2025-06-22,2,Evening Residential (Hostels),26.687,-40.832
+FAC004,2025-06-23,2,Evening Residential (Hostels),-13.478,-38.777
+FAC004,2025-06-24,2,Evening Residential (Hostels),-12.851,-37.941
+FAC004,2025-06-25,2,Evening Residential (Hostels),-13.057,-42.128
+FAC004,2025-06-26,2,Evening Residential (Hostels),-12.732,-39.121
+FAC004,2025-06-27,2,Evening Residential (Hostels),-18.172,-38.131
+FAC004,2025-06-28,2,Evening Residential (Hostels),26.284,-39.599
+FAC004,2025-06-29,2,Evening Residential (Hostels),25.974,-39.902
+FAC004,2025-06-30,2,Evening Residential (Hostels),-17.701,-38.881
+FAC004,2025-07-01,2,Evening Residential (Hostels),-18.713,-37.78
+FAC004,2025-07-02,2,Evening Residential (Hostels),-17.875,-40.033
+FAC004,2025-07-03,2,Evening Residential (Hostels),-16.332,-37.923
+FAC004,2025-07-04,2,Evening Residential (Hostels),-13.798,-38.007
+FAC004,2025-07-05,2,Evening Residential (Hostels),25.833,-39.838
+FAC004,2025-07-06,2,Evening Residential (Hostels),26.095,-39.018
+FAC004,2025-07-07,2,Evening Residential (Hostels),-12.124,-40.396
+FAC004,2025-07-08,2,Evening Residential (Hostels),-18.491,-39.708
+FAC004,2025-07-09,2,Evening Residential (Hostels),-11.849,-40.093
+FAC004,2025-07-10,2,Evening Residential (Hostels),-13.25,-41.206
+FAC004,2025-07-11,2,Evening Residential (Hostels),-18.128,-37.419
+FAC004,2025-07-12,2,Evening Residential (Hostels),27.464,-41.558
+FAC004,2025-07-13,2,Evening Residential (Hostels),28.853,-41.04
+FAC004,2025-07-14,2,Evening Residential (Hostels),-12.951,-39.07
+FAC004,2025-07-15,2,Evening Residential (Hostels),-12.305,-38.846
+FAC004,2025-07-16,2,Evening Residential (Hostels),-14.819,-38.731
+FAC004,2025-07-17,2,Evening Residential (Hostels),-14.954,-39.635
+FAC004,2025-07-18,2,Evening Residential (Hostels),-13.852,-39.632
+FAC004,2025-07-19,2,Evening Residential (Hostels),26.771,-40.239
+FAC004,2025-07-20,2,Evening Residential (Hostels),28.115,-40.097
+FAC004,2025-07-21,2,Evening Residential (Hostels),-14.883,-40.851
+FAC004,2025-07-22,2,Evening Residential (Hostels),-14.293,-41.393
+FAC004,2025-07-23,2,Evening Residential (Hostels),-12.202,-38.869
+FAC004,2025-07-24,2,Evening Residential (Hostels),-11.804,-40.092
+FAC004,2025-07-25,2,Evening Residential (Hostels),-18.136,-39.388
+FAC004,2025-07-26,2,Evening Residential (Hostels),26.847,-41.378
+FAC004,2025-07-27,2,Evening Residential (Hostels),26.065,-40.413
+FAC004,2025-07-28,2,Evening Residential (Hostels),-17.101,-38.411
+FAC004,2025-07-29,2,Evening Residential (Hostels),-17.203,-39.579
+FAC004,2025-07-30,2,Evening Residential (Hostels),-14.265,-39.047
+FAC004,2025-07-31,2,Evening Residential (Hostels),-18.467,-38.717
+FAC004,2025-08-01,2,Evening Residential (Hostels),-18.721,-39.998
+FAC004,2025-08-02,2,Evening Residential (Hostels),28.074,-43.052
+FAC004,2025-08-03,2,Evening Residential (Hostels),26.287,-41.543
+FAC004,2025-08-04,2,Evening Residential (Hostels),-13.786,-38.971
+FAC004,2025-08-05,2,Evening Residential (Hostels),-18.571,-38.506
+FAC004,2025-08-06,2,Evening Residential (Hostels),-18.26,-39.548
+FAC004,2025-08-07,2,Evening Residential (Hostels),-18.844,-37.838
+FAC004,2025-08-08,2,Evening Residential (Hostels),-15.699,-38.698
+FAC004,2025-08-09,2,Evening Residential (Hostels),26.006,-39.182
+FAC004,2025-08-10,2,Evening Residential (Hostels),25.603,-39.568
+FAC004,2025-08-11,2,Evening Residential (Hostels),-18.559,-38.361
+FAC004,2025-08-12,2,Evening Residential (Hostels),-15.708,-38.099
+FAC004,2025-08-13,2,Evening Residential (Hostels),-13.724,-39.749
+FAC004,2025-08-14,2,Evening Residential (Hostels),-17.121,-37.95
+FAC004,2025-08-15,2,Evening Residential (Hostels),-15.997,-40.64
+FAC004,2025-08-16,2,Evening Residential (Hostels),28.263,-42.933
+FAC004,2025-08-17,2,Evening Residential (Hostels),26.71,-39.189
+FAC004,2025-08-18,2,Evening Residential (Hostels),-12.682,-38.59
+FAC004,2025-08-19,2,Evening Residential (Hostels),-15.116,-41.234
+FAC004,2025-08-20,2,Evening Residential (Hostels),-19.005,-38.401
+FAC004,2025-08-21,2,Evening Residential (Hostels),-18.805,-39.361
+FAC004,2025-08-22,2,Evening Residential (Hostels),-14.395,-40.222
+FAC004,2025-08-23,2,Evening Residential (Hostels),28.449,-40.935
+FAC004,2025-08-24,2,Evening Residential (Hostels),27.222,-41.112
+FAC004,2025-08-25,2,Evening Residential (Hostels),-15.062,-38.758
+FAC004,2025-08-26,2,Evening Residential (Hostels),-14.486,-43.49
+FAC004,2025-08-27,2,Evening Residential (Hostels),-15.064,-40.062
+FAC004,2025-08-28,2,Evening Residential (Hostels),-13.942,-38.131
+FAC004,2025-08-29,2,Evening Residential (Hostels),-14.497,-43.295
+FAC004,2025-08-30,2,Evening Residential (Hostels),27.703,-39.746
+FAC004,2025-08-31,2,Evening Residential (Hostels),27.537,-41.489
+FAC004,2025-09-01,2,Evening Residential (Hostels),-11.666,-40.071
+FAC004,2025-09-02,2,Evening Residential (Hostels),-12.053,-40.463
+FAC004,2025-09-03,2,Evening Residential (Hostels),-14.615,-40.388
+FAC004,2025-09-04,2,Evening Residential (Hostels),-16.159,-38.029
+FAC004,2025-09-05,2,Evening Residential (Hostels),-16.305,-40.615
+FAC004,2025-09-06,2,Evening Residential (Hostels),25.807,-39.705
+FAC004,2025-09-07,2,Evening Residential (Hostels),27.988,-42.572
+FAC004,2025-09-08,2,Evening Residential (Hostels),-14.339,-38.805
+FAC004,2025-09-09,2,Evening Residential (Hostels),-18.814,-40.139
+FAC004,2025-09-10,2,Evening Residential (Hostels),-15.986,-37.663
+FAC004,2025-09-11,2,Evening Residential (Hostels),-14.909,-37.979
+FAC004,2025-09-12,2,Evening Residential (Hostels),-14.284,-42.849
+FAC004,2025-09-13,2,Evening Residential (Hostels),28.61,-41.816
+FAC004,2025-09-14,2,Evening Residential (Hostels),28.465,-43.147
+FAC004,2025-09-15,2,Evening Residential (Hostels),-14.64,-37.63
+FAC004,2025-09-16,2,Evening Residential (Hostels),-17.193,-37.964
+FAC004,2025-09-17,2,Evening Residential (Hostels),-15.103,-42.544
+FAC004,2025-09-18,2,Evening Residential (Hostels),-15.003,-39.294
+FAC004,2025-09-19,2,Evening Residential (Hostels),-13.325,-38.045
+FAC004,2025-09-20,2,Evening Residential (Hostels),27.018,-40.367
+FAC004,2025-09-21,2,Evening Residential (Hostels),26.987,-39.591
+FAC004,2025-09-22,2,Evening Residential (Hostels),-13.705,-41.097
+FAC004,2025-09-23,2,Evening Residential (Hostels),-18.553,-38.498
+FAC004,2025-09-24,2,Evening Residential (Hostels),-17.465,-37.687
+FAC004,2025-09-25,2,Evening Residential (Hostels),-16.33,-37.381
+FAC004,2025-09-26,2,Evening Residential (Hostels),-14.34,-39.687
+FAC004,2025-09-27,2,Evening Residential (Hostels),26.457,-40.517
+FAC004,2025-09-28,2,Evening Residential (Hostels),27.286,-40.663
+FAC004,2025-09-29,2,Evening Residential (Hostels),-15.132,-38.225
+FAC004,2025-09-30,2,Evening Residential (Hostels),-15.628,-37.445
+FAC004,2025-10-01,2,Evening Residential (Hostels),-11.392,-45.018
+FAC004,2025-10-02,2,Evening Residential (Hostels),-13.177,-44.785
+FAC004,2025-10-03,2,Evening Residential (Hostels),-12.302,-45.175
+FAC004,2025-10-04,2,Evening Residential (Hostels),27.477,-38.815
+FAC004,2025-10-05,2,Evening Residential (Hostels),27.51,-41.464
+FAC004,2025-10-06,2,Evening Residential (Hostels),-13.732,-45.126
+FAC004,2025-10-07,2,Evening Residential (Hostels),-14.476,-46.859
+FAC004,2025-10-08,2,Evening Residential (Hostels),-14.081,-45.54
+FAC004,2025-10-09,2,Evening Residential (Hostels),-13.438,-46.977
+FAC004,2025-10-10,2,Evening Residential (Hostels),-13.516,-45.886
+FAC004,2025-10-11,2,Evening Residential (Hostels),29.703,-40.993
+FAC004,2025-10-12,2,Evening Residential (Hostels),27.873,-41.439
+FAC004,2025-10-13,2,Evening Residential (Hostels),-13.057,-46.448
+FAC004,2025-10-14,2,Evening Residential (Hostels),-13.307,-41.66
+FAC004,2025-10-15,2,Evening Residential (Hostels),-13.912,-46.261
+FAC004,2025-10-16,2,Evening Residential (Hostels),-12.053,-46.176
+FAC004,2025-10-17,2,Evening Residential (Hostels),-12.718,-41.976
+FAC004,2025-10-18,2,Evening Residential (Hostels),27.89,-40.478
+FAC004,2025-10-19,2,Evening Residential (Hostels),28.079,-40.294
+FAC004,2025-10-20,2,Evening Residential (Hostels),-13.191,-45.324
+FAC004,2025-10-21,2,Evening Residential (Hostels),-13.149,-45.7
+FAC004,2025-10-22,2,Evening Residential (Hostels),-13.262,-46.067
+FAC004,2025-10-23,2,Evening Residential (Hostels),-12.74,-44.225
+FAC004,2025-10-24,2,Evening Residential (Hostels),-13.32,-45.864
+FAC004,2025-10-25,2,Evening Residential (Hostels),28.176,-39.311
+FAC004,2025-10-26,2,Evening Residential (Hostels),27.994,-40.421
+FAC004,2025-10-27,2,Evening Residential (Hostels),-11.478,-44.272
+FAC004,2025-10-28,2,Evening Residential (Hostels),-12.765,-45.548
+FAC004,2025-10-29,2,Evening Residential (Hostels),-11.778,-45.445
+FAC004,2025-10-30,2,Evening Residential (Hostels),-11.462,-45.022
+FAC004,2025-10-31,2,Evening Residential (Hostels),-12.891,-44.261
+FAC004,2025-11-01,2,Evening Residential (Hostels),28.839,-40.745
+FAC004,2025-11-02,2,Evening Residential (Hostels),27.88,-42.529
+FAC004,2025-11-03,2,Evening Residential (Hostels),-11.658,-45.217
+FAC004,2025-11-04,2,Evening Residential (Hostels),-11.428,-44.334
+FAC004,2025-11-05,2,Evening Residential (Hostels),-13.806,-45.516
+FAC004,2025-11-06,2,Evening Residential (Hostels),-14.208,-46.335
+FAC004,2025-11-07,2,Evening Residential (Hostels),-12.401,-45.49
+FAC004,2025-11-08,2,Evening Residential (Hostels),28.262,-39.619
+FAC004,2025-11-09,2,Evening Residential (Hostels),28.499,-40.103
+FAC004,2025-11-10,2,Evening Residential (Hostels),-12.582,-46.849
+FAC004,2025-11-11,2,Evening Residential (Hostels),-11.183,-44.066
+FAC004,2025-11-12,2,Evening Residential (Hostels),-13.411,-46.634
+FAC004,2025-11-13,2,Evening Residential (Hostels),-12.033,-46.103
+FAC004,2025-11-14,2,Evening Residential (Hostels),-13.55,-45.227
+FAC004,2025-11-15,2,Evening Residential (Hostels),28.315,-39.865
+FAC004,2025-11-16,2,Evening Residential (Hostels),28.0,-39.215
+FAC004,2025-11-17,2,Evening Residential (Hostels),-13.153,-46.487
+FAC004,2025-11-18,2,Evening Residential (Hostels),-14.521,-46.919
+FAC004,2025-11-19,2,Evening Residential (Hostels),-13.647,-47.078
+FAC004,2025-11-20,2,Evening Residential (Hostels),-13.296,-46.905
+FAC004,2025-11-21,2,Evening Residential (Hostels),-12.133,-44.743
+FAC004,2025-11-22,2,Evening Residential (Hostels),28.034,-39.071
+FAC004,2025-11-23,2,Evening Residential (Hostels),27.205,-38.619
+FAC004,2025-11-24,2,Evening Residential (Hostels),-12.997,-45.045
+FAC004,2025-11-25,2,Evening Residential (Hostels),-13.415,-45.62
+FAC004,2025-11-26,2,Evening Residential (Hostels),-11.493,-45.511
+FAC004,2025-11-27,2,Evening Residential (Hostels),-13.607,-46.459
+FAC004,2025-11-28,2,Evening Residential (Hostels),-12.691,-44.586
+FAC004,2025-11-29,2,Evening Residential (Hostels),27.335,-38.857
+FAC004,2025-11-30,2,Evening Residential (Hostels),27.456,-39.771
+FAC004,2025-12-01,2,Evening Residential (Hostels),0.589,-29.826
+FAC004,2025-12-02,2,Evening Residential (Hostels),-1.219,-28.622
+FAC004,2025-12-03,2,Evening Residential (Hostels),1.284,-31.943
+FAC004,2025-12-04,2,Evening Residential (Hostels),-0.407,-28.477
+FAC004,2025-12-05,2,Evening Residential (Hostels),0.054,-30.084
+FAC004,2025-12-06,2,Evening Residential (Hostels),34.805,-40.851
+FAC004,2025-12-07,2,Evening Residential (Hostels),35.531,-40.381
+FAC004,2025-12-08,2,Evening Residential (Hostels),2.127,-30.531
+FAC004,2025-12-09,2,Evening Residential (Hostels),-1.534,-28.887
+FAC004,2025-12-10,2,Evening Residential (Hostels),-0.903,-28.187
+FAC004,2025-12-11,2,Evening Residential (Hostels),-2.121,-28.472
+FAC004,2025-12-12,2,Evening Residential (Hostels),-1.232,-27.722
+FAC004,2025-12-13,2,Evening Residential (Hostels),35.308,-40.359
+FAC004,2025-12-14,2,Evening Residential (Hostels),34.948,-40.362
+FAC004,2025-12-15,2,Evening Residential (Hostels),2.056,-30.931
+FAC004,2025-12-16,2,Evening Residential (Hostels),2.061,-28.85
+FAC004,2025-12-17,2,Evening Residential (Hostels),0.404,-30.982
+FAC004,2025-12-18,2,Evening Residential (Hostels),1.999,-30.575
+FAC004,2025-12-19,2,Evening Residential (Hostels),1.131,-29.684
+FAC004,2025-12-20,2,Evening Residential (Hostels),35.288,-40.045
+FAC004,2025-12-21,2,Evening Residential (Hostels),34.943,-39.751
+FAC004,2025-12-22,2,Evening Residential (Hostels),-0.674,-30.016
+FAC004,2025-12-23,2,Evening Residential (Hostels),1.723,-29.847
+FAC004,2025-12-24,2,Evening Residential (Hostels),0.298,-32.071
+FAC004,2025-12-25,2,Evening Residential (Hostels),1.097,-31.943
+FAC004,2025-12-26,2,Evening Residential (Hostels),0.277,-28.861
+FAC004,2025-12-27,2,Evening Residential (Hostels),34.719,-39.807
+FAC004,2025-12-28,2,Evening Residential (Hostels),34.88,-40.266
+FAC004,2025-12-29,2,Evening Residential (Hostels),-0.776,-28.402
+FAC004,2025-12-30,2,Evening Residential (Hostels),1.409,-29.92
+FAC004,2025-12-31,2,Evening Residential (Hostels),0.675,-31.723
+FAC005,2025-01-01,1,Continuous Baseload (DataCenter),-27.998,32.68
+FAC005,2025-01-02,1,Continuous Baseload (DataCenter),-27.848,33.482
+FAC005,2025-01-03,1,Continuous Baseload (DataCenter),-27.156,35.915
+FAC005,2025-01-04,3,Low-Intensity Weekend / Idle,40.432,14.603
+FAC005,2025-01-05,3,Low-Intensity Weekend / Idle,41.687,4.659
+FAC005,2025-01-06,1,Continuous Baseload (DataCenter),-27.687,34.903
+FAC005,2025-01-07,1,Continuous Baseload (DataCenter),-27.173,32.548
+FAC005,2025-01-08,1,Continuous Baseload (DataCenter),-27.072,31.375
+FAC005,2025-01-09,1,Continuous Baseload (DataCenter),-26.181,31.858
+FAC005,2025-01-10,1,Continuous Baseload (DataCenter),-27.634,33.643
+FAC005,2025-01-11,3,Low-Intensity Weekend / Idle,40.734,1.259
+FAC005,2025-01-12,3,Low-Intensity Weekend / Idle,41.839,0.485
+FAC005,2025-01-13,1,Continuous Baseload (DataCenter),-28.486,33.517
+FAC005,2025-01-14,1,Continuous Baseload (DataCenter),-28.933,31.859
+FAC005,2025-01-15,1,Continuous Baseload (DataCenter),-27.331,36.605
+FAC005,2025-01-16,1,Continuous Baseload (DataCenter),-27.297,36.192
+FAC005,2025-01-17,1,Continuous Baseload (DataCenter),-28.045,31.357
+FAC005,2025-01-18,3,Low-Intensity Weekend / Idle,40.598,-1.209
+FAC005,2025-01-19,3,Low-Intensity Weekend / Idle,40.184,14.847
+FAC005,2025-01-20,1,Continuous Baseload (DataCenter),-28.844,31.794
+FAC005,2025-01-21,1,Continuous Baseload (DataCenter),-26.097,31.871
+FAC005,2025-01-22,1,Continuous Baseload (DataCenter),-27.788,35.968
+FAC005,2025-01-23,1,Continuous Baseload (DataCenter),-28.194,35.215
+FAC005,2025-01-24,1,Continuous Baseload (DataCenter),-28.634,32.324
+FAC005,2025-01-25,3,Low-Intensity Weekend / Idle,31.621,10.29
+FAC005,2025-01-26,3,Low-Intensity Weekend / Idle,41.345,-0.572
+FAC005,2025-01-27,1,Continuous Baseload (DataCenter),-27.065,34.508
+FAC005,2025-01-28,1,Continuous Baseload (DataCenter),-28.366,35.364
+FAC005,2025-01-29,1,Continuous Baseload (DataCenter),-27.882,36.319
+FAC005,2025-01-30,1,Continuous Baseload (DataCenter),-26.663,32.194
+FAC005,2025-01-31,1,Continuous Baseload (DataCenter),-26.755,32.758
+FAC005,2025-02-01,3,Low-Intensity Weekend / Idle,38.965,7.197
+FAC005,2025-02-02,3,Low-Intensity Weekend / Idle,40.966,2.506
+FAC005,2025-02-03,1,Continuous Baseload (DataCenter),-27.953,36.028
+FAC005,2025-02-04,1,Continuous Baseload (DataCenter),-28.322,32.99
+FAC005,2025-02-05,1,Continuous Baseload (DataCenter),-27.752,36.24
+FAC005,2025-02-06,1,Continuous Baseload (DataCenter),-26.813,34.049
+FAC005,2025-02-07,1,Continuous Baseload (DataCenter),-28.214,32.159
+FAC005,2025-02-08,3,Low-Intensity Weekend / Idle,33.548,9.658
+FAC005,2025-02-09,3,Low-Intensity Weekend / Idle,40.545,-0.966
+FAC005,2025-02-10,1,Continuous Baseload (DataCenter),-26.387,34.994
+FAC005,2025-02-11,1,Continuous Baseload (DataCenter),-28.277,31.617
+FAC005,2025-02-12,1,Continuous Baseload (DataCenter),-28.603,31.319
+FAC005,2025-02-13,1,Continuous Baseload (DataCenter),-27.607,36.727
+FAC005,2025-02-14,1,Continuous Baseload (DataCenter),-28.148,33.369
+FAC005,2025-02-15,3,Low-Intensity Weekend / Idle,32.49,11.211
+FAC005,2025-02-16,3,Low-Intensity Weekend / Idle,40.442,3.588
+FAC005,2025-02-17,1,Continuous Baseload (DataCenter),-27.546,32.361
+FAC005,2025-02-18,1,Continuous Baseload (DataCenter),-27.096,36.408
+FAC005,2025-02-19,1,Continuous Baseload (DataCenter),-28.46,32.466
+FAC005,2025-02-20,1,Continuous Baseload (DataCenter),-27.657,33.542
+FAC005,2025-02-21,1,Continuous Baseload (DataCenter),-27.015,36.069
+FAC005,2025-02-22,3,Low-Intensity Weekend / Idle,40.425,-1.786
+FAC005,2025-02-23,3,Low-Intensity Weekend / Idle,29.296,15.65
+FAC005,2025-02-24,1,Continuous Baseload (DataCenter),-27.591,32.683
+FAC005,2025-02-25,1,Continuous Baseload (DataCenter),-27.799,31.478
+FAC005,2025-02-26,1,Continuous Baseload (DataCenter),-27.6,33.573
+FAC005,2025-02-27,1,Continuous Baseload (DataCenter),-27.661,34.706
+FAC005,2025-02-28,1,Continuous Baseload (DataCenter),-27.345,32.619
+FAC005,2025-03-01,0,Day-Shift Commercial Heavy,17.411,-20.681
+FAC005,2025-03-02,0,Day-Shift Commercial Heavy,16.485,-20.361
+FAC005,2025-03-03,1,Continuous Baseload (DataCenter),-9.583,52.187
+FAC005,2025-03-04,1,Continuous Baseload (DataCenter),-10.881,52.357
+FAC005,2025-03-05,1,Continuous Baseload (DataCenter),-9.408,52.954
+FAC005,2025-03-06,1,Continuous Baseload (DataCenter),-10.523,51.515
+FAC005,2025-03-07,1,Continuous Baseload (DataCenter),-8.887,55.12
+FAC005,2025-03-08,0,Day-Shift Commercial Heavy,17.928,-19.263
+FAC005,2025-03-09,0,Day-Shift Commercial Heavy,19.957,-21.197
+FAC005,2025-03-10,1,Continuous Baseload (DataCenter),-11.211,53.072
+FAC005,2025-03-11,1,Continuous Baseload (DataCenter),-7.902,56.015
+FAC005,2025-03-12,1,Continuous Baseload (DataCenter),-10.511,53.219
+FAC005,2025-03-13,1,Continuous Baseload (DataCenter),-9.167,52.286
+FAC005,2025-03-14,1,Continuous Baseload (DataCenter),-8.137,55.672
+FAC005,2025-03-15,0,Day-Shift Commercial Heavy,15.805,-20.124
+FAC005,2025-03-16,0,Day-Shift Commercial Heavy,23.526,-21.643
+FAC005,2025-03-17,1,Continuous Baseload (DataCenter),-9.134,55.998
+FAC005,2025-03-18,1,Continuous Baseload (DataCenter),-8.544,53.452
+FAC005,2025-03-19,1,Continuous Baseload (DataCenter),-10.274,51.846
+FAC005,2025-03-20,1,Continuous Baseload (DataCenter),-10.293,52.033
+FAC005,2025-03-21,1,Continuous Baseload (DataCenter),-7.83,55.132
+FAC005,2025-03-22,0,Day-Shift Commercial Heavy,17.73,-21.133
+FAC005,2025-03-23,0,Day-Shift Commercial Heavy,27.889,-21.249
+FAC005,2025-03-24,1,Continuous Baseload (DataCenter),-7.61,56.253
+FAC005,2025-03-25,1,Continuous Baseload (DataCenter),-10.364,53.065
+FAC005,2025-03-26,1,Continuous Baseload (DataCenter),-9.045,52.718
+FAC005,2025-03-27,1,Continuous Baseload (DataCenter),-10.225,52.146
+FAC005,2025-03-28,1,Continuous Baseload (DataCenter),-9.285,54.861
+FAC005,2025-03-29,0,Day-Shift Commercial Heavy,16.482,-19.789
+FAC005,2025-03-30,0,Day-Shift Commercial Heavy,24.869,-21.158
+FAC005,2025-03-31,1,Continuous Baseload (DataCenter),-8.063,55.092
+FAC005,2025-04-01,1,Continuous Baseload (DataCenter),-8.465,55.554
+FAC005,2025-04-02,1,Continuous Baseload (DataCenter),-7.965,55.038
+FAC005,2025-04-03,1,Continuous Baseload (DataCenter),-7.616,54.884
+FAC005,2025-04-04,1,Continuous Baseload (DataCenter),-9.77,54.474
+FAC005,2025-04-05,0,Day-Shift Commercial Heavy,16.945,-19.945
+FAC005,2025-04-06,0,Day-Shift Commercial Heavy,25.701,-21.66
+FAC005,2025-04-07,1,Continuous Baseload (DataCenter),-9.737,53.867
+FAC005,2025-04-08,1,Continuous Baseload (DataCenter),-9.853,52.605
+FAC005,2025-04-09,1,Continuous Baseload (DataCenter),-10.914,53.138
+FAC005,2025-04-10,1,Continuous Baseload (DataCenter),-9.338,52.38
+FAC005,2025-04-11,1,Continuous Baseload (DataCenter),-9.029,54.687
+FAC005,2025-04-12,0,Day-Shift Commercial Heavy,23.229,-20.119
+FAC005,2025-04-13,0,Day-Shift Commercial Heavy,16.559,-20.625
+FAC005,2025-04-14,1,Continuous Baseload (DataCenter),-9.7,53.764
+FAC005,2025-04-15,1,Continuous Baseload (DataCenter),-9.272,51.553
+FAC005,2025-04-16,1,Continuous Baseload (DataCenter),-8.864,55.582
+FAC005,2025-04-17,1,Continuous Baseload (DataCenter),-10.309,51.213
+FAC005,2025-04-18,1,Continuous Baseload (DataCenter),-9.392,54.537
+FAC005,2025-04-19,0,Day-Shift Commercial Heavy,13.9,-19.113
+FAC005,2025-04-20,0,Day-Shift Commercial Heavy,17.488,-20.047
+FAC005,2025-04-21,1,Continuous Baseload (DataCenter),-8.527,54.994
+FAC005,2025-04-22,1,Continuous Baseload (DataCenter),-9.907,51.034
+FAC005,2025-04-23,1,Continuous Baseload (DataCenter),-9.819,51.57
+FAC005,2025-04-24,1,Continuous Baseload (DataCenter),-10.203,52.537
+FAC005,2025-04-25,1,Continuous Baseload (DataCenter),-10.778,53.454
+FAC005,2025-04-26,0,Day-Shift Commercial Heavy,16.158,-19.508
+FAC005,2025-04-27,0,Day-Shift Commercial Heavy,17.26,-19.471
+FAC005,2025-04-28,1,Continuous Baseload (DataCenter),-8.88,53.994
+FAC005,2025-04-29,1,Continuous Baseload (DataCenter),-9.023,54.876
+FAC005,2025-04-30,1,Continuous Baseload (DataCenter),-7.99,56.175
+FAC005,2025-05-01,1,Continuous Baseload (DataCenter),-9.646,51.265
+FAC005,2025-05-02,1,Continuous Baseload (DataCenter),-8.404,54.608
+FAC005,2025-05-03,0,Day-Shift Commercial Heavy,18.667,-21.09
+FAC005,2025-05-04,0,Day-Shift Commercial Heavy,17.567,-20.814
+FAC005,2025-05-05,1,Continuous Baseload (DataCenter),-9.667,53.179
+FAC005,2025-05-06,1,Continuous Baseload (DataCenter),-11.681,53.259
+FAC005,2025-05-07,1,Continuous Baseload (DataCenter),-9.456,54.329
+FAC005,2025-05-08,1,Continuous Baseload (DataCenter),-7.57,56.465
+FAC005,2025-05-09,1,Continuous Baseload (DataCenter),-8.924,53.389
+FAC005,2025-05-10,0,Day-Shift Commercial Heavy,14.219,-18.077
+FAC005,2025-05-11,0,Day-Shift Commercial Heavy,25.033,-20.829
+FAC005,2025-05-12,1,Continuous Baseload (DataCenter),-7.884,54.59
+FAC005,2025-05-13,1,Continuous Baseload (DataCenter),-10.324,53.165
+FAC005,2025-05-14,1,Continuous Baseload (DataCenter),-8.154,56.33
+FAC005,2025-05-15,1,Continuous Baseload (DataCenter),-7.497,56.397
+FAC005,2025-05-16,1,Continuous Baseload (DataCenter),-10.007,51.354
+FAC005,2025-05-17,0,Day-Shift Commercial Heavy,21.659,-21.151
+FAC005,2025-05-18,0,Day-Shift Commercial Heavy,19.207,-21.055
+FAC005,2025-05-19,1,Continuous Baseload (DataCenter),-10.141,52.967
+FAC005,2025-05-20,1,Continuous Baseload (DataCenter),-11.163,52.013
+FAC005,2025-05-21,1,Continuous Baseload (DataCenter),-8.206,55.199
+FAC005,2025-05-22,1,Continuous Baseload (DataCenter),-7.99,55.374
+FAC005,2025-05-23,1,Continuous Baseload (DataCenter),-10.67,53.446
+FAC005,2025-05-24,0,Day-Shift Commercial Heavy,19.485,-19.584
+FAC005,2025-05-25,0,Day-Shift Commercial Heavy,21.617,-19.912
+FAC005,2025-05-26,1,Continuous Baseload (DataCenter),-8.592,54.11
+FAC005,2025-05-27,1,Continuous Baseload (DataCenter),-9.985,53.744
+FAC005,2025-05-28,1,Continuous Baseload (DataCenter),-10.165,55.033
+FAC005,2025-05-29,1,Continuous Baseload (DataCenter),-10.552,51.671
+FAC005,2025-05-30,1,Continuous Baseload (DataCenter),-8.329,55.236
+FAC005,2025-05-31,0,Day-Shift Commercial Heavy,21.916,-19.409
+FAC005,2025-06-01,0,Day-Shift Commercial Heavy,9.864,-15.098
+FAC005,2025-06-02,1,Continuous Baseload (DataCenter),-44.79,14.404
+FAC005,2025-06-03,1,Continuous Baseload (DataCenter),-56.103,4.184
+FAC005,2025-06-04,1,Continuous Baseload (DataCenter),-45.992,12.916
+FAC005,2025-06-05,1,Continuous Baseload (DataCenter),-44.34,14.725
+FAC005,2025-06-06,1,Continuous Baseload (DataCenter),-45.709,11.928
+FAC005,2025-06-07,0,Day-Shift Commercial Heavy,10.203,-16.216
+FAC005,2025-06-08,0,Day-Shift Commercial Heavy,12.236,-17.694
+FAC005,2025-06-09,1,Continuous Baseload (DataCenter),-43.528,14.797
+FAC005,2025-06-10,1,Continuous Baseload (DataCenter),-46.669,10.414
+FAC005,2025-06-11,1,Continuous Baseload (DataCenter),-42.443,15.079
+FAC005,2025-06-12,1,Continuous Baseload (DataCenter),-44.324,16.271
+FAC005,2025-06-13,1,Continuous Baseload (DataCenter),-42.329,16.531
+FAC005,2025-06-14,0,Day-Shift Commercial Heavy,9.855,-14.213
+FAC005,2025-06-15,0,Day-Shift Commercial Heavy,13.737,-19.355
+FAC005,2025-06-16,1,Continuous Baseload (DataCenter),-46.242,13.249
+FAC005,2025-06-17,1,Continuous Baseload (DataCenter),-46.951,11.456
+FAC005,2025-06-18,1,Continuous Baseload (DataCenter),-42.108,17.099
+FAC005,2025-06-19,1,Continuous Baseload (DataCenter),-45.207,14.296
+FAC005,2025-06-20,1,Continuous Baseload (DataCenter),-45.49,11.437
+FAC005,2025-06-21,0,Day-Shift Commercial Heavy,13.606,-17.005
+FAC005,2025-06-22,0,Day-Shift Commercial Heavy,10.267,-16.143
+FAC005,2025-06-23,1,Continuous Baseload (DataCenter),-45.49,14.268
+FAC005,2025-06-24,1,Continuous Baseload (DataCenter),-43.591,14.466
+FAC005,2025-06-25,1,Continuous Baseload (DataCenter),-44.119,15.762
+FAC005,2025-06-26,1,Continuous Baseload (DataCenter),-43.385,15.526
+FAC005,2025-06-27,1,Continuous Baseload (DataCenter),-44.86,11.513
+FAC005,2025-06-28,0,Day-Shift Commercial Heavy,10.043,-14.592
+FAC005,2025-06-29,0,Day-Shift Commercial Heavy,9.664,-15.112
+FAC005,2025-06-30,1,Continuous Baseload (DataCenter),-46.553,12.323
+FAC005,2025-07-01,1,Continuous Baseload (DataCenter),-46.243,11.079
+FAC005,2025-07-02,1,Continuous Baseload (DataCenter),-45.636,14.032
+FAC005,2025-07-03,1,Continuous Baseload (DataCenter),-45.567,12.542
+FAC005,2025-07-04,1,Continuous Baseload (DataCenter),-43.812,13.702
+FAC005,2025-07-05,0,Day-Shift Commercial Heavy,9.804,-14.917
+FAC005,2025-07-06,0,Day-Shift Commercial Heavy,10.052,-15.147
+FAC005,2025-07-07,1,Continuous Baseload (DataCenter),-42.7,17.453
+FAC005,2025-07-08,1,Continuous Baseload (DataCenter),-43.398,13.056
+FAC005,2025-07-09,1,Continuous Baseload (DataCenter),-43.355,17.514
+FAC005,2025-07-10,1,Continuous Baseload (DataCenter),-43.783,15.674
+FAC005,2025-07-11,1,Continuous Baseload (DataCenter),-46.262,11.242
+FAC005,2025-07-12,0,Day-Shift Commercial Heavy,11.878,-15.75
+FAC005,2025-07-13,0,Day-Shift Commercial Heavy,22.011,-23.554
+FAC005,2025-07-14,1,Continuous Baseload (DataCenter),-43.97,15.692
+FAC005,2025-07-15,1,Continuous Baseload (DataCenter),-47.229,14.122
+FAC005,2025-07-16,1,Continuous Baseload (DataCenter),-44.215,13.328
+FAC005,2025-07-17,1,Continuous Baseload (DataCenter),-47.081,12.787
+FAC005,2025-07-18,1,Continuous Baseload (DataCenter),-43.099,15.928
+FAC005,2025-07-19,0,Day-Shift Commercial Heavy,11.182,-15.7
+FAC005,2025-07-20,0,Day-Shift Commercial Heavy,14.15,-16.996
+FAC005,2025-07-21,1,Continuous Baseload (DataCenter),-44.666,16.363
+FAC005,2025-07-22,1,Continuous Baseload (DataCenter),-42.129,16.716
+FAC005,2025-07-23,1,Continuous Baseload (DataCenter),-42.792,15.128
+FAC005,2025-07-24,1,Continuous Baseload (DataCenter),-42.502,17.576
+FAC005,2025-07-25,1,Continuous Baseload (DataCenter),-44.028,12.799
+FAC005,2025-07-26,0,Day-Shift Commercial Heavy,9.917,-16.088
+FAC005,2025-07-27,0,Day-Shift Commercial Heavy,9.951,-14.842
+FAC005,2025-07-28,1,Continuous Baseload (DataCenter),-46.847,11.54
+FAC005,2025-07-29,1,Continuous Baseload (DataCenter),-47.355,13.85
+FAC005,2025-07-30,1,Continuous Baseload (DataCenter),-43.122,15.51
+FAC005,2025-07-31,1,Continuous Baseload (DataCenter),-44.213,12.893
+FAC005,2025-08-01,1,Continuous Baseload (DataCenter),-46.058,13.329
+FAC005,2025-08-02,0,Day-Shift Commercial Heavy,15.042,-18.764
+FAC005,2025-08-03,0,Day-Shift Commercial Heavy,10.331,-16.108
+FAC005,2025-08-04,1,Continuous Baseload (DataCenter),-44.673,15.418
+FAC005,2025-08-05,1,Continuous Baseload (DataCenter),-46.163,12.132
+FAC005,2025-08-06,1,Continuous Baseload (DataCenter),-43.276,13.236
+FAC005,2025-08-07,1,Continuous Baseload (DataCenter),-46.464,10.672
+FAC005,2025-08-08,1,Continuous Baseload (DataCenter),-44.497,13.899
+FAC005,2025-08-09,0,Day-Shift Commercial Heavy,9.708,-14.514
+FAC005,2025-08-10,0,Day-Shift Commercial Heavy,9.557,-13.984
+FAC005,2025-08-11,1,Continuous Baseload (DataCenter),-45.097,11.478
+FAC005,2025-08-12,1,Continuous Baseload (DataCenter),-44.566,12.368
+FAC005,2025-08-13,1,Continuous Baseload (DataCenter),-45.989,14.786
+FAC005,2025-08-14,1,Continuous Baseload (DataCenter),-45.913,11.723
+FAC005,2025-08-15,1,Continuous Baseload (DataCenter),-46.34,13.072
+FAC005,2025-08-16,0,Day-Shift Commercial Heavy,15.313,-17.225
+FAC005,2025-08-17,0,Day-Shift Commercial Heavy,10.392,-16.385
+FAC005,2025-08-18,1,Continuous Baseload (DataCenter),-44.888,16.17
+FAC005,2025-08-19,1,Continuous Baseload (DataCenter),-43.644,15.668
+FAC005,2025-08-20,1,Continuous Baseload (DataCenter),-46.687,10.528
+FAC005,2025-08-21,1,Continuous Baseload (DataCenter),-44.467,12.37
+FAC005,2025-08-22,1,Continuous Baseload (DataCenter),-45.643,14.047
+FAC005,2025-08-23,0,Day-Shift Commercial Heavy,16.612,-19.552
+FAC005,2025-08-24,0,Day-Shift Commercial Heavy,13.449,-17.471
+FAC005,2025-08-25,1,Continuous Baseload (DataCenter),-44.73,14.289
+FAC005,2025-08-26,1,Continuous Baseload (DataCenter),-42.384,17.199
+FAC005,2025-08-27,1,Continuous Baseload (DataCenter),-43.064,15.415
+FAC005,2025-08-28,1,Continuous Baseload (DataCenter),-44.887,14.414
+FAC005,2025-08-29,1,Continuous Baseload (DataCenter),-42.76,17.438
+FAC005,2025-08-30,0,Day-Shift Commercial Heavy,13.037,-18.853
+FAC005,2025-08-31,0,Day-Shift Commercial Heavy,14.032,-19.177
+FAC005,2025-09-01,1,Continuous Baseload (DataCenter),-42.391,17.245
+FAC005,2025-09-02,1,Continuous Baseload (DataCenter),-43.243,17.221
+FAC005,2025-09-03,1,Continuous Baseload (DataCenter),-44.293,16.304
+FAC005,2025-09-04,1,Continuous Baseload (DataCenter),-46.472,12.646
+FAC005,2025-09-05,1,Continuous Baseload (DataCenter),-44.398,14.733
+FAC005,2025-09-06,0,Day-Shift Commercial Heavy,9.749,-14.998
+FAC005,2025-09-07,0,Day-Shift Commercial Heavy,14.033,-20.064
+FAC005,2025-09-08,1,Continuous Baseload (DataCenter),-45.676,13.361
+FAC005,2025-09-09,1,Continuous Baseload (DataCenter),-43.116,14.416
+FAC005,2025-09-10,1,Continuous Baseload (DataCenter),-47.006,11.446
+FAC005,2025-09-11,1,Continuous Baseload (DataCenter),-46.155,13.144
+FAC005,2025-09-12,1,Continuous Baseload (DataCenter),-42.344,17.245
+FAC005,2025-09-13,0,Day-Shift Commercial Heavy,16.655,-21.679
+FAC005,2025-09-14,0,Day-Shift Commercial Heavy,18.291,-17.953
+FAC005,2025-09-15,1,Continuous Baseload (DataCenter),-43.202,13.216
+FAC005,2025-09-16,1,Continuous Baseload (DataCenter),-45.392,11.486
+FAC005,2025-09-17,1,Continuous Baseload (DataCenter),-41.942,17.12
+FAC005,2025-09-18,1,Continuous Baseload (DataCenter),-43.808,14.786
+FAC005,2025-09-19,1,Continuous Baseload (DataCenter),-45.141,14.787
+FAC005,2025-09-20,0,Day-Shift Commercial Heavy,10.589,-16.064
+FAC005,2025-09-21,0,Day-Shift Commercial Heavy,11.554,-16.177
+FAC005,2025-09-22,1,Continuous Baseload (DataCenter),-44.051,15.505
+FAC005,2025-09-23,1,Continuous Baseload (DataCenter),-44.382,11.952
+FAC005,2025-09-24,1,Continuous Baseload (DataCenter),-46.11,10.956
+FAC005,2025-09-25,1,Continuous Baseload (DataCenter),-45.782,11.645
+FAC005,2025-09-26,1,Continuous Baseload (DataCenter),-43.362,15.014
+FAC005,2025-09-27,0,Day-Shift Commercial Heavy,9.799,-15.953
+FAC005,2025-09-28,0,Day-Shift Commercial Heavy,12.572,-17.545
+FAC005,2025-09-29,1,Continuous Baseload (DataCenter),-44.456,12.873
+FAC005,2025-09-30,1,Continuous Baseload (DataCenter),-42.084,14.813
+FAC005,2025-10-01,1,Continuous Baseload (DataCenter),-58.784,1.697
+FAC005,2025-10-02,1,Continuous Baseload (DataCenter),-58.217,3.527
+FAC005,2025-10-03,1,Continuous Baseload (DataCenter),-58.985,2.628
+FAC005,2025-10-04,0,Day-Shift Commercial Heavy,15.401,-12.843
+FAC005,2025-10-05,0,Day-Shift Commercial Heavy,15.152,-12.733
+FAC005,2025-10-06,1,Continuous Baseload (DataCenter),-59.289,3.525
+FAC005,2025-10-07,1,Continuous Baseload (DataCenter),-56.758,3.787
+FAC005,2025-10-08,1,Continuous Baseload (DataCenter),-58.758,3.472
+FAC005,2025-10-09,1,Continuous Baseload (DataCenter),-57.38,4.394
+FAC005,2025-10-10,1,Continuous Baseload (DataCenter),-58.031,2.458
+FAC005,2025-10-11,0,Day-Shift Commercial Heavy,21.152,-18.049
+FAC005,2025-10-12,0,Day-Shift Commercial Heavy,17.068,-12.537
+FAC005,2025-10-13,1,Continuous Baseload (DataCenter),-57.214,3.015
+FAC005,2025-10-14,1,Continuous Baseload (DataCenter),-56.953,3.613
+FAC005,2025-10-15,1,Continuous Baseload (DataCenter),-57.646,3.346
+FAC005,2025-10-16,1,Continuous Baseload (DataCenter),-59.875,2.183
+FAC005,2025-10-17,1,Continuous Baseload (DataCenter),-59.465,2.162
+FAC005,2025-10-18,0,Day-Shift Commercial Heavy,15.331,-12.721
+FAC005,2025-10-19,0,Day-Shift Commercial Heavy,16.485,-13.237
+FAC005,2025-10-20,1,Continuous Baseload (DataCenter),-57.889,2.661
+FAC005,2025-10-21,1,Continuous Baseload (DataCenter),-58.045,1.909
+FAC005,2025-10-22,1,Continuous Baseload (DataCenter),-58.72,3.199
+FAC005,2025-10-23,1,Continuous Baseload (DataCenter),-58.881,3.31
+FAC005,2025-10-24,1,Continuous Baseload (DataCenter),-58.181,4.014
+FAC005,2025-10-25,0,Day-Shift Commercial Heavy,17.788,-13.773
+FAC005,2025-10-26,0,Day-Shift Commercial Heavy,16.036,-14.003
+FAC005,2025-10-27,1,Continuous Baseload (DataCenter),-58.625,2.665
+FAC005,2025-10-28,1,Continuous Baseload (DataCenter),-58.085,3.303
+FAC005,2025-10-29,1,Continuous Baseload (DataCenter),-58.24,2.355
+FAC005,2025-10-30,1,Continuous Baseload (DataCenter),-58.342,1.532
+FAC005,2025-10-31,1,Continuous Baseload (DataCenter),-58.084,2.669
+FAC005,2025-11-01,0,Day-Shift Commercial Heavy,18.017,-13.084
+FAC005,2025-11-02,0,Day-Shift Commercial Heavy,16.854,-14.105
+FAC005,2025-11-03,1,Continuous Baseload (DataCenter),-57.743,4.168
+FAC005,2025-11-04,1,Continuous Baseload (DataCenter),-59.344,2.343
+FAC005,2025-11-05,1,Continuous Baseload (DataCenter),-56.989,3.814
+FAC005,2025-11-06,1,Continuous Baseload (DataCenter),-57.992,3.538
+FAC005,2025-11-07,1,Continuous Baseload (DataCenter),-58.612,2.744
+FAC005,2025-11-08,0,Day-Shift Commercial Heavy,15.553,-12.719
+FAC005,2025-11-09,0,Day-Shift Commercial Heavy,18.407,-14.158
+FAC005,2025-11-10,1,Continuous Baseload (DataCenter),-58.862,1.706
+FAC005,2025-11-11,1,Continuous Baseload (DataCenter),-57.119,2.469
+FAC005,2025-11-12,1,Continuous Baseload (DataCenter),-59.06,3.013
+FAC005,2025-11-13,1,Continuous Baseload (DataCenter),-59.775,1.761
+FAC005,2025-11-14,1,Continuous Baseload (DataCenter),-57.923,3.23
+FAC005,2025-11-15,0,Day-Shift Commercial Heavy,14.939,-12.298
+FAC005,2025-11-16,0,Day-Shift Commercial Heavy,19.365,-15.12
+FAC005,2025-11-17,1,Continuous Baseload (DataCenter),-57.401,3.755
+FAC005,2025-11-18,1,Continuous Baseload (DataCenter),-59.283,3.542
+FAC005,2025-11-19,1,Continuous Baseload (DataCenter),-59.363,2.836
+FAC005,2025-11-20,1,Continuous Baseload (DataCenter),-58.514,2.781
+FAC005,2025-11-21,1,Continuous Baseload (DataCenter),-58.854,2.752
+FAC005,2025-11-22,0,Day-Shift Commercial Heavy,15.151,-12.434
+FAC005,2025-11-23,0,Day-Shift Commercial Heavy,14.601,-12.561
+FAC005,2025-11-24,1,Continuous Baseload (DataCenter),-58.244,3.231
+FAC005,2025-11-25,1,Continuous Baseload (DataCenter),-59.244,3.702
+FAC005,2025-11-26,1,Continuous Baseload (DataCenter),-58.899,1.637
+FAC005,2025-11-27,1,Continuous Baseload (DataCenter),-58.529,3.648
+FAC005,2025-11-28,1,Continuous Baseload (DataCenter),-59.68,2.284
+FAC005,2025-11-29,0,Day-Shift Commercial Heavy,15.274,-13.152
+FAC005,2025-11-30,0,Day-Shift Commercial Heavy,14.613,-12.511
+FAC005,2025-12-01,1,Continuous Baseload (DataCenter),-27.312,34.77
+FAC005,2025-12-02,1,Continuous Baseload (DataCenter),-28.354,33.8
+FAC005,2025-12-03,1,Continuous Baseload (DataCenter),-26.623,36.002
+FAC005,2025-12-04,1,Continuous Baseload (DataCenter),-27.354,31.979
+FAC005,2025-12-05,1,Continuous Baseload (DataCenter),-28.786,34.175
+FAC005,2025-12-06,0,Day-Shift Commercial Heavy,23.23,-15.057
+FAC005,2025-12-07,3,Low-Intensity Weekend / Idle,38.734,-0.556
+FAC005,2025-12-08,1,Continuous Baseload (DataCenter),-27.203,36.45
+FAC005,2025-12-09,1,Continuous Baseload (DataCenter),-27.627,31.821
+FAC005,2025-12-10,1,Continuous Baseload (DataCenter),-28.252,33.043
+FAC005,2025-12-11,1,Continuous Baseload (DataCenter),-27.43,31.702
+FAC005,2025-12-12,1,Continuous Baseload (DataCenter),-27.332,33.5
+FAC005,2025-12-13,3,Low-Intensity Weekend / Idle,39.271,2.21
+FAC005,2025-12-14,3,Low-Intensity Weekend / Idle,39.647,6.344
+FAC005,2025-12-15,1,Continuous Baseload (DataCenter),-27.884,36.366
+FAC005,2025-12-16,1,Continuous Baseload (DataCenter),-26.66,31.044
+FAC005,2025-12-17,1,Continuous Baseload (DataCenter),-28.767,32.628
+FAC005,2025-12-18,1,Continuous Baseload (DataCenter),-27.154,34.676
+FAC005,2025-12-19,1,Continuous Baseload (DataCenter),-26.976,35.741
+FAC005,2025-12-20,3,Low-Intensity Weekend / Idle,30.964,16.452
+FAC005,2025-12-21,3,Low-Intensity Weekend / Idle,39.19,-0.936
+FAC005,2025-12-22,1,Continuous Baseload (DataCenter),-27.876,30.826
+FAC005,2025-12-23,1,Continuous Baseload (DataCenter),-27.405,35.86
+FAC005,2025-12-24,1,Continuous Baseload (DataCenter),-26.71,33.717
+FAC005,2025-12-25,1,Continuous Baseload (DataCenter),-26.802,34.888
+FAC005,2025-12-26,1,Continuous Baseload (DataCenter),-27.447,35.0
+FAC005,2025-12-27,3,Low-Intensity Weekend / Idle,41.003,-0.751
+FAC005,2025-12-28,3,Low-Intensity Weekend / Idle,39.214,-0.833
+FAC005,2025-12-29,1,Continuous Baseload (DataCenter),-27.69,32.29
+FAC005,2025-12-30,1,Continuous Baseload (DataCenter),-26.702,34.163
+FAC005,2025-12-31,1,Continuous Baseload (DataCenter),-28.253,34.698
+FAC006,2025-01-01,0,Day-Shift Commercial Heavy,11.662,42.049
+FAC006,2025-01-02,0,Day-Shift Commercial Heavy,7.555,38.879
+FAC006,2025-01-03,0,Day-Shift Commercial Heavy,10.623,43.28
+FAC006,2025-01-04,0,Day-Shift Commercial Heavy,8.761,42.332
+FAC006,2025-01-05,0,Day-Shift Commercial Heavy,10.37,40.817
+FAC006,2025-01-06,0,Day-Shift Commercial Heavy,9.859,39.486
+FAC006,2025-01-07,0,Day-Shift Commercial Heavy,9.433,39.927
+FAC006,2025-01-08,0,Day-Shift Commercial Heavy,10.611,41.869
+FAC006,2025-01-09,0,Day-Shift Commercial Heavy,12.601,43.663
+FAC006,2025-01-10,0,Day-Shift Commercial Heavy,10.071,44.651
+FAC006,2025-01-11,0,Day-Shift Commercial Heavy,10.778,39.307
+FAC006,2025-01-12,0,Day-Shift Commercial Heavy,11.068,42.168
+FAC006,2025-01-13,0,Day-Shift Commercial Heavy,10.354,40.656
+FAC006,2025-01-14,0,Day-Shift Commercial Heavy,9.466,39.436
+FAC006,2025-01-15,0,Day-Shift Commercial Heavy,11.51,45.309
+FAC006,2025-01-16,0,Day-Shift Commercial Heavy,11.363,42.266
+FAC006,2025-01-17,0,Day-Shift Commercial Heavy,10.641,40.986
+FAC006,2025-01-18,0,Day-Shift Commercial Heavy,8.578,39.558
+FAC006,2025-01-19,0,Day-Shift Commercial Heavy,11.934,42.536
+FAC006,2025-01-20,0,Day-Shift Commercial Heavy,9.8,40.014
+FAC006,2025-01-21,0,Day-Shift Commercial Heavy,11.88,40.666
+FAC006,2025-01-22,0,Day-Shift Commercial Heavy,9.643,40.411
+FAC006,2025-01-23,0,Day-Shift Commercial Heavy,10.113,39.566
+FAC006,2025-01-24,0,Day-Shift Commercial Heavy,8.139,39.305
+FAC006,2025-01-25,0,Day-Shift Commercial Heavy,10.614,44.723
+FAC006,2025-01-26,0,Day-Shift Commercial Heavy,10.531,39.067
+FAC006,2025-01-27,0,Day-Shift Commercial Heavy,11.615,44.272
+FAC006,2025-01-28,0,Day-Shift Commercial Heavy,11.943,44.992
+FAC006,2025-01-29,0,Day-Shift Commercial Heavy,11.935,43.44
+FAC006,2025-01-30,0,Day-Shift Commercial Heavy,7.887,39.14
+FAC006,2025-01-31,0,Day-Shift Commercial Heavy,9.266,40.628
+FAC006,2025-02-01,0,Day-Shift Commercial Heavy,10.717,43.152
+FAC006,2025-02-02,0,Day-Shift Commercial Heavy,9.914,41.987
+FAC006,2025-02-03,0,Day-Shift Commercial Heavy,12.045,44.245
+FAC006,2025-02-04,0,Day-Shift Commercial Heavy,9.406,41.211
+FAC006,2025-02-05,0,Day-Shift Commercial Heavy,12.588,42.754
+FAC006,2025-02-06,0,Day-Shift Commercial Heavy,11.159,43.701
+FAC006,2025-02-07,0,Day-Shift Commercial Heavy,11.025,39.936
+FAC006,2025-02-08,0,Day-Shift Commercial Heavy,10.892,41.29
+FAC006,2025-02-09,0,Day-Shift Commercial Heavy,8.382,38.382
+FAC006,2025-02-10,0,Day-Shift Commercial Heavy,10.25,43.991
+FAC006,2025-02-11,0,Day-Shift Commercial Heavy,11.204,40.866
+FAC006,2025-02-12,0,Day-Shift Commercial Heavy,7.904,40.129
+FAC006,2025-02-13,0,Day-Shift Commercial Heavy,10.215,44.724
+FAC006,2025-02-14,0,Day-Shift Commercial Heavy,8.915,40.588
+FAC006,2025-02-15,0,Day-Shift Commercial Heavy,9.65,44.268
+FAC006,2025-02-16,0,Day-Shift Commercial Heavy,8.398,38.676
+FAC006,2025-02-17,0,Day-Shift Commercial Heavy,10.713,42.949
+FAC006,2025-02-18,0,Day-Shift Commercial Heavy,10.618,45.043
+FAC006,2025-02-19,0,Day-Shift Commercial Heavy,9.313,38.578
+FAC006,2025-02-20,0,Day-Shift Commercial Heavy,11.078,41.202
+FAC006,2025-02-21,0,Day-Shift Commercial Heavy,11.029,43.419
+FAC006,2025-02-22,0,Day-Shift Commercial Heavy,8.887,38.69
+FAC006,2025-02-23,0,Day-Shift Commercial Heavy,10.521,43.714
+FAC006,2025-02-24,0,Day-Shift Commercial Heavy,8.28,41.23
+FAC006,2025-02-25,0,Day-Shift Commercial Heavy,12.221,44.038
+FAC006,2025-02-26,0,Day-Shift Commercial Heavy,11.319,44.548
+FAC006,2025-02-27,0,Day-Shift Commercial Heavy,7.936,37.876
+FAC006,2025-02-28,0,Day-Shift Commercial Heavy,10.177,41.484
+FAC006,2025-03-01,0,Day-Shift Commercial Heavy,2.07,24.304
+FAC006,2025-03-02,0,Day-Shift Commercial Heavy,1.26,21.298
+FAC006,2025-03-03,0,Day-Shift Commercial Heavy,1.25,20.483
+FAC006,2025-03-04,0,Day-Shift Commercial Heavy,0.929,22.758
+FAC006,2025-03-05,0,Day-Shift Commercial Heavy,3.299,25.227
+FAC006,2025-03-06,0,Day-Shift Commercial Heavy,-2.306,17.678
+FAC006,2025-03-07,0,Day-Shift Commercial Heavy,4.734,21.378
+FAC006,2025-03-08,0,Day-Shift Commercial Heavy,4.95,24.531
+FAC006,2025-03-09,0,Day-Shift Commercial Heavy,3.991,20.045
+FAC006,2025-03-10,0,Day-Shift Commercial Heavy,3.118,24.612
+FAC006,2025-03-11,0,Day-Shift Commercial Heavy,4.345,27.795
+FAC006,2025-03-12,0,Day-Shift Commercial Heavy,3.693,26.838
+FAC006,2025-03-13,0,Day-Shift Commercial Heavy,3.431,23.472
+FAC006,2025-03-14,0,Day-Shift Commercial Heavy,3.875,25.368
+FAC006,2025-03-15,0,Day-Shift Commercial Heavy,0.508,21.105
+FAC006,2025-03-16,0,Day-Shift Commercial Heavy,5.166,26.649
+FAC006,2025-03-17,0,Day-Shift Commercial Heavy,5.06,28.448
+FAC006,2025-03-18,0,Day-Shift Commercial Heavy,4.64,24.577
+FAC006,2025-03-19,0,Day-Shift Commercial Heavy,-1.197,20.217
+FAC006,2025-03-20,0,Day-Shift Commercial Heavy,1.945,20.884
+FAC006,2025-03-21,0,Day-Shift Commercial Heavy,5.259,26.603
+FAC006,2025-03-22,0,Day-Shift Commercial Heavy,5.406,24.996
+FAC006,2025-03-23,0,Day-Shift Commercial Heavy,5.448,28.213
+FAC006,2025-03-24,0,Day-Shift Commercial Heavy,6.021,27.952
+FAC006,2025-03-25,0,Day-Shift Commercial Heavy,0.57,19.777
+FAC006,2025-03-26,0,Day-Shift Commercial Heavy,-0.534,20.481
+FAC006,2025-03-27,0,Day-Shift Commercial Heavy,0.155,20.789
+FAC006,2025-03-28,0,Day-Shift Commercial Heavy,-0.515,22.079
+FAC006,2025-03-29,0,Day-Shift Commercial Heavy,1.239,21.142
+FAC006,2025-03-30,0,Day-Shift Commercial Heavy,5.902,28.198
+FAC006,2025-03-31,0,Day-Shift Commercial Heavy,3.922,26.676
+FAC006,2025-04-01,0,Day-Shift Commercial Heavy,3.1,24.15
+FAC006,2025-04-02,0,Day-Shift Commercial Heavy,5.17,27.599
+FAC006,2025-04-03,0,Day-Shift Commercial Heavy,2.46,21.265
+FAC006,2025-04-04,0,Day-Shift Commercial Heavy,0.72,22.059
+FAC006,2025-04-05,0,Day-Shift Commercial Heavy,2.419,22.859
+FAC006,2025-04-06,0,Day-Shift Commercial Heavy,6.11,27.826
+FAC006,2025-04-07,0,Day-Shift Commercial Heavy,3.358,25.528
+FAC006,2025-04-08,0,Day-Shift Commercial Heavy,-0.452,20.429
+FAC006,2025-04-09,0,Day-Shift Commercial Heavy,0.912,22.596
+FAC006,2025-04-10,0,Day-Shift Commercial Heavy,1.172,20.399
+FAC006,2025-04-11,0,Day-Shift Commercial Heavy,4.21,25.561
+FAC006,2025-04-12,0,Day-Shift Commercial Heavy,4.459,24.932
+FAC006,2025-04-13,0,Day-Shift Commercial Heavy,-1.575,19.895
+FAC006,2025-04-14,0,Day-Shift Commercial Heavy,3.565,22.652
+FAC006,2025-04-15,0,Day-Shift Commercial Heavy,-4.582,14.904
+FAC006,2025-04-16,0,Day-Shift Commercial Heavy,4.369,24.681
+FAC006,2025-04-17,0,Day-Shift Commercial Heavy,-5.154,15.045
+FAC006,2025-04-18,0,Day-Shift Commercial Heavy,4.629,25.917
+FAC006,2025-04-19,0,Day-Shift Commercial Heavy,-0.469,20.295
+FAC006,2025-04-20,0,Day-Shift Commercial Heavy,1.481,22.11
+FAC006,2025-04-21,0,Day-Shift Commercial Heavy,4.16,22.746
+FAC006,2025-04-22,0,Day-Shift Commercial Heavy,-2.453,19.03
+FAC006,2025-04-23,0,Day-Shift Commercial Heavy,-1.9,17.659
+FAC006,2025-04-24,0,Day-Shift Commercial Heavy,-1.122,20.687
+FAC006,2025-04-25,0,Day-Shift Commercial Heavy,4.136,25.549
+FAC006,2025-04-26,0,Day-Shift Commercial Heavy,0.143,21.037
+FAC006,2025-04-27,0,Day-Shift Commercial Heavy,4.726,25.509
+FAC006,2025-04-28,0,Day-Shift Commercial Heavy,5.264,25.804
+FAC006,2025-04-29,0,Day-Shift Commercial Heavy,4.904,26.267
+FAC006,2025-04-30,0,Day-Shift Commercial Heavy,4.907,28.053
+FAC006,2025-05-01,0,Day-Shift Commercial Heavy,-0.011,18.612
+FAC006,2025-05-02,0,Day-Shift Commercial Heavy,2.388,26.361
+FAC006,2025-05-03,0,Day-Shift Commercial Heavy,0.097,22.559
+FAC006,2025-05-04,0,Day-Shift Commercial Heavy,3.742,26.246
+FAC006,2025-05-05,0,Day-Shift Commercial Heavy,-0.285,23.048
+FAC006,2025-05-06,0,Day-Shift Commercial Heavy,-7.901,22.288
+FAC006,2025-05-07,0,Day-Shift Commercial Heavy,0.72,21.93
+FAC006,2025-05-08,0,Day-Shift Commercial Heavy,6.22,27.841
+FAC006,2025-05-09,0,Day-Shift Commercial Heavy,3.4,23.799
+FAC006,2025-05-10,0,Day-Shift Commercial Heavy,-2.426,20.191
+FAC006,2025-05-11,0,Day-Shift Commercial Heavy,5.822,27.387
+FAC006,2025-05-12,0,Day-Shift Commercial Heavy,3.301,26.839
+FAC006,2025-05-13,0,Day-Shift Commercial Heavy,-1.184,20.951
+FAC006,2025-05-14,0,Day-Shift Commercial Heavy,3.855,27.367
+FAC006,2025-05-15,0,Day-Shift Commercial Heavy,5.014,27.315
+FAC006,2025-05-16,0,Day-Shift Commercial Heavy,-3.208,18.31
+FAC006,2025-05-17,0,Day-Shift Commercial Heavy,4.699,26.503
+FAC006,2025-05-18,0,Day-Shift Commercial Heavy,3.494,25.425
+FAC006,2025-05-19,0,Day-Shift Commercial Heavy,-0.507,22.41
+FAC006,2025-05-20,0,Day-Shift Commercial Heavy,1.962,22.932
+FAC006,2025-05-21,0,Day-Shift Commercial Heavy,2.815,22.849
+FAC006,2025-05-22,0,Day-Shift Commercial Heavy,2.431,23.392
+FAC006,2025-05-23,0,Day-Shift Commercial Heavy,3.186,22.168
+FAC006,2025-05-24,0,Day-Shift Commercial Heavy,4.781,23.516
+FAC006,2025-05-25,0,Day-Shift Commercial Heavy,4.544,26.027
+FAC006,2025-05-26,0,Day-Shift Commercial Heavy,3.061,23.858
+FAC006,2025-05-27,0,Day-Shift Commercial Heavy,3.665,24.233
+FAC006,2025-05-28,0,Day-Shift Commercial Heavy,4.708,21.14
+FAC006,2025-05-29,0,Day-Shift Commercial Heavy,2.279,23.119
+FAC006,2025-05-30,0,Day-Shift Commercial Heavy,-0.787,22.212
+FAC006,2025-05-31,0,Day-Shift Commercial Heavy,3.701,28.453
+FAC006,2025-06-01,0,Day-Shift Commercial Heavy,-1.767,15.415
+FAC006,2025-06-02,0,Day-Shift Commercial Heavy,-2.41,14.41
+FAC006,2025-06-03,0,Day-Shift Commercial Heavy,0.951,23.879
+FAC006,2025-06-04,0,Day-Shift Commercial Heavy,-1.097,15.556
+FAC006,2025-06-05,0,Day-Shift Commercial Heavy,0.542,17.115
+FAC006,2025-06-06,0,Day-Shift Commercial Heavy,-4.3,12.368
+FAC006,2025-06-07,0,Day-Shift Commercial Heavy,-1.752,17.441
+FAC006,2025-06-08,0,Day-Shift Commercial Heavy,1.184,25.265
+FAC006,2025-06-09,0,Day-Shift Commercial Heavy,-0.344,24.815
+FAC006,2025-06-10,0,Day-Shift Commercial Heavy,-4.528,11.461
+FAC006,2025-06-11,0,Day-Shift Commercial Heavy,2.444,21.847
+FAC006,2025-06-12,0,Day-Shift Commercial Heavy,-1.708,21.377
+FAC006,2025-06-13,0,Day-Shift Commercial Heavy,0.208,24.795
+FAC006,2025-06-14,0,Day-Shift Commercial Heavy,-4.015,12.115
+FAC006,2025-06-15,0,Day-Shift Commercial Heavy,0.306,19.441
+FAC006,2025-06-16,0,Day-Shift Commercial Heavy,-2.276,18.735
+FAC006,2025-06-17,0,Day-Shift Commercial Heavy,-1.051,14.87
+FAC006,2025-06-18,0,Day-Shift Commercial Heavy,4.161,28.237
+FAC006,2025-06-19,0,Day-Shift Commercial Heavy,-1.162,16.797
+FAC006,2025-06-20,0,Day-Shift Commercial Heavy,-4.43,11.624
+FAC006,2025-06-21,0,Day-Shift Commercial Heavy,5.574,24.062
+FAC006,2025-06-22,0,Day-Shift Commercial Heavy,0.227,17.851
+FAC006,2025-06-23,0,Day-Shift Commercial Heavy,-4.621,16.936
+FAC006,2025-06-24,0,Day-Shift Commercial Heavy,2.306,19.076
+FAC006,2025-06-25,0,Day-Shift Commercial Heavy,1.247,20.363
+FAC006,2025-06-26,0,Day-Shift Commercial Heavy,-2.906,16.66
+FAC006,2025-06-27,0,Day-Shift Commercial Heavy,-1.449,15.438
+FAC006,2025-06-28,0,Day-Shift Commercial Heavy,-2.503,16.168
+FAC006,2025-06-29,0,Day-Shift Commercial Heavy,-4.513,12.401
+FAC006,2025-06-30,0,Day-Shift Commercial Heavy,-3.867,14.411
+FAC006,2025-07-01,0,Day-Shift Commercial Heavy,-3.422,12.963
+FAC006,2025-07-02,0,Day-Shift Commercial Heavy,-4.403,14.939
+FAC006,2025-07-03,0,Day-Shift Commercial Heavy,-4.255,12.532
+FAC006,2025-07-04,0,Day-Shift Commercial Heavy,-1.855,15.8
+FAC006,2025-07-05,0,Day-Shift Commercial Heavy,-3.691,13.087
+FAC006,2025-07-06,0,Day-Shift Commercial Heavy,-4.852,12.674
+FAC006,2025-07-07,0,Day-Shift Commercial Heavy,0.161,25.947
+FAC006,2025-07-08,0,Day-Shift Commercial Heavy,-3.756,14.469
+FAC006,2025-07-09,0,Day-Shift Commercial Heavy,2.201,25.71
+FAC006,2025-07-10,0,Day-Shift Commercial Heavy,0.697,19.046
+FAC006,2025-07-11,0,Day-Shift Commercial Heavy,-4.469,12.365
+FAC006,2025-07-12,0,Day-Shift Commercial Heavy,-0.139,19.425
+FAC006,2025-07-13,0,Day-Shift Commercial Heavy,2.474,26.605
+FAC006,2025-07-14,0,Day-Shift Commercial Heavy,0.983,18.211
+FAC006,2025-07-15,0,Day-Shift Commercial Heavy,-0.392,14.79
+FAC006,2025-07-16,0,Day-Shift Commercial Heavy,-2.303,14.91
+FAC006,2025-07-17,0,Day-Shift Commercial Heavy,-4.644,13.906
+FAC006,2025-07-18,0,Day-Shift Commercial Heavy,-5.533,14.591
+FAC006,2025-07-19,0,Day-Shift Commercial Heavy,-2.214,16.171
+FAC006,2025-07-20,0,Day-Shift Commercial Heavy,1.022,26.213
+FAC006,2025-07-21,0,Day-Shift Commercial Heavy,-0.659,24.263
+FAC006,2025-07-22,0,Day-Shift Commercial Heavy,3.194,20.551
+FAC006,2025-07-23,0,Day-Shift Commercial Heavy,-0.775,18.018
+FAC006,2025-07-24,0,Day-Shift Commercial Heavy,2.743,24.637
+FAC006,2025-07-25,0,Day-Shift Commercial Heavy,0.357,16.448
+FAC006,2025-07-26,0,Day-Shift Commercial Heavy,-2.782,19.315
+FAC006,2025-07-27,0,Day-Shift Commercial Heavy,-3.093,14.083
+FAC006,2025-07-28,0,Day-Shift Commercial Heavy,-1.098,15.628
+FAC006,2025-07-29,0,Day-Shift Commercial Heavy,-0.624,16.799
+FAC006,2025-07-30,0,Day-Shift Commercial Heavy,-1.812,16.13
+FAC006,2025-07-31,0,Day-Shift Commercial Heavy,-1.37,15.544
+FAC006,2025-08-01,0,Day-Shift Commercial Heavy,-2.723,15.623
+FAC006,2025-08-02,0,Day-Shift Commercial Heavy,2.557,25.633
+FAC006,2025-08-03,0,Day-Shift Commercial Heavy,0.386,15.973
+FAC006,2025-08-04,0,Day-Shift Commercial Heavy,0.389,18.843
+FAC006,2025-08-05,0,Day-Shift Commercial Heavy,-3.841,13.477
+FAC006,2025-08-06,0,Day-Shift Commercial Heavy,0.625,16.683
+FAC006,2025-08-07,0,Day-Shift Commercial Heavy,-2.374,12.686
+FAC006,2025-08-08,0,Day-Shift Commercial Heavy,-4.65,13.789
+FAC006,2025-08-09,0,Day-Shift Commercial Heavy,-4.315,12.083
+FAC006,2025-08-10,0,Day-Shift Commercial Heavy,-4.406,11.642
+FAC006,2025-08-11,0,Day-Shift Commercial Heavy,-2.468,14.516
+FAC006,2025-08-12,0,Day-Shift Commercial Heavy,-3.409,13.988
+FAC006,2025-08-13,0,Day-Shift Commercial Heavy,1.005,26.268
+FAC006,2025-08-14,0,Day-Shift Commercial Heavy,-3.255,13.889
+FAC006,2025-08-15,0,Day-Shift Commercial Heavy,-4.27,16.156
+FAC006,2025-08-16,0,Day-Shift Commercial Heavy,5.586,25.472
+FAC006,2025-08-17,0,Day-Shift Commercial Heavy,2.089,19.142
+FAC006,2025-08-18,0,Day-Shift Commercial Heavy,-3.428,17.877
+FAC006,2025-08-19,0,Day-Shift Commercial Heavy,1.133,24.011
+FAC006,2025-08-20,0,Day-Shift Commercial Heavy,-3.133,13.187
+FAC006,2025-08-21,0,Day-Shift Commercial Heavy,-3.499,14.75
+FAC006,2025-08-22,0,Day-Shift Commercial Heavy,1.56,16.775
+FAC006,2025-08-23,0,Day-Shift Commercial Heavy,0.809,24.795
+FAC006,2025-08-24,0,Day-Shift Commercial Heavy,1.415,19.88
+FAC006,2025-08-25,0,Day-Shift Commercial Heavy,-0.042,18.437
+FAC006,2025-08-26,0,Day-Shift Commercial Heavy,1.046,23.921
+FAC006,2025-08-27,0,Day-Shift Commercial Heavy,-0.88,19.137
+FAC006,2025-08-28,0,Day-Shift Commercial Heavy,0.51,17.334
+FAC006,2025-08-29,0,Day-Shift Commercial Heavy,-1.577,22.206
+FAC006,2025-08-30,0,Day-Shift Commercial Heavy,-2.726,24.01
+FAC006,2025-08-31,0,Day-Shift Commercial Heavy,-1.494,19.623
+FAC006,2025-09-01,0,Day-Shift Commercial Heavy,1.982,21.886
+FAC006,2025-09-02,0,Day-Shift Commercial Heavy,2.427,25.474
+FAC006,2025-09-03,0,Day-Shift Commercial Heavy,1.199,17.935
+FAC006,2025-09-04,0,Day-Shift Commercial Heavy,-3.357,15.443
+FAC006,2025-09-05,0,Day-Shift Commercial Heavy,-4.805,17.095
+FAC006,2025-09-06,0,Day-Shift Commercial Heavy,-1.931,13.551
+FAC006,2025-09-07,0,Day-Shift Commercial Heavy,1.007,19.016
+FAC006,2025-09-08,0,Day-Shift Commercial Heavy,-3.204,15.709
+FAC006,2025-09-09,0,Day-Shift Commercial Heavy,-3.833,16.873
+FAC006,2025-09-10,0,Day-Shift Commercial Heavy,-2.68,14.161
+FAC006,2025-09-11,0,Day-Shift Commercial Heavy,1.283,18.048
+FAC006,2025-09-12,0,Day-Shift Commercial Heavy,3.304,25.587
+FAC006,2025-09-13,0,Day-Shift Commercial Heavy,5.708,26.48
+FAC006,2025-09-14,0,Day-Shift Commercial Heavy,3.98,29.125
+FAC006,2025-09-15,0,Day-Shift Commercial Heavy,-0.927,14.57
+FAC006,2025-09-16,0,Day-Shift Commercial Heavy,-3.097,12.168
+FAC006,2025-09-17,0,Day-Shift Commercial Heavy,-0.204,24.731
+FAC006,2025-09-18,0,Day-Shift Commercial Heavy,-0.901,17.793
+FAC006,2025-09-19,0,Day-Shift Commercial Heavy,1.376,17.952
+FAC006,2025-09-20,0,Day-Shift Commercial Heavy,-2.661,17.217
+FAC006,2025-09-21,0,Day-Shift Commercial Heavy,-2.203,16.017
+FAC006,2025-09-22,0,Day-Shift Commercial Heavy,1.379,23.872
+FAC006,2025-09-23,0,Day-Shift Commercial Heavy,-4.201,12.681
+FAC006,2025-09-24,0,Day-Shift Commercial Heavy,-3.76,12.873
+FAC006,2025-09-25,0,Day-Shift Commercial Heavy,-3.092,13.769
+FAC006,2025-09-26,0,Day-Shift Commercial Heavy,-5.16,15.444
+FAC006,2025-09-27,0,Day-Shift Commercial Heavy,-2.687,13.149
+FAC006,2025-09-28,0,Day-Shift Commercial Heavy,-1.122,19.884
+FAC006,2025-09-29,0,Day-Shift Commercial Heavy,0.461,15.843
+FAC006,2025-09-30,0,Day-Shift Commercial Heavy,2.036,16.964
+FAC006,2025-10-01,0,Day-Shift Commercial Heavy,-4.546,25.984
+FAC006,2025-10-02,0,Day-Shift Commercial Heavy,-6.874,22.233
+FAC006,2025-10-03,0,Day-Shift Commercial Heavy,-5.103,22.231
+FAC006,2025-10-04,0,Day-Shift Commercial Heavy,-2.734,26.403
+FAC006,2025-10-05,0,Day-Shift Commercial Heavy,-5.124,22.384
+FAC006,2025-10-06,0,Day-Shift Commercial Heavy,-7.897,23.377
+FAC006,2025-10-07,0,Day-Shift Commercial Heavy,-6.056,22.205
+FAC006,2025-10-08,0,Day-Shift Commercial Heavy,-5.263,24.844
+FAC006,2025-10-09,0,Day-Shift Commercial Heavy,-5.889,24.727
+FAC006,2025-10-10,0,Day-Shift Commercial Heavy,-3.524,25.75
+FAC006,2025-10-11,0,Day-Shift Commercial Heavy,-3.752,27.29
+FAC006,2025-10-12,0,Day-Shift Commercial Heavy,-3.278,25.563
+FAC006,2025-10-13,0,Day-Shift Commercial Heavy,-5.284,24.452
+FAC006,2025-10-14,0,Day-Shift Commercial Heavy,-6.743,21.789
+FAC006,2025-10-15,0,Day-Shift Commercial Heavy,-5.077,22.145
+FAC006,2025-10-16,0,Day-Shift Commercial Heavy,2.237,27.525
+FAC006,2025-10-17,0,Day-Shift Commercial Heavy,-2.535,26.829
+FAC006,2025-10-18,0,Day-Shift Commercial Heavy,-2.871,24.394
+FAC006,2025-10-19,0,Day-Shift Commercial Heavy,-6.661,23.598
+FAC006,2025-10-20,0,Day-Shift Commercial Heavy,-6.064,25.324
+FAC006,2025-10-21,0,Day-Shift Commercial Heavy,-8.079,23.257
+FAC006,2025-10-22,0,Day-Shift Commercial Heavy,-5.361,24.031
+FAC006,2025-10-23,0,Day-Shift Commercial Heavy,-5.165,22.708
+FAC006,2025-10-24,0,Day-Shift Commercial Heavy,-4.979,23.308
+FAC006,2025-10-25,0,Day-Shift Commercial Heavy,-7.423,23.612
+FAC006,2025-10-26,0,Day-Shift Commercial Heavy,-0.414,26.535
+FAC006,2025-10-27,0,Day-Shift Commercial Heavy,-1.876,23.49
+FAC006,2025-10-28,0,Day-Shift Commercial Heavy,-5.034,25.086
+FAC006,2025-10-29,0,Day-Shift Commercial Heavy,3.824,29.66
+FAC006,2025-10-30,0,Day-Shift Commercial Heavy,-4.402,26.823
+FAC006,2025-10-31,0,Day-Shift Commercial Heavy,-3.667,24.58
+FAC006,2025-11-01,0,Day-Shift Commercial Heavy,-3.714,25.974
+FAC006,2025-11-02,0,Day-Shift Commercial Heavy,-2.564,26.87
+FAC006,2025-11-03,0,Day-Shift Commercial Heavy,-5.953,25.574
+FAC006,2025-11-04,0,Day-Shift Commercial Heavy,-4.758,25.839
+FAC006,2025-11-05,0,Day-Shift Commercial Heavy,-3.492,24.963
+FAC006,2025-11-06,0,Day-Shift Commercial Heavy,-4.28,24.809
+FAC006,2025-11-07,0,Day-Shift Commercial Heavy,-5.1,25.653
+FAC006,2025-11-08,0,Day-Shift Commercial Heavy,-6.507,23.996
+FAC006,2025-11-09,0,Day-Shift Commercial Heavy,-6.303,23.74
+FAC006,2025-11-10,0,Day-Shift Commercial Heavy,-3.1,26.698
+FAC006,2025-11-11,0,Day-Shift Commercial Heavy,-2.847,26.392
+FAC006,2025-11-12,0,Day-Shift Commercial Heavy,-7.594,22.313
+FAC006,2025-11-13,0,Day-Shift Commercial Heavy,-6.67,26.191
+FAC006,2025-11-14,0,Day-Shift Commercial Heavy,-6.295,21.676
+FAC006,2025-11-15,0,Day-Shift Commercial Heavy,-6.896,23.518
+FAC006,2025-11-16,0,Day-Shift Commercial Heavy,-4.377,23.808
+FAC006,2025-11-17,0,Day-Shift Commercial Heavy,-6.023,23.89
+FAC006,2025-11-18,0,Day-Shift Commercial Heavy,-4.125,23.372
+FAC006,2025-11-19,0,Day-Shift Commercial Heavy,-5.396,24.756
+FAC006,2025-11-20,0,Day-Shift Commercial Heavy,-5.817,23.637
+FAC006,2025-11-21,0,Day-Shift Commercial Heavy,-5.893,24.351
+FAC006,2025-11-22,0,Day-Shift Commercial Heavy,-6.708,23.228
+FAC006,2025-11-23,0,Day-Shift Commercial Heavy,-4.201,24.915
+FAC006,2025-11-24,0,Day-Shift Commercial Heavy,-6.62,21.954
+FAC006,2025-11-25,0,Day-Shift Commercial Heavy,-5.147,23.374
+FAC006,2025-11-26,0,Day-Shift Commercial Heavy,-6.572,26.158
+FAC006,2025-11-27,0,Day-Shift Commercial Heavy,-5.039,23.607
+FAC006,2025-11-28,0,Day-Shift Commercial Heavy,-4.399,25.077
+FAC006,2025-11-29,0,Day-Shift Commercial Heavy,-7.349,21.722
+FAC006,2025-11-30,0,Day-Shift Commercial Heavy,-6.988,21.55
+FAC006,2025-12-01,0,Day-Shift Commercial Heavy,8.274,39.468
+FAC006,2025-12-02,0,Day-Shift Commercial Heavy,11.611,43.405
+FAC006,2025-12-03,0,Day-Shift Commercial Heavy,12.99,44.226
+FAC006,2025-12-04,0,Day-Shift Commercial Heavy,7.958,38.65
+FAC006,2025-12-05,0,Day-Shift Commercial Heavy,10.42,40.718
+FAC006,2025-12-06,0,Day-Shift Commercial Heavy,10.14,41.487
+FAC006,2025-12-07,0,Day-Shift Commercial Heavy,9.244,42.947
+FAC006,2025-12-08,0,Day-Shift Commercial Heavy,10.713,44.357
+FAC006,2025-12-09,0,Day-Shift Commercial Heavy,8.427,38.633
+FAC006,2025-12-10,0,Day-Shift Commercial Heavy,8.239,38.012
+FAC006,2025-12-11,0,Day-Shift Commercial Heavy,7.628,38.399
+FAC006,2025-12-12,0,Day-Shift Commercial Heavy,10.366,42.278
+FAC006,2025-12-13,0,Day-Shift Commercial Heavy,10.099,43.449
+FAC006,2025-12-14,0,Day-Shift Commercial Heavy,10.462,42.477
+FAC006,2025-12-15,0,Day-Shift Commercial Heavy,12.017,44.781
+FAC006,2025-12-16,0,Day-Shift Commercial Heavy,12.163,44.291
+FAC006,2025-12-17,0,Day-Shift Commercial Heavy,10.594,44.004
+FAC006,2025-12-18,0,Day-Shift Commercial Heavy,7.897,41.04
+FAC006,2025-12-19,0,Day-Shift Commercial Heavy,9.501,42.52
+FAC006,2025-12-20,0,Day-Shift Commercial Heavy,12.346,45.07
+FAC006,2025-12-21,0,Day-Shift Commercial Heavy,9.401,41.101
+FAC006,2025-12-22,0,Day-Shift Commercial Heavy,11.619,43.03
+FAC006,2025-12-23,0,Day-Shift Commercial Heavy,11.856,44.513
+FAC006,2025-12-24,0,Day-Shift Commercial Heavy,8.645,39.724
+FAC006,2025-12-25,0,Day-Shift Commercial Heavy,10.957,43.474
+FAC006,2025-12-26,0,Day-Shift Commercial Heavy,11.559,43.69
+FAC006,2025-12-27,0,Day-Shift Commercial Heavy,8.197,40.243
+FAC006,2025-12-28,0,Day-Shift Commercial Heavy,11.064,44.135
+FAC006,2025-12-29,0,Day-Shift Commercial Heavy,7.925,38.567
+FAC006,2025-12-30,0,Day-Shift Commercial Heavy,10.987,44.627
+FAC006,2025-12-31,0,Day-Shift Commercial Heavy,12.177,45.494

@@ -1,0 +1,6 @@
+ApplianceID,SubmeterCategory,Description,AvgShare_Pct
+APP_HVAC,HVAC & Chillers,"Central chillers, cooling towers, air handling units (AHUs)",42.0
+APP_LIGHT,Lighting & Receptacles,"LED arrays, architectural lighting, wall sockets",18.0
+APP_IT,Server & IT Infrastructure,"Server racks, UPS systems, network switches, workstation bays",22.0
+APP_MACH,Heavy Machinery & Motors,"Elevators, hydraulic pumps, CNC machines, ventilation fans",12.0
+APP_AUX,Auxiliary & Water Systems,"Water treatment, booster pumps, perimeter security",6.0

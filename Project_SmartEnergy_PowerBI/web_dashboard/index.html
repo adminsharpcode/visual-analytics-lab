@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Energy Consumption Analytics | Power BI & IoT Telemetry Dashboard</title>
+  <meta name="description" content="M.Tech Visual Analytics Lab Final Project: Interactive Smart Energy Consumption Visualization Dashboard powered by Star Schema, Machine Learning, and IoT Streaming Pipelines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="stylesheet" href="style.css?v=2.1">
+</head>
+<body class="dark-theme">
+  <!-- Top Navigation Bar -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-left">
+      <div class="brand-badge">
+        <span class="pulse-indicator"></span>
+        <span class="brand-title">ENERGY<span class="accent-text">PULSE</span> BI</span>
+      </div>
+      <div class="project-tag">
+        <span class="course-code">MACSE603</span>
+        <span class="sep">•</span>
+        <span class="project-title">Smart Energy Visualization & Analytics</span>
+      </div>
+    </div>
+    <div class="nav-center">
+      <div class="pipeline-status-badge" id="pipelineStatusBadge">
+        <span class="dot green"></span>
+        <span>Pipeline: <strong id="pipelineStateText">Active & Verified</strong></span>
+        <span class="records-pill" id="recordsPill">52,560 Hourly Records</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="team-avatars" title="Team: Vedant Nimkar (Lead), Jitesh Bobde, Ayush Sharma">
+        <span class="avatar lead">VN</span>
+        <span class="avatar">JB</span>
+        <span class="avatar">AS</span>
+      </div>
+      <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Dark/Light Mode">
+        <span id="themeIcon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Global Control & Slicer Bar -->
+  <section class="control-bar" id="controlBar">
+    <div class="slicer-group">
+      <label for="facilitySelect" class="slicer-label">Facility / Zone</label>
+      <select id="facilitySelect" class="slicer-select">
+        <option value="ALL">All Campus Facilities (Aggregate)</option>
+        <option value="FAC001">Main Tech Tower (Tower A)</option>
+        <option value="FAC002">Computing & Data Center (Wing C)</option>
+        <option value="FAC003">Advanced Engineering Labs</option>
+        <option value="FAC004">Student Hostel Cluster (Block B&C)</option>
+        <option value="FAC005">Academic & Admin Complex</option>
+        <option value="FAC006">Healthcare & Medical Center</option>
+      </select>
+    </div>
+
+    <div class="slicer-group">
+      <label class="slicer-label">Temporal Granularity</label>
+      <div class="segmented-control" id="granularityControl">
+        <button class="seg-btn active" data-gran="hourly">Hourly</button>
+        <button class="seg-btn" data-gran="daily">Daily</button>
+        <button class="seg-btn" data-gran="monthly">Monthly</button>
+      </div>
+    </div>
+
+    <div class="slicer-group">
+      <label for="viewModeSelect" class="slicer-label">View Module</label>
+      <select id="viewModeSelect" class="slicer-select">
+        <option value="all">Executive Dashboard (All)</option>
+        <option value="forecast">ML Demand Forecasting</option>
+        <option value="anomalies">3-Sigma Anomaly Detection</option>
+        <option value="clustering">t-SNE Load Clusters</option>
+        <option value="submeter">Appliance Submetering</option>
+        <option value="streaming">Live IoT Streaming Simulation</option>
+      </select>
+    </div>
+
+    <div class="slicer-group stream-toggle-group">
+      <label class="slicer-label">Live IoT Sensor Feed</label>
+      <button class="stream-toggle-btn" id="streamToggleBtn">
+        <span class="stream-icon">⚡</span>
+        <span id="streamBtnText">Start Live Telemetry</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Main Dashboard Container -->
+  <main class="dashboard-container" id="mainDashboard">
+    <!-- Executive KPI Ribbon -->
+    <section class="kpi-grid" id="kpiGrid">
+      <div class="kpi-card glass" id="kpiEnergy">
+        <div class="kpi-header">
+          <span class="kpi-title">TOTAL ACTIVE CONSUMPTION</span>
+          <span class="kpi-badge info">FY 2025</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="valEnergy">19.35</span>
+          <span class="kpi-unit">GWh</span>
+        </div>
+        <div class="kpi-footer">
+          <span class="kpi-sub">52,560 hourly metered readings</span>
+          <svg class="mini-sparkline" viewBox="0 0 80 20" id="sparkEnergy"></svg>
+        </div>
+      </div>
+
+      <div class="kpi-card glass" id="kpiCost">
+        <div class="kpi-header">
+          <span class="kpi-title">TOTAL ELECTRICITY SPEND</span>
+          <span class="kpi-badge warning">ToU Tariff</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-currency">₹</span>
+          <span class="kpi-value" id="valCost">13.20</span>
+          <span class="kpi-unit">Crores</span>
+        </div>
+        <div class="kpi-footer">
+          <span class="kpi-sub">Avg Rate: ₹6.82 / kWh</span>
+          <svg class="mini-sparkline" viewBox="0 0 80 20" id="sparkCost"></svg>
+        </div>
+      </div>
+
+      <div class="kpi-card glass" id="kpiSolar">
+        <div class="kpi-header">
+          <span class="kpi-title">SOLAR SELF-GENERATION</span>
+          <span class="kpi-badge success">Green Offset</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="valSolar">1.14</span>
+          <span class="kpi-unit">GWh</span>
+        </div>
+        <div class="kpi-footer">
+          <span class="kpi-sub"><strong>5.9%</strong> Renewable Penetration (590 kWp)</span>
+          <svg class="mini-sparkline" viewBox="0 0 80 20" id="sparkSolar"></svg>
+        </div>
+      </div>
+
+      <div class="kpi-card glass" id="kpiPeak">
+        <div class="kpi-header">
+          <span class="kpi-title">CAMPUS PEAK DEMAND</span>
+          <span class="kpi-badge danger">Contract Peak</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="valPeak">2,840</span>
+          <span class="kpi-unit">kW</span>
+        </div>
+        <div class="kpi-footer">
+          <span class="kpi-sub">Summer Afternoon Coincident Peak</span>
+          <div class="peak-util-bar"><div class="fill" style="width: 86%"></div></div>
+        </div>
+      </div>
+
+      <div class="kpi-card glass" id="kpiCarbon">
+        <div class="kpi-header">
+          <span class="kpi-title">CARBON FOOTPRINT</span>
+          <span class="kpi-badge leaf">CEA Factor</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="valCarbon">15,868</span>
+          <span class="kpi-unit">tCO₂e</span>
+        </div>
+        <div class="kpi-footer">
+          <span class="kpi-sub">Solar Abated: <strong>936.8 tCO₂e</strong></span>
+          <span class="delta-tag positive">-5.9% Clean</span>
+        </div>
+      </div>
+
+      <div class="kpi-card glass" id="kpiAnomalies">
+        <div class="kpi-header">
+          <span class="kpi-title">OPERATIONAL ANOMALIES</span>
+          <span class="kpi-badge alert" id="anomalyBadge">Shewhart 3σ</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="valAnomalies">196</span>
+          <span class="kpi-unit">Events</span>
+        </div>
+        <div class="kpi-footer">
+          <span class="kpi-sub">61 Flagged Ground-Truth Injections</span>
+          <span class="delta-tag negative">0.37% Breach</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 1: Diurnal Power Flow + Top-N Facility Benchmarking -->
+    <section class="grid-row two-col">
+      <div class="card glass-panel" id="panelDiurnal">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Campus Diurnal Power Flow (24-Hour Profile)</h2>
+            <p class="card-subtitle">Active demand, solar generation curve, and net utility import across 24 hours</p>
+          </div>
+          <div class="legend-pills">
+            <span class="pill-item"><span class="dot-color navy-dot"></span> Active Power</span>
+            <span class="pill-item"><span class="dot-color green-dot"></span> Solar Gen</span>
+            <span class="pill-item"><span class="dot-color blue-dot"></span> Net Import</span>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <div id="diurnalChart" style="width: 100%; height: 300px;"></div>
+        </div>
+      </div>
+
+      <div class="card glass-panel" id="panelFacilities">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Facility Benchmarking & Top-N Ranking</h2>
+            <p class="card-subtitle">Annual consumption (GWh), expenditure, and monthly trend sparklines</p>
+          </div>
+          <span class="card-meta">6 Metered Sites</span>
+        </div>
+        <div class="facility-list" id="facilityRankList">
+          <!-- Rendered dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 2: 24x7 Load Profile Heatmap Matrix -->
+    <section class="grid-row one-col">
+      <div class="card glass-panel" id="panelHeatmap">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">24x7 Diurnal Load-Profile Heatmap Matrix</h2>
+            <p class="card-subtitle">Intensity of hourly power demand (kW) across day-of-week and hour-of-day</p>
+          </div>
+          <div class="heatmap-legend">
+            <span class="legend-label">Low Load</span>
+            <div class="heatmap-gradient-bar"></div>
+            <span class="legend-label">Peak Load</span>
+          </div>
+        </div>
+        <div class="heatmap-container">
+          <div id="heatmapChart" style="width: 100%; height: 320px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3: Machine Learning Forecasting + Shewhart Anomaly Detection -->
+    <section class="grid-row two-col">
+      <div class="card glass-panel" id="panelForecast">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Prophet/Ridge Time-Series Demand Forecasting</h2>
+            <p class="card-subtitle">30-day forward demand trajectory with expanding 95% confidence intervals</p>
+          </div>
+          <div class="model-accuracy-chips">
+            <span class="chip">R²: <strong>0.996</strong></span>
+            <span class="chip">MAPE: <strong>0.61%</strong></span>
+            <span class="chip">MAE: <strong>270 kWh</strong></span>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <div id="forecastChart" style="width: 100%; height: 290px;"></div>
+        </div>
+        <div class="chart-caption-bar">
+          <span>Decomposes trend, diurnal harmonics & weather cooling-degree days (CDD)</span>
+          <span class="caption-tag">30-Day Forward Horizon</span>
+        </div>
+      </div>
+
+      <div class="card glass-panel" id="panelAnomalies">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Shewhart 3-Sigma Anomaly Detection Engine</h2>
+            <p class="card-subtitle">Rolling baseline deviations, overnight HVAC runaways & inverter dropouts</p>
+          </div>
+          <button class="inspect-btn" id="inspectAnomBtn">Inspect Event Log</button>
+        </div>
+        <div class="chart-wrapper">
+          <div id="anomalyChart" style="width: 100%; height: 290px;"></div>
+        </div>
+        <div class="anomaly-summary-strip" id="anomSummaryStrip">
+          <div class="strip-item"><span class="label">Weekend HVAC Leak:</span> <strong class="val-red">+280 kWh/h</strong></div>
+          <div class="strip-item"><span class="label">Night Baseload Leak:</span> <strong class="val-amber">+145 kWh/h</strong></div>
+          <div class="strip-item"><span class="label">Wasted Cost:</span> <strong>₹2.84 Lakhs</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 4: t-SNE Load-Shape Manifold + Appliance Submetering Breakdown -->
+    <section class="grid-row two-col">
+      <div class="card glass-panel" id="panelClusters">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">t-SNE 2D Manifold Load Profile Clustering</h2>
+            <p class="card-subtitle">Non-linear projection of 24-hour load shapes into 4 operational behavioral archetypes</p>
+          </div>
+          <div class="cluster-toggles" id="clusterFilterBar">
+            <button class="c-toggle active" data-cluster="0" style="--c-col: #2563EB">Commercial</button>
+            <button class="c-toggle active" data-cluster="1" style="--c-col: #059669">Continuous</button>
+            <button class="c-toggle active" data-cluster="2" style="--c-col: #D97706">Residential</button>
+            <button class="c-toggle active" data-cluster="3" style="--c-col: #7C3AED">Weekend Idle</button>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <div id="tsneChart" style="width: 100%; height: 300px;"></div>
+        </div>
+        <div class="cluster-legend-footer">
+          <span>Clustering driven by normalized 24-dimensional diurnal vectors (K-Means + t-SNE)</span>
+        </div>
+      </div>
+
+      <div class="card glass-panel" id="panelSubmeter">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Appliance & Submetering End-Use Breakdown</h2>
+            <p class="card-subtitle">Disaggregation of electrical loads across major functional subsystems</p>
+          </div>
+          <span class="card-meta">Submeter Fact Table</span>
+        </div>
+        <div class="submeter-content-layout">
+          <div class="donut-chart-box" style="width: 260px; height: 260px;">
+            <div id="submeterDonut" style="width: 100%; height: 100%;"></div>
+          </div>
+          <div class="submeter-stats-list" id="submeterLegendList">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 5: Live IoT Telemetry Simulator & Streaming Oscilloscope -->
+    <section class="grid-row one-col" id="streamingSection">
+      <div class="card glass-panel highlight-stream">
+        <div class="card-header">
+          <div class="live-title-box">
+            <span class="live-radar" id="radarIndicator"></span>
+            <div>
+              <h2 class="card-title">Simulated Real-Time IoT Sensor Telemetry Stream (ESP32 MQTT Gateway)</h2>
+              <p class="card-subtitle">Live packet generation, instantaneous active power, line voltage, current & power factor</p>
+            </div>
+          </div>
+          <div class="stream-stats-strip">
+            <div class="stream-stat">Packets: <strong id="streamPacketCount">0</strong></div>
+            <div class="stream-stat">Latency: <strong id="streamLatency">14 ms</strong></div>
+            <div class="stream-stat">Quality: <strong class="pass" id="streamQuality">100% Valid</strong></div>
+          </div>
+        </div>
+        <div class="streaming-grid">
+          <div class="stream-meters-row">
+            <div class="meter-box">
+              <span class="meter-lbl">INSTANTANEOUS POWER</span>
+              <div class="meter-val-row"><span class="meter-val" id="livePowerVal">--</span> <span class="meter-unit">kW</span></div>
+              <div class="meter-bar"><div class="fill" id="livePowerBar" style="width: 50%"></div></div>
+            </div>
+            <div class="meter-box">
+              <span class="meter-lbl">BUS VOLTAGE (RMS)</span>
+              <div class="meter-val-row"><span class="meter-val" id="liveVoltageVal">--</span> <span class="meter-unit">V</span></div>
+              <div class="meter-sub" id="liveFreqVal">50.02 Hz</div>
+            </div>
+            <div class="meter-box">
+              <span class="meter-lbl">LINE CURRENT (RMS)</span>
+              <div class="meter-val-row"><span class="meter-val" id="liveCurrentVal">--</span> <span class="meter-unit">A</span></div>
+              <div class="meter-sub">3-Phase Balanced</div>
+            </div>
+            <div class="meter-box">
+              <span class="meter-lbl">POWER FACTOR (cos φ)</span>
+              <div class="meter-val-row"><span class="meter-val" id="livePfVal">--</span> <span class="meter-unit"></span></div>
+              <div class="meter-sub" id="livePfStatus">Optimal (>0.92)</div>
+            </div>
+          </div>
+          <div class="stream-visuals-split" style="display: grid; grid-template-columns: 260px 1fr; gap: 16px;">
+            <div id="streamGauge" style="width: 100%; height: 180px; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);"></div>
+            <div class="stream-chart-wrapper" style="height: 180px;">
+              <div id="streamChart" style="width: 100%; height: 100%;"></div>
+            </div>
+          </div>
+          <div class="stream-log-container">
+            <div class="stream-log-header">
+              <span>LIVE TELEMETRY INGESTION TERMINAL (MQTT/JSON)</span>
+              <span class="log-clear" id="clearStreamLog">Clear</span>
+            </div>
+            <div class="stream-log-body" id="streamLogBody">
+              <div class="log-line system">Waiting for telemetry stream activation... Click "Start Live Telemetry" above.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 6: End-to-End Pipeline Architecture & Health Overview -->
+    <section class="grid-row one-col">
+      <div class="card glass-panel" id="panelPipeline">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">End-to-End Pipeline Architecture & Integrity Verification</h2>
+            <p class="card-subtitle">Multi-tier execution flow connecting ingestion, ETL, Star Schema, ML, and Power BI</p>
+          </div>
+          <button class="run-pipeline-btn" id="runPipelineWebBtn">⚡ Execute Pipeline</button>
+        </div>
+        <div class="pipeline-diagram">
+          <div class="pipe-node active">
+            <div class="pipe-icon">📡</div>
+            <div class="pipe-title">1. IoT Telemetry Ingest</div>
+            <div class="pipe-desc">ESP32 MQTT stream & batch meter CSVs</div>
+            <div class="pipe-badge success">PASS (6 Sites)</div>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node active">
+            <div class="pipe-icon">⚙️</div>
+            <div class="pipe-title">2. ETL & Quality Gates</div>
+            <div class="pipe-desc">Unit standardisation, CDD & null cleaning</div>
+            <div class="pipe-badge success">100% Cleansed</div>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node active">
+            <div class="pipe-icon">🗄️</div>
+            <div class="pipe-title">3. Star Schema Model</div>
+            <div class="pipe-desc">11 Fact & Dimension tables verified</div>
+            <div class="pipe-badge success">52,560 Rows</div>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node active">
+            <div class="pipe-icon">🤖</div>
+            <div class="pipe-title">4. ML Analytics Engine</div>
+            <div class="pipe-desc">Prophet forecast, 3σ anomalies, t-SNE</div>
+            <div class="pipe-badge success">R²: 0.996</div>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-node active">
+            <div class="pipe-icon">📊</div>
+            <div class="pipe-title">5. Power BI & Web Serving</div>
+            <div class="pipe-desc">50+ DAX measures, PBIT & Live UI</div>
+            <div class="pipe-badge success">Synchronized</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Anomaly Inspection Modal -->
+  <div class="modal-backdrop" id="anomalyModal">
+    <div class="modal-card glass">
+      <div class="modal-header">
+        <h3 class="modal-title">Operational Anomaly Incident Inspector (Shewhart 3σ)</h3>
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table class="data-table" id="anomTable">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Facility</th>
+              <th>Observed Load</th>
+              <th>Expected Baseline</th>
+              <th>Excess (Breach)</th>
+              <th>Wasted Cost</th>
+              <th>Root Cause / Type</th>
+              <th>Severity</th>
+            </tr>
+          </thead>
+          <tbody id="anomTableBody">
+            <!-- Injected via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <div class="footer-left">
+      <span>MACSE603 - Visual Analytics Lab  |  Academic Final Project</span>
+    </div>
+    <div class="footer-center">
+      <span>Team: Vedant Nimkar (26MML0045) • Jitesh Bobde (26MML0025) • Ayush Sharma (26MML0043)</span>
+    </div>
+    <div class="footer-right">
+      <span>Power BI Dimensional Model & Pipeline Integrated</span>
+    </div>
+  </footer>
+
+  <script src="echarts.min.js"></script>
+  <script src="dashboard_data.js?v=2.1"></script>
+  <script src="app.js?v=2.1"></script>
+</body>
+</html>

@@ -19,4 +19,5 @@ temp_*.png
 *_preview*.png
 pbi_auth_state.json
 tools/
-
+.vercel/
+*.log

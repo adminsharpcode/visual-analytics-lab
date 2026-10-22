@@ -1,0 +1,23 @@
+{
+  "execution_timestamp": "2026-10-22T22:32:48.157973",
+  "pipeline_status": "SUCCESS",
+  "stages": {
+    "dimensions_extracted": {
+      "facility": 6,
+      "tariff": 3,
+      "appliance": 5,
+      "time": 24,
+      "date": 731,
+      "weather": 17544
+    },
+    "transformation_summary": {
+      "total_records_processed": 52560,
+      "total_energy_gwh": 19.352,
+      "total_cost_inr_crores": 13.2,
+      "total_solar_gwh": 1.142,
+      "carbon_emissions_tons": 15869.0,
+      "foreign_key_integrity": "100% Verified",
+      "physical_bounds_check": "PASSED"
+    }
+  }
+}
