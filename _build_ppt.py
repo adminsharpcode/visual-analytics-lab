@@ -168,40 +168,50 @@ def visual_slide(num, title, img, caption, blocks, img_h=Inches(3.1), source=Non
 s = blank()
 rect(s, Inches(0), Inches(0), W, Inches(0.5), fill=NAVY)
 rect(s, Inches(0), Inches(0.5), W, Inches(0.08), fill=BLUE)
-rect(s, Inches(0), Inches(7.2), W, Inches(0.3), fill=NAVY)
+rect(s, Inches(0), Inches(7.15), W, Inches(0.35), fill=NAVY)
 
 t = textbox(s, Inches(0.85), Inches(0.11), Inches(11.6), Inches(0.32))
-para(t, COURSE.upper(), size=12, bold=True, color=SKY, first=True)
+para(t, f"{COURSE.upper()}  |  SLOT: VL2026270106590 (PRP135)  |  FALL SEMESTER 2026", size=11, bold=True, color=SKY, first=True)
 
-t = textbox(s, Inches(0.85), Inches(1.15), Inches(11.6), Inches(0.35))
-para(t, "ACADEMIC FINAL PROJECT DEFENSE", size=12.5, bold=True, color=BLUE, first=True)
+t = textbox(s, Inches(0.85), Inches(0.85), Inches(11.6), Inches(0.3))
+para(t, "ACADEMIC FINAL CAPSTONE PROJECT DEFENSE", size=12, bold=True, color=BLUE, first=True)
 
-t = textbox(s, Inches(0.85), Inches(1.68), Inches(11.6), Inches(2.0))
-para(t, "Smart Energy Consumption", size=38, bold=True, color=NAVY, space_after=2, first=True)
-para(t, "Visualization Dashboard", size=38, bold=True, color=NAVY, space_after=2)
-para(t, "Using Power BI & IoT Pipelines", size=38, bold=True, color=BLUE)
+t = textbox(s, Inches(0.85), Inches(1.25), Inches(11.6), Inches(1.8))
+para(t, "Smart Energy Consumption", size=34, bold=True, color=NAVY, space_after=2, first=True)
+para(t, "Visualization Dashboard", size=34, bold=True, color=NAVY, space_after=2)
+para(t, "Using Power BI & IoT Pipelines", size=34, bold=True, color=BLUE)
 
-rect(s, Inches(0.85), Inches(3.92), Inches(1.4), Inches(0.05), fill=BLUE)
+rect(s, Inches(0.85), Inches(3.28), Inches(1.4), Inches(0.04), fill=BLUE)
 
-t = textbox(s, Inches(0.85), Inches(4.2), Inches(11.6), Inches(0.32))
-para(t, "PROJECT TEAM MEMBERS", size=11.5, bold=True, color=MUTED, first=True)
+# Evaluator / Guide Card
+rect(s, Inches(0.85), Inches(3.45), Inches(11.63), Inches(0.82), fill=LIGHT, line=BORDER)
+rect(s, Inches(0.85), Inches(3.45), Inches(0.07), Inches(0.82), fill=NAVY)
+t = textbox(s, Inches(1.1), Inches(3.52), Inches(11.2), Inches(0.7))
+para(t, "SUBMITTED TO / EVALUATOR:", size=9.5, bold=True, color=MUTED, first=True)
+para(t, "Dr. Mary Jennifer J  |  Assistant Professor (Senior), School of Social Sciences & Languages (SSL) / Evaluator", size=12, bold=True, color=NAVY)
+para(t, "School of Computer Science and Engineering (SCOPE), Vellore Institute of Technology, Vellore - 632014", size=10, color=MUTED)
+
+# Project Team Members Cards
+t = textbox(s, Inches(0.85), Inches(4.38), Inches(11.6), Inches(0.28))
+para(t, "SUBMITTED BY: PROJECT TEAM MEMBERS", size=10.5, bold=True, color=MUTED, first=True)
 
 cx = Inches(0.85)
 for name, reg, role in MEMBERS:
-    rect(s, cx, Inches(4.65), Inches(3.72), Inches(1.5), fill=LIGHT, line=BORDER)
-    rect(s, cx, Inches(4.65), Inches(3.72), Inches(0.07), fill=BLUE)
-    t = textbox(s, cx + Inches(0.3), Inches(4.9), Inches(3.15), Inches(1.1))
-    para(t, name, size=16.5, bold=True, color=NAVY, space_after=4, first=True)
-    para(t, f"Reg. No. {reg}", size=12, color=MUTED, space_after=6)
+    rect(s, cx, Inches(4.7), Inches(3.72), Inches(1.45), fill=LIGHT, line=BORDER)
+    rect(s, cx, Inches(4.7), Inches(3.72), Inches(0.07), fill=(GREEN if role == "Team Leader" else BLUE))
+    t = textbox(s, cx + Inches(0.25), Inches(4.85), Inches(3.2), Inches(1.15))
+    para(t, name, size=15.5, bold=True, color=NAVY, space_after=3, first=True)
+    para(t, f"Reg. No. {reg}", size=12, color=MUTED, space_after=4)
     para(t, role.upper(), size=9.5, bold=True, color=(GREEN if role == "Team Leader" else BLUE))
-    cx += Inches(3.97)
+    cx += Inches(3.95)
 
-t = textbox(s, Inches(0.85), Inches(6.42), Inches(11.6), Inches(0.35))
-para(t, "Full Implementation: Star Schema (52.5k rows) • ML Demand Forecast • Shewhart 3σ Anomalies • Apache ECharts & Power BI",
-     size=12, italic=True, color=MUTED, first=True)
+t = textbox(s, Inches(0.85), Inches(6.32), Inches(11.6), Inches(0.3))
+para(t, "Deliverables: Star Schema Warehouse (52.5k rows) • Native Power BI (.pbip / TMDL) • ML Ridge Forecast (R²=0.996) • ECharts Web App • Vercel Cloud",
+     size=10.5, italic=True, color=MUTED, first=True)
 
-t = textbox(s, Inches(0.85), Inches(7.25), Inches(11.6), Inches(0.24))
-para(t, "M.Tech - Computer Science and Engineering", size=10, color=SKY, first=True)
+t = textbox(s, Inches(0.85), Inches(7.22), Inches(11.6), Inches(0.22))
+para(t, "M.Tech in Computer Science and Engineering / Artificial Intelligence and Machine Learning  |  VIT Vellore - 632014", size=9.5, color=SKY, first=True)
+
 
 # ============================================================ SLIDE 2: Abstract
 s = blank()
@@ -458,9 +468,79 @@ for lead, body in [
     bullet(t, body, lead=lead, size=11, space_after=10)
 footer(s)
 
-# ============================================================ SLIDE 15: Decision Support & ROI
+# ============================================================ SLIDE 15: Native Power BI Architecture
 s = blank()
-header(s, 15, "Decision Support & Financial Impact")
+header(s, 15, "Enterprise Power BI Architecture (.pbip, TMDL & PBIR)")
+
+# Left Card: Modern TMDL Semantic Model
+rect(s, Inches(0.55), Inches(1.38), Inches(5.99), Inches(5.35), fill=LIGHT, line=BORDER)
+rect(s, Inches(0.55), Inches(1.38), Inches(5.99), Inches(0.07), fill=NAVY)
+t = textbox(s, Inches(0.85), Inches(1.65), Inches(5.4), Inches(0.3))
+para(t, "TMDL GIT-INTEGRATED SEMANTIC MODEL", size=11.5, bold=True, color=NAVY, first=True)
+t = textbox(s, Inches(0.85), Inches(2.05), Inches(5.4), Inches(4.5))
+for lead, body in [
+    ("Migration to .PBIP Format - ", "Transitioned from fragile binary .pbix packages to Microsoft Fabric's official Power BI Project format (.pbip) for seamless version control."),
+    ("TMDL Schema Definition - ", "Human-readable Tabular Model Definition Language files in SemanticModel/definition/ storing 11 tables and full model metadata."),
+    ("12 Enterprise DAX Measures - ", "Measures for Total GWh, Electricity Spend (Cr), Peak kW, Solar Penetration %, Power Factor, and Carbon Offsets with full lineage tags."),
+    ("Power Query M Ingestion - ", "Automated CSV partition expressions mapping timestamp, electrical parameters, tariffs, and CDH weather inputs with strict typing."),
+    ("Zero-BOM Serialization - ", "Engineered clean UTF-16LE encoding (without BOM) resolving PowerBIFileSerializer DiagramLayout parser exceptions natively."),
+]:
+    bullet(t, body, lead=lead, size=11, space_after=10)
+
+# Right Card: Multi-Page PBIR Report Engine
+rect(s, Inches(6.78), Inches(1.38), Inches(5.99), Inches(5.35), fill=WHITE, line=BORDER)
+rect(s, Inches(6.78), Inches(1.38), Inches(5.99), Inches(0.07), fill=BLUE)
+t = textbox(s, Inches(7.1), Inches(1.65), Inches(5.4), Inches(0.3))
+para(t, "PBIR MULTI-PAGE VISUAL REPORT ENGINE", size=11.5, bold=True, color=BLUE, first=True)
+t = textbox(s, Inches(7.1), Inches(2.05), Inches(5.4), Inches(4.5))
+for lead, body in [
+    ("Page 1: Executive Overview - ", "6 KPI summary cards, 24-hr diurnal power flow line chart, facility consumption bar chart, and substation slicers."),
+    ("Page 2: Load Profiling & Matrix - ", "Interactive 24x7 hour-by-day heatmap matrix, end-use submetering donut chart, and high-energy appliance ranking tables."),
+    ("Page 3: ML Forecast & Anomaly Audit - ", "168-hour Ridge/Prophet demand forecast with 95% confidence bands, Shewhart ±3σ control limits, and breach audit log."),
+    ("23 Dedicated Visual Containers - ", "Structured PBIR JSON visual definitions with custom positioning, tab orders, query states, and cross-filtering rules."),
+    ("1-Click Native Desktop Launch - ", "Opens seamlessly in Microsoft Power BI Desktop (v2.157+ / Aug 2026) with automatic VertiPaq model compilation in memory."),
+]:
+    bullet(t, body, lead=lead, size=11, space_after=10)
+footer(s)
+
+# ============================================================ SLIDE 16: Cloud Deployment & Dual Serving
+s = blank()
+header(s, 16, "Cloud Production Deployment & Continuous Integration")
+
+# Left Card: Vercel Cloud Architecture
+rect(s, Inches(0.55), Inches(1.38), Inches(5.99), Inches(5.35), fill=LIGHT, line=BORDER)
+rect(s, Inches(0.55), Inches(1.38), Inches(5.99), Inches(0.07), fill=BLUE)
+t = textbox(s, Inches(0.85), Inches(1.65), Inches(5.4), Inches(0.3))
+para(t, "VERCEL EDGE SERVERLESS PLATFORM", size=11.5, bold=True, color=BLUE, first=True)
+t = textbox(s, Inches(0.85), Inches(2.05), Inches(5.4), Inches(4.5))
+for lead, body in [
+    ("Live Production Deployment - ", "Publicly accessible worldwide at https://webdashboard-eta.vercel.app with zero cold-starts and global CDN caching."),
+    ("Dual-Platform Delivery - ", "Eliminates software dependency barriers: Power BI Desktop for offline analysts; responsive Web App for browser & mobile access."),
+    ("Cyber-Slate Glassmorphism - ", "High-contrast palette (#0b1120 background, #f8fafc text) exceeding WCAG AA standards with fluid micro-animations."),
+    ("8 Synchronized ECharts - ", "Diurnal flow, 24x7 matrix heatmap, facility benchmarking, Prophet forecast, Shewhart control limits, t-SNE 2D manifold, and submetering."),
+    ("Cache-Control Architecture - ", "Automated zero-cache headers (max-age=0, must-revalidate) preventing stale analytical assets across edge nodes."),
+]:
+    bullet(t, body, lead=lead, size=11, space_after=10)
+
+# Right Card: GitHub CI/CD & Pipeline Integration
+rect(s, Inches(6.78), Inches(1.38), Inches(5.99), Inches(5.35), fill=WHITE, line=BORDER)
+rect(s, Inches(6.78), Inches(1.38), Inches(5.99), Inches(0.07), fill=GREEN)
+t = textbox(s, Inches(7.1), Inches(1.65), Inches(5.4), Inches(0.3))
+para(t, "GITHUB CI/CD & TELEMETRY INTEGRATION", size=11.5, bold=True, color=GREEN, first=True)
+t = textbox(s, Inches(7.1), Inches(2.05), Inches(5.4), Inches(4.5))
+for lead, body in [
+    ("Automated Git Versioning - ", "Complete project hosted at https://github.com/adminsharpcode/visual-analytics-lab with clean modular commit history."),
+    ("Self-Contained Data Warehouse - ", "All 11 star schema CSVs (52.5k rows), ETL modules, and analytics scripts fully reproducible in single clone."),
+    ("Live Telemetry Emulation - ", "Continuous ESP32 MQTT simulation engine pushing instantaneous 3-phase readings with dynamic voltage fluctuation."),
+    ("Academic Integrity & Compliance - ", "Fully documented research methodology referencing all 6 core papers with reproducible benchmark scripts."),
+    ("Production Artifacts - ", "Includes automated PDF generation script, defense PPT presentation deck, and interactive web dashboard server."),
+]:
+    bullet(t, body, lead=lead, size=11, space_after=10)
+footer(s)
+
+# ============================================================ SLIDE 17: Decision Support & ROI
+s = blank()
+header(s, 17, "Decision Support & Financial Impact")
 roi_cards = [
     ("Peak Shaving Optimization", "Shifting HVAC load via 11:00-13:00 pre-cooling reduces contract demand by 15%, saving an estimated INR 18.5 Lakhs annually in tariff demand charges.", BLUE),
     ("Weekend Equipment Shutdown", "Automated Shewhart 3σ alerts prevent unmonitored chiller runaways, eliminating ~INR 2.84 Lakhs in avoidable weekend waste.", NAVY),
@@ -478,9 +558,9 @@ for i, (title, body, accent) in enumerate(roi_cards):
     para(t, body, size=12.5, color=DARK, first=True, line_spacing=1.2)
 footer(s)
 
-# ============================================================ SLIDE 16: Summary of Achievements
+# ============================================================ SLIDE 18: Summary of Achievements
 s = blank()
-header(s, 16, "Project Summary & Quantitative Achievements")
+header(s, 18, "Project Summary & Quantitative Achievements")
 rect(s, Inches(0.55), Inches(1.38), Inches(12.22), Inches(5.35), fill=LIGHT, line=BORDER)
 rect(s, Inches(0.55), Inches(1.38), Inches(12.22), Inches(0.07), fill=NAVY)
 
@@ -495,7 +575,7 @@ metrics = [
     ("Carbon Offset", "936.8 tCO2e", "Direct clean generation abatement (0.82 kg/kWh CEA factor)"),
     ("Forecasting Accuracy", "R² = 0.996", "MAPE = 0.61%, MAE = 270.1 kWh on 30-day holdout validation"),
     ("Operational Breaches", "196 Flagged", "Shewhart ±3σ control limits identifying equipment leaks"),
-    ("Interactive Serving", "Dual Delivery", "Power BI Desktop (50+ DAX measures) & Apache ECharts Web UI"),
+    ("Dual Delivery Serving", "Cloud & Native", "Power BI Desktop (.pbip) & Vercel Web Dashboard (ECharts)"),
 ]
 y_m = Inches(2.15)
 for i, (label, val, note) in enumerate(metrics):
@@ -526,3 +606,4 @@ def save_presentation():
 
 saved = save_presentation()
 print(f"Presentation build complete! Total slides: {len(prs.slides._sldIdLst)}")
+
