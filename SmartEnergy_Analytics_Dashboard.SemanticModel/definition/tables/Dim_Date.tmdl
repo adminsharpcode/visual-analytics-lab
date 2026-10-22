@@ -1,6 +1,6 @@
 table Dim_Date
 	dataCategory: Time
-	lineageTag: 1d5939be-5fcd-4dcd-8b8d-dba791582e8c
+	lineageTag: 59a5fa26-a5a9-464f-bc58-3f7ac44eac54
 
 	column Date
 		dataType: dateTime
@@ -8,69 +8,69 @@ table Dim_Date
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: 4dc592ae-f11c-47a7-959e-cb1ecf2591fe
+		lineageTag: deb12cfd-4bc3-4422-8644-e78c8fa28683
 
 	column Year
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: Year
-		lineageTag: ed0a4a3c-3c06-44e3-ad08-f2e587527339
+		lineageTag: da15bfe7-a9ab-4715-a4de-2d30d37fb6ac
 
 	column Quarter
-		dataType: int64
+		dataType: string
 		summarizeBy: none
 		sourceColumn: Quarter
-		lineageTag: dea45443-56ea-4932-8fcb-021ccbb6f539
+		lineageTag: 5f10674f-767d-42b5-b3f0-1c3c77102a2c
 
 	column Month
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: Month
-		lineageTag: a1c9652b-0d6f-477f-a43b-251aa3bc7ea7
+		lineageTag: 3d078087-65ed-47b1-b556-93ac4051fc9b
 
 	column MonthName
 		dataType: string
 		sortByColumn: Month
 		summarizeBy: none
 		sourceColumn: MonthName
-		lineageTag: e56fcbfa-bd0b-4f6e-ba1d-9a52678053a2
+		lineageTag: 3c56bbb8-88be-47ef-8949-b4623e91e80d
 
 	column WeekNum
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: WeekNum
-		lineageTag: 3e298e4e-77df-44c8-a589-2bdeb69073d9
+		lineageTag: 1f8b6001-3bc8-4ca6-9bbc-d8f6a9b9038f
 
 	column DayOfMonth
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: DayOfMonth
-		lineageTag: ddb9336f-5fee-42ca-b3e7-bd33748500f2
+		lineageTag: 1eaafa87-8edd-4697-95c3-78eff5d955d6
 
 	column DayOfWeek
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: DayOfWeek
-		lineageTag: 576f7381-216d-474c-9a70-9fcf32cbb675
+		lineageTag: 78000c7f-9338-49dc-9f3b-da3b3ad9887a
 
 	column DayName
 		dataType: string
 		sortByColumn: DayOfWeek
 		summarizeBy: none
 		sourceColumn: DayName
-		lineageTag: 2b3bf40c-166f-4c84-b66e-99291e6ed346
+		lineageTag: 10628812-18a9-431e-b507-bc5abe94c836
 
 	column IsWeekend
-		dataType: boolean
+		dataType: int64
 		summarizeBy: none
 		sourceColumn: IsWeekend
-		lineageTag: b5e501f5-781f-479d-ba26-de56f7d683a2
+		lineageTag: 9eca3437-7b7f-415f-8a65-8695685a8232
 
 	column Season
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Season
-		lineageTag: 0004ff94-cb79-4a66-a15c-4aae7524ea7d
+		lineageTag: ae207ec8-5219-407d-9cea-4423fa3e4da5
 
 	partition Dim_Date = m
 		mode: import
@@ -79,9 +79,9 @@ table Dim_Date
 			    Source = Csv.Document(File.Contents("C:/Users/ROG/Desktop/Mtech Classwork/Visual analytics/Project_SmartEnergy_PowerBI/data/Dim_Date.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 			    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 			    Typed = Table.TransformColumnTypes(Promoted, {
-			        {"Date", type date}, {"Year", Int64.Type}, {"Quarter", Int64.Type}, {"Month", Int64.Type},
+			        {"Date", type date}, {"Year", Int64.Type}, {"Quarter", type text}, {"Month", Int64.Type},
 			        {"MonthName", type text}, {"WeekNum", Int64.Type}, {"DayOfMonth", Int64.Type}, {"DayOfWeek", Int64.Type},
-			        {"DayName", type text}, {"IsWeekend", type logical}, {"Season", type text}
+			        {"DayName", type text}, {"IsWeekend", Int64.Type}, {"Season", type text}
 			    })
 			in
 			    Typed

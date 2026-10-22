@@ -88,10 +88,10 @@ m_queries = {
         ("Solar_kWp", "type number")
     ]),
     "Dim_Date": make_csv_m_expr("Dim_Date.csv", [
-        ("Date", "type date"), ("Year", "Int64.Type"), ("Quarter", "Int64.Type"),
+        ("Date", "type date"), ("Year", "Int64.Type"), ("Quarter", "type text"),
         ("Month", "Int64.Type"), ("MonthName", "type text"), ("WeekNum", "Int64.Type"),
         ("DayOfMonth", "Int64.Type"), ("DayOfWeek", "Int64.Type"), ("DayName", "type text"),
-        ("IsWeekend", "type logical"), ("Season", "type text")
+        ("IsWeekend", "Int64.Type"), ("Season", "type text")
     ]),
     "Dim_Time": make_csv_m_expr("Dim_Time.csv", [
         ("Hour", "Int64.Type"), ("HourFormatted", "type text"), ("Hour12", "type text"),
@@ -231,14 +231,14 @@ tables = [
         "columns": [
             col("Date", "dateTime", is_key=True),
             col("Year", "int64"),
-            col("Quarter", "int64"),
+            col("Quarter", "string"),
             col("Month", "int64"),
             col("MonthName", "string", sort_by="Month"),
             col("WeekNum", "int64"),
             col("DayOfMonth", "int64"),
             col("DayOfWeek", "int64"),
             col("DayName", "string", sort_by="DayOfWeek"),
-            col("IsWeekend", "boolean"),
+            col("IsWeekend", "int64"),
             col("Season", "string")
         ],
         "partitions": [{
@@ -505,50 +505,11 @@ for pbit_path in [pbit_path_local, pbit_path_root]:
 print(f"Generated Power BI Template (.pbit): {pbit_path_local} ({os.path.getsize(pbit_path_local)/1024:.1f} KB)")
 
 # =========================================================================
-# 7. Build .PBIP (Power BI Project Folder)
+# 7. Build .PBIP (Power BI Project Folder) via build_full_powerbi_solution
 # =========================================================================
-PROJ_NAME = "SmartEnergy_Analytics_Dashboard"
-for base_target in [POWERBI_DIR, ROOT_DIR]:
-    pbip_dir = os.path.join(base_target, f"{PROJ_NAME}.pbip")
-    sm_dir = os.path.join(base_target, f"{PROJ_NAME}.SemanticModel")
-    rp_dir = os.path.join(base_target, f"{PROJ_NAME}.Report")
-    
-    os.makedirs(sm_dir, exist_ok=True)
-    os.makedirs(rp_dir, exist_ok=True)
+from build_full_powerbi_solution import build_solution
+build_solution()
 
-    # .pbip pointer
-    with open(pbip_dir, "w", encoding="utf-8") as f:
-        json.dump({
-            "version": "1.0",
-            "artifacts": [{"report": {"path": f"{PROJ_NAME}.Report"}}],
-            "settings": {"enableAutoRecovery": True}
-        }, f, indent=2)
-
-    # SemanticModel files
-    with open(os.path.join(sm_dir, "definition.pbism"), "w", encoding="utf-8") as f:
-        json.dump({
-            "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json",
-            "version": "4.2",
-            "settings": {}
-        }, f, indent=2)
-    with open(os.path.join(sm_dir, "model.bim"), "w", encoding="utf-8") as f:
-        json.dump(full_model, f, indent=2)
-    with open(os.path.join(sm_dir, "diagramLayout.json"), "w", encoding="utf-8") as f:
-        json.dump(diagram_layout, f, indent=2)
-
-    # Report files (PBIR definition)
-    with open(os.path.join(rp_dir, "definition.pbir"), "w", encoding="utf-8") as f:
-        json.dump({
-            "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
-            "version": "4.0",
-            "datasetReference": {
-                "byPath": {"path": f"../{PROJ_NAME}.SemanticModel"}
-            }
-        }, f, indent=2)
-    with open(os.path.join(rp_dir, "report.json"), "w", encoding="utf-8") as f:
-        json.dump(report_layout, f, indent=2)
-
-print(f"Generated Power BI Project (.pbip): {PROJ_NAME}.pbip with full SemanticModel & Report")
 # =========================================================================
 # 8. Clean up any obsolete .pbix binaries (Power BI saves native .pbix on open)
 # =========================================================================
