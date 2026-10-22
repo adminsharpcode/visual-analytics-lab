@@ -242,7 +242,7 @@ def build_pdf():
 
     # SUBMITTED TO Card
     story.append(Paragraph("SUBMITTED TO", cover_meta_label))
-    story.append(Paragraph("<strong>Dr. Mary Jennifer J</strong><br/>Assistant Professor (Senior)<br/>School of Social Sciences and Languages (SSL) / Faculty Evaluator<br/>School of Computer Science and Engineering (SCOPE)<br/>Vellore Institute of Technology, Vellore – 632014", cover_meta_body))
+    story.append(Paragraph("<strong>Dr. Mary Jennifer J</strong><br/>Assistant Professor (Senior)<br/>School of Social Sciences and Languages (SSL) / Faculty Evaluator<br/>School of Computer Science and Engineering (SCOPE)<br/>Vellore Institute of Technology, Vellore - 632014", cover_meta_body))
 
     # SUBMITTED BY Table
     story.append(Paragraph("SUBMITTED BY: PROJECT TEAM", cover_meta_label))
@@ -269,7 +269,7 @@ def build_pdf():
     story.append(t_team)
     story.append(Spacer(1, 20))
 
-    story.append(Paragraph("Vellore Institute of Technology, Vellore – 632014, Tamil Nadu, India", cover_inst_style))
+    story.append(Paragraph("Vellore Institute of Technology, Vellore - 632014, Tamil Nadu, India", cover_inst_style))
     story.append(Paragraph("October 2026", cover_inst_bold))
     story.append(PageBreak())
 
@@ -286,8 +286,8 @@ def build_pdf():
         "sensor edge ingestion, automated ETL normalization, a 52,560-record Star Schema warehouse (FY 2025 across 6 facilities), "
         "machine learning demand forecasting, Shewhart statistical anomaly detection, and dual-track presentation serving.<br/><br/>"
         "The diagnostic and predictive core features a Fourier-expanded Ridge regression engine achieving an exceptional "
-        "accuracy of <strong>R² = 0.996</strong> (MAE = 270.1 kWh, MAPE = 0.61%) across a 30-day holdout validation, and a rolling "
-        "Shewhart ±3σ control limit algorithm that successfully flags 196 operational breaches, including a high-severity weekend chiller "
+        "accuracy of <strong>R<sup>2</sup> = 0.996</strong> (MAE = 270.1 kWh, MAPE = 0.61%) across a 30-day holdout validation, and a rolling "
+        "Shewhart +/-3sigma control limit algorithm that successfully flags 196 operational breaches, including a high-severity weekend chiller "
         "runaway that wasted INR 64,400. In the serving tier, we engineer a modern Microsoft Fabric Power BI Project (.pbip) using "
         "clean Tabular Model Definition Language (TMDL) and Power BI Report (PBIR) multi-page layouts alongside an interactive, "
         "responsive cyber-glassmorphism Web Application built with Apache ECharts and deployed globally to Vercel "
@@ -306,15 +306,15 @@ def build_pdf():
         "intensive research laboratories, high-density residential dormitories, 24x7 computing server wings, sports complexes, "
         "and central administrative infrastructure. Managing the electrical demand of such heterogeneous complexes is "
         "exceptionally challenging due to disjointed operating hours, localized climatic variances, and differing equipment loads. "
-        "Without granular, time-synchronized telemetry, facilities managers are forced into a reactive posture—receiving electricity bills "
+        "Without granular, time-synchronized telemetry, facilities managers are forced into a reactive posture - receiving electricity bills "
         "weeks after consumption has occurred, with no ability to pinpoint the root cause of billing surges.",
         body_style
     ))
     story.append(Paragraph(
         "Visual Analytics bridges this cognitive and operational divide. By combining automated data transformation pipelines, "
         "dimensional modeling, predictive machine learning, and interactive visual encodings, Visual Analytics enables stakeholders "
-        "to move seamlessly from high-level executive KPIs down to root-cause submetered appliance telemetry. Following Ben Shneiderman’s "
-        "Visual Information Seeking Mantra—<em>'Overview first, zoom and filter, then details-on-demand'</em>—this platform empowers "
+        "to move seamlessly from high-level executive KPIs down to root-cause submetered appliance telemetry. Following Ben Shneiderman's "
+        "Visual Information Seeking Mantra - <em>'Overview first, zoom and filter, then details-on-demand'</em> - this platform empowers "
         "energy managers to eliminate unmonitored equipment runaways, optimize contract maximum demand thresholds, and coordinate "
         "rooftop solar photovoltaic (PV) generation with peak commercial tariff windows.",
         body_style
@@ -326,10 +326,10 @@ def build_pdf():
         ("Granular Temporal Ingestion: ", "Capture 52,560 hourly metered intervals spanning all 8,760 hours of FY 2025 across 6 diverse campus facilities."),
         ("Dimensional Data Warehouse: ", "Construct a robust Kimball-style Star Schema with 1 central fact, 4 derived analytical facts, and 6 dimension tables."),
         ("Predictive Demand Modeling: ", "Implement regularized machine learning time-series forecasting capturing diurnal, intra-week, and weather cooling-degree dynamics."),
-        ("Statistical Quality Control: ", "Formulate rolling Shewhart ±3σ control charts to isolate operational anomalies, baseline drift, and equipment leaks."),
+        ("Statistical Quality Control: ", "Formulate rolling Shewhart +/-3sigma control charts to isolate operational anomalies, baseline drift, and equipment leaks."),
         ("Dual-Platform Enterprise Serving: ", "Deploy both a native Power BI Project (.pbip with TMDL/PBIR) and an open-access cloud Web Dashboard on Vercel.")
     ]:
-        story.append(Paragraph(f"• <strong>{obj[0]}</strong>{obj[1]}", bullet_style))
+        story.append(Paragraph(f"&bull; <strong>{obj[0]}</strong>{obj[1]}", bullet_style))
     story.append(Spacer(1, 6))
 
     # =========================================================================
@@ -346,14 +346,15 @@ def build_pdf():
     arch_path = os.path.join(IMG_DIR, "architecture_flow.png")
     if os.path.exists(arch_path):
         story.append(KeepTogether([
-            Image(arch_path, width=6.8*inch, height=2.4*inch),
-            Paragraph("<em>Figure 1: End-to-End Five-Tier Smart Energy Visual Analytics Pipeline Architecture</em>", caption_style)
+            Image(arch_path, width=6.2*inch, height=2.0*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 1:</strong> End-to-End Five-Tier Smart Energy Visual Analytics Pipeline Architecture</em>", caption_style)
         ]))
     story.append(Spacer(1, 6))
 
     arch_tiers = [
-        ("Tier 1: Telemetry Ingestion Gate", "Collects raw electrical measurements (active power kW, reactive power kVARh, voltage V, power factor) and environmental sensors (ambient temperature °C, solar irradiance W/m²). Features automated schema verification, range clipping, and null imputation."),
-        ("Tier 2: Automated ETL & Feature Engineering", "Executes Cooling Degree Hours (CDH = max(0, Temp - 24.0°C)) integration, solar self-consumption ratio calculations, time-of-use tariff matching, and carbon emission footprint quantification (0.82 kg CO2e / kWh grid factor)."),
+        ("Tier 1: Telemetry Ingestion Gate", "Collects raw electrical measurements (active power kW, reactive power kVARh, voltage V, power factor) and environmental sensors (ambient temperature °C, solar irradiance W/m<sup>2</sup>). Features automated schema verification, range clipping, and null imputation."),
+        ("Tier 2: Automated ETL & Feature Engineering", "Executes Cooling Degree Hours (CDH = max(0, Temp - 24.0°C)) integration, solar self-consumption ratio calculations, time-of-use tariff matching, and carbon emission footprint quantification (0.82 kg CO<sub>2</sub>e / kWh grid factor)."),
         ("Tier 3: Kimball Star Schema Warehouse", "Relational persistence across 11 synchronized CSV tables organized into core facts (hourly readings, submetering, ML forecasts, anomalies, load clusters) and denormalized dimensions (facilities, date, time, tariffs, weather, appliances)."),
         ("Tier 4: Predictive & Diagnostic Analytics Engine", "Python-powered analytics executing Ridge Fourier demand forecasting, Shewhart statistical quality control limits, Barnes-Hut t-SNE dimensionality reduction, and K-Means load-shape archetype clustering."),
         ("Tier 5: Presentation & Interactive Serving Layer", "Dual presentation interfaces: (a) Native Power BI Project (.pbip) with TMDL definitions and 12 DAX measures; (b) Cloud Web Dashboard deployed on Vercel with responsive Apache ECharts and real-time MQTT simulator.")
@@ -411,7 +412,7 @@ def build_pdf():
         ("2. Closed SCADA / Building Management Systems (BMS): ", "Highly proprietary industrial hardware installations (e.g., Siemens, Honeywell). While providing millisecond sensor polling, they suffer from extreme vendor lock-in, high licensing costs, rigid user interfaces, and an utter lack of executive visual storytelling or modern machine learning forecasting."),
         ("3. Standalone Python / Jupyter Notebook Workflows: ", "Data scientists frequently perform ad-hoc analysis in isolated notebooks. While algorithmically sophisticated, these pipelines are entirely detached from operational facility managers, lack automated refresh schedules, and provide no persistent visual interface.")
     ]:
-        story.append(Paragraph(f"• <strong>{app[0]}</strong>{app[1]}", bullet_style))
+        story.append(Paragraph(f"&bull; <strong>{app[0]}</strong>{app[1]}", bullet_style))
     story.append(Spacer(1, 6))
 
     # =========================================================================
@@ -459,15 +460,15 @@ def build_pdf():
     story.append(Paragraph("Enterprise DAX Measure Formulations:", h2_style))
     dax_list = [
         ("Total Active Consumption (GWh)", "DIVIDE(SUM(Fact_EnergyConsumption[ActivePower_kWh]), 1000000)", "Total electrical energy utilized across all campus facilities in Gigawatt-hours."),
-        ("Total Electricity Spend (Cr)", "DIVIDE(SUM(Fact_EnergyConsumption[Cost_INR]), 10000000)", "Cumulative tariff expenditure formatted in Indian Crores (₹)."),
+        ("Total Electricity Spend (Cr)", "DIVIDE(SUM(Fact_EnergyConsumption[Cost_INR]), 10000000)", "Cumulative tariff expenditure formatted in Indian Crores (INR )."),
         ("Campus Peak Demand (kW)", "MAXX(VALUES(Fact_EnergyConsumption[Timestamp]), CALCULATE(SUM(Fact_EnergyConsumption[ActivePower_kWh])))", "Coincident instantaneous peak demand across campus for contract demand billing."),
         ("Solar Penetration %", "DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), SUM(Fact_EnergyConsumption[ActivePower_kWh]), 0)", "Proportion of total electrical demand offset directly by on-site clean solar PV generation."),
-        ("Carbon Footprint (tCO2e)", "DIVIDE(SUM(Fact_EnergyConsumption[Carbon_kgCO2]), 1000)", "Total Scope 2 greenhouse gas emissions using CEA grid emission factor (0.82 kg CO2e / kWh)."),
-        ("Clean Energy Offset (tCO2e)", "DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]) * 0.82, 1000)", "Direct carbon emissions abated through solar self-consumption (equivalent to ~42,500 trees)."),
+        ("Carbon Footprint (tCO<sub>2</sub>e)", "DIVIDE(SUM(Fact_EnergyConsumption[Carbon_kgCO<sub>2</sub>]), 1000)", "Total Scope 2 greenhouse gas emissions using CEA grid emission factor (0.82 kg CO<sub>2</sub>e / kWh)."),
+        ("Clean Energy Offset (tCO<sub>2</sub>e)", "DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]) * 0.82, 1000)", "Direct carbon emissions abated through solar self-consumption (equivalent to ~42,500 trees)."),
         ("Operational Anomaly Count", "CALCULATE(COUNTROWS(Fact_EnergyConsumption), Fact_EnergyConsumption[AnomalyFlag] = 1)", "Total number of hourly intervals breaching statistical control limits.")
     ]
     for name, expr, desc in dax_list:
-        story.append(Paragraph(f"• <strong>{name}</strong>: <code>{expr}</code><br/>&nbsp;&nbsp;&nbsp;&nbsp;<em>{desc}</em>", bullet_style))
+        story.append(Paragraph(f"&bull; <strong>{name}</strong>: <code>{expr}</code><br/>&nbsp;&nbsp;&nbsp;&nbsp;<em>{desc}</em>", bullet_style))
     story.append(Spacer(1, 8))
 
     # =========================================================================
@@ -483,16 +484,16 @@ def build_pdf():
     # Sub-section A: ML Implementation
     story.append(Paragraph("A. Machine Learning Analytics Engines", h2_style))
     story.append(Paragraph(
-        "<strong>1. Prophet-Style Ridge Demand Forecasting:</strong> We implement regularized Ridge regression (α = 1.0) incorporating "
+        "<strong>1. Prophet-Style Ridge Demand Forecasting:</strong> We implement regularized Ridge regression (alpha = 1.0) incorporating "
         "dual Fourier harmonic terms to model diurnal (P = 24h) and intra-week (P = 168h) periodicity alongside weather interactions:<br/>"
-        "&nbsp;&nbsp;&nbsp;&nbsp;<code>ActivePower(t) = β0 + Σ [αk sin(2πkt/P) + γk cos(2πkt/P)] + β_cdh CDH(t) + β_occ Occupancy(t) + ε</code><br/>"
-        "On a 30-day holdout validation dataset, the model achieved an <strong>R² score of 0.996</strong>, a Mean Absolute Error of 270.1 kWh, "
+        "&nbsp;&nbsp;&nbsp;&nbsp;<code>ActivePower(t) = beta0 + SUM [alphak sin(2pikt/P) + gammak cos(2pikt/P)] + beta_cdh CDH(t) + beta_occ Occupancy(t) + epsilon</code><br/>"
+        "On a 30-day holdout validation dataset, the model achieved an <strong>R<sup>2</sup> score of 0.996</strong>, a Mean Absolute Error of 270.1 kWh, "
         "and a Mean Absolute Percentage Error of 0.61%.",
         body_style
     ))
     story.append(Paragraph(
-        "<strong>2. Shewhart ±3σ Statistical Process Control:</strong> Rolling 24-hour mean (μ_24) and standard deviation (σ_24) limits "
-        "dynamically track baseline variations. Operational anomalies are flagged whenever: <code>ActivePower(t) > μ_24(t) + 3·σ_24(t)</code>. "
+        "<strong>2. Shewhart +/-3sigma Statistical Process Control:</strong> Rolling 24-hour mean (mu_24) and standard deviation (sigma_24) limits "
+        "dynamically track baseline variations. Operational anomalies are flagged whenever: <code>ActivePower(t) > mu_24(t) + 3*sigma_24(t)</code>. "
         "Across FY 2025, exactly 196 hourly anomalies were isolated, categorizing weekend equipment leaks, HVAC override breaches, and sensor faults.",
         body_style
     ))
@@ -515,6 +516,23 @@ def build_pdf():
         body_style
     ))
 
+    # Real Power BI Desktop Dashboard Screenshot
+    fig_pbi = os.path.join(FIG_DIR, "pbi_desktop_dashboard.png")
+    if os.path.exists(fig_pbi):
+        story.append(KeepTogether([
+            Image(fig_pbi, width=6.2*inch, height=2.87*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 2:</strong> Native Microsoft Fabric Power BI Desktop Multi-Page Report & Star Schema Analytics Interface (Dark Executive Theme)</em>", caption_style)
+        ]))
+        story.append(Paragraph(
+            "<em>Figure 2 captures the operational Power BI Desktop application running the Smart Energy Dashboard. "
+            "The executive view delivers six high-visibility KPI indicator cards (Active Consumption 19.35 GWh, Total Electricity Spend INR 13.20 Cr, "
+            "Campus Peak Demand 2,840 kW, Solar Carbon Offset 936.8 tCO<sub>2</sub>e, 196 Operational Breaches, and 0.94 Power Factor), dynamic facility slicers, "
+            "calendar date filtering, diurnal active load area profiles, facility consumption comparisons, and a cross-filtering benchmark matrix.</em>",
+            body_style
+        ))
+        story.append(Spacer(1, 4))
+
     # Sub-section C: Cloud Web Dashboard & Vercel Deployment
     story.append(Paragraph("C. Cloud Web Dashboard & Telemetry Streaming", h2_style))
     story.append(Paragraph(
@@ -525,116 +543,147 @@ def build_pdf():
         "It includes a live ESP32 IoT sensor simulator emitting 3-phase telemetry packets over MQTT every 1.5 seconds with real-time waveform oscilloscopes.",
         body_style
     ))
-    story.append(Spacer(1, 8))
+
+    # Cloud Web Dashboard / ECharts Executive HUD Screenshot
+    fig_hud = os.path.join(FIG_DIR, "echarts_executive_hud.png")
+    if os.path.exists(fig_hud):
+        story.append(KeepTogether([
+            Image(fig_hud, width=6.2*inch, height=3.48*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 3:</strong> Cloud-Native Cyber-Executive Apache ECharts Real-Time Telemetry HUD Deployed Globally on Vercel (<a href='https://webdashboard-eta.vercel.app' color='#1E40AF'>https://webdashboard-eta.vercel.app</a>)</em>", caption_style)
+        ]))
+        story.append(Paragraph(
+            "<em>Figure 3 illustrates the production Cloud Web Dashboard rendering in Apache ECharts (v5.4.3). "
+            "The cyber-slate dark interface features real-time KPI telemetry ribbons, interactive multi-facility slicers, animated solar self-consumption "
+            "gauges, and high-frequency IoT streaming charts rendered smoothly at 60 FPS via hardware-accelerated canvas.</em>",
+            body_style
+        ))
+        story.append(Spacer(1, 6))
 
     # =========================================================================
     # 9. RESULT ANALYSIS
     # =========================================================================
     story.append(Paragraph("7. Comprehensive Result Analysis & Visual Findings", h1_style))
     story.append(Paragraph(
-        "We evaluate the operational, visual, and financial performance of the platform across eight dedicated visual analytic modules:",
+        "We evaluate the operational, visual, and financial performance of the platform across seven dedicated visual analytic modules "
+        "powered by interactive Apache ECharts rendering:",
         body_style
     ))
 
-    # Figure 2: Diurnal Power Flow & Solar Generation
-    fig_solar = os.path.join(FIG_DIR, "08_solar_vs_grid_flow.png")
-    if os.path.exists(fig_solar):
-        story.append(KeepTogether([
-            Image(fig_solar, width=6.8*inch, height=2.5*inch),
-            Paragraph("<em>Figure 2: Diurnal Power Flow — Solar PV Generation vs. Net Grid Import Load Curve</em>", caption_style)
-        ]))
-    story.append(Paragraph(
-        "<strong>Finding 1: Solar Self-Consumption Optimization:</strong> As illustrated in Figure 2, on-site solar PV generation peaks at 420 kW "
-        "between 11:30 and 13:30, aligning perfectly with the campus mid-day air conditioning surge. Solar self-consumption ratio averages 94.2%, "
-        "with virtually zero reverse power export to the external utility grid.",
-        body_style
-    ))
-    story.append(Spacer(1, 4))
-
-    # Figure 3: Load Profile Heatmap Matrix
-    fig_heat = os.path.join(FIG_DIR, "02_load_profile_heatmap_matrix.png")
+    # Figure 4: 24x7 Load Profile Heatmap Matrix (ECharts)
+    fig_heat = os.path.join(FIG_DIR, "echarts_247_heatmap.png")
     if os.path.exists(fig_heat):
         story.append(KeepTogether([
-            Image(fig_heat, width=6.8*inch, height=2.6*inch),
-            Paragraph("<em>Figure 3: Campus 24x7 Diurnal Load-Profile Heatmap Matrix (Hourly Demand Intensity in kW)</em>", caption_style)
+            Image(fig_heat, width=6.2*inch, height=3.48*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 4:</strong> Interactive Apache ECharts 24x7 Campus Load Intensity Heatmap Matrix (Hourly Demand in kW across Days & Hours)</em>", caption_style)
         ]))
     story.append(Paragraph(
-        "<strong>Finding 2: 24x7 Operational Regime Segmentation:</strong> The hour-of-day versus day-of-week intensity matrix in Figure 3 "
-        "exposes distinct operational regimes: sharp morning demand ramps at 08:30, coincident afternoon peaks (14:00 - 17:00), and sustained "
-        "overnight baseload of ~820 kW primarily driven by Server Wing C and ventilation chillers.",
+        "<strong>Finding 1: 24x7 Operational Regime Segmentation:</strong> The hour-of-day versus day-of-week intensity matrix in Figure 4 "
+        "exposes distinct operational regimes through continuous visual color ramps: sharp morning demand ramps at 08:30 (escalating from 950 kW to 2,200 kW), "
+        "coincident afternoon peaks (14:00 - 17:00) driven by thermal cooling inertia, and a sustained overnight baseload of ~820 kW primarily driven "
+        "by Computing Wing C server clusters and continuous ventilation chillers.",
         body_style
     ))
     story.append(Spacer(1, 4))
 
-    # Figure 4: Demand Forecasting Validation
-    fig_fc = os.path.join(FIG_DIR, "04_prophet_demand_forecast.png")
+    # Figure 5: Machine Learning 30-Day Ahead Demand Forecast (ECharts)
+    fig_fc = os.path.join(FIG_DIR, "echarts_forecast_module.png")
     if os.path.exists(fig_fc):
         story.append(KeepTogether([
-            Image(fig_fc, width=6.8*inch, height=2.5*inch),
-            Paragraph("<em>Figure 4: Machine Learning 168-Hour Ahead Demand Forecast with 95% Confidence Prediction Bands</em>", caption_style)
+            Image(fig_fc, width=6.2*inch, height=3.48*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 5:</strong> Apache ECharts 30-Day Ahead Fourier Ridge Demand Forecast with Dynamic 95% Confidence Prediction Bands (R<sup>2</sup> = 0.996)</em>", caption_style)
         ]))
     story.append(Paragraph(
-        "<strong>Finding 3: High-Fidelity Machine Learning Forecasting:</strong> Figure 4 validates the Ridge Fourier forecasting engine against "
-        "ground-truth metered consumption across 168 holdout hours. The model achieves an <strong>R² of 0.996</strong> and an <strong>MAE of 270.1 kWh</strong>, "
-        "faithfully capturing intra-day peaks and evening drops within 95% expanding confidence bounds.",
+        "<strong>Finding 2: High-Fidelity Machine Learning Forecasting:</strong> Figure 5 demonstrates the predictive performance of the Fourier-expanded "
+        "Ridge regression engine across a 30-day unseen holdout validation horizon. The model achieves an outstanding <strong>R<sup>2</sup> score of 0.996</strong>, "
+        "a Mean Absolute Error (MAE) of <strong>270.1 kWh</strong>, and a Mean Absolute Percentage Error (MAPE) of <strong>0.61%</strong>. The interactive "
+        "visual encoding clearly delineates historical training observations, holdout actuals, predicted trajectory, and 95% expanding confidence bounds.",
         body_style
     ))
     story.append(Spacer(1, 4))
 
-    # Figure 5: Shewhart Anomaly Detection
-    fig_anom = os.path.join(FIG_DIR, "05_anomaly_detection_control_limits.png")
+    # Figure 6: Shewhart Anomaly Detection & Audit Log (ECharts)
+    fig_anom = os.path.join(FIG_DIR, "echarts_anomaly_shewhart.png")
     if os.path.exists(fig_anom):
         story.append(KeepTogether([
-            Image(fig_anom, width=6.8*inch, height=2.5*inch),
-            Paragraph("<em>Figure 5: Shewhart 3-Sigma Rolling Control Limits Highlighting Weekend Chiller Operational Breach</em>", caption_style)
+            Image(fig_anom, width=6.2*inch, height=3.48*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 6:</strong> Interactive Shewhart 3-Sigma Rolling Statistical Process Control Chart Highlighting Equipment Operational Runaway Breaches & Audit Log</em>", caption_style)
         ]))
     story.append(Paragraph(
-        "<strong>Finding 4: Automated Detection of Equipment Runaways:</strong> Figure 5 details an isolated high-severity anomaly where Academic Block A "
-        "chillers remained locked at 100% capacity over an entire weekend. The Shewhart control chart flagged the event immediately (+280 kWh/h above control limit), "
-        "quantifying avoidable waste of <strong>INR 64,400</strong>.",
+        "<strong>Finding 3: Automated Detection of Equipment Runaways & Baseload Leaks:</strong> Figure 6 isolates an acute operational fault where "
+        "Academic Block A chillers remained energized at 100% load across an entire summer weekend. The dynamic Shewhart +/-3sigma control limit chart flagged "
+        "the breach immediately as active power exceeded upper control bounds (+280 kWh/h above threshold for 46 consecutive hours). The automated "
+        "diagnostic module calculated the avoidable financial waste at <strong>INR 64,400</strong>, contributing to a total of 196 isolated anomalies saving "
+        "<strong>INR 2.84 Lakhs</strong> across FY 2025.",
         body_style
     ))
     story.append(Spacer(1, 4))
 
-    # Figure 6: Top-N Benchmarking
+    # Figure 7: t-SNE Load Clustering (ECharts)
+    fig_tsne = os.path.join(FIG_DIR, "echarts_tsne_clustering.png")
+    if os.path.exists(fig_tsne):
+        story.append(KeepTogether([
+            Image(fig_tsne, width=6.2*inch, height=3.48*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 7:</strong> 24-Dimensional Barnes-Hut t-SNE Manifold Projection & K-Means Clustering of 2,190 Daily Load Archetypes in Apache ECharts</em>", caption_style)
+        ]))
+    story.append(Paragraph(
+        "<strong>Finding 4: Behavioral Archetype Isolation via Manifold Learning:</strong> Figure 7 presents the 2D non-linear manifold projection "
+        "of 2,190 daily load vectors normalized into unit profiles. K-Means clustering (k = 4) isolates four distinct operational archetypes: "
+        "(1) Commercial Day-Shift Heavy (38.2%), (2) Continuous 24x7 Server Baseload (22.1%), (3) Evening Residential Peak (24.5%), and (4) Low Weekend Idle Curtailment (15.2%). "
+        "Interactive tooltip inspections allow facilities operators to classify daily operating schedules instantaneously.",
+        body_style
+    ))
+    story.append(Spacer(1, 4))
+
+    # Figure 8: Submetering Disaggregation (ECharts)
+    fig_sub = os.path.join(FIG_DIR, "echarts_submeter_breakdown.png")
+    if os.path.exists(fig_sub):
+        story.append(KeepTogether([
+            Image(fig_sub, width=6.2*inch, height=3.48*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 8:</strong> Campus End-Use Submetering Category Disaggregation & Polar Load Distribution in Apache ECharts</em>", caption_style)
+        ]))
+    story.append(Paragraph(
+        "<strong>Finding 5: End-Use Submetered Attribution & Polar Distribution:</strong> Figure 8 displays the disaggregation of total electrical demand "
+        "into five functional circuits via an interactive donut and polar coordinate radar encoding. HVAC and thermal comfort dominate campus demand at "
+        "<strong>42.1%</strong> (8.15 GWh), followed by Computing & Server IT infrastructure at <strong>22.4%</strong> (4.34 GWh), architectural lighting at "
+        "<strong>18.2%</strong> (3.52 GWh), heavy induction pumps/motors at <strong>11.8%</strong> (2.28 GWh), and auxiliary plug loads at <strong>5.5%</strong>.",
+        body_style
+    ))
+    story.append(Spacer(1, 4))
+
+    # Figure 9: Top-N Benchmarking
     fig_topn = os.path.join(FIG_DIR, "03_topn_facility_sparklines.png")
     if os.path.exists(fig_topn):
         story.append(KeepTogether([
-            Image(fig_topn, width=6.8*inch, height=2.4*inch),
-            Paragraph("<em>Figure 6: Facility Consumption Benchmark & Top-N Ranking with Monthly Sparklines</em>", caption_style)
+            Image(fig_topn, width=6.2*inch, height=2.54*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 9:</strong> Facility Consumption Benchmark & Top-N Ranking with Monthly Sparklines</em>", caption_style)
         ]))
     story.append(Paragraph(
-        "<strong>Finding 5: Facility Energy Intensity Disparity:</strong> Benchmarking across facilities reveals that Computing Wing C (4.88 GWh) "
+        "<strong>Finding 6: Facility Energy Intensity Disparity:</strong> Benchmarking across facilities in Figure 9 reveals that Computing Wing C (4.88 GWh) "
         "and Research Complex B (4.21 GWh) consume 46.9% of campus energy despite occupying only 28.5% of total floor area, identifying them "
         "as prime candidates for targeted solar carport installations.",
         body_style
     ))
     story.append(Spacer(1, 4))
 
-    # Figure 7: t-SNE Clustering
-    fig_tsne = os.path.join(FIG_DIR, "06_tsne_load_shape_clusters.png")
-    if os.path.exists(fig_tsne):
+    # Figure 10: Diurnal Power Flow & Solar PV Self-Consumption
+    fig_solar = os.path.join(FIG_DIR, "08_solar_vs_grid_flow.png")
+    if os.path.exists(fig_solar):
         story.append(KeepTogether([
-            Image(fig_tsne, width=6.8*inch, height=2.6*inch),
-            Paragraph("<em>Figure 7: t-SNE 2D Manifold Projection of 24-Hour Load Profiles Across 4 Behavioral Clusters</em>", caption_style)
+            Image(fig_solar, width=6.2*inch, height=3.33*inch),
+            Spacer(1, 3),
+            Paragraph("<em><strong>Figure 10:</strong> Diurnal Power Flow  -  Solar PV Generation vs. Net Grid Import Load Curve</em>", caption_style)
         ]))
     story.append(Paragraph(
-        "<strong>Finding 6: Behavioral Archetype Isolation via Manifold Learning:</strong> Figure 7 demonstrates how non-linear dimensionality "
-        "reduction separates 2,190 daily load vectors into tight, interpretable clusters, enabling automated classification of abnormal load shapes.",
-        body_style
-    ))
-    story.append(Spacer(1, 4))
-
-    # Figure 8: Submetering Disaggregation
-    fig_sub = os.path.join(FIG_DIR, "07_appliance_submeter_breakdown.png")
-    if os.path.exists(fig_sub):
-        story.append(KeepTogether([
-            Image(fig_sub, width=5.2*inch, height=2.8*inch),
-            Paragraph("<em>Figure 8: Campus End-Use Submetering Disaggregation (HVAC 42%, IT 22%, Lighting 18%)</em>", caption_style)
-        ]))
-    story.append(Paragraph(
-        "<strong>Finding 7: Submetered End-Use Attribution:</strong> Submetering analytics in Figure 8 confirm that heating, ventilation, "
-        "and air conditioning (HVAC) accounts for 42.1% of campus electricity consumption, followed by server IT loads (22.4%) and lighting (18.2%).",
+        "<strong>Finding 7: Solar PV Self-Consumption & Peak Coincidence:</strong> Figure 10 contrasts campus total load against on-site rooftop solar PV "
+        "generation (590 kWp installed capacity). Solar generation crests at 420 kW during mid-day hours (11:30-13:30), coinciding with peak air-conditioning "
+        "draw. The solar self-consumption ratio reaches <strong>94.2%</strong>, eliminating grid backfeeding and abating <strong>936.8 tCO<sub>2</sub>e</strong> in annual Scope 2 emissions.",
         body_style
     ))
     story.append(Spacer(1, 6))
@@ -644,13 +693,13 @@ def build_pdf():
     kpi_table_data = [
         ["Key Metric Description", "Annual Metric Value", "Unit of Measure", "Operational Significance & Impact"],
         ["Total Active Energy Consumption", "19,352,396", "kWh (19.35 GWh)", "Comprehensive campus baseline for carbon accounting."],
-        ["Total Annual Electricity Spend", "13.20", "Crores INR (₹)", "Governed by Time-of-Use tariff structure with peak penalties."],
+        ["Total Annual Electricity Spend", "13.20", "Crores INR (INR )", "Governed by Time-of-Use tariff structure with peak penalties."],
         ["Solar PV Self-Generation", "1,142,435", "kWh (1.14 GWh)", "5.90% Renewable penetration from 590 kWp installed PV."],
         ["Campus Peak Coincident Demand", "2,840.0", "kW", "Contract demand threshold recorded during June cooling peak."],
-        ["Total Campus Carbon Footprint", "15,868.9", "tCO2e", "Quantified using Central Electricity Authority grid factor."],
-        ["Clean Solar Carbon Offset", "936.8", "tCO2e", "Equivalent to environmental benefit of ~42,500 mature trees."],
+        ["Total Campus Carbon Footprint", "15,868.9", "tCO<sub>2</sub>e", "Quantified using Central Electricity Authority grid factor."],
+        ["Clean Solar Carbon Offset", "936.8", "tCO<sub>2</sub>e", "Equivalent to environmental benefit of ~42,500 mature trees."],
         ["Operational Anomalies Flagged", "196", "Events", "Prevented avoidable equipment waste of ~INR 2.84 Lakhs."],
-        ["Forecasting Model Accuracy", "R² = 0.996", "Validation Holdout", "MAPE = 0.61%, MAE = 270.1 kWh on 30-day unseen test."]
+        ["Forecasting Model Accuracy", "R<sup>2</sup> = 0.996", "Validation Holdout", "MAPE = 0.61%, MAE = 270.1 kWh on 30-day unseen test."]
     ]
     t_kpi = Table(kpi_table_data, colWidths=[1.8*inch, 1.2*inch, 1.3*inch, 2.8*inch])
     t_kpi.setStyle(TableStyle([
@@ -674,16 +723,16 @@ def build_pdf():
     story.append(Paragraph("8. Conclusion & Strategic Recommendations", h1_style))
     story.append(Paragraph(
         "This project successfully conceptualized, validated, and deployed a production-grade Smart Energy Consumption "
-        "Visual Analytics platform. By synthesizing the core methodologies of six foundational research papers—Kimball star schemas, "
-        "Prophet/Ridge machine learning forecasting, Shewhart statistical anomaly detection, and t-SNE manifold clustering—we have "
+        "Visual Analytics platform. By synthesizing the core methodologies of six foundational research papers - Kimball star schemas, "
+        "Prophet/Ridge machine learning forecasting, Shewhart statistical anomaly detection, and t-SNE manifold clustering - we have "
         "demonstrated that Visual Analytics transforms raw electrical telemetry into strategic, actionable business value.",
         body_style
     ))
     story.append(Paragraph(
         "<strong>Actionable Campus Energy Strategies:</strong><br/>"
         "1. <em>Peak Shaving via HVAC Pre-Cooling:</em> Pre-cooling Academic Complex A and Research Wing B between 11:00 and 13:00 "
-        "utilizes surplus rooftop solar power and flattens the 14:00–17:00 commercial peak demand, saving an estimated <strong>INR 18.5 Lakhs annually</strong> in demand charges.<br/>"
-        "2. <em>Automated Shewhart Weekend Shutdowns:</em> Connecting Shewhart ±3σ alerts to automated building management relays prevents chiller "
+        "utilizes surplus rooftop solar power and flattens the 14:00-17:00 commercial peak demand, saving an estimated <strong>INR 18.5 Lakhs annually</strong> in demand charges.<br/>"
+        "2. <em>Automated Shewhart Weekend Shutdowns:</em> Connecting Shewhart +/-3sigma alerts to automated building management relays prevents chiller "
         "runaways during non-occupancy hours, eliminating <strong>INR 2.84 Lakhs</strong> in avoidable waste.<br/>"
         "3. <em>Targeted Solar PV Expansion:</em> Prioritizing a 350 kWp carport solar installation on Computing Wing C directly offsets "
         "the continuous 24x7 IT server baseload.",
@@ -701,7 +750,7 @@ def build_pdf():
         ("Automated OpenADR Demand Response: ", "Integrate OpenADR 2.0b compliance protocols to allow the campus microgrid to participate in utility automated demand response programs and frequency regulation markets."),
         ("3D Spatial Digital Twin Analytics: ", "Develop a WebGL/Three.js 3D digital twin of the campus integrating building thermal envelopes, solar shading models, and real-time indoor air quality sensors.")
     ]:
-        story.append(Paragraph(f"• <strong>{f[0]}</strong>{f[1]}", bullet_style))
+        story.append(Paragraph(f"&bull; <strong>{f[0]}</strong>{f[1]}", bullet_style))
     story.append(Spacer(1, 8))
 
     # =========================================================================
@@ -710,17 +759,17 @@ def build_pdf():
     story.append(Paragraph("10. Bibliographic References", h1_style))
     refs = [
         "1. NOVA IMS, 'Energy Consumption Distribution in Portugal: A Business Intelligence Solution,' Master's Dissertation, NOVA Information Management School, Universidade Nova de Lisboa, 2024.",
-        "2. S. A. Awate, R. Chaurasia, P. Kirolkar, M. More, and P. Ingale, 'Electricity Consumption using Big Data Analytics,' International Journal of Advanced Research in Science, Communication and Technology (IJARSCT), vol. 3, no. 2, pp. 245–252, 2023. DOI: 10.48175/IJARSCT-9099.",
-        "3. R. Sharma and K. Patel, 'Energy Calculation Using Power BI: A Practical Implementation Framework for Commercial Facilities,' International Journal of Research Publication and Reviews (IJRPR), vol. 4, no. 8, pp. 1120–1128, 2023.",
-        "4. E. Soliman and N. Fetais, 'Visualization as a Means of Big Data Management: Using Qatar's Electricity Consumption Data,' in Proc. IEEE GCC Conference and Exhibition (GCCCE), Manama, Bahrain, 2017, pp. 1–9. DOI: 10.1109/GCCCE.2017.8080512.",
-        "5. A. K. Verma, P. Singh, and M. Thomas, 'An IoT-Enabled Smart Energy Monitoring and Fault Prediction System Using ESP32 and Cloud Analytics,' International Journal of Innovative Research in Technology (IJIRT), vol. 12, no. 4, pp. 410–418, 2026.",
-        "6. F. Rossi, M. Verleysen, and H. Bourlard, 'Interactive Machine Learning-Powered Dashboard for Smart Meter Load Analytics,' in Proc. European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN), Bruges, Belgium, 2024, pp. 315–320.",
+        "2. S. A. Awate, R. Chaurasia, P. Kirolkar, M. More, and P. Ingale, 'Electricity Consumption using Big Data Analytics,' International Journal of Advanced Research in Science, Communication and Technology (IJARSCT), vol. 3, no. 2, pp. 245-252, 2023. DOI: 10.48175/IJARSCT-9099.",
+        "3. R. Sharma and K. Patel, 'Energy Calculation Using Power BI: A Practical Implementation Framework for Commercial Facilities,' International Journal of Research Publication and Reviews (IJRPR), vol. 4, no. 8, pp. 1120-1128, 2023.",
+        "4. E. Soliman and N. Fetais, 'Visualization as a Means of Big Data Management: Using Qatar's Electricity Consumption Data,' in Proc. IEEE GCC Conference and Exhibition (GCCCE), Manama, Bahrain, 2017, pp. 1-9. DOI: 10.1109/GCCCE.2017.8080512.",
+        "5. A. K. Verma, P. Singh, and M. Thomas, 'An IoT-Enabled Smart Energy Monitoring and Fault Prediction System Using ESP32 and Cloud Analytics,' International Journal of Innovative Research in Technology (IJIRT), vol. 12, no. 4, pp. 410-418, 2026.",
+        "6. F. Rossi, M. Verleysen, and H. Bourlard, 'Interactive Machine Learning-Powered Dashboard for Smart Meter Load Analytics,' in Proc. European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning (ESANN), Bruges, Belgium, 2024, pp. 315-320.",
         "7. R. Kimball and M. Ross, The Data Warehouse Toolkit: The Definitive Guide to Dimensional Modeling, 3rd ed. Hoboken, NJ: John Wiley & Sons, 2013.",
-        "8. S. J. Taylor and B. Letham, 'Forecasting at scale,' The American Statistician, vol. 72, no. 1, pp. 37–45, 2018. DOI: 10.1080/00031305.2017.1380080.",
+        "8. S. J. Taylor and B. Letham, 'Forecasting at scale,' The American Statistician, vol. 72, no. 1, pp. 37-45, 2018. DOI: 10.1080/00031305.2017.1380080.",
         "9. D. C. Montgomery, Introduction to Statistical Quality Control, 8th ed. New York, NY: John Wiley & Sons, 2019.",
-        "10. L. van der Maaten and G. Hinton, 'Visualizing data using t-SNE,' Journal of Machine Learning Research, vol. 9, pp. 2579–2605, 2008.",
-        "11. Central Electricity Authority (CEA), 'CO2 Baseline Database for the Indian Power Sector, User Guide Version 19.0,' Ministry of Power, Government of India, New Delhi, 2024.",
-        "12. B. Shneiderman, 'The eyes have it: A task by data type taxonomy for information visualizations,' in Proc. IEEE Symposium on Visual Languages, Boulder, CO, 1996, pp. 336–343."
+        "10. L. van der Maaten and G. Hinton, 'Visualizing data using t-SNE,' Journal of Machine Learning Research, vol. 9, pp. 2579-2605, 2008.",
+        "11. Central Electricity Authority (CEA), 'CO<sub>2</sub> Baseline Database for the Indian Power Sector, User Guide Version 19.0,' Ministry of Power, Government of India, New Delhi, 2024.",
+        "12. B. Shneiderman, 'The eyes have it: A task by data type taxonomy for information visualizations,' in Proc. IEEE Symposium on Visual Languages, Boulder, CO, 1996, pp. 336-343."
     ]
     for r in refs:
         story.append(Paragraph(r, bullet_style))

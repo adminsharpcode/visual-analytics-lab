@@ -57,7 +57,7 @@ Visual Analytics—the science of analytical reasoning facilitated by interactiv
 ### 1.3 Key Research & Engineering Objectives
 1. **Granular Temporal Telemetry:** Ingest and normalize 52,560 hourly metered readings spanning all 8,760 hours of FY 2025 across 6 heterogeneous campus facilities.
 2. **Kimball Star Schema Warehouse:** Architect an 11-table dimensional warehouse with strict primary/foreign key relationships optimized for rapid in-memory analytical querying.
-3. **High-Fidelity Predictive Modeling:** Formulate a regularized time-series forecasting engine capturing diurnal ($P=24	ext{h}$), intra-week ($P=168	ext{h}$), and weather Cooling Degree Hours (CDH) interactions.
+3. **High-Fidelity Predictive Modeling:** Formulate a regularized time-series forecasting engine capturing diurnal ($P=24\text{h}$), intra-week ($P=168\text{h}$), and weather Cooling Degree Hours (CDH) interactions.
 4. **Statistical Quality Control Limits:** Implement dynamic Shewhart $\pm 3\sigma$ rolling control limits to detect operational equipment leaks and quantify avoidable financial waste.
 5. **Non-Linear Manifold Load Clustering:** Project 24-dimensional daily load vectors using Barnes-Hut $t$-SNE into interpretable operational archetypes.
 6. **Dual-Track Enterprise Serving:** Deliver the complete visual system both as a native Microsoft Fabric Power BI Project (`.pbip` with TMDL/PBIR) and as a cloud-native, responsive Web Dashboard deployed globally on Vercel.
@@ -67,7 +67,10 @@ Visual Analytics—the science of analytical reasoning facilitated by interactiv
 ## 2. System Model & Pipeline Architecture
 The system architecture follows a decoupled, five-tier pipeline designed for high resilience, analytical reproducibility, and sub-second interactive query response times across millions of metered data points.
 
-```
+``![Figure 1: End-to-End Five-Tier Smart Energy Visual Analytics Pipeline Architecture](images/architecture_flow.png)
+*Figure 1: End-to-End Five-Tier Smart Energy Visual Analytics Pipeline Architecture*
+
+`
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                             TIER 1: INGESTION GATE                               │
 │  ESP32 3-Phase Smart Meters  ──►  MQTT Edge Broker  ──►  Schema Validator & Log  │
@@ -99,7 +102,7 @@ The system architecture follows a decoupled, five-tier pipeline designed for hig
 
 ### Detailed Pipeline Tiers
 - **Tier 1: Ingestion Gate:** Collects active power (kWh), reactive power (kVARh), line voltage (V), power factor, and weather parameters. Validates schema types, clips physical sensor dropouts (e.g., negative voltage spikes), and logs pipeline metrics.
-- **Tier 2: Automated ETL & Feature Engineering:** Enriches raw intervals with Cooling Degree Hours ($	ext{CDH} = \max(0, 	ext{Temp} - 24.0^\circ	ext{C})$), calculates solar self-consumption ratios, evaluates multi-tier ToU tariffs, and derives Scope 2 emissions using the Central Electricity Authority (CEA) grid emission factor of $0.82	ext{ kg CO}_2	ext{e/kWh}$.
+- **Tier 2: Automated ETL & Feature Engineering:** Enriches raw intervals with Cooling Degree Hours ($\text{CDH} = \max(0, \text{Temp} - 24.0^\circ\text{C})$), calculates solar self-consumption ratios, evaluates multi-tier ToU tariffs, and derives Scope 2 emissions using the Central Electricity Authority (CEA) grid emission factor of $0.82\text{ kg CO}_2\text{e/kWh}$.
 - **Tier 3: Star Schema Relational Store:** Houses 11 synchronized tables organized into central transactional facts and denormalized dimensions, ensuring zero redundant calculation at visual query time.
 - **Tier 4: Analytics Engines:** Implements Scikit-Learn Ridge regression with harmonic basis expansions, rolling Shewhart process control algorithms, and scikit-learn Barnes-Hut $t$-Distributed Stochastic Neighbor Embedding.
 - **Tier 5: Dual Serving:** Deploys (a) Microsoft Power BI Desktop project with 12 enterprise DAX measures and 23 visual containers, and (b) responsive Vanilla JS/CSS Apache ECharts dashboard on Vercel with real-time MQTT telemetry emulation.
@@ -128,7 +131,7 @@ The design and analytical architecture of this project is rigorously grounded in
 4. **Visualization as a Means of Big Data Management: Qatar Electricity Consumption Data (Soliman & Fetais, IEEE GCCCE 2017):**  
    *Methodology:* Investigated big data visualization challenges across smart meter networks in Qatar, identifying data quality bottlenecks, inconsistent units, and rendering latencies.  
    *Key Takeaway:* Data quality gates—standardized engineering units, physical boundary validation, and transparent ETL audit logs—are strict prerequisites for trustworthy energy dashboards.  
-   *Adoption in Project:* We engineered automated ETL validation checks: physical power factor clamping ($0.70 \le 	ext{PF} \le 1.0$), active power non-negativity, voltage consistency checks ($210	ext{V} \le V \le 250	ext{V}$), and zero-BOM UTF-16LE serialization.
+   *Adoption in Project:* We engineered automated ETL validation checks: physical power factor clamping ($0.70 \le \text{PF} \le 1.0$), active power non-negativity, voltage consistency checks ($210\text{V} \le V \le 250\text{V}$), and zero-BOM UTF-16LE serialization.
 
 5. **An IoT-Enabled Smart Energy Monitoring and Fault Prediction System (Verma et al., IJIRT 2026):**  
    *Methodology:* Deployed ESP32 microcontrollers with current/voltage transformers, streaming telemetry via MQTT broker to a cloud analytics engine for real-time fault anticipation.  
@@ -271,17 +274,24 @@ To ensure consistent, high-performance aggregation across all visual containers,
 ## 6. Implementation & Technical Realization
 ### 6.1 Machine Learning Analytics Engines
 1. **Fourier-Expanded Ridge Regression Demand Forecasting:**  
-   To capture multi-frequency cyclicality without overfitting, we formulated a regularized linear model incorporating Fourier series expansion for diurnal ($P_1 = 24	ext{ hours}$) and intra-week ($P_2 = 168	ext{ hours}$) seasonality:
-   $$\hat{y}(t) = eta_0 + \sum_{k=1}^{K_1} \left[ lpha_k \sin\left(rac{2\pi k t}{24}ight) + \gamma_k \cos\left(rac{2\pi k t}{24}ight) ight] + \sum_{m=1}^{K_2} \left[ 	heta_m \sin\left(rac{2\pi m t}{168}ight) + \phi_m \cos\left(rac{2\pi m t}{168}ight) ight] + eta_{	ext{cdh}} 	ext{CDH}(t) + eta_{	ext{occ}} 	ext{Occ}(t)$$
+   To capture multi-frequency cyclicality without overfitting, we formulated a regularized linear model incorporating Fourier series expansion for diurnal ($P_1 = 24\text{ hours}$) and intra-week ($P_2 = 168\text{ hours}$) seasonality:
+   $$\hat{y}(t) = eta_0 + \sum_{k=1}^{K_1} \left[ lpha_k \sin\left(rac{2\pi k t}{24}
+ight) + \gamma_k \cos\left(rac{2\pi k t}{24}
+ight) 
+ight] + \sum_{m=1}^{K_2} \left[ 	heta_m \sin\left(rac{2\pi m t}{168}
+ight) + \phi_m \cos\left(rac{2\pi m t}{168}
+ight) 
+ight] + eta_{\text{cdh}} \text{CDH}(t) + eta_{\text{occ}} \text{Occ}(t)$$
    The objective minimizes the Ridge loss function:
    $$\mathcal{L}(\mathbf{w}) = \|\mathbf{y} - \mathbf{X}\mathbf{w}\|_2^2 + \lambda \|\mathbf{w}\|_2^2 \quad (\lambda = 1.0)$$
-   On an unseen 30-day validation horizon, the model achieved **$R^2 = 0.996$**, **$	ext{MAE} = 270.1	ext{ kWh}$**, and **$	ext{MAPE} = 0.61\%$**.
+   On an unseen 30-day validation horizon, the model achieved **$R^2 = 0.996$**, **$\text{MAE} = 270.1\text{ kWh}$**, and **$\text{MAPE} = 0.61\%$**.
 
 2. **Shewhart $\pm 3\sigma$ Statistical Process Control:**  
    Statistical quality control limits dynamically adapt to baseline shifts using a rolling 24-hour window:
    $$\mu_{24}(t) = rac{1}{24}\sum_{i=0}^{23} y(t-i), \quad \sigma_{24}(t) = \sqrt{rac{1}{23}\sum_{i=0}^{23} (y(t-i) - \mu_{24}(t))^2}$$
-   $$	ext{UCL}(t) = \mu_{24}(t) + 3\sigma_{24}(t), \quad 	ext{LCL}(t) = \max\left(0, \mu_{24}(t) - 3\sigma_{24}(t)ight)$$
-   An operational anomaly is flagged when $y(t) > 	ext{UCL}(t)$ for two or more consecutive intervals.
+   $$\text{UCL}(t) = \mu_{24}(t) + 3\sigma_{24}(t), \quad \text{LCL}(t) = \max\left(0, \mu_{24}(t) - 3\sigma_{24}(t)
+ight)$$
+   An operational anomaly is flagged when $y(t) > \text{UCL}(t)$ for two or more consecutive intervals.
 
 3. **Barnes-Hut $t$-SNE 2D Manifold Clustering:**  
    Each facility-day is characterized by a 24-dimensional normalized load profile vector $\mathbf{x}_i \in \mathbb{R}^{24}$, where $\sum_{h=1}^{24} x_{i,h} = 1$. The Barnes-Hut $t$-SNE algorithm minimizes the Kullback-Leibler divergence between high-dimensional joint probabilities $p_{ij}$ and low-dimensional Student-$t$ probabilities $q_{ij}$:
@@ -290,12 +300,18 @@ e j} p_{ij} \log rac{p_{ij}}{q_{ij}}$$
    K-Means clustering on the resulting 2D coordinates ($\mathbf{y}_i \in \mathbb{R}^2$) cleanly segments 2,190 facility-days into 4 distinct operational archetypes.
 
 ### 6.2 Modern Power BI Architecture (.pbip, TMDL & PBIR)
+![Figure 2: Native Microsoft Fabric Power BI Desktop Multi-Page Report & Star Schema Analytics Interface](Project_SmartEnergy_PowerBI/figures/pbi_desktop_dashboard.png)  
+*Figure 2: Native Microsoft Fabric Power BI Desktop Multi-Page Report & Star Schema Analytics Interface (Dark Executive Theme)*
+
 Legacy binary `.pbix` files package schemas, reports, and binary VertiPaq databases into an opaque zip structure that is prone to serialization errors and incompatible with Git version control. This project implements the modern Microsoft Fabric **Power BI Project (`.pbip`)** architecture:
 - **TMDL Semantic Model (`SmartEnergy_Analytics_Dashboard.SemanticModel`):** All 11 tables are declared in human-readable Tabular Model Definition Language files (`definition/tables/*.tmdl`), complete with M partition expressions, column data types, format strings, and DAX measures.
 - **PBIR Report Engine (`SmartEnergy_Analytics_Dashboard.Report`):** Visual containers are declared as structured JSON definitions in `definition/pages/`, mapping exact $(x, y, w, h)$ positions, visual types, query state projections, and cross-filtering rules across 3 executive report pages.
 - **Zero-BOM Encoding Resolution:** Fixed the underlying `Newtonsoft.Json` parsing bug by ensuring that all package text metadata (`DiagramLayout`, `Settings`, `Metadata`) is encoded strictly as UTF-16LE **without BOM**, allowing Power BI Desktop (v2.157+) to open and compile the model instantly.
 
 ### 6.3 Cloud Web Dashboard & Vercel Deployment
+![Figure 3: Cloud-Native Cyber-Executive Apache ECharts Real-Time Telemetry HUD Deployed Globally on Vercel](Project_SmartEnergy_PowerBI/figures/echarts_executive_hud.png)  
+*Figure 3: Cloud-Native Cyber-Executive Apache ECharts Real-Time Telemetry HUD Deployed Globally on Vercel ([https://webdashboard-eta.vercel.app](https://webdashboard-eta.vercel.app))*
+
 To ensure universal accessibility without software licensing barriers, we built and deployed an interactive, responsive Web Application:
 - **Architecture:** Lightweight Vanilla HTML5/CSS3/JavaScript utilizing Apache ECharts (v5.4.3) for high-performance canvas rendering.
 - **Cyber-Slate Aesthetics:** Implemented high-contrast dark-mode styling (`#0b1120` deep slate background, `#f8fafc` crisp typography) exceeding WCAG AA contrast standards.
@@ -308,29 +324,44 @@ To ensure universal accessibility without software licensing barriers, we built 
 ## 7. Comprehensive Result Analysis & Visual Findings
 We evaluate the operational, visual, and financial performance of the platform across eight dedicated visual analytic modules:
 
-### 7.1 Diurnal Power Flow & Solar Penetration
-The diurnal load profile illustrates the interplay between active campus demand, rooftop solar PV generation, and net utility grid import. On-site solar generation reaches a peak capacity of **420 kW** between 11:30 and 13:30, coinciding with the campus mid-day cooling surge. Annual solar self-consumption ratio averages **94.2%**, directly abating **936.8 $	ext{tCO}_2	ext{e}$** of greenhouse gas emissions.
+### 7.7 Diurnal Power Flow & Solar Penetration
+![Figure 10: Diurnal Power Flow — Solar PV Generation vs. Net Grid Import Load Curve](Project_SmartEnergy_PowerBI/figures/08_solar_vs_grid_flow.png)  
+*Figure 10: Diurnal Power Flow — Solar PV Generation vs. Net Grid Import Load Curve*
 
-### 7.2 24x7 Load-Profile Heatmap Matrix
+The diurnal load profile illustrates the interplay between active campus demand, rooftop solar PV generation, and net utility grid import. On-site solar generation reaches a peak capacity of **420 kW** between 11:30 and 13:30, coinciding with the campus mid-day cooling surge. Annual solar self-consumption ratio averages **94.2%**, directly abating **936.8 $\text{tCO}_2\text{e}$** of greenhouse gas emissions.
+
+### 7.1 24x7 Load-Profile Heatmap Matrix
+![Figure 4: Interactive Apache ECharts 24x7 Campus Load Intensity Heatmap Matrix](Project_SmartEnergy_PowerBI/figures/echarts_247_heatmap.png)  
+*Figure 4: Interactive Apache ECharts 24x7 Campus Load Intensity Heatmap Matrix (Hourly Demand in kW across Days & Hours)*
+
 The hour-of-day versus day-of-week intensity matrix exposes distinct operational regimes:
 - **Morning Ramp (08:00 - 10:00):** Rapid demand escalation from 950 kW to 2,200 kW as academic lecture halls and labs activate HVAC and lighting.
 - **Coincident Afternoon Peak (14:00 - 17:00):** Heavy coincident cooling load pushing total campus demand to the annual maximum of **2,840.0 kW** in mid-June.
 - **Overnight Baseload (00:00 - 06:00):** Sustained demand of ~820 kW primarily driven by Computing Wing C servers and baseline chilled-water circulation.
 
-### 7.3 Facility Benchmarking & Top-N Rankings
+### 7.6 Facility Benchmarking & Top-N Rankings
+![Figure 9: Facility Consumption Benchmark & Top-N Ranking with Monthly Sparklines](Project_SmartEnergy_PowerBI/figures/03_topn_facility_sparklines.png)  
+*Figure 9: Facility Consumption Benchmark & Top-N Ranking with Monthly Sparklines*
+
 Cross-facility comparative analytics reveals significant consumption disparities:
 - **Computing Wing C:** Consumes **4.88 GWh** annually with an exceptionally flat, non-seasonal load profile driven by 24x7 IT server racks.
 - **Research Complex B:** Consumes **4.21 GWh** annually with high seasonal sensitivity due to cleanroom ventilation and thermal chambers.
 - **Combined Impact:** Computing Wing C and Research Complex B account for **46.9%** of total campus electricity expenditure while occupying only 28.5% of total floor area, identifying them as prime targets for solar carport expansion and power factor correction.
 
-### 7.4 Predictive Machine Learning Demand Forecast
+### 7.2 Predictive Machine Learning Demand Forecast
+![Figure 5: Apache ECharts 30-Day Ahead Fourier Ridge Demand Forecast with Dynamic 95% Confidence Prediction Bands](Project_SmartEnergy_PowerBI/figures/echarts_forecast_module.png)  
+*Figure 5: Apache ECharts 30-Day Ahead Fourier Ridge Demand Forecast with Dynamic 95% Confidence Prediction Bands (^2 = 0.996$)*
+
 The Fourier-expanded Ridge regression model was validated on an unseen 30-day holdout horizon:
 - **Coefficient of Determination ($R^2$):** **0.996**
 - **Mean Absolute Error (MAE):** **270.1 kWh**
 - **Mean Absolute Percentage Error (MAPE):** **0.61%**
 - **Peak Hour Capture:** Faithfully captures daily morning ramps and evening drop-offs within 95% expanding prediction uncertainty bounds.
 
-### 7.5 Shewhart $\pm 3\sigma$ Anomaly Audit
+### 7.3 Shewhart $\pm 3\sigma$ Anomaly Audit & Equipment Leaks
+![Figure 6: Interactive Shewhart 3-Sigma Rolling Statistical Process Control Chart Highlighting Equipment Operational Runaway Breaches](Project_SmartEnergy_PowerBI/figures/echarts_anomaly_shewhart.png)  
+*Figure 6: Interactive Shewhart 3-Sigma Rolling Statistical Process Control Chart Highlighting Equipment Operational Runaway Breaches & Audit Log*
+
 Across FY 2025, the rolling Shewhart control limit algorithm isolated exactly **196 operational breaches**:
 - **High-Severity Chiller Runaway:** On Saturday, July 12, Academic Block A chillers failed to enter weekend setback mode, drawing +280 kWh/h above the upper control limit for 46 consecutive hours. Total avoidable financial waste was calculated at **INR 64,400**.
 - **Cumulative Waste:** Total avoidable financial waste identified across all 196 anomalies amounted to **INR 2.84 Lakhs**.
@@ -342,7 +373,10 @@ Non-linear dimensionality reduction on 2,190 facility-day load vectors isolated 
 3. **Cluster 3 (Evening Residential Surge - 24.5%):** Pronounced 18:00–23:00 peak characteristic of Student Residence Dormitory E.
 4. **Cluster 4 (Low Weekend Idle - 15.2%):** Flattened baseload with zero daytime operational ramps.
 
-### 7.7 End-Use Submetering Disaggregation
+### 7.5 End-Use Submetering Disaggregation
+![Figure 8: Campus End-Use Submetering Category Disaggregation & Polar Load Distribution in Apache ECharts](Project_SmartEnergy_PowerBI/figures/echarts_submeter_breakdown.png)  
+*Figure 8: Campus End-Use Submetering Category Disaggregation & Polar Load Distribution in Apache ECharts*
+
 Disaggregated circuit submetering across all 6 facilities allocates electrical consumption into 5 core end-use categories:
 - **HVAC & Thermal Conditioning:** **42.1%** (8.15 GWh)
 - **Servers, Network & IT Infrastructure:** **22.4%** (4.34 GWh)
@@ -357,10 +391,10 @@ Disaggregated circuit submetering across all 6 facilities allocates electrical c
 | **Total Electricity Spend** | **13.20** | Crores INR (₹) | Total utility expenditure under multi-tier Time-of-Use tariffs |
 | **Solar PV Self-Generation** | **1,142,435** | kWh (1.14 GWh) | 5.90% Renewable penetration from 590 kWp installed rooftop PV |
 | **Campus Peak Coincident Demand**| **2,840.0** | kW | Annual billing contract threshold recorded during June cooling peak |
-| **Total Campus Carbon Footprint**| **15,868.9** | $	ext{tCO}_2	ext{e}$ | Quantified using Central Electricity Authority factor (0.82 kg/kWh) |
-| **Clean Solar Carbon Offset** | **936.8** | $	ext{tCO}_2	ext{e}$ | Direct Scope 2 abatement equivalent to planting ~42,500 trees |
+| **Total Campus Carbon Footprint**| **15,868.9** | $\text{tCO}_2\text{e}$ | Quantified using Central Electricity Authority factor (0.82 kg/kWh) |
+| **Clean Solar Carbon Offset** | **936.8** | $\text{tCO}_2\text{e}$ | Direct Scope 2 abatement equivalent to planting ~42,500 trees |
 | **Operational Anomalies Flagged**| **196** | Detected Events | Identified avoidable equipment waste of ~INR 2.84 Lakhs |
-| **Forecasting Model Fidelity** | **$R^2 = 0.996$** | 30-Day Holdout | $	ext{MAPE} = 0.61\%$, $	ext{MAE} = 270.1	ext{ kWh}$ across unseen test horizon |
+| **Forecasting Model Fidelity** | **$R^2 = 0.996$** | 30-Day Holdout | $\text{MAPE} = 0.61\%$, $\text{MAE} = 270.1\text{ kWh}$ across unseen test horizon |
 
 ---
 
