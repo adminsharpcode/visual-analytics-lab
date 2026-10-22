@@ -1,75 +1,75 @@
 table Dim_Facility
-	lineageTag: f9eb1298-6cbd-48dd-86c0-609e6279cd4e
+	lineageTag: 351642f8-6994-415d-bb4f-d065cd952a0a
 
 	measure 'Average Energy Star Rating' = AVERAGE(Dim_Facility[EnergyStarRating])
 		formatString: 0.0
-		lineageTag: 7b3a6e08-0876-4a69-8fc2-e64cc873e32b
+		lineageTag: 73c42358-2724-4f4e-9f4d-cbae7b48b85d
 
 	column FacilityID
 		dataType: string
 		isKey
 		summarizeBy: none
 		sourceColumn: FacilityID
-		lineageTag: 6126aa4a-3648-4d13-8386-baa98d34d476
+		lineageTag: 70de64ef-e64e-400d-b72b-38b8ed68dcbf
 
 	column FacilityName
 		dataType: string
 		summarizeBy: none
 		sourceColumn: FacilityName
-		lineageTag: 3457362d-f34a-4ee9-94b2-c627552842ea
+		lineageTag: d062d60f-5862-403d-aa73-b704f8d55b59
 
 	column Category
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Category
-		lineageTag: f80a83dd-4115-453b-9fcd-28fb98f9da30
+		lineageTag: fa5fd86b-c86b-4194-bbd0-10254eeb0b85
 
 	column Area_SqFt
 		dataType: int64
 		formatString: #,0
 		summarizeBy: sum
 		sourceColumn: Area_SqFt
-		lineageTag: a325f842-b635-4cd3-a2e1-a73cb753f010
+		lineageTag: b4d21449-5f97-41d0-b0e5-43bb27c58e31
 
 	column Occupancy_Capacity
 		dataType: int64
 		formatString: #,0
 		summarizeBy: sum
 		sourceColumn: Occupancy_Capacity
-		lineageTag: 142efd8f-b66d-4206-88ba-8e2f8e6667a1
+		lineageTag: fdc576dc-cb85-47c5-b5b6-212718c2a43a
 
 	column Baseline_kW
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Baseline_kW
-		lineageTag: 4ba15ee0-435c-4130-afc7-f01afd52a36d
+		lineageTag: 0ea36585-2c89-48d6-bf21-2321151a1359
 
 	column PeakDesign_kW
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: PeakDesign_kW
-		lineageTag: 67ac4793-e163-4a71-a394-4524c2dde457
+		lineageTag: 9eba6d13-44a5-4bc4-9da9-51e467d9d56b
 
 	column EnergyStarRating
 		dataType: int64
 		summarizeBy: average
 		sourceColumn: EnergyStarRating
-		lineageTag: 768f3c26-5d8e-44c2-a1f8-e43843757137
+		lineageTag: fd068641-e171-42cb-8c8f-47f3c8467bd0
 
 	column SubstationZone
 		dataType: string
 		summarizeBy: none
 		sourceColumn: SubstationZone
-		lineageTag: 89611833-2056-4853-8d83-4de97e02d510
+		lineageTag: 5f3c271d-4a9a-4920-9e3c-2e7b3f3bb8af
 
 	column Solar_kWp
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: sum
 		sourceColumn: Solar_kWp
-		lineageTag: 2b2f6b8c-e83d-4ebb-97f1-c5346050b3c1
+		lineageTag: b359f972-f8b3-40b1-8855-2a43496619d6
 
 	partition Dim_Facility = m
 		mode: import

@@ -113,8 +113,8 @@ def build_solution():
             
         with open(os.path.join(sm_dir, "definition.pbism"), "w", encoding="utf-8") as f:
             json.dump({
-                "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definition/pbism/1.0.0/schema.json",
-                "version": "1.0",
+                "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json",
+                "version": "4.2",
                 "settings": {}
             }, f, indent=2)
 
@@ -1124,11 +1124,10 @@ def build_solution():
 
         with open(os.path.join(rp_dir, "definition.pbir"), "w", encoding="utf-8") as f:
             json.dump({
-                "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pbir/1.0.0/schema.json",
-                "version": "1.0",
+                "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+                "version": "4.0",
                 "datasetReference": {
-                    "byPath": {"path": f"../{proj_name}.SemanticModel"},
-                    "byConnection": None
+                    "byPath": {"path": f"../{proj_name}.SemanticModel"}
                 }
             }, f, indent=2)
 

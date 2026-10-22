@@ -526,7 +526,11 @@ for base_target in [POWERBI_DIR, ROOT_DIR]:
 
     # SemanticModel files
     with open(os.path.join(sm_dir, "definition.pbism"), "w", encoding="utf-8") as f:
-        json.dump({"version": "1.0", "settings": {}}, f, indent=2)
+        json.dump({
+            "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json",
+            "version": "4.2",
+            "settings": {}
+        }, f, indent=2)
     with open(os.path.join(sm_dir, "model.bim"), "w", encoding="utf-8") as f:
         json.dump(full_model, f, indent=2)
     with open(os.path.join(sm_dir, "diagramLayout.json"), "w", encoding="utf-8") as f:
@@ -535,10 +539,10 @@ for base_target in [POWERBI_DIR, ROOT_DIR]:
     # Report files (PBIR definition)
     with open(os.path.join(rp_dir, "definition.pbir"), "w", encoding="utf-8") as f:
         json.dump({
-            "version": "1.0",
+            "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+            "version": "4.0",
             "datasetReference": {
-                "byPath": {"path": f"../{PROJ_NAME}.SemanticModel"},
-                "byConnection": None
+                "byPath": {"path": f"../{PROJ_NAME}.SemanticModel"}
             }
         }, f, indent=2)
     with open(os.path.join(rp_dir, "report.json"), "w", encoding="utf-8") as f:
