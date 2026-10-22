@@ -187,9 +187,9 @@ rect(s, Inches(0.85), Inches(3.28), Inches(1.4), Inches(0.04), fill=BLUE)
 rect(s, Inches(0.85), Inches(3.45), Inches(11.63), Inches(0.82), fill=LIGHT, line=BORDER)
 rect(s, Inches(0.85), Inches(3.45), Inches(0.07), Inches(0.82), fill=NAVY)
 t = textbox(s, Inches(1.1), Inches(3.52), Inches(11.2), Inches(0.7))
-para(t, "SUBMITTED TO / EVALUATOR:", size=9.5, bold=True, color=MUTED, first=True)
-para(t, "Dr. Mary Jennifer J  |  Assistant Professor (Senior), School of Social Sciences & Languages (SSL) / Evaluator", size=12, bold=True, color=NAVY)
-para(t, "School of Computer Science and Engineering (SCOPE), Vellore Institute of Technology, Vellore - 632014", size=10, color=MUTED)
+para(t, "SUBMITTED TO / FACULTY EVALUATOR & GUIDE:", size=9.5, bold=True, color=MUTED, first=True)
+para(t, "Dr. MANIKANDAN K  |  Professor Grade 2, Department of Database Systems", size=12, bold=True, color=NAVY)
+para(t, "School of Computer Science and Engineering (SCOPE), VIT Vellore (Cabin: SJT 411 A29 • Email: kmanikandan@vit.ac.in)", size=10, color=MUTED)
 
 # Project Team Members Cards
 t = textbox(s, Inches(0.85), Inches(4.38), Inches(11.6), Inches(0.28))
