@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
   "themeCollection": {
     "baseTheme": {
-      "name": "CY24SU10",
+      "name": "SmartEnergyExecutiveDark",
       "reportVersionAtImport": {
         "visual": "2.12.0",
         "report": "3.4.0",
@@ -11,6 +11,19 @@
       "type": "SharedResources"
     }
   },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "SmartEnergyExecutiveDark",
+          "path": "BaseThemes/SmartEnergyExecutiveDark.json",
+          "type": "BaseTheme"
+        }
+      ]
+    }
+  ],
   "objects": {
     "section": [
       {

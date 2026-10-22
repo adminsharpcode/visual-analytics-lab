@@ -1,31 +1,31 @@
 table Dim_Appliance
-	lineageTag: 4c863b74-62f1-4b18-9e70-4a3e8980512c
+	lineageTag: a2643c75-77d9-4367-ab76-9fbe9ce78057
 
 	column ApplianceID
 		dataType: string
 		isKey
 		summarizeBy: none
 		sourceColumn: ApplianceID
-		lineageTag: 72c54b1d-f9b8-4580-ba84-b2f6f5137d19
+		lineageTag: 185a85b6-bb32-4df6-9a30-81b703954c95
 
 	column SubmeterCategory
 		dataType: string
 		summarizeBy: none
 		sourceColumn: SubmeterCategory
-		lineageTag: f3a772ee-c8dd-407c-968d-6ea2f2a14a27
+		lineageTag: 44fe09a7-1c1d-4f53-b3ad-50a0d63ca259
 
 	column Description
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Description
-		lineageTag: 9f364da1-904b-4ae6-9b97-9d8121148b08
+		lineageTag: 73562247-8586-4649-aa4a-d597f64bf8dd
 
 	column AvgShare_Pct
 		dataType: double
 		formatString: 0.0%
 		summarizeBy: average
 		sourceColumn: AvgShare_Pct
-		lineageTag: 2b3cbbee-10d9-4771-93df-9453f0c6b3c9
+		lineageTag: a30e2fca-702a-4146-ad2f-c899746095db
 
 	partition Dim_Appliance = m
 		mode: import

@@ -1,6 +1,6 @@
 table Dim_Date
 	dataCategory: Time
-	lineageTag: 95d04fc7-8cb6-45a4-a60c-07f9d176c560
+	lineageTag: 64205095-2ac6-41b1-b70f-bf42c487b205
 
 	column Date
 		dataType: dateTime
@@ -8,69 +8,69 @@ table Dim_Date
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: 0cccbbae-2269-4f0d-aa26-425986472c0b
+		lineageTag: bbda7b34-101e-4074-8539-5b362bb9e376
 
 	column Year
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: Year
-		lineageTag: d4646f88-3c6b-43ae-8132-484883dccc40
+		lineageTag: 444b6971-31d0-40fe-9505-8a0bc4327738
 
 	column Quarter
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Quarter
-		lineageTag: 8ca18297-21a6-4613-a543-1f0bebb54fca
+		lineageTag: 1f11bd78-3ab4-4020-bfb1-92d019955a4a
 
 	column Month
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: Month
-		lineageTag: c8f028a1-ab4e-4966-99aa-8c2da7a4d1c2
+		lineageTag: 4e7b379d-df62-4f9f-a5b4-82d909be3ed9
 
 	column MonthName
 		dataType: string
 		sortByColumn: Month
 		summarizeBy: none
 		sourceColumn: MonthName
-		lineageTag: 74888d0b-8cc0-4a71-af7f-586794691ac9
+		lineageTag: d65d6265-51ab-4fbd-9bc2-a3d9a4a6031d
 
 	column WeekNum
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: WeekNum
-		lineageTag: f26eb8a6-2f3d-490c-9b73-1c377541c792
+		lineageTag: 485b96f7-7556-4937-a8f1-b32d84690104
 
 	column DayOfMonth
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: DayOfMonth
-		lineageTag: 1b6f2926-08ac-4995-a685-fae10233bd2f
+		lineageTag: 7d426638-f547-4f68-b231-2f2b88c916ba
 
 	column DayOfWeek
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: DayOfWeek
-		lineageTag: f9285420-6c9b-459a-9225-8dc312f51afa
+		lineageTag: f1156e21-353d-454b-8b0b-a03665b3e050
 
 	column DayName
 		dataType: string
 		sortByColumn: DayOfWeek
 		summarizeBy: none
 		sourceColumn: DayName
-		lineageTag: 5dc57567-e3a1-4dbf-a13f-1f2518338572
+		lineageTag: a449315b-d200-416f-b323-306ef509a48d
 
 	column IsWeekend
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: IsWeekend
-		lineageTag: ddd6365e-e4b7-41d7-96c2-5d29b98d3456
+		lineageTag: 8519a678-1cda-4464-b81a-64657ce144db
 
 	column Season
 		dataType: string
 		summarizeBy: none
 		sourceColumn: Season
-		lineageTag: 1a5738a4-eedc-458a-b4eb-07dfd654e237
+		lineageTag: 7528f758-2ff8-4f20-b7ed-a62484e50ac5
 
 	partition Dim_Date = m
 		mode: import

@@ -3,10 +3,10 @@
   "name": "fae7619cb33dd5b466c1",
   "position": {
     "x": 1200,
-    "y": 140,
+    "y": 125,
     "z": 0,
     "width": 680,
-    "height": 480,
+    "height": 500,
     "tabOrder": 0
   },
   "visual": {
@@ -94,6 +94,53 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Statistical Process Control: Shewhart 3-Sigma Upper Control Limit Audit'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00F0FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

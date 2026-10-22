@@ -3,10 +3,10 @@
   "name": "439c3d08a50814d59c1b",
   "position": {
     "x": 40,
-    "y": 230,
+    "y": 215,
     "z": 0,
     "width": 1140,
-    "height": 480,
+    "height": 510,
     "tabOrder": 0
   },
   "visual": {
@@ -94,6 +94,53 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Campus 24-Hour Diurnal Power Flow (Active Load vs Solar vs Net Grid Import)'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00F0FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

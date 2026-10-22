@@ -53,9 +53,9 @@ def sum_ref(entity, prop):
         "nativeQueryRef": f"Sum of {prop}"
     }
 
-def make_visual(seed, vtype, x, y, w, h, roles, z=0):
+def make_visual(seed, vtype, x, y, w, h, roles, title=None, z=0):
     qs = {r: {"projections": p} for r, p in roles.items() if p}
-    return {
+    vis_obj = {
         "$schema": V_SCHEMA,
         "name": vid(seed),
         "position": {"x": x, "y": y, "z": z, "width": w, "height": h, "tabOrder": z * 1000},
@@ -65,6 +65,19 @@ def make_visual(seed, vtype, x, y, w, h, roles, z=0):
             "drillFilterOtherVisuals": True
         }
     }
+    if title:
+        vis_obj["visual"]["objects"] = {
+            "title": [{
+                "properties": {
+                    "show": {"expr": {"Literal": {"Value": "true"}}},
+                    "text": {"expr": {"Literal": {"Value": f"'{title}'"}}},
+                    "fontColor": {"solid": {"color": {"expr": {"Literal": {"Value": "'#00F0FF'"}}}}},
+                    "fontSize": {"expr": {"Literal": {"Value": "11D"}}},
+                    "bold": {"expr": {"Literal": {"Value": "true"}}}
+                }
+            }]
+        }
+    return vis_obj
 
 def build_solution():
     print("Starting Power BI PBIP Generation...")
@@ -1137,16 +1150,43 @@ def build_solution():
                 "version": "2.0.0"
             }, f, indent=2)
 
+        # Embed SmartEnergyExecutiveDark Base Theme
+        theme_dir = os.path.join(rp_dir, "StaticResources", "SharedResources", "BaseThemes")
+        os.makedirs(theme_dir, exist_ok=True)
+        theme_file = os.path.join(theme_dir, "SmartEnergyExecutiveDark.json")
+        try:
+            import sys
+            if ROOT_DIR not in sys.path: sys.path.insert(0, ROOT_DIR)
+            from generate_dark_theme import create_dark_theme
+            dark_theme = create_dark_theme()
+        except Exception:
+            dark_theme = {"name": "SmartEnergyExecutiveDark"}
+        with open(theme_file, "w", encoding="utf-8") as f:
+            json.dump(dark_theme, f, indent=2)
+
         with open(os.path.join(rp_def, "report.json"), "w", encoding="utf-8") as f:
             json.dump({
                 "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
                 "themeCollection": {
                     "baseTheme": {
-                        "name": "CY24SU10",
+                        "name": "SmartEnergyExecutiveDark",
                         "reportVersionAtImport": {"visual": "2.12.0", "report": "3.4.0", "page": "2.3.1"},
                         "type": "SharedResources"
                     }
                 },
+                "resourcePackages": [
+                    {
+                        "name": "SharedResources",
+                        "type": "SharedResources",
+                        "items": [
+                            {
+                                "name": "SmartEnergyExecutiveDark",
+                                "path": "BaseThemes/SmartEnergyExecutiveDark.json",
+                                "type": "BaseTheme"
+                            }
+                        ]
+                    }
+                ],
                 "objects": {
                     "section": [{"properties": {"verticalAlignment": {"expr": {"Literal": {"Value": "'Top'"}}}}}]
                 }
@@ -1176,37 +1216,37 @@ def build_solution():
 
         p1_visuals = [
             # 6 KPI cards
-            make_visual("kpi_c1", "card", 40, 20, 290, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Total Active Consumption (GWh)")]}),
-            make_visual("kpi_c2", "card", 350, 20, 290, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Total Electricity Spend (Cr)")]}),
-            make_visual("kpi_c3", "card", 660, 20, 290, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Total Solar Generation (GWh)")]}),
-            make_visual("kpi_c4", "card", 970, 20, 290, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Campus Peak Demand (kW)")]}),
-            make_visual("kpi_c5", "card", 1280, 20, 290, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Carbon Footprint (tCO2e)")]}),
-            make_visual("kpi_c6", "card", 1590, 20, 290, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Operational Anomaly Count")]}),
+            make_visual("kpi_c1", "card", 40, 20, 290, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Total Active Consumption (GWh)")]}, title="⚡ Total Consumption"),
+            make_visual("kpi_c2", "card", 350, 20, 290, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Total Electricity Spend (Cr)")]}, title="💰 Electricity Spend"),
+            make_visual("kpi_c3", "card", 660, 20, 290, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Total Solar Generation (GWh)")]}, title="☀️ Solar Generation"),
+            make_visual("kpi_c4", "card", 970, 20, 290, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Campus Peak Demand (kW)")]}, title="📈 Peak Demand"),
+            make_visual("kpi_c5", "card", 1280, 20, 290, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Carbon Footprint (tCO2e)")]}, title="🌱 Carbon Footprint"),
+            make_visual("kpi_c6", "card", 1590, 20, 290, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Operational Anomaly Count")]}, title="🚨 Anomaly Incidents"),
 
             # Slicers
-            make_visual("slic_fac", "slicer", 40, 135, 420, 80, {"Values": [column_ref("Dim_Facility", "FacilityName")]}),
-            make_visual("slic_sea", "slicer", 480, 135, 420, 80, {"Values": [column_ref("Dim_Date", "Season")]}),
-            make_visual("slic_per", "slicer", 920, 135, 420, 80, {"Values": [column_ref("Dim_Time", "PeriodOfDay")]}),
-            make_visual("slic_zone", "slicer", 1360, 135, 520, 80, {"Values": [column_ref("Dim_Facility", "SubstationZone")]}),
+            make_visual("slic_fac", "slicer", 40, 125, 420, 80, {"Values": [column_ref("Dim_Facility", "FacilityName")]}, title="🏢 Facility Selector"),
+            make_visual("slic_sea", "slicer", 480, 125, 420, 80, {"Values": [column_ref("Dim_Date", "Season")]}, title="⛅ Season Filter"),
+            make_visual("slic_per", "slicer", 920, 125, 420, 80, {"Values": [column_ref("Dim_Time", "PeriodOfDay")]}, title="⏱️ Period of Day"),
+            make_visual("slic_zone", "slicer", 1360, 125, 520, 80, {"Values": [column_ref("Dim_Facility", "SubstationZone")]}, title="⚡ Substation Zone"),
 
             # Diurnal Power Flow Line Chart
-            make_visual("chart_diurnal", "lineChart", 40, 230, 1140, 480, {
+            make_visual("chart_diurnal", "lineChart", 40, 215, 1140, 510, {
                 "Category": [column_ref("Dim_Time", "HourFormatted")],
                 "Y": [
                     sum_ref("Fact_EnergyConsumption", "ActivePower_kWh"),
                     sum_ref("Fact_EnergyConsumption", "SolarGeneration_kWh"),
                     sum_ref("Fact_EnergyConsumption", "NetGridImport_kWh")
                 ]
-            }),
+            }, title="Campus 24-Hour Diurnal Power Flow (Active Load vs Solar vs Net Grid Import)"),
 
             # Facility Consumption Ranking Bar Chart
-            make_visual("chart_fac_rank", "clusteredBarChart", 1200, 230, 680, 480, {
+            make_visual("chart_fac_rank", "clusteredBarChart", 1200, 215, 680, 510, {
                 "Category": [column_ref("Dim_Facility", "FacilityName")],
                 "Y": [measure_ref("Fact_EnergyConsumption", "Total Active Consumption (GWh)")]
-            }),
+            }, title="Campus Facility Active Consumption Benchmark (GWh Ranking)"),
 
             # Facility Table Benchmark
-            make_visual("tbl_fac_detail", "tableEx", 40, 730, 1840, 310, {
+            make_visual("tbl_fac_detail", "tableEx", 40, 735, 1840, 310, {
                 "Values": [
                     column_ref("Dim_Facility", "FacilityID"),
                     column_ref("Dim_Facility", "FacilityName"),
@@ -1218,7 +1258,7 @@ def build_solution():
                     measure_ref("Fact_EnergyConsumption", "Total Solar Generation (GWh)"),
                     measure_ref("Fact_EnergyConsumption", "Solar Penetration %")
                 ]
-            })
+            }, title="Campus Facility Infrastructure Technical Performance & Solar Penetration Matrix")
         ]
         for v in p1_visuals:
             v_folder = os.path.join(p1_vis_dir, v["name"])
@@ -1237,39 +1277,39 @@ def build_solution():
             }, f, indent=2)
 
         p2_visuals = [
-            make_visual("p2_c1", "card", 40, 20, 430, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Peak Period Consumption (GWh)")]}),
-            make_visual("p2_c2", "card", 500, 20, 430, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Off-Peak Consumption (GWh)")]}),
-            make_visual("p2_c3", "card", 960, 20, 430, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Average Power Factor")]}),
-            make_visual("p2_c4", "card", 1420, 20, 460, 100, {"Values": [measure_ref("Fact_EnergyConsumption", "Net Grid Import (GWh)")]}),
+            make_visual("p2_c1", "card", 40, 20, 430, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Peak Period Consumption (GWh)")]}, title="⚡ Peak Period Consumption"),
+            make_visual("p2_c2", "card", 500, 20, 430, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Off-Peak Consumption (GWh)")]}, title="🌙 Off-Peak Baseload Consumption"),
+            make_visual("p2_c3", "card", 960, 20, 430, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Average Power Factor")]}, title="⚡ Average Power Factor (PF)"),
+            make_visual("p2_c4", "card", 1420, 20, 460, 95, {"Values": [measure_ref("Fact_EnergyConsumption", "Net Grid Import (GWh)")]}, title="🔌 Net Grid Electricity Import"),
 
             # 24x7 Heatmap Pivot Matrix
-            make_visual("matrix_247", "pivotTable", 40, 140, 1180, 520, {
+            make_visual("matrix_247", "pivotTable", 40, 125, 1140, 535, {
                 "Rows": [column_ref("Dim_Date", "DayName")],
                 "Columns": [column_ref("Dim_Time", "HourFormatted")],
                 "Values": [sum_ref("Fact_EnergyConsumption", "ActivePower_kWh")]
-            }),
+            }, title="Campus 24x7 Load Intensity Matrix (Day of Week × Hour of Day)"),
 
             # Donut: Appliance Submetering
-            make_visual("donut_submeter", "donutChart", 1240, 140, 640, 520, {
+            make_visual("donut_submeter", "donutChart", 1200, 125, 680, 535, {
                 "Category": [column_ref("Dim_Appliance", "SubmeterCategory")],
                 "Y": [sum_ref("Fact_ApplianceSubmeter", "Submeter_kWh")]
-            }),
+            }, title="Submeter Energy Breakdown by Functional Load Category"),
 
             # Tariff Category Column Chart
-            make_visual("col_tariff", "clusteredColumnChart", 40, 680, 940, 360, {
+            make_visual("col_tariff", "clusteredColumnChart", 40, 670, 940, 370, {
                 "Category": [column_ref("Dim_Tariff", "TariffName")],
                 "Y": [sum_ref("Fact_EnergyConsumption", "Cost_INR")]
-            }),
+            }, title="Electricity Expenditure Distribution by ToU Tariff Structure (INR)"),
 
             # Submeter Detail Table
-            make_visual("tbl_sub_detail", "tableEx", 1000, 680, 880, 360, {
+            make_visual("tbl_sub_detail", "tableEx", 1000, 670, 880, 370, {
                 "Values": [
                     column_ref("Dim_Appliance", "ApplianceID"),
                     column_ref("Dim_Appliance", "SubmeterCategory"),
                     column_ref("Dim_Appliance", "Description"),
                     sum_ref("Fact_ApplianceSubmeter", "Submeter_kWh")
                 ]
-            })
+            }, title="Appliance Submeter Load Specifications & Operational Inventory")
         ]
         for v in p2_visuals:
             v_folder = os.path.join(p2_vis_dir, v["name"])
@@ -1288,12 +1328,12 @@ def build_solution():
             }, f, indent=2)
 
         p3_visuals = [
-            make_visual("p3_c1", "card", 40, 20, 580, 100, {"Values": [measure_ref("Fact_DemandForecast", "Forecast Projected Demand (kWh)")]}),
-            make_visual("p3_c2", "card", 660, 20, 580, 100, {"Values": [measure_ref("Fact_Anomalies_Detailed", "Wasted Anomaly Cost (INR)")]}),
-            make_visual("p3_c3", "card", 1280, 20, 600, 100, {"Values": [measure_ref("Fact_Anomalies_Detailed", "Excess Unscheduled Load (kWh)")]}),
+            make_visual("p3_c1", "card", 40, 20, 580, 95, {"Values": [measure_ref("Fact_DemandForecast", "Forecast Projected Demand (kWh)")]}, title="🔮 30-Day Forecast Projected Demand"),
+            make_visual("p3_c2", "card", 660, 20, 580, 95, {"Values": [measure_ref("Fact_Anomalies_Detailed", "Wasted Anomaly Cost (INR)")]}, title="💸 Wasted Energy Anomaly Expenditure"),
+            make_visual("p3_c3", "card", 1280, 20, 600, 95, {"Values": [measure_ref("Fact_Anomalies_Detailed", "Excess Unscheduled Load (kWh)")]}, title="⚠️ Excess Unscheduled Baseload Leak"),
 
             # Forecast Line Chart with Confidence Bounds
-            make_visual("chart_forecast", "lineChart", 40, 140, 1140, 480, {
+            make_visual("chart_forecast", "lineChart", 40, 125, 1140, 500, {
                 "Category": [column_ref("Fact_DemandForecast", "Date")],
                 "Y": [
                     sum_ref("Fact_DemandForecast", "Actual_kWh"),
@@ -1301,20 +1341,20 @@ def build_solution():
                     sum_ref("Fact_DemandForecast", "Upper95_kWh"),
                     sum_ref("Fact_DemandForecast", "Lower95_kWh")
                 ]
-            }),
+            }, title="Multi-Variate Demand Forecast with 95% Confidence Bounds (Actual vs Forecast vs Limits)"),
 
             # Shewhart Control Chart
-            make_visual("chart_shewhart", "lineChart", 1200, 140, 680, 480, {
+            make_visual("chart_shewhart", "lineChart", 1200, 125, 680, 500, {
                 "Category": [column_ref("Fact_Anomalies_Detailed", "Timestamp")],
                 "Y": [
                     sum_ref("Fact_Anomalies_Detailed", "ActivePower_kWh"),
                     sum_ref("Fact_Anomalies_Detailed", "UpperLimit_kWh"),
                     sum_ref("Fact_Anomalies_Detailed", "RollingMean_kWh")
                 ]
-            }),
+            }, title="Statistical Process Control: Shewhart 3-Sigma Upper Control Limit Audit"),
 
             # Detailed Anomaly Audit Table
-            make_visual("tbl_anom_audit", "tableEx", 40, 640, 1840, 400, {
+            make_visual("tbl_anom_audit", "tableEx", 40, 635, 1840, 410, {
                 "Values": [
                     column_ref("Fact_Anomalies_Detailed", "Timestamp"),
                     column_ref("Fact_Anomalies_Detailed", "FacilityID"),
@@ -1326,7 +1366,7 @@ def build_solution():
                     column_ref("Fact_Anomalies_Detailed", "AnomalyType"),
                     column_ref("Fact_Anomalies_Detailed", "Severity")
                 ]
-            })
+            }, title="High-Severity Anomaly Incident Log & Root-Cause Classification Matrix")
         ]
         for v in p3_visuals:
             v_folder = os.path.join(p3_vis_dir, v["name"])

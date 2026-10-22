@@ -1,44 +1,44 @@
 table Fact_LoadClusters
-	lineageTag: 7fe53a28-5bb1-4a0b-8333-afb03b343537
+	lineageTag: 9af56002-5276-443f-bbff-bfb4526aa184
 
 	column FacilityID
 		dataType: string
 		summarizeBy: none
 		sourceColumn: FacilityID
-		lineageTag: 2d62121b-e0e9-466f-9f0e-7bbce1e3c399
+		lineageTag: dbba4325-110b-4b08-a771-5b7ccf131e2b
 
 	column Date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: 1fda41b4-7b1b-4ee1-979a-851bf4239fe2
+		lineageTag: 9ff297a7-cd5c-42b3-9be9-0ec1a75ac726
 
 	column ClusterID
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: ClusterID
-		lineageTag: cfe87a2c-5489-4f47-86cc-f0a3736d12ea
+		lineageTag: 1582071d-4314-476b-b4a3-3979e5f4874b
 
 	column ClusterName
 		dataType: string
 		summarizeBy: none
 		sourceColumn: ClusterName
-		lineageTag: 6b5f5aab-ec02-40a5-8701-2d5fc8be837c
+		lineageTag: 3ed2f041-a54e-4960-a37c-79788d69779c
 
 	column tSNE_1
 		dataType: double
 		formatString: 0.00
 		summarizeBy: sum
 		sourceColumn: tSNE_1
-		lineageTag: 61fd456c-003a-4e0b-a93c-e682be826a9f
+		lineageTag: cdf32893-aa8d-4bd4-9e5f-bd4c18ee3920
 
 	column tSNE_2
 		dataType: double
 		formatString: 0.00
 		summarizeBy: sum
 		sourceColumn: tSNE_2
-		lineageTag: 5a0d188c-4fd6-4f67-98c6-8f1f86d57558
+		lineageTag: f214f194-cb1a-4816-a6a7-c802a8054420
 
 	partition Fact_LoadClusters = m
 		mode: import

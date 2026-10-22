@@ -1,185 +1,185 @@
 table Fact_EnergyConsumption
-	lineageTag: 18f3b75d-3d5c-4991-b272-2ecee449d8a8
+	lineageTag: 80fc0e62-e007-44ae-b0c9-82ad53441c21
 
 	measure 'Total Active Consumption (GWh)' = DIVIDE(SUM(Fact_EnergyConsumption[ActivePower_kWh]), 1000000)
 		formatString: #,0.00
-		lineageTag: 81df335e-90a0-425d-a725-5b01bd18c2a9
+		lineageTag: 5432b03c-ee5a-4d7d-b27f-0690651155e8
 
 	measure 'Total Electricity Spend (Cr)' = DIVIDE(SUM(Fact_EnergyConsumption[Cost_INR]), 10000000)
 		formatString: \₹#,0.00;(\₹#,0.00);\₹#,0.00
-		lineageTag: 6e7c633a-441b-46d7-8f2f-93fa761f234c
+		lineageTag: 25d41758-6b18-4663-96bf-4f3b6d23d57a
 
 	measure 'Total Solar Generation (GWh)' = DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), 1000000)
 		formatString: #,0.00
-		lineageTag: ac7243cb-c0f8-45e8-9ba7-bc3f562cbab0
+		lineageTag: 59a91733-cc19-416c-a43f-17d6ffac5eb5
 
 	measure 'Solar Penetration %' = DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]), SUM(Fact_EnergyConsumption[ActivePower_kWh]), 0)
 		formatString: 0.0%
-		lineageTag: 4a672d3d-1a4a-42f5-9b20-adcc5a23e692
+		lineageTag: 5d495090-17ae-4ae7-b2fd-bae8ed36c22f
 
 	measure 'Campus Peak Demand (kW)' = MAXX(VALUES(Fact_EnergyConsumption[Timestamp]), CALCULATE(SUM(Fact_EnergyConsumption[ActivePower_kWh])))
 		formatString: #,0.0
-		lineageTag: 23ac257a-da71-4967-bac2-405164864715
+		lineageTag: 3eac27ff-29ac-41b0-909c-f3658e102d26
 
 	measure 'Carbon Footprint (tCO2e)' = DIVIDE(SUM(Fact_EnergyConsumption[Carbon_kgCO2]), 1000)
 		formatString: #,0.0
-		lineageTag: 76f6d5ac-f873-4ce3-9019-8e80b235e0b4
+		lineageTag: 7687fb65-772f-47a1-a153-ee43b108bbdb
 
 	measure 'Clean Energy Offset (tCO2e)' = DIVIDE(SUM(Fact_EnergyConsumption[SolarGeneration_kWh]) * 0.82, 1000)
 		formatString: #,0.0
-		lineageTag: fdde78e2-56f6-4fd7-aeb7-4dc9ff7ab578
+		lineageTag: a699d174-abbb-4d17-a3e6-b9630daf928d
 
 	measure 'Operational Anomaly Count' = CALCULATE(COUNTROWS(Fact_EnergyConsumption), Fact_EnergyConsumption[AnomalyFlag] = 1)
 		formatString: #,0
-		lineageTag: 1fcb5664-0b46-4a8e-bb04-ca3fff91104d
+		lineageTag: d6117254-addc-4675-be01-585471705ae6
 
 	measure 'Net Grid Import (GWh)' = DIVIDE(SUM(Fact_EnergyConsumption[NetImport_kWh]), 1000000)
 		formatString: #,0.00
-		lineageTag: e96da587-514b-4f1d-9993-a31a86e62edd
+		lineageTag: c6d4e852-1643-4c95-826a-5035a74695aa
 
 	measure 'Average Power Factor' = AVERAGE(Fact_EnergyConsumption[PowerFactor])
 		formatString: 0.000
-		lineageTag: 9a9934ab-22ea-4ae3-9ef0-2f79af2c7b8d
+		lineageTag: 5fcce298-d5b3-44f2-9123-4f3084502747
 
 	measure 'Peak Period Consumption (GWh)' = CALCULATE([Total Active Consumption (GWh)], Dim_Time[PeakTariffFlag] = 1)
 		formatString: #,0.00
-		lineageTag: 1af6ec81-37b9-4ee6-a14b-6521efdd7f2e
+		lineageTag: d47a5411-833f-4b96-8296-b9900201688e
 
 	measure 'Off-Peak Consumption (GWh)' = CALCULATE([Total Active Consumption (GWh)], Dim_Time[PeakTariffFlag] = 0)
 		formatString: #,0.00
-		lineageTag: 36283cd7-c719-46a0-bb20-48bcb2c83c78
+		lineageTag: 8a7f6939-1b99-471d-bdff-2ea59bdb3f00
 
 	column Timestamp
 		dataType: dateTime
 		summarizeBy: none
 		sourceColumn: Timestamp
-		lineageTag: f87a330e-893c-4be6-9788-1e2afdc3c6fb
+		lineageTag: 8200584f-cc2a-4dc4-b9be-6e04604d615a
 
 	column Date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
 		summarizeBy: none
 		sourceColumn: Date
-		lineageTag: e6a4deec-3af1-4f8b-b3ec-c0d19135303f
+		lineageTag: 84ecffbd-289d-419e-89a0-e015afca6360
 
 	column Hour
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: Hour
-		lineageTag: f96385be-c65b-446c-838e-1b257a694551
+		lineageTag: 67eaadca-6d5d-4019-9e99-b2c42ecc0cf9
 
 	column FacilityID
 		dataType: string
 		summarizeBy: none
 		sourceColumn: FacilityID
-		lineageTag: 03aa929b-eb18-4fe0-a8ee-51a4a997081b
+		lineageTag: 068c0cfb-f5b5-4ad0-a68e-db4ab0b25d5c
 
 	column TariffID
 		dataType: string
 		summarizeBy: none
 		sourceColumn: TariffID
-		lineageTag: 9a59939a-1229-4697-84fa-bfb0006216cb
+		lineageTag: 1752462f-ef1f-49eb-8c20-d908b0d2cfd3
 
 	column ActivePower_kWh
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: ActivePower_kWh
-		lineageTag: 15032920-3781-4e08-942e-c55e33d0a8e7
+		lineageTag: 5c6c0373-9e0b-48f4-89db-8830f3833dc3
 
 	column ReactivePower_kVARh
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: ReactivePower_kVARh
-		lineageTag: 2296a430-69e6-48f0-9542-b90d30e42986
+		lineageTag: 46f37a80-f1eb-468b-acfa-58f74772942d
 
 	column PowerFactor
 		dataType: double
 		formatString: 0.000
 		summarizeBy: average
 		sourceColumn: PowerFactor
-		lineageTag: 1c9c2f81-b920-48b3-abf3-5a39c690b76e
+		lineageTag: d060adce-2996-4b40-b7d4-3a0a1be5c8ee
 
 	column Voltage_V
 		dataType: double
 		formatString: #,0.0
 		summarizeBy: average
 		sourceColumn: Voltage_V
-		lineageTag: b15206a3-68f0-4bf2-a367-c9aa6659b524
+		lineageTag: 2d65363a-f644-456b-b589-028175c0811f
 
 	column TariffBand
 		dataType: string
 		summarizeBy: none
 		sourceColumn: TariffBand
-		lineageTag: 80a2a4f0-4eeb-4529-9f6d-8d7543de6aeb
+		lineageTag: 0bac5704-bc57-42e2-a17f-f48867be292e
 
 	column PeakPeriodFlag
 		dataType: int64
 		summarizeBy: none
 		sourceColumn: PeakPeriodFlag
-		lineageTag: db543659-ea3c-4c4a-b6cd-3d6cab12227e
+		lineageTag: 2618f460-145f-4581-a107-741de60285d8
 
 	column SolarGeneration_kWh
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: SolarGeneration_kWh
-		lineageTag: e276e536-c034-43e3-9ab5-87f283e54d0a
+		lineageTag: 2b2967d6-e538-4b56-aa8f-5b14bb38504c
 
 	column NetGridImport_kWh
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: NetGridImport_kWh
-		lineageTag: 8ed02cbf-3316-4bb6-bc31-d76b76721800
+		lineageTag: bd32aa4f-669b-4bf1-b608-1c2ae5a6d3ce
 
 	column Cost_INR
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: Cost_INR
-		lineageTag: b593a2cf-4db6-43e8-975e-aebc296196a3
+		lineageTag: 51990435-295b-4525-8011-d904917d9531
 
 	column CarbonEmission_kgCO2
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: CarbonEmission_kgCO2
-		lineageTag: 0004282e-bdea-48ce-9157-d1da292906f2
+		lineageTag: ccda66dc-4111-4d61-98d5-39a0064da4f1
 
 	column AnomalyFlag
 		dataType: int64
 		summarizeBy: sum
 		sourceColumn: AnomalyFlag
-		lineageTag: 5368bda4-ec55-4d65-8002-991b5ab6597a
+		lineageTag: 7d5f0919-3827-489a-aa63-38c91137b050
 
 	column AnomalyType
 		dataType: string
 		summarizeBy: none
 		sourceColumn: AnomalyType
-		lineageTag: 1c6672c9-a320-4000-9921-52c66b578a7f
+		lineageTag: ee6f8ac8-1df4-4f5b-be3b-9917cf40fb0a
 
 	column Carbon_kgCO2
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: Carbon_kgCO2
-		lineageTag: ab68ceb6-3d05-4098-87dc-4d208a6a2b6f
+		lineageTag: 59795b34-b327-4ed6-bca7-77314727d64c
 
 	column NetImport_kWh
 		dataType: double
 		formatString: #,0.00
 		summarizeBy: sum
 		sourceColumn: NetImport_kWh
-		lineageTag: fb3f35e4-bc8b-46da-aae3-b2c4486f2d7d
+		lineageTag: 0f0f06b1-9067-456c-b802-a0b8eb647c12
 
 	column SolarSelfConsumptionRatio
 		dataType: double
 		formatString: 0.0%
 		summarizeBy: average
 		sourceColumn: SolarSelfConsumptionRatio
-		lineageTag: 5a5582fc-eaf7-456d-9ea8-15cc881a211e
+		lineageTag: c5fda3ac-2788-4e48-ab5e-ac972ada7198
 
 	partition Fact_EnergyConsumption = m
 		mode: import
